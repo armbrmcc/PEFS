@@ -19,8 +19,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main' ?>/assets/img/Logo_Team_6_v2.png">
-    <link rel="icon" type="image/png" href="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main' ?>/assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main' ?>/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main' ?>/assets/img/Logo_Team_6_v2.png">
     <title>
         TTEMP by Team 6
     </title>
