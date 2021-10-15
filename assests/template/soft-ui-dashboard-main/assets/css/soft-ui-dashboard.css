@@ -352,7 +352,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+  font-family: 'Prompt', sans-serif;
   font-size: inherit;
   line-height: inherit;
 }
@@ -19386,7 +19386,7 @@ fieldset:disabled .btn {
 }
 
 .card .card-body {
-  font-family: "Open Sans";
+  font-family: 'Prompt', sans-serif;
   padding: 1.5rem;
 }
 
@@ -19629,7 +19629,7 @@ fieldset:disabled .btn {
   }
 
   .dropdown .dropdown-menu:before {
-    font-family: "FontAwesome";
+    font-family: 'Prompt', sans-serif;
     content: "\f0d8";
     position: absolute;
     top: 0;
@@ -19665,7 +19665,7 @@ fieldset:disabled .btn {
   }
 
   .dropdown:not(.nav-item) .dropdown-menu:before {
-    font-family: "FontAwesome";
+    font-family: 'Prompt', sans-serif;
     content: "\f0d8";
     position: absolute;
     top: 0;
@@ -19805,7 +19805,7 @@ fieldset:disabled .btn {
 }
 
 .dropup .dropdown-menu:after {
-  font-family: "FontAwesome";
+  font-family: 'Prompt', sans-serif;
   content: "\f0d7";
   position: absolute;
   z-index: -1;
@@ -19959,7 +19959,7 @@ fieldset:disabled .btn {
 
 .form-check:not(.form-switch) .form-check-input[type="checkbox"]:after {
   transition: opacity 0.25s ease-in-out;
-  font-family: "FontAwesome";
+  font-family: 'Prompt', sans-serif;
   content: "\f00c";
   width: 100%;
   height: 100%;
@@ -21650,7 +21650,7 @@ hr.horizontal.gray-light {
   font-variant: normal;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Prompt', sans-serif;
   font-weight: 700;
   content: "\f107";
   margin-left: auto;
@@ -23199,11 +23199,11 @@ p {
 }
 
 .text-sans-serif {
-  font-family: "Open Sans" !important;
+  font-family: 'Prompt', sans-serif !important;
 }
 
 .text-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-family: 'Prompt', sans-serif, monospace !important;
 }
 
 .text-justify {
@@ -23718,7 +23718,7 @@ p {
 }
 
 .flatpickr-current-month span.cur-month {
-  font-family: inherit;
+  font-family: 'Prompt', sans-serif;
   font-weight: 700;
   color: inherit;
   display: inline-block;
@@ -23754,7 +23754,7 @@ p {
   margin: 0;
   display: inline-block;
   font-size: inherit;
-  font-family: inherit;
+  font-family: 'Prompt', sans-serif;
   font-weight: 300;
   line-height: inherit;
   height: auto;
@@ -23787,7 +23787,7 @@ p {
   color: inherit;
   cursor: pointer;
   font-size: inherit;
-  font-family: inherit;
+  font-family: 'Prompt', sans-serif;
   font-weight: 300;
   height: auto;
   line-height: inherit;
@@ -24674,7 +24674,7 @@ pre[class*="language-"] {
   color: black;
   background: none;
   text-shadow: 0 1px white;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'Prompt', sans-serif, monospace;
   font-size: 1em;
   text-align: left;
   white-space: pre;
