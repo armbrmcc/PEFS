@@ -30,6 +30,10 @@ class MainController extends CI_Controller
 		$this->output('auth/v_user_login');
 	}
 
+	public function login2()
+	{
+		$this->output('auth/v_user_login2');
+	}
 	// public function __construct()
 	// {
 	// 	parent::__construct();
