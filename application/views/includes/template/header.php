@@ -1,88 +1,39 @@
 <!--
 =========================================================
-* Argon Dashboard - v1.2.0
+* Soft UI Dashboard - v1.0.3
 =========================================================
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
 
+* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
 
-* Copyright  Creative Tim (http://www.creative-tim.com)
-* Coded by www.creative-tim.com
-
-
+* Coded by Creative Tim
 
 =========================================================
+
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
-    <title>Temporary Tag Permission System</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <!-- Favicon -->
-    <link rel="icon" href="<?php echo base_url(); ?>argon/assets/img/brand/denso.jpg" type="image/png">
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <!-- Icons -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>argon/assets/vendor/nucleo/css/nucleo.css" type="text/css">
-    <link rel="stylesheet"
-        href="<?php echo base_url(); ?>argon/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
-        type="text/css">
-    <!-- Page plugins -->
-    <!-- Argon CSS -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>argon/assets/css/argon.css?v=1.2.0" type="text/css">
-    <link rel="stylesheet" type="text/css" href="dt/jquery.dataTables.min.css">
-    <script type="text/javascript" language="javascript" src="dt/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript" language="javascript" src="dt/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
-    <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
-    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style type="text/css">
-    #printable {
-        display: block;
-    }
-
-    @media print {
-        #non-printable {
-            display: none;
-        }
-
-        #printable {
-            display: block;
-        }
-
-        #hid {
-            display: none;
-            /* ซ่อน  */
-        }
-
-        body {
-            -webkit-print-color-adjust: exact;
-        }
-
-        /* กำหนดให้สีในหน้าเว็บสามารถพิมพ์ได้อย่างถูกต้อง */
-        .hideWhenPrint {
-            /* // เนื้อหาในคลาส hideWhenPrint จะถูกปิดตาทิ้งไปเมื่อพิมพ์บนกระดาษ */
-            display: none;
-        }
-
-
-
-        @page {
-            margin: 2.5cm;
-            size: A3 landscape;
-        }
-    }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url().'assests\template\soft-ui-dashboard-main'?>/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="<?php echo base_url().'assests\template\soft-ui-dashboard-main'?>/assets/img/favicon.png">
+  <title>
+    Soft UI Dashboard by Creative Tim
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="<?php echo base_url().'assests\template\soft-ui-dashboard-main'?>/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="<?php echo base_url().'assests\template\soft-ui-dashboard-main'?>/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="<?php echo base_url().'assests\template\soft-ui-dashboard-main'?>/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="<?php echo base_url().'assests\template\soft-ui-dashboard-main'?>/assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
 </head>
 
-<body>
+<body class="">
