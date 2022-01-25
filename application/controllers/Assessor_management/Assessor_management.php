@@ -13,7 +13,7 @@ require_once(dirname(__FILE__) . "/../MainController.php");
 
 class Assessor_management extends MainController
 {
-    public function show_v_assessor_management()
+    public function show_assessor_management()
     {
         $this->output('consent/v_assessor_management');
     }

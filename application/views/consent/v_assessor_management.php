@@ -7,11 +7,59 @@
     * Create date 2565-01-25   
     * Update date 
 -->
+
+<!-- CSS -->
 <style>
- .card{
-     
-}
+    .card
+    {
+      background: #CECECE;
+    }
+    table
+    {
+      width: 100%;
+    }
+    #group_assessor_table td,
+    #group_assesso_table th
+    {
+      padding: 8px;
+      text-align: center;
+    }
+
+    #group_assesso_table tr:nth-child(even)
+    {
+      background-color: #F7F7F7;
+    }
+
+    #group_assesso_table tr:hover
+    {
+      background-color: #E6E4E4;
+    }
+
+    #card_radius
+    {
+      margin-left: 14px;
+      margin-right: 15px;
+      border-radius: 20px;
+      width: auto;
+      min-height: 300px;
+    }
+
+    #group_assesso_table
+    {
+      width: 98%;
+      margin-top: 20px;
+      margin-left: 10px;
+    }
+
+    #bt-add
+    {
+      padding-right: 30px;
+    }
 </style>
+<!-- End CSS -->
+
+<!-- JavaScript -->
+<!-- End JavaScript -->
 
 <body class="g-sidenav-show  bg-gray-100">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
@@ -197,209 +245,115 @@
     </div>
   </aside>
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
-    <!-- Navbar -->
-    <!-- <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-      <div class="container-fluid py-1 px-3">
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav> -->
-    <!-- End Navbar -->
     
     <!-- Start conten assessor management -->
     <div class="container-fluid py-2 px-4">
-        <h1 style="color:red">Assessor Management</h1>
+      <!-- Title -->
+      <h1 style="color:red">Assessor Management</h1>
         <div class="card">
-            <div class="card-header">Header</div>
-            <div class="card-body">Content</div>
-            <div class="card-footer">Footer</div>
+          <!-- ช่องดำเนินการค้นหา -->
+          <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+            <!-- Navbar -->
+            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+              <div class="container-fluid py-1 px-3">
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group">
+                      <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                      <input type="text" class="form-control" placeholder="Search here...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            <!-- End Navbar -->
+            <!-- ปุ่มดำเนินการเพิ่ม -->
+            <!-- Navbar -->
+            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+              <div class="container-fluid py-1 px-3">
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group">
+                      <button id="bt-add">Add Assessor</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            <!-- End Navbar -->
+            <!-- table-responsive -->
+            <div class="table-responsive">
+              <table class="table align-items-center" id="group_assesso_table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Group</th>
+                    <th scope="col">Group Name</th>
+                    <th scope="col">Promote</th>
+                    <th scope="col">Type Evaluation</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="list text-center">
+                  <tr>
+                    <td scope="col">1</td>
+                    <td>T2</td>
+                    <td>GM</td>
+                    <td >1.General Manager</td>
+                    <td>Type 2 (2 Round evalution)</td>
+                    <td>
+                      <!-- ปุ่มดำเนินการแก้ไข -->
+                      <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/'; ?>">
+                        <button>Edit</button>
+                      </a>
+                      <!-- ปุ่มดำเนินการลบ -->  
+                        <button>Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td scope="col">2</td>
+                    <td>T3</td>
+                    <td>AGM</td>
+                    <td>1.Assistant General Manager</td>
+                    <td>Type 2 (2 Round evalution)</td>
+                    <td>
+                      <!-- ปุ่มดำเนินการ -->
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>  
+                  </tr>
+                  <tr>
+                    <td scope="col">3</td>
+                    <td>T4</td>
+                    <td>MGR</td>
+                    <td>1.Manager</td>
+                    <td>Type 1 (1 Round evalution)</td>
+                    <td>
+                      <!-- ปุ่มดำเนินการ -->
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>  
+                  </tr>
+                  <tr>
+                    <td scope="col">4</td>
+                    <td>T5</td>
+                    <td>AM</td>
+                    <td>1.Assistant  Manager</td>
+                    <td>Type 1 (1 Round evalution)</td>
+                    <td>
+                      <!-- ปุ่มดำเนินการ -->
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>  
+                  </tr>
+              </tbody>
+              <!-- End tbody -->
+          </table>
+          <!-- End table -->
         </div>
+        <!-- End div table-responsive -->
+      </div>
+      <!-- End card -->
     </div>
-     <!-- End conten assessor management -->
-  </div>
-  
-  <script>
-    var ctx = document.getElementById("chart-bars").getContext("2d");
-
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Sales",
-          tension: 0.4,
-          borderWidth: 0,
-          borderRadius: 4,
-          borderSkipped: false,
-          backgroundColor: "#fff",
-          data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
-          maxBarThickness: 6
-        }, ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-            },
-            ticks: {
-              suggestedMin: 0,
-              suggestedMax: 500,
-              beginAtZero: true,
-              padding: 15,
-              font: {
-                size: 14,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
-              },
-              color: "#fff"
-            },
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false
-            },
-            ticks: {
-              display: false
-            },
-          },
-        },
-      },
-    });
-
-
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-    var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
-    gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-    gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
-
-    var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
-    gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-    gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
-
-    new Chart(ctx2, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-            label: "Mobile apps",
-            tension: 0.4,
-            borderWidth: 0,
-            pointRadius: 0,
-            borderColor: "#cb0c9f",
-            borderWidth: 3,
-            backgroundColor: gradientStroke1,
-            fill: true,
-            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-            maxBarThickness: 6
-
-          },
-          {
-            label: "Websites",
-            tension: 0.4,
-            borderWidth: 0,
-            pointRadius: 0,
-            borderColor: "#3A416F",
-            borderWidth: 3,
-            backgroundColor: gradientStroke2,
-            fill: true,
-            data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-            maxBarThickness: 6
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              padding: 10,
-              color: '#b2b9bf',
-              font: {
-                size: 11,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              color: '#b2b9bf',
-              padding: 20,
-              font: {
-                size: 11,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
-  </script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
+    <!-- End div container-fluid -->
+    <!-- End conten assessor management -->
