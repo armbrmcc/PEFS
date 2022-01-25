@@ -12,35 +12,40 @@
 <!-- CSS -->
 <style>
 #list_table td,
-#list_table th {
-    padding: 8px;
+#list_table th 
+{
+    padding: 10px;
     text-align: center;
 }
 
-#list_table tr:nth-child(even) {
+#list_table tr:nth-child(even) 
+{
     background-color: #e9ecef;
 }
 
-#list_table tr:hover {
+#list_table tr:hover 
+{
     background-color: #adb5bd;
 }
 
-#card_radius {
+#card_radius 
+{
     border-radius: 20px;
     width: auto;
     min-height: 300px;
 }
 
-#list_table {
+#list_table 
+{
     width: 98%;
     margin-top: 20px;
     margin-left: 10px;
 }
 
-.button_size{
+.button_size 
+{
     /* width: 5px; */
     height: 40px;
-    font-size: 12px;
     text-align: center;
 }
 </style>
@@ -57,15 +62,16 @@
     </div>
     <!-- End cara header-->
         <div class="card-body">
+            <h3>Promote to T6</h3>
             <!-- Start Table Evaluation List -->
             <div class="table-responsive">
                 <table class="table align-items-center" id="list_table">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Group</th>
-                            <th>Group Name</th>
-                            <th>Date</th>
+                            <th>No.</th>
+                            <th>Employee ID</th>
+                            <th style="text-align: left;">List of Nominee</th>
+                            <th>Promote To</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -75,18 +81,18 @@
                                 1  
                             </td>
                             <td>
-                                T6    
+                                00010    
+                            </td>
+                            <td style="text-align: left;">
+                                Milin Dokthian
                             </td>
                             <td>
-                                Lyra
-                            </td>
-                            <td>
-                                Round 1 : 16/08/2021
+                                Supervisor
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
+                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #8392ab;">
+                                        <i class="far fa-file-alt text-white"></i>
                                     </button>
                                 </a>
                             </td>
@@ -96,19 +102,18 @@
                                 2  
                             </td>
                             <td>
-                                T2    
+                                00011    
+                            </td>
+                            <td style="text-align: left;">
+                                Punsikorn Tiyakorn
                             </td>
                             <td>
-                                SoftEn
-                            </td>
-                            <td>
-                                Round 1 : 25/01/2022<br>
-                                Round 1 : 16/02/2022
+                                Supervisor
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
+                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #8392ab;">
+                                        <i class="far fa-file-alt text-white"></i>
                                     </button>
                                 </a>
                             </td>
@@ -118,19 +123,18 @@
                                 3  
                             </td>
                             <td>
-                                T4    
+                                00012    
+                            </td>
+                            <td style="text-align: left;">
+                                Natticha Chantaravareelrkha
                             </td>
                             <td>
-                                Avander
-                            </td>
-                            <td>
-                                Round 1 : 25/01/2022<br>
-                                Round 1 : 16/02/2022
+                                Senior Staff
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
+                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #8392ab;">
+                                        <i class="far fa-file-alt text-white"></i>
                                     </button>
                                 </a>
                             </td>
@@ -140,18 +144,18 @@
                                 4  
                             </td>
                             <td>
-                                T5    
+                                00013    
+                            </td>
+                            <td style="text-align: left;">
+                                Nunthapak Kittirattanaviwat
                             </td>
                             <td>
-                                Homeschool
-                            </td>
-                            <td>
-                                Round 1 : 25/01/2022
+                                Senior Staff
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
+                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #8392ab;">
+                                        <i class="far fa-file-alt text-white"></i>
                                     </button>
                                 </a>
                             </td>
