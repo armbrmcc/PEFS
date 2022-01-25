@@ -20,7 +20,7 @@
     <style>
     #list_table td,
     #list_table th {
-        padding: 8px;
+        padding: 12px;
         text-align: center;
     }
 
@@ -54,6 +54,38 @@
     <!-- End CSS -->
 
     <!-- JavaScript -->
+    <script>
+    // $(document).ready(function() {
+    //     $("#btn_success").click(function() {
+    //         // $("#ModalConfirmAssessor").hide();
+    //         $("#ModalConfirmAssessor").hide();
+    //     });
+
+    // });
+
+    // $(document).ready(function() {
+    //     $("#btn_success").click(function() {
+    //         $('#ModalConfirmAssessor').modal('hide');
+    //         // $("#ModalConfirmAssessor").hide();
+    //         $('#ModalConfirmAssessor').on('hide.bs.modal', function(e) {
+    //             e.stopPropagation();
+    //         })
+
+    //     });
+    // });
+
+
+    // $('#btn_success').on("click", function (e) {
+    //     $('#ModalConfirmAssessorSuccess').modal('show');
+    // });
+
+    
+        // $('#btn_success').click(function() {
+        //     $('#ModalConfirmAssessorSuccess').modal('show');
+        // });
+    
+
+    </script>
 
     <!-- End JavaScript -->
 
@@ -194,7 +226,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ModalAddAssessorLabel">Add Assessor</h5>
+                <h5 class="modal-title" id="ModalAddAssessorLabel">Add Assessor</h5>&nbsp;
+                <i class="fas fa-user-plus fa-1x"></i>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -235,7 +268,7 @@
             <div class="modal-body">
                 <div class="py-3 text-center">
                     <div>
-                    <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
+                        <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
                     </div>
                     <h4 class="text-gradient text-danger mt-4">Confirm Delete Assessor?</h4>
                     <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
@@ -263,16 +296,50 @@
             <div class="modal-body">
                 <div class="py-3 text-center">
                     <div>
-                    <i class="fas fa-users fa-8x" style="color:#2AA6F4"></i>
+                        <i class="fas fa-users fa-8x" style="color:#2AA6F4"></i>
                     </div>
                     <br>
-                    <h4 >Confirm Create Group Assessor</h4>
+                    <h4>Confirm Create Group Assessor</h4>
                     <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn bg-gradient-success">Confirm</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal"
+                    data-bs-target="#ModalConfirmAssessorSuccess" id="btn_success">Confirm
+                </button>
+
+                <!-- <button type="button" class="btn bg-gradient-success" data-bs-dismiss="modal" id="btn_success">Confirm
+                </button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Confirm Create Group Assessor Success-->
+<div class="modal fade" id="ModalConfirmAssessorSuccess" tabindex="-1" role="dialog"
+    aria-labelledby="ModalConfirmAssessorSuccessTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="col-12 text-end">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <div>
+                        <i class="fas fa-check-circle fa-8x" style="color:#80F04F"></i>
+                    </div>
+                    <br>
+                    <h4>Success</h4>
+                    <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-success" data-bs-dismiss="modal">OK</button>
             </div>
         </div>
     </div>
