@@ -73,8 +73,8 @@
                             </div>
                             <div class="col-6 text-end">
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn bg-gradient-info btn-block mb-3"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                                <button type="button" class="btn bg-gradient-info btn-block mb-3" data-bs-toggle="modal"
+                                    data-bs-target="#ModalAddAssessor">
                                     <i class="fas fa-plus"></i>&nbsp;&nbsp;Add Assessor
                                 </button>
                             </div>
@@ -123,8 +123,10 @@
                                         </div>
                                     </td>
                                     <td class="align-middle">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                            data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
+                                            <i class="far fa-trash-alt me-2"></i>Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -154,8 +156,10 @@
                                         </div>
                                     </td>
                                     <td class="align-middle">
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                            data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
+                                            <i class="far fa-trash-alt me-2"></i>Delete</button>
                                     </td>
                                 </tr>
 
@@ -166,7 +170,10 @@
                     </div>
                 </div>
                 <div class="col-12 text-end">
-                    <a class="btn bg-gradient-success mb-0" href="javascript:;">Confirm</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
+                        data-bs-target="#ModalConfirmAssessor">Confirm
+                    </button>
                 </div>
             </div>
         </div>
@@ -181,13 +188,13 @@
 </html>
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle"
+<!-- Modal Add Assessor-->
+<div class="modal fade" id="ModalAddAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalAddAssessorTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Assessor</h5>
+                <h5 class="modal-title" id="ModalAddAssessorLabel">Add Assessor</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -207,6 +214,65 @@
             <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn bg-gradient-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Delete Assessor-->
+<div class="modal fade" id="ModalDeleteAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteAssessorTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="col-12 text-end">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <div>
+                    <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
+                    </div>
+                    <h4 class="text-gradient text-danger mt-4">Confirm Delete Assessor?</h4>
+                    <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn bg-gradient-success">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Confirm Create Group Assessor -->
+<div class="modal fade" id="ModalConfirmAssessor" tabindex="-1" role="dialog"
+    aria-labelledby="ModalConfirmAssessorTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="col-12 text-end">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <div>
+                    <i class="fas fa-users fa-8x" style="color:#2AA6F4"></i>
+                    </div>
+                    <br>
+                    <h4 >Confirm Create Group Assessor</h4>
+                    <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn bg-gradient-success">Confirm</button>
             </div>
         </div>
     </div>
