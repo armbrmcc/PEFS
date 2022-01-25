@@ -58,9 +58,6 @@
     <!-- End JavaScript -->
 
 
-
-
-
     <div class="container-fluid py-4">
         <div class="card-header">
             <h2>Assessor Management (จัดการกรรมการ)</h2>
@@ -75,8 +72,11 @@
                                 <h4>Promote to T2 : General Manager</h4>
                             </div>
                             <div class="col-6 text-end">
-                                <a class="btn bg-gradient-info mb-0" href="javascript:;"><i
-                                        class="fas fa-plus"></i>&nbsp;&nbsp;Add Assessor</a>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn bg-gradient-info btn-block mb-3"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                                    <i class="fas fa-plus"></i>&nbsp;&nbsp;Add Assessor
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -158,20 +158,56 @@
                                             href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
                                     </td>
                                 </tr>
+
                             </tbody>
                         </table>
-                        <!-- </div> -->    
+
+                        <!-- </div> -->
                     </div>
                 </div>
-
                 <div class="col-12 text-end">
                     <a class="btn bg-gradient-success mb-0" href="javascript:;">Confirm</a>
                 </div>
             </div>
         </div>
-    
     </div>
-    </main>
+
+
+
+
+
 </body>
 
 </html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Assessor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Enter ID Assessor</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Name</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn bg-gradient-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

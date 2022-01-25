@@ -18,7 +18,7 @@ class Assessor_management extends MainController
         $this->output('consent/v_assessor_management');
     }
 
-    public function show_v_assessor_management_detail()
+    public function show_assessor_management_detail()
     {
         $this->output('consent/v_assessor_management_detail');
     }
