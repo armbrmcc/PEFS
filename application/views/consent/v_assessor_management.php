@@ -53,7 +53,11 @@
 
     #bt-add
     {
-      padding-right: 30px;
+      width: 200px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+
     }
 </style>
 <!-- End CSS -->
@@ -251,9 +255,25 @@
       <!-- Title -->
       <h1 style="color:red">Assessor Management</h1>
         <div class="card">
-          <!-- ช่องดำเนินการค้นหา -->
+          <!-- ปุ่มดำเนินการเพิ่ม -->
           <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
             <!-- Navbar -->
+            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+              <div class="container-fluid py-1 px-3">
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group">
+                      <button type="button" class="btn btn-info" id="bt-add"><i class="fa fa-plus" aria-hidden="true"> Add Assessor</i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            <!-- End Navbar -->
+
+          <!-- ช่องดำเนินการค้นหา -->
+          <!-- Navbar -->
+          <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">  
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
               <div class="container-fluid py-1 px-3">
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -266,21 +286,8 @@
                 </div>
               </div>
             </nav>
-            <!-- End Navbar -->
-            <!-- ปุ่มดำเนินการเพิ่ม -->
-            <!-- Navbar -->
-            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-              <div class="container-fluid py-1 px-3">
-                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <div class="input-group">
-                      <button id="bt-add">Add Assessor</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </nav>
-            <!-- End Navbar -->
+          <!-- End Navbar -->
+    
             <!-- table-responsive -->
             <div class="table-responsive">
               <table class="table align-items-center" id="group_assesso_table">
