@@ -1,15 +1,14 @@
-this is from manage
 <!--
     /*
-    * v_add_file_present
-    * display Management file present of Nominee list
-    * @author Jaraspon and Natthanit
-    * input Array of nominee group (emp_nominee)
-    * output Input file of present to nominee
-    * @Create date : 2564-08-13
-    * @Update date : 2564-08-15
+    * v_form_management
+    * display Management form
+    * @author Natthanit
+    * input
+    * output
+    * @Create date : 2565-01-25
+
     */
-<!-- CSS -->
+-->
 <style>
 #Nominee_file_table td,
 #Nominee_file_table th {
@@ -49,51 +48,135 @@ div.a {
 
 }
 </style>
-<h3>Add File Nominee (เพิ่มไฟล์นำเสนอผลงาน)</h3>
-<!-- Table group Nominee list -->
-<div class="card-header" id="card_radius">
-    <div class="table-responsive">
-        <table class="table align-items-center" id="Nominee_file_table">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ID Employee</th>
-                    <th scope="col">Nominee Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Department</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody class="list">
-               
-                <tr>
-                    <td class="text-center">
-                      
-                    </td>
-                    <td>
-                      
 
-                    </td>
-                    <td>
-                        
+<body class="g-sidenav-show  bg-gray-100">
 
-                    </td>
-                    <td>
-                    
+  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
 
-                    </td>
-                    <td>
-                       
-                    </td>
-                    <!-- column ดำเนินการ -->
-                    <td style='text-align: center;'>
+    <!-- Start conten assessor management -->
+    <div class="container-fluid py-2 px-4">
+      <!-- Title -->
+      <h1 style="color:red">Form Management</h1>
+        <div class="card">
+            <!-- Navbar -->
+            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+              <div class="container-fluid py-1 px-3">
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                  </div>
+                </div>
+              </div>
+            </nav>
+            <!-- End Navbar -->
 
-                        <!-- ปุ่มดำเนินการ -->
-                       
-                </tr>
-               
+
+        <!-- Select Year -->
+        <div>
+            <label for="year" style="position: absolute; right: 0;">Select Year:
+                <select id="year" name="year" >
+                    <option >2021</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                </select>
+            </label>
+        </div>
+
+          <!-- ช่องดำเนินการค้นหา -->
+          <!-- Navbar -->
+          <br>
+          <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+              <div class="container-fluid py-1 px-3">
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group">
+                      <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                      <input type="text" class="form-control" placeholder="Search here...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          <!-- End Navbar -->
+
+            <!-- table-responsive -->
+            <div class="table-responsive">
+              <table class="table align-items-center" id="group_assesso_table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Lavel</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>T2</td>
+                        <td>
+                            <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
+                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>T3</td>
+                        <td>
+                            <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
+                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
+                                </button>
+                            </a>
+                        </td>
+                        </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>T4</td>
+                        <td>
+                            <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
+                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>T5</td>
+                        <td>
+                            <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
+                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>T6</td>
+                        <td>
+                            <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
+                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
             </tbody>
+            <!-- End tbody -->
         </table>
+        <!-- End table -->
+        </div>
+        <!-- End div table-responsive -->
     </div>
-</div>
-<script>
+    <!-- End card -->
+    </div>
+    <!-- End div container-fluid -->
+    <!-- End conten form management -->
