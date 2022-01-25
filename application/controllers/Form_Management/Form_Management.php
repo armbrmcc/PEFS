@@ -3,7 +3,7 @@
 * MainCcontroller
 * @input  -
 * @output -
-* @author Pontakon Natthanit
+* @author Pontakon & Natthanit
 * @Update Date 2565-01-25
 */
 
