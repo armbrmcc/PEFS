@@ -9,9 +9,12 @@
 ?>
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-require_once(dirname(__FILE__) . "/MainController.php");
+require_once(dirname(__FILE__) . "/../MainController.php");
 
 class Assessor_management extends MainController
 {
-
+    public function show_v_assessor_management()
+    {
+        $this->output('consent/v_assessor_management');
+    }
 }
