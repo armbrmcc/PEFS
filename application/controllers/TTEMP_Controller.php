@@ -1,6 +1,6 @@
 <?php
 /*
-* TTEMP_Controller
+* PEFS_Controller
 * @input  -   
 * @output -
 * @author Team 6
@@ -11,7 +11,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/MainController.php");
 
-class TTEMP_Controller extends MainController
+class PEFS_Controller extends MainController
 {
 
 	// /*
