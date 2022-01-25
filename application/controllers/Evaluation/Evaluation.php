@@ -1,11 +1,12 @@
-<!--
+<?php
     /*
     * Evaluation
     * Controller for Evaluation module
-    * @author Phatchara Khongthandee and Pontakon Mujit 
-    * @Create Date 2564-08-14
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * @Create Date 2565-01-25
     */
--->
+?>
+
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
@@ -21,11 +22,11 @@ class Evaluation extends MainController
 
     /*
 	* show_evaluation_list
-	* แสดงหน้าจอ v_evaluation_list
+	* display view evaluation list
 	* @input  -
 	* @output  Evaluation list
-	* @author  Phatchara Khongthandee and Pontakon Mujit
-	* @Create  Date 2564-08-14
+	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create  Date 2565-01-25
     */
     public function show_evaluation_list()
     {
@@ -34,11 +35,11 @@ class Evaluation extends MainController
 
     /*
 	* show_evaluation_detail
-	* แสดงหน้าจอ v_evaluation_list
+	* display view evaluation detail
 	* @input  -
 	* @output  Evaluation detail
-	* @author  Phatchara Khongthandee and Pontakon Mujit
-	* @Create  Date 2564-08-14
+	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create  Date 2565-01-25
     */
     public function show_evaluation_detail()
     {

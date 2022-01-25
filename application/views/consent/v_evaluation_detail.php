@@ -1,11 +1,11 @@
 <!--
     /*
-    * v_evaluation
-    * display Evaluation list
-    * @input id, emp_id, position
+    * v_evaluation_detail
+    * display Evaluation detail
+    * @input -
     * @output -
-    * @author Phatchara Khongthandee and Pontakon Mujit 
-    * @Create date : 2564-08-15
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * @Create date : 2565-01-25
     */
 -->
 
@@ -91,7 +91,7 @@
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #8392ab;">
+                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #6c757d;">
                                         <i class="far fa-file-alt text-white"></i>
                                     </button>
                                 </a>
@@ -112,7 +112,7 @@
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #8392ab;">
+                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #6c757d;">
                                         <i class="far fa-file-alt text-white"></i>
                                     </button>
                                 </a>
@@ -133,7 +133,7 @@
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #8392ab;">
+                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #6c757d;">
                                         <i class="far fa-file-alt text-white"></i>
                                     </button>
                                 </a>
@@ -154,7 +154,7 @@
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #8392ab;">
+                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #6c757d;">
                                         <i class="far fa-file-alt text-white"></i>
                                     </button>
                                 </a>

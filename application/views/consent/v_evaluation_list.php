@@ -1,11 +1,11 @@
 <!--
     /*
-    * v_evaluation
+    * v_evaluation_list
     * display Evaluation list
-    * @input id, emp_id, position
+    * @input -
     * @output -
-    * @author Phatchara Khongthandee and Pontakon Mujit 
-    * @Create date : 2564-08-15
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
+    * @Create date : 2565-01-25
     */
 -->
 
@@ -81,7 +81,7 @@
                                 Lyra
                             </td>
                             <td>
-                                Round 1 : 16/08/2021
+                                Round 1 : 16/01/2022
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
@@ -103,7 +103,7 @@
                             </td>
                             <td>
                                 Round 1 : 25/01/2022<br>
-                                Round 1 : 16/02/2022
+                                Round 2 : 16/02/2022
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
@@ -125,7 +125,7 @@
                             </td>
                             <td>
                                 Round 1 : 25/01/2022<br>
-                                Round 1 : 16/02/2022
+                                Round 2 : 16/02/2022
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
