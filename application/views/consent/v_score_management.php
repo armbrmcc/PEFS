@@ -257,8 +257,7 @@
       <h1 style="color:red">Score Management</h1>
       
         <div class="card">
-          <!-- ปุ่มดำเนินการเพิ่ม -->
-          <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+          
             <!-- Navbar -->
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
               <div class="container-fluid py-1 px-3">
@@ -273,7 +272,7 @@
 
           <!-- ช่องดำเนินการค้นหา -->
           <!-- Navbar -->
-          <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">  
+          <!-- <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">  
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
               <div class="container-fluid py-1 px-3">
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -285,7 +284,7 @@
                   </div>
                 </div>
               </div>
-            </nav>
+            </nav> -->
           <!-- End Navbar -->
 
 <!-- table-responsive -->
@@ -297,7 +296,7 @@
                     <th scope="col">Group</th>
                     <th scope="col">Group Name</th>
                     <th scope="col">Promote</th>
-                    <th scope="col">Type Evaluation</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -375,3 +374,20 @@
     </div>
     <!-- End div container-fluid -->
     <!-- End conten assessor management -->
+
+
+    <script>
+$(document).ready(function() {
+    $('#group_assesso_table').DataTable();
+    console.log(999);
+});
+</script>
+</script>
+<script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Argon JS -->
+<script src="../../assets/js/argon.js?v=1.2.0"></script>
+<script type="text/javascript">
