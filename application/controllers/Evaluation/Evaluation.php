@@ -46,4 +46,30 @@ class Evaluation extends MainController
         $this->output('consent/v_evaluation_detail');
     } //show_evaluation_detail
 
+    /*
+	* show_evaluation_form_round_1
+	* display view evaluation form
+	* @input  -
+	* @output  Evaluation form
+	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create  Date 2565-01-26
+    */
+    public function show_evaluation_form_round_1()
+    {
+        $this->output('consent/v_evaluation_form_round_1');
+    } //show_evaluation_detail
+
+    /*
+	* show_evaluation_form_round_2
+	* display view evaluation form 
+	* @input  -
+	* @output  Evaluation form
+	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create  Date 2565-01-26
+    */
+    public function show_evaluation_form_round_2()
+    {
+        $this->output('consent/v_evaluation_form_round_2');
+    } //show_evaluation_detail
+
 }//End class Evaluation
