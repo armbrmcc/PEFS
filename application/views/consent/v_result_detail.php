@@ -57,7 +57,7 @@
     <!-- End cara header-->
     <div class="card-body">
         <h3>Promote to T2</h3>
-        <!-- Start Table Evaluation List -->
+        <!-- Start Table Result List -->
         <div class="table-responsive">
             <table class="table align-items-center" id="list_table">
                 <thead>
@@ -154,7 +154,7 @@
                 </tbody>
             </table>
         </div>
-        <!-- End Table Evaluation List-->
+        <!-- End Table Result List-->
     </div>
     <!-- End card body-->
 </div>
