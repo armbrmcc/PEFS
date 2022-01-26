@@ -11,7 +11,7 @@
 <style>
 #list_table td,
 #list_table th {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
 }
 
@@ -38,6 +38,7 @@
 .button_size {
     /* width: 5px; */
     height: 40px;
+    font-size: 12px;
     text-align: center;
 }
 </style>
@@ -50,23 +51,19 @@
 
 <div class="card" id="card_radius">
     <div class="card-header">
-        <h1>
-            Result management (การจัดการผลคะแนน)
-        </h1>
+        <h1>Result management (การจัดการผลคะแนน)</h1>
     </div>
     <!-- End cara header-->
     <div class="card-body">
-        <h3>Promote to T2</h3>
         <!-- Start Table Evaluation List -->
         <div class="table-responsive">
             <table class="table align-items-center" id="list_table">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Employee ID</th>
-                        <th style="text-align: left;">List of Nominee</th>
-                        <th>Score Round 1</th>
-                        <th>Score Round 2</th>
+                        <th>#</th>
+                        <th>Group</th>
+                        <th>Group Name</th>
+                        <th>Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -76,20 +73,16 @@
                             1
                         </td>
                         <td>
-                            00011
-                        </td>
-                        <td style="text-align: left;">
-                            Lyra
+                            T6
                         </td>
                         <td>
-                            Totally score: 70 points<br>
-                            Get score: 56 points
+                            SoftEn
                         </td>
                         <td>
-                            -
+                            Round 1 : 25/01/2022
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_Result_detail'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_Result_list'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>
@@ -102,48 +95,16 @@
                             2
                         </td>
                         <td>
-                            00012
-                        </td>
-                        <td style="text-align: left;">
-                            Nena
+                            T2
                         </td>
                         <td>
-                            Totally score: 70 points<br>
-                            Get score: 60 points
+                            Burapha
                         </td>
                         <td>
-                            Totally score: 70 points<br>
-                            Get score: 56 points
+                            Round 2 : 16/01/2022
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_Result_detail'; ?>">
-                                <button type="button" class="btn btn-primary btn-sm button_size"
-                                    style="background-color: #596CFF;">
-                                    <i class="fas fa-search text-white"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3
-                        </td>
-                        <td>
-                            00013
-                        </td>
-                        <td style="text-align: left;">
-                            Avander
-                        </td>
-                        <td>
-                            Totally score: 80 points<br>
-                            Get score: 65 points
-                        </td>
-                        <td>
-                            Totally score: 70 points<br>
-                            Get score: 57 points
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_Result_detail'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_Result_list'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>

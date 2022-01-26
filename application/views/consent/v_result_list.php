@@ -60,10 +60,10 @@
             <table class="table align-items-center" id="list_table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Group</th>
-                        <th>Group Name</th>
-                        <th>Date</th>
+                        <th>No.</th>
+                        <th>Employee ID</th>
+                        <th>List of Nominee</th>
+                        <th>Score Round 1</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -73,16 +73,17 @@
                             1
                         </td>
                         <td>
-                            T6
+                            00011
                         </td>
                         <td>
                             Lyra
                         </td>
                         <td>
-                            Round 1 : 16/01/2022
+                            Totally score: 70 points<br>
+                            Get score: 56 points
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_Result_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>
@@ -95,17 +96,17 @@
                             2
                         </td>
                         <td>
-                            T2
+                            00012
                         </td>
                         <td>
-                            SoftEn
+                            Nena
                         </td>
                         <td>
-                            Round 1 : 25/01/2022<br>
-                            Round 2 : 16/02/2022
+                            Totally score: 70 points<br>
+                            Get score: 50 points
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_Result_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>
@@ -118,39 +119,17 @@
                             3
                         </td>
                         <td>
-                            T4
+                            00013
                         </td>
                         <td>
                             Avander
                         </td>
                         <td>
-                            Round 1 : 25/01/2022<br>
-                            Round 2 : 16/02/2022
+                            Totally score: 80 points<br>
+                            Get score: 65 points
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                <button type="button" class="btn btn-primary btn-sm button_size"
-                                    style="background-color: #596CFF;">
-                                    <i class="fas fa-search text-white"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            T5
-                        </td>
-                        <td>
-                            Homeschool
-                        </td>
-                        <td>
-                            Round 1 : 25/01/2022
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_Result_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>
