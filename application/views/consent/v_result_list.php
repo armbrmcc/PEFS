@@ -11,7 +11,7 @@
 <style>
 #list_table td,
 #list_table th {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
 }
 
@@ -38,6 +38,7 @@
 .button_size {
     /* width: 5px; */
     height: 40px;
+    font-size: 12px;
     text-align: center;
 }
 </style>
@@ -50,22 +51,19 @@
 
 <div class="card" id="card_radius">
     <div class="card-header">
-        <h1>
-            Result management (การจัดการผลคะแนน)
-        </h1>
+        <h1>Result management (การจัดการผลคะแนน)</h1>
     </div>
     <!-- End cara header-->
     <div class="card-body">
-        <h3>Promote to T6</h3>
         <!-- Start Table Evaluation List -->
         <div class="table-responsive">
             <table class="table align-items-center" id="list_table">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Employee ID</th>
-                        <th style="text-align: left;">List of Nominee</th>
-                        <th>Promote To</th>
+                        <th>#</th>
+                        <th>Group</th>
+                        <th>Group Name</th>
+                        <th>Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -75,19 +73,19 @@
                             1
                         </td>
                         <td>
-                            00010
-                        </td>
-                        <td style="text-align: left;">
-                            Milin Dokthian
+                            T6
                         </td>
                         <td>
-                            Supervisor
+                            Lyra
+                        </td>
+                        <td>
+                            Round 1 : 16/01/2022
                         </td>
                         <td>
                             <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
-                                    style="background-color: #6c757d;">
-                                    <i class="far fa-file-alt text-white"></i>
+                                    style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
                                 </button>
                             </a>
                         </td>
@@ -97,19 +95,20 @@
                             2
                         </td>
                         <td>
-                            00011
-                        </td>
-                        <td style="text-align: left;">
-                            Punsikorn Tiyakorn
+                            T2
                         </td>
                         <td>
-                            Supervisor
+                            SoftEn
+                        </td>
+                        <td>
+                            Round 1 : 25/01/2022<br>
+                            Round 2 : 16/02/2022
                         </td>
                         <td>
                             <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
-                                    style="background-color: #6c757d;">
-                                    <i class="far fa-file-alt text-white"></i>
+                                    style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
                                 </button>
                             </a>
                         </td>
@@ -119,19 +118,20 @@
                             3
                         </td>
                         <td>
-                            00012
-                        </td>
-                        <td style="text-align: left;">
-                            Natticha Chantaravareelrkha
+                            T4
                         </td>
                         <td>
-                            Senior Staff
+                            Avander
+                        </td>
+                        <td>
+                            Round 1 : 25/01/2022<br>
+                            Round 2 : 16/02/2022
                         </td>
                         <td>
                             <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
-                                    style="background-color: #6c757d;">
-                                    <i class="far fa-file-alt text-white"></i>
+                                    style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
                                 </button>
                             </a>
                         </td>
@@ -141,19 +141,19 @@
                             4
                         </td>
                         <td>
-                            00013
-                        </td>
-                        <td style="text-align: left;">
-                            Nunthapak Kittirattanaviwat
+                            T5
                         </td>
                         <td>
-                            Senior Staff
+                            Homeschool
+                        </td>
+                        <td>
+                            Round 1 : 25/01/2022
                         </td>
                         <td>
                             <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
-                                    style="background-color: #6c757d;">
-                                    <i class="far fa-file-alt text-white"></i>
+                                    style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
                                 </button>
                             </a>
                         </td>
