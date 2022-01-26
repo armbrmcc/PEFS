@@ -1,5 +1,5 @@
 <body class="g-sidenav-show  bg-gray-100">
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-0 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header align-items-center">
       <a class="navbar-brand" href="javascript:void(0)">
         <div align="center">
@@ -174,11 +174,11 @@
       </div>
     </div>
   </aside>
-  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <main class="main-content position-relative max-height-vh-100 h-100">
     <!-- Navbar -->
       <!-- <nav class="navbar navbar-top navbar-expand navbar-dark bg-danger border-bottom"> -->
     
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none bg-danger border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <nav class="navbar navbar-top navbar-expand bg-danger border-bottom" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
