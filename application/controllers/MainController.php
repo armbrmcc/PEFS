@@ -20,8 +20,10 @@ class MainController extends CI_Controller
 	public function output($view, $data=null)
 	{
 		$this->load->view('includes/template/header');
-		$this->load->view('includes/template/javascript');
+		$this->load->view('includes/template/sidebar');
+		$this->load->view('includes/template/topbar');
 		$this->load->view($view, $data);
+		$this->load->view('includes/template/javascript');
 		$this->load->view('includes/template/footer');
 	}
 
