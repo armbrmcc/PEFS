@@ -9,12 +9,14 @@
       </a>
     </div>
     <hr class="horizontal dark mt-0">
-    <div class="navbar-inner">
-      <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
-        
+    <div id="myDIV">
+
+      <div class="navbar-inner">
+        <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link  active" href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>">
+              <a class="nav-link active" href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                   <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -33,7 +35,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  " href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>">
+              <a class="nav-link" href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                   <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -54,7 +56,7 @@
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link  active" href="../pages/dashboard.html">
+              <a class="nav-link" href="../pages/dashboard.html">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                   <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -73,7 +75,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  " href="../pages/tables.html">
+              <a class="nav-link" href="../pages/tables.html">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                   <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -92,7 +94,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  active" href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
+              <a class="nav-link" href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                   <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -111,7 +113,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  " href="../pages/virtual-reality.html">
+              <a class="nav-link" href="../pages/virtual-reality.html">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                   <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -131,7 +133,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  " href="../pages/rtl.html">
+              <a class="nav-link" href="../pages/rtl.html">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                   <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -151,7 +153,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  " href="../pages/rtl.html">
+              <a class="nav-link" href="../pages/rtl.html">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                   <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -171,37 +173,7 @@
               </a>
             </li>
           </ul>
+        </div>
       </div>
     </div>
   </aside>
-  <main class="main-content position-relative max-height-vh-100 h-100">
-    <!-- Navbar -->
-      <!-- <nav class="navbar navbar-top navbar-expand navbar-dark bg-danger border-bottom"> -->
-    
-    <nav class="navbar navbar-top navbar-expand bg-danger border-bottom" id="navbarBlur" navbar-scroll="true">
-      <div class="container-fluid py-1 px-3">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Evaluation</li>
-          </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Evaluation</h6>
-        </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            
-          </div>
-          <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                <i class="fas fa-sign-out-alt me-sm-1" style="color:white"></i>
-                <span class="d-sm-inline d-none text-white">Logout</span>
-              </a>
-            </li>
-           
-            
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- End Navbar -->
