@@ -50,19 +50,18 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">The number of people all that must assess</h5>
-                                <span class="h2 font-weight-bold mb-0" id="total_nominee">
-
-                                </span>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">The number of people all that must assess</p>
+                                <h5 class="font-weight-bolder mb-0" id="total_nominee">
+                                    10
+                                </h5>
                             </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
-                                    <i class="ni ni-single-copy-04"></i>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-single-copy-04" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
                         <p class="mt-3 mb-0 text-sm">
-                            <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
                             <span class="text-nowrap">People</span>
                         </p>
                     </div>
@@ -76,13 +75,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">The Number of people who have been assessed</h5>
-                                <span class="h2 font-weight-bold mb-0" id="total_have">
-
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">The Number of people who have been assessed</p>
+                                <span class="font-weight-bolder mb-0" id="total_have">
+                                    10
                                 </span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                                     <i class="fas fa-user-alt"></i>
                                 </div>
                             </div>
@@ -102,13 +101,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">The number of people who have not been assessed</h5>
-                                <span class="h2 font-weight-bold mb-0" id="total_have_not">
-
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">The number of people who have not been assessed</p>
+                                <span class="font-weight-bolder mb-0" id="total_have_not">
+                                    10
                                 </span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                                     <i class="fas fa-user-alt-slash"></i>
                                 </div>
                             </div>
@@ -128,13 +127,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Number of people who passed the assessment</h5>
-                                <span class="h2 font-weight-bold mb-0" id="total_pass">
-
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of people who passed the assessment</p>
+                                <span class="font-weight-bolder mb-0" id="total_pass">
+                                    10
                                 </span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                                     <i class="ni ni-check-bold"></i>
                                 </div>
                             </div>
@@ -154,13 +153,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Number of people who fail in the assessment</h5>
-                                <span class="h2 font-weight-bold mb-0" id="total_fail">
-
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of people who fail in the assessment</p>
+                                <span class="font-weight-bolder mb-0" id="total_fail">
+                                    10
                                 </span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                                     <i class="fas fa-times"></i>
                                 </div>
                             </div>
@@ -180,13 +179,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <h5 class="card-title text-uppercase text-muted mb-0">Number of people (assessed / yearly)</h5>
-                                <span class="h2 font-weight-bold mb-0" id="total_yearly">
-
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of people (assessed / yearly)</p>
+                                <span class="font-weight-bolder mb-0" id="total_yearly">
+                                    10
                                 </span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-yellow text-white rounded-circle shadow">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                                     <i class="fas fa-users"></i>
                                 </div>
                             </div>
@@ -207,9 +206,9 @@
                 <div class="card">
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
-                            <div class="col-lg-6">
+                            <!-- <div class="col-lg-6"> -->
                                 <h4 class="text-black mb-0">The graph shows the results of the assessment of each position</h4>
-                            </div>
+                            <!-- </div> -->
 
                         </div>
                     </div>
@@ -226,9 +225,9 @@
                 <div class="card">
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
-                            <div class="col-lg-6">
+                            <!-- <div class="col-lg-6"> -->
                                 <h4 class="text-black mb-0">The table shows the reports of each position</h4>
-                            </div>
+                            <!-- </div> -->
 
                         </div>
                     </div>
