@@ -48,9 +48,9 @@ class Evaluation extends MainController
 
     /*
 	* show_evaluation_form_round_1
-	* display view evaluation form
+	* display view evaluation form 1 round
 	* @input  -
-	* @output  Evaluation form
+	* @output  Evaluation form 1 round
 	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create  Date 2565-01-26
     */
@@ -61,9 +61,9 @@ class Evaluation extends MainController
 
     /*
 	* show_evaluation_form_round_2
-	* display view evaluation form 
+	* display view evaluation form 2 round
 	* @input  -
-	* @output  Evaluation form
+	* @output  Evaluation form 2 round
 	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create  Date 2565-01-26
     */

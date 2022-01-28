@@ -64,7 +64,7 @@ width: 100%;
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
         <div class="card-header">
-            <h1 style="color:red">Evaluation (การประเมิน)</h1>
+            <h1>Evaluation (การประเมิน)</h1>
         </div>
         <!-- End cara header-->
         <div class="card-body">

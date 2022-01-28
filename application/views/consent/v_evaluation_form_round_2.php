@@ -1,11 +1,12 @@
 <!--
     /*
     * v_evaluation_form_round_2
-    * display for Evaluation Form 
+    * display for Evaluation Form 2 Round (แบบฟอร์มการประเมิน 2 รอบ)
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @input -
     * @output -
     * @Create date : 2565-01-26   
+    * @Update date : 2564-08-27
     */
 -->
 
@@ -21,6 +22,18 @@ table {
     border-radius: 20px;
     min-height: 300px;
     width: auto;
+}
+
+/* กำหนดเส้นตารางแบบฟอร์ม */
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1px;
 }
 
 #center_th td {
@@ -55,13 +68,14 @@ table {
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h1 style="color:red">Evaluation (แบบฟอร์มการประเมิน)</h1>
+            <h1>Evaluation (แบบฟอร์มการประเมิน)</h1>
         </div>
         <div class="card-body">
             <!-- Logo บริษัท -->
             <div class="row">
                 <div class="col-sm-4">
-                    <img src="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main/assets/img/denso_1.png' ?>" width="150" height="150">
+                    <img src="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main/assets/img/denso_1.png' ?>"
+                        width="150" height="150">
                 </div>
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
@@ -72,7 +86,7 @@ table {
             <div class="row">
                 <div class="col-sm-12">
                     <!-- <a href="" target="_blank"> -->
-                    <button type="button" class="btn btn-primary" style="background-color: info; float: right"
+                    <button type="button" class="btn btn-primary" style="background-color: indigo; float: right"
                         id="set_button">
                         <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
                     </button>
@@ -147,6 +161,16 @@ table {
                                             and skills of the business in their area of <br>
                                             responsibility to their more colleagues and enhance <br>
                                             the total power of the Organization.
+                                        </td>
+                                        <td colspan="2" style="vertical-align:middle;text-align: center;">
+                                            <select class="form-control" name="form[]" id="form" required>
+                                                <option value="0">please selected</option>
+                                                <option value=1>1</option>
+                                                <option value=2>2</option>
+                                                <option value=3>3</option>
+                                                <option value=4>4</option>
+                                                <option value=5>5</option>
+                                            </select>
                                         </td>
                                     </tr>
                                     <td rowspan="2">

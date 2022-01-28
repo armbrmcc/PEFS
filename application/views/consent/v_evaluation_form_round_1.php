@@ -1,11 +1,12 @@
 <!--
     /*
     * v_evaluation_form_round_1
-    * display for Evaluation Form 
+    * display for Evaluation Form 1 Round (แบบฟอร์มการประเมิน 1 รอบ)
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @input -
     * @output -
-    * @Create date : 2565-01-26   
+    * @Create date : 2565-01-26 
+    * @Update date : 2564-08-27
     */
 -->
 
@@ -21,6 +22,21 @@ table {
     border-radius: 20px;
     min-height: 300px;
     width: auto;
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.table tbody tr:last-child td{
+    border-width: 1px;
 }
 
 #center_th td {
@@ -50,18 +66,66 @@ table {
     font-size: 16px;
 }
 </style>
+<!-- End CSS -->
 
+<!-- Javascript -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<script src="sweetalert2.all.min.js"></script>
+<script>
+    function alert() {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Evaluation Confirm?',
+            // text: "คุณต้องการยืนยันการลงคะแนนการประเมินหรือไม่",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Success'
+                )
+
+
+                window.location.href = "show_evaluation_detail";
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancel'
+                )
+            }
+        })
+    }
+</script>
+<!-- End Javascript -->
+
+<!-- html -->
 <!-- Evaluation form -->
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h1 style="color:red">Evaluation (แบบฟอร์มการประเมิน)</h1>
+            <h1>Evaluation (แบบฟอร์มการประเมิน)</h1>
         </div>
         <div class="card-body">
             <!-- Logo บริษัท -->
             <div class="row">
                 <div class="col-sm-4">
-                    <img src="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main/assets/img/denso_1.png' ?>" width="150" height="150">
+                    <img src="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main/assets/img/denso_1.png' ?>"
+                        width="150" height="150">
                 </div>
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
@@ -72,9 +136,9 @@ table {
             <div class="row">
                 <div class="col-sm-12">
                     <!-- <a href="" target="_blank"> -->
-                    <button type="button" class="btn btn-primary" style="background-color: info; float: right"
+                    <button type="button" class="btn bg-gradient md-0" style="background-color: #596CFF; float: right"
                         id="set_button">
-                        <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
+                        <i class="far fa-file-pdf text-white"></i> &nbsp; <h7 class="text-white">Present Nominee</h7>
                     </button>
                     </a>
                 </div>
@@ -82,12 +146,14 @@ table {
             <!-- ชื่อกรรมการ และวันประเมิน -->
             <div class="row">
                 <div class="col-sm-6">
-                    <h5>Assessor Name :&nbsp; Cherprang Areekul</h5>
+                    <h6>Assessor Name :&nbsp; Cherprang Areekul</h6>
                 </div>
                 <div class="col-sm-6">
-                    <h5>Date : 16/01/2022</h5>
+                    <h6>Date : 16/01/2022</h6>
                 </div>
             </div>
+
+            <!-- Start table data form evaluation -->
             <div class="table-responsive">
                 <form action="" method="post" enctype="multipart/form-data" name="evaluation">
                     <table class="table table-bordered table-sm">
@@ -121,99 +187,184 @@ table {
                             </tr>
                         </tbody>
                     </table>
+                    <!-- End table data form evaluation -->
                     <br>
 
-
+                    <!-- Start table evaluation form -->
                     <div class="table-responsive">
                         <form action="" method="post" enctype="multipart/form-data" name="evaluation">
                             <table class="table table-bordered table-sm">
                                 <tbody>
                                     <tr id="center_th">
-                                        <td rowspan="2" colspan="1">ITems</td>
-                                        <td rowspan="2" colspan="2">Points for observation</td>
-                                        <td colspan="4">Rating [Fill score 1-5]</td>
+                                        <td rowspan="2">ITems</td>
+                                        <td rowspan="2">Points for observation</td>
+                                        <td>% weight</td>
+                                        <td>Rating(B)</td>
+                                        <td>Score</td>
+                                    </tr>
+                                    <tr id="center_th">
+                                        <td>(A)</td>
+                                        <td>[Fill score 1-5]</td>
+                                        <td>(AxB)</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" align='center'>1st round</td>
-                                        <td colspan="2" align='center'>Final round</td>
-                                    </tr>
-                                    <tr>
+                                        <!--แสดง Item -->
                                         <td style="text-align: center; width: 50px;">
-                                            Business I<br>
-                                            ビジネスⅠ
+                                            Awareness of the issue<br>
+                                            ตระหนักในปัญหา
                                         </td>
-                                        <td colspan="2">
-                                            Has the ability to explain and impart knowledge <br>
-                                            and skills of the business in their area of <br>
-                                            responsibility to their more colleagues and enhance <br>
-                                            the total power of the Organization.
+                                        <!-- แสดง Disription    -->
+                                        <td>
+                                            Is aware of the issues of the business <br>
+                                            in their area of responsibility; understands <br>
+                                            ตระหนักในปัญหาของงานที่รับผิดชอบ เข้าใจสิ่งแวดล้อม <br>
+                                            หรือสภาพปัญหาของแผนกตนเอง
                                         </td>
-                                    </tr>
-                                    <td rowspan="2">
-                                        5 ： Exceed expected level for Manager level
-                                        <br>4 ： Absolutely satisfies expected level for Manager level
-                                        <br> 3 ： Meet expected level for Manager level
-                                        <br>2 ： Partially lower that expected level for Manager level
-                                        <br>1 ： Do Not satisfy expected level for Manager level
-                                    </td>
-                                    <td>Total</td>
+                                        <!-- แสดง % Weight -->
+                                        <td style="vertical-align:middle;text-align: center;">
+                                            15
+                                        </td>
+                                        <!-- แสดง point -->
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="sel"></label>
+                                                <select class="form-control" name="form[]"
+                                                    id="form" style="text-align: center;width:150;" required>
+                                                    <option value="0">selected</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <!-- แสดง Score -->
+                                        <td style="vertical-align:middle;text-align: center;">
+                                            0
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Judgement</td>
-                                        <td colspan="4"></td>
-
+                                        <!--แสดง Item -->
+                                        <td style="text-align: center; width: 50px;">
+                                            Analytical ability<br>
+                                            ความสามารถเชิงวิเคราะห์
+                                        </td>
+                                        <!-- แสดง Disription    -->
+                                        <td>
+                                            Can logically analyze issues in order to solve them and extract <br>
+                                            the problems appropriately based on the analysis. <br>
+                                            สามารถวิเคราะห์ปัญหาได้อย่างมีเหตุผลเพื่อแก้ไขและขจัดปัญหาออกไป <br>
+                                            ได้อย่างเหมาะสมโดยใช้หลักการวิเคราะห์
+                                        </td>
+                                        <!-- แสดง % Weight -->
+                                        <td style="vertical-align:middle;text-align: center;">
+                                            15
+                                        </td>
+                                        <!-- แสดง point -->
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="sel"></label>
+                                                <select class="form-control" name="form[]"
+                                                    id="form" style="text-align: center;width:150;" required>
+                                                    <option value="0">selected</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <!-- แสดง Score -->
+                                        <td style="vertical-align:middle;text-align: center;">
+                                            0
+                                        </td>
                                     </tr>
-
-                                    <!-- -->
+                                    <tr>
+                                        <!--แสดง Item -->
+                                        <td style="text-align: center; width: 50px;">
+                                            Problem solving ability<br>
+                                            ความสามารถในการแก้ปัญหา
+                                        </td>
+                                        <!-- แสดง Disription    -->
+                                        <td>
+                                            Figures out new solutions or mechanisms for solving <br>
+                                            the issues by combining existing facts with information. <br>
+                                            หาหนทางใหม่ๆ หรือกลวิธีในการแก้ไขปัญหา โดยการรวบรวมข้อเท็จจริง <br>
+                                            และข้อมูล
+                                        </td>
+                                        <!-- แสดง % Weight -->
+                                        <td style="vertical-align:middle;text-align: center;">
+                                            15
+                                        </td>
+                                        <!-- แสดง point -->
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="sel"></label>
+                                                <select class="form-control" name="form[]"
+                                                    id="form" style="text-align: center;width:150;" required>
+                                                    <option value="0">selected</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <!-- แสดง Score -->
+                                        <td style="vertical-align:middle;text-align: center;">
+                                            0
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <!-- แสดง total -->
+                                        <td colspan="2" align='right'><b>Total</b></td>
+                                        <td align='center'>100</td>
+                                        <!-- แสดง point รวม -->
+                                        <td align='center'>
+                                            0
+                                        </td align='center'>
+                                        <!-- แสดงเปอร์เซ็นคะแนน -->
+                                        <td align='center'>
+                                            0.00%
+                                        </td>
+                                    </tr>
                             </table>
+                            <!-- End table evaluation form -->
                             <br>
-                            <!-- comment -->
+
+                            <!-- Comment -->
                             <div class="form-group">
                                 <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
                                 <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
-                                    required></textarea>
+                                    style="width: 550px;" required></textarea>
                             </div>
                             <br>
                             <!-- Q/A -->
                             <div class="form-group">
                                 <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
                                 <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
-                                    required></textarea>
+                                    style="width: 550px;" required></textarea>
                             </div>
+                            <br>
+
                             <!-- Confirm -->
-                            <button type="button" class="btn btn-success float-right" data-toggle="modal"
-                                data-target="#Modal_confirm">Confirm</button>
+                            <div class="col-6 text-end">
+                                <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
+                                    data-bs-target="#Modal_confirm" onclick="alert()">Confirm
+                                </button>
+                            </div>
                     </div>
+                </form>
+                <!-- End form evaluation -->
             </div>
         </div>
+        <!-- End class card-body -->
     </div>
+    <!-- End class card -->
+</div>
+<!-- End class container -->
+<!-- End html -->
 
-    <!-- Modal ยืนยันการประเมิน -->
-    <!-- <div class="modal fade" data-backdrop="static" id="Modal_confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header" id="img">
-                    <!-- icon -->
-    <!-- <img src=<?php echo base_url() . "argon/assets/img/brand/danger.png" ?> width="150" height="150">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" align="center">
-                    <div class="modal-title" id="ModalLabel">
-                        <h1><b>Evaluation Confirm</b></h1>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-lg float-right" data-dismiss="modal">Cancel</button>
-
-                    <!-- Modal Confirm Evaluation -->
-    <!-- <button type="button" class="btn btn-success btn-lg float-right" id="btn_success" data-toggle="modal" data-target="#successModal">
-                        Confirm
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </div> -->
-    <!-- End Modal Confirm Evaluation -->
