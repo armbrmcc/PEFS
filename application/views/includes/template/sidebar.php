@@ -74,7 +74,8 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/dashboard.html">
+                            <a class="nav-link"
+                                href="<?php echo site_url() . 'Group_management/Group_management/show_group_management'; ?>">
                                 <div
                                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"

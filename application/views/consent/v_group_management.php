@@ -79,7 +79,7 @@ div.tr {
                 <!-- Select Year -->
                 <div>
                     <div>
-                        <label for="year" style="position: absolute; right: 0;">Select Year:
+                        <label for="year" style="position: absolute; right: 0;font-size:20px;">Select Year:
                             <select id="year" name="year">
                                 <option>2021</option>
                                 <option value="2017">2017</option>
@@ -89,7 +89,7 @@ div.tr {
                                 <option value="2021">2021</option>
                                 <option value="2022">2022</option>
                             </select>
-                        </label><br>
+                        </label><br><br>
                     </div>
                     <div>
                         <a href="<?php echo site_url() . 'Group_management/Group_management/add_group' ?>">
