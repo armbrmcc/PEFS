@@ -12,7 +12,7 @@ require_once(dirname(__FILE__) . "/../MainController.php");
 class Form_Management extends MainController
 {
 
-    function index()
+    function show_form_management()
     {
         $this->output('consent/v_form_management');
     }
@@ -24,7 +24,7 @@ class Form_Management extends MainController
     }
 
 
-     function form_management_detail()
+    function form_management_detail()
     {
         $this->output('consent/v_form_management_detail');
     }
