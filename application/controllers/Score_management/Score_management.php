@@ -33,4 +33,8 @@ class Score_management extends MainController
         $this->output('consent/v_score_management');
     } //show_score_management_list
 
+    public function show_score_management_detail()
+    {
+        $this->output('consent/v_score_management_detail');
+    } //show_score_management_list
 }//End class Score_management

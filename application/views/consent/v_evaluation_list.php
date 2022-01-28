@@ -11,6 +11,13 @@
 
 <!-- CSS -->
 <style>
+/*.card{
+        background: #CECECE;
+}
+table
+{
+width: 100%;
+} */
 #list_table td,
 #list_table th {
     padding: 8px;
@@ -26,9 +33,13 @@
 }
 
 #card_radius {
+    margin-top: 15px;
+    margin-left: 14px;
+    margin-right: 15px;
+    margin-bottom: 15px;
     border-radius: 20px;
-    width: auto;
     min-height: 300px;
+    width: auto;
 }
 
 #list_table {
@@ -37,7 +48,7 @@
     margin-left: 10px;
 }
 
-.button_size{
+.button_size {
     /* width: 5px; */
     height: 40px;
     font-size: 12px;
@@ -50,12 +61,12 @@
 
 <!-- End JavaScript -->
 
-
-<div class="card" id="card_radius">
-    <div class="card-header">
-        <h1>Evaluation (การประเมิน)</h1>
-    </div>
-    <!-- End cara header-->
+<div class="container-fluid py-4">
+    <div class="card" id="card_radius">
+        <div class="card-header">
+            <h1 style="color:red">Evaluation (การประเมิน)</h1>
+        </div>
+        <!-- End cara header-->
         <div class="card-body">
             <!-- Start Table Evaluation List -->
             <div class="table-responsive">
@@ -72,10 +83,10 @@
                     <tbody>
                         <tr>
                             <td>
-                                1  
+                                1
                             </td>
                             <td>
-                                T6    
+                                T6
                             </td>
                             <td>
                                 Lyra
@@ -85,7 +96,8 @@
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                    <button type="button" class="btn btn-primary btn-sm button_size"
+                                        style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
                                     </button>
                                 </a>
@@ -93,10 +105,10 @@
                         </tr>
                         <tr>
                             <td>
-                                2  
+                                2
                             </td>
                             <td>
-                                T2    
+                                T2
                             </td>
                             <td>
                                 SoftEn
@@ -107,7 +119,8 @@
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                    <button type="button" class="btn btn-primary btn-sm button_size"
+                                        style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
                                     </button>
                                 </a>
@@ -115,10 +128,10 @@
                         </tr>
                         <tr>
                             <td>
-                                3  
+                                3
                             </td>
                             <td>
-                                T4    
+                                T4
                             </td>
                             <td>
                                 Avander
@@ -129,7 +142,8 @@
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                    <button type="button" class="btn btn-primary btn-sm button_size"
+                                        style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
                                     </button>
                                 </a>
@@ -137,10 +151,10 @@
                         </tr>
                         <tr>
                             <td>
-                                4  
+                                4
                             </td>
                             <td>
-                                T5    
+                                T5
                             </td>
                             <td>
                                 Homeschool
@@ -150,7 +164,8 @@
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                    <button type="button" class="btn btn-primary btn-sm button_size"
+                                        style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
                                     </button>
                                 </a>
@@ -162,10 +177,7 @@
             <!-- End Table Evaluation List-->
         </div>
         <!-- End card body-->
+    </div>
+    <!-- End card-->
 </div>
-<!-- End card-->
-
-
-
-
-
+<!-- End class container -->
