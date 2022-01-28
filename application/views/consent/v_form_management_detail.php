@@ -50,7 +50,7 @@ div.a {
 }
 </style>
 
-<!-- Table group Nominee list --><div class="container-fluid py-4"> <div class="card" id="card_radius">
+<!-- Table group Nominee list --><div class="container-fluid py-4"> <h1 style="color:red">Form Management</h1><div class="card" id="card_radius">
 <div class="card-header" id="card_radius">
 
 <div class="card-body">
@@ -110,7 +110,7 @@ div.a {
             </tbody>
         </table>
         <!-- Confirm --><div class="col-12 text-end" >
-        <a href="http://localhost/PEFS/Form_Management/Form_Management">
+        <a href="http://localhost/PEFS/Form_Management/Form_Management/form_management_detailsuscess">
         <button type="button" class="btn btn-success float-right" data-toggle="modal"
                                 data-target="#Modal_confirm">Submit</button>          
                                 </a>

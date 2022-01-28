@@ -28,5 +28,8 @@ class Form_Management extends MainController
     {
         $this->output('consent/v_form_management_detail');
     }
-
+    function form_management_detailsuscess()
+    {
+        $this->output('consent/v_ form_management_detailsuscess');
+    }
 }
