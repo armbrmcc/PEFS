@@ -7,6 +7,8 @@
     * Create date 2565-01-27   
     * Update date 
 -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.css" />
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.4/datatables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -18,7 +20,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.min.js"></script>
 <link rel="stylesheet" href="sweetalert2.min.css">
@@ -30,7 +31,9 @@ document.getElementById("date").innerHTML = Date();
 date_default_timezone_set("Asia/Bangkok");
 ?>
 <div class="container-fluid py-4">
-    <h1 style="color:red">Group Management</h1>
+    <div class="card-header">
+        <h2>Group Management (การเพิ่มการกลุ่มประเมิน)</h2>
+    </div>
     <div class="col-12">
         <div class="card mb-4">
             <div class="row">
@@ -101,7 +104,7 @@ date_default_timezone_set("Asia/Bangkok");
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table class="table align-items-center justify-content-center mb-0" id="assessor_table">
+                            <table id="assessor_table" class="table align-items-center justify-content-center mb-0">
                                 <thead class="thead-light">
                                     <tr>
                                         <th style="text-align:center">#</th>
@@ -188,7 +191,7 @@ date_default_timezone_set("Asia/Bangkok");
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table class="table align-items-center justify-content-center mb-0" id="nominee_table">
+                            <table id="nominee_table" class="table align-items-center justify-content-center mb-0">
                                 <thead class="thead-light">
                                     <tr>
                                         <th style="text-align:center">#</th>
@@ -234,7 +237,12 @@ date_default_timezone_set("Asia/Bangkok");
 
 
 
-
+    <script>
+    $(document).ready(function() {
+        $("#nominee_table").DataTable();
+        $("#assessor_table").DataTable();
+    });
+    </script>
     <script>
     $('#myModal').on('shown.bs.modal', function() {
         $('#myInput').trigger('focus')
@@ -248,10 +256,6 @@ date_default_timezone_set("Asia/Bangkok");
             }
         }
     }
-    $(document).ready(function() {
-        $("#nominee_table").DataTable();
-        $("#assessor_table").DataTable();
-    });
     </script>
     <script>
     function alert() {
