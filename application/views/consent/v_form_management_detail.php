@@ -1,14 +1,10 @@
- 
-<!--
-    /*
-    * v_add_file_present
-    * display Management file present of Nominee list
-    * @author Jaraspon and Natthanit
-    * input Array of nominee group (emp_nominee)
-    * output Input file of present to nominee
-    * @Create date : 2564-08-13
-    * @Update date : 2564-08-15
-    */
+<!-- /*
+    * v_form_management_detail
+    * @input  -
+    * @output -
+    * @author Pontakon & Natthanit
+    * @Update Date 2565-01-25
+*/ -->
 <!-- CSS -->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 #Nominee_file_table td,
@@ -58,7 +54,7 @@ p,select,input {
 <div class="container-fluid py-4"> <div class="card-header"  ><h2 >Form Management (จัดการแบบฟอร์ม)</h2></div>
 <div class="card"  >
 <div class="card-body">
-    <div class="col-12 text-end" ><button class="btn btn-md btn-primary" 
+    <div class="col-12 text-end" ><button class="btn btn-md btn-primary"
           id="addBtn" type="button" style="background-color: #596CFF;">
           Add Item
         </button></div>
@@ -75,12 +71,12 @@ p,select,input {
                 </tr>
             </thead>
             <tbody id="tbody">
-               
+
             <td >
         <p>1</p>
         </td>
-             
-                     
+
+
                     <td class="text-center">
                     <select name="select_item0" id="select_item0" onchange="baba(this)" >
                     <option  value="0">please selected</option>
@@ -92,16 +88,16 @@ p,select,input {
 </select>
                     </td>
                     <td style='text-align: left;'>
-                        
+
                     <div  id="p0">
                     <p>Is aware of the issues of the business in their area of responsibility; <br>understands the environment or issues of their department.<br>
 ตระหนักในปัญหาของงานที่รับผิดชอบ <br>เข้าใจสิ่งแวดล้อมหรือสภาพปัญหาของแผนกตนเอง</p> </div >
-                                                            
 
-                    </td>  
+
+                    </td>
                     <td>
                     <input type="text" name="weight0" id="weight0" value=1 size='1'>
-                    </td>  
+                    </td>
                     <!-- column ดำเนินการ -->
                     <td style='text-align: center;'>
                     <button class="btn btn-danger remove"
@@ -110,19 +106,19 @@ p,select,input {
                         <!-- ปุ่มดำเนินการ -->
                         </td>
                 </tr>
-               
+
             </tbody>
         </table>
         <!-- Confirm --><div class="col-12 text-end" >
         <a href="http://localhost/PEFS/Form_Management/Form_Management/form_management_detailsuscess">
         <button type="button" class="btn btn-success float-right" data-toggle="modal"
-                                data-target="#Modal_confirm">Submit</button>          
+                                data-target="#Modal_confirm">Submit</button>
                                 </a>
-        
+
     </div></div>
 </div>
 <script>
-  
+
      $(document).ready(function(){
         $("#p"+0+"").hide();
         $("input[id='weight"+0+"']").hide();
@@ -130,7 +126,7 @@ p,select,input {
         $("#p").hide();
         $("input[name='weight[]']").hide();
 
-      
+
   //====================
   var rowIdx = 1;
   var i=1;
@@ -146,12 +142,12 @@ p,select,input {
                 </tr>
             </thead>
             <tbody id="tbody">
-               
+
             <td >
         <p>${rowIdx}</p>
         </td>
-             
-                     
+
+
                     <td class="text-center">
                     <select name="select_item${i}" id="select_item${i}" onchange="baba(this)">
                     <option >please selected</option>
@@ -167,10 +163,10 @@ p,select,input {
                     <p>Is aware of the issues of the business in their area of responsibility; <br>understands the environment or issues of their department.<br>
 ตระหนักในปัญหาของงานที่รับผิดชอบ <br>เข้าใจสิ่งแวดล้อมหรือสภาพปัญหาของแผนกตนเอง</p> </div >
 
-                    </td>  
+                    </td>
                     <td>
                     <input type="text" name="weight${i}" id="weight${i}"  value=1 size='1'>
-                    </td>  
+                    </td>
                     <!-- column ดำเนินการ -->
                     <td style='text-align: center;'>
                     <button class="btn btn-danger remove"
@@ -179,11 +175,11 @@ p,select,input {
                         <!-- ปุ่มดำเนินการ -->
                         </td>
                 </tr>`);
-                
+
                 $("#p"+i+"").hide();
                  $("input[id='weight"+i+"']").hide();
                  i++;
-               
+
     });
 
         // jQuery button click event to remove a row.
@@ -191,7 +187,7 @@ p,select,input {
         // Getting all the rows next to the row
         // containing the clicked button
         var child = $(this).closest('tr').nextAll();
-        // Iterating across all the rows 
+        // Iterating across all the rows
         // obtained to change the index
         child.each(function () {
             // Getting <tr> id.
@@ -215,9 +211,9 @@ function baba (select){
     var id=select.id;
     console.log(id);
     $("select[id="+id+"]").each(function() {
-         
-        
-var num = id.substr(11); 
+
+
+var num = id.substr(11);
 console.log(num);
                     if($(this).val() == "1"){
                         $("#p"+num+"").show();
@@ -236,13 +232,13 @@ console.log(num);
                     $("input[id='weight"+num+"']").hide();
                 }
 
-                })  
+                })
 }
 
 
 // $('select').on('change', function() {
 //                 var id=$(this).attr('id');
 //                 console.log('haha');
-//                 
+//
 //             });
     </script>

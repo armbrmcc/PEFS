@@ -9,6 +9,11 @@
 
     */
 -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+
 <style>
 #list_table td,
 #list_table th {
@@ -88,7 +93,7 @@
 
           <!-- ช่องดำเนินการค้นหา -->
           <!-- Navbar -->
-          <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+          <!-- <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
               <div class="container-fluid py-1 px-3">
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -100,7 +105,7 @@
                   </div>
                 </div>
               </div>
-            </nav>
+            </nav> -->
           <!-- End Navbar -->
 
             <div class="card-body px-0 pt-0 pb-2">
@@ -143,7 +148,7 @@
                         <td class="align-middle text-center">
                             <div class="d-flex flex-column justify-content-center">
                                 <h6 class="text-xs text-secondary mb-0">Assistant General Manager</h6>
-                        </div>
+                            </div>
                         </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_detail'; ?>">
@@ -180,7 +185,7 @@
                         </td>
                         <td class="align-middle text-center">
                             <div class="d-flex flex-column justify-content-center">
-                                <h6 class="text-xs text-secondary mb-0">Assistant  Manager</h6>
+                                <h6 class="text-xs text-secondary mb-0">Assistant Manager</h6>
                             </div>
                         </td>
                         <td>
@@ -204,3 +209,8 @@
     </div>
     <!-- End div container-fluid -->
     <!-- End conten form management -->
+    <script>
+        $(document).ready(function() {
+            $("#list_table").DataTable();
+        });
+    </script>
