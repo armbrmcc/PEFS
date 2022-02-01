@@ -10,42 +10,41 @@
     */
 -->
 <style>
-#Nominee_file_table td,
-#Nominee_file_table th {
+#list_table td,
+#list_table th {
     padding: 8px;
     text-align: center;
 }
 
-#Nominee_file_table tr:nth-child(even) {
+#list_table tr:nth-child(even) {
     background-color: #e9ecef;
 }
 
-#Nominee_file_table tr:hover {
+#list_table tr:hover {
     background-color: #adb5bd;
 }
 
 #card_radius {
+    margin-top: 15px;
     margin-left: 14px;
     margin-right: 15px;
+    margin-bottom: 15px;
     border-radius: 20px;
-    width: auto;
     min-height: 300px;
+    width: auto;
 }
 
-#Nominee_file_table {
+#list_table {
     width: 98%;
     margin-top: 20px;
     margin-left: 10px;
 }
 
-div.b {
-    text-align: left;
-
-}
-
-div.a {
-    text-align: center !important;
-
+.button_size {
+    /* width: 5px; */
+    height: 40px;
+    font-size: 12px;
+    text-align: center;
 }
 </style>
 
@@ -104,7 +103,7 @@ div.a {
 
             <!-- table-responsive -->
             <div class="table-responsive">
-              <table class="table align-items-center" id="group_assesso_table">
+                <table class="table align-items-center" id="list_table">
                 <thead>
                     <tr>
                         <th>#</th>

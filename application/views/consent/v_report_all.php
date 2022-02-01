@@ -207,7 +207,7 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <!-- <div class="col-lg-6"> -->
-                                <h4 class="text-black mb-0">The graph shows the results of the assessment of each position</h4>
+                            <h4 class="text-black mb-0">The graph shows the results of the assessment of each position</h4>
                             <!-- </div> -->
 
                         </div>
@@ -226,36 +226,57 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <!-- <div class="col-lg-6"> -->
-                                <h4 class="text-black mb-0">The table shows the reports of each position</h4>
+                            <h4 class="text-black mb-0">The table shows the reports of each position</h4>
                             <!-- </div> -->
 
                         </div>
                     </div>
                     <div class="table-responsive" table id='myTable'>
                         <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
+                        <table class="table align-items-center table-flush" style="text-align: center;">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Position</th>
                                     <th scope="col">Number</th>
-                                    <th scope="col">Assess</th>
-                                    <th scope="col">Not Assess</th>
                                     <th scope="col">Pass</th>
                                     <th scope="col">Fail</th>
                                     <th scope="col">Details</th>
                                 </tr>
                             </thead>
                             <tbody id="data_table">
-
+                                <tr>
+                                    <td>1</td>
+                                    <td>Promote to T6</td>
+                                    <td>3</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                    <td> <?php { ?>
+                                            <a href='<?php echo site_url() . 'Report/Report/show_detail_report/' ?>'>
+                                                <i class="fa fa-search"></i>
+                                            </a><?php } ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Promote to T1</td>
+                                    <td>4</td>
+                                    <td>1
+                                    </td>
+                                    <td>10
+                                    </td>
+                                    <td> <?php { ?>
+                                            <a href='<?php echo site_url() . 'Report/Report/show_detail/'?>'>
+                                                <i class="fa fa-search"></i>
+                                            </a><?php } ?>
+                                    </td>
+                                </tr>
                             </tbody>
                             <tfoot>
                                 <td colspan="2" align="right">Total :</td>
-                                <td id='sum_total'></td>
-                                <td id='assess_total'></td>
-                                <td id='not_assess_total'></td>
-                                <td id='pass_total'></td>
-                                <td id='fail_total'></td>
+                                <td id='sum_total'>7</td>
+                                <td id='pass_total'>4</td>
+                                <td id='fail_total'>3</td>
                                 <td></td>
 
                             </tfoot>

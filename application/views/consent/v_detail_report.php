@@ -60,7 +60,7 @@ table {
                                 </td>
 
                                 <td> <?php { ?>
-                                    <a href='<?php echo site_url() . 'Report/show_report_asse_detail/'
+                                    <a href='<?php echo site_url() . 'Report/Report/show_report_asse_detail/'
                                                             ?>'>
 
                                         <i class="fa fa-search"></i>
@@ -94,7 +94,7 @@ table {
                             </td>
 
                             <td> <?php { ?>
-                                <a href='<?php echo site_url() . 'Report/show_report_asse_detail/'
+                                <a href='<?php echo site_url() . 'Report/Report/show_report_asse_detail/'
                                                         ?>'>
 
                                     <i class="fa fa-search"></i>
@@ -128,7 +128,7 @@ table {
                             </td>
 
                             <td> <?php { ?>
-                                <a href='<?php echo site_url() . 'Report/show_report_asse_detail/'
+                                <a href='<?php echo site_url() . 'Report/Report/show_report_asse_detail/'
                                                             ?>'>
 
                                     <i class="fa fa-search"></i>
@@ -162,7 +162,7 @@ table {
                             </td>
 
                             <td> <?php { ?>
-                                <a href='<?php echo site_url() . 'Report/show_report_asse_detail/'
+                                <a href='<?php echo site_url() . 'Report/Report/show_report_asse_detail/'
                                                                 ?>'>
 
                                     <i class="fa fa-search"></i>
