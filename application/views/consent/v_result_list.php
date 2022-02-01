@@ -48,10 +48,16 @@
 
 <!-- End JavaScript -->
 
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+</head>
 
 <div class="card" id="card_radius">
     <div class="card-header">
-        <h1>Result (ผลคะแนนการประเมิน)</h1>
+        <h2>Result (ผลคะแนนการประเมิน)</h2>
     </div>
     <!-- End cara header-->
     <div class="card-body">
@@ -70,40 +76,17 @@
                 <tbody>
                     <tr>
                         <td>
-                            1
+                            <h6 class="text-xs text-secondary mb-0">1</h6>
                         </td>
                         <td>
-                            00011
+                            <h6 class="text-xs text-secondary mb-0">00011</h6>
                         </td>
                         <td>
-                            Lyra
+                            <h6 class="text-xs text-secondary mb-0"> Lyra </h6>
                         </td>
                         <td>
-                            Totally score: 70 points<br>
-                            Get score: 56 points
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_result_detail'; ?>">
-                                <button type="button" class="btn btn-primary btn-sm button_size"
-                                    style="background-color: #596CFF;">
-                                    <i class="fas fa-search text-white"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            2
-                        </td>
-                        <td>
-                            00012
-                        </td>
-                        <td>
-                            Nena
-                        </td>
-                        <td>
-                            Totally score: 70 points<br>
-                            Get score: 50 points
+                            <h6 class="text-xs text-secondary mb-0">Totally score: 70 points<br>
+                                Get score: 56 points</h6>
                         </td>
                         <td>
                             <a href="<?php echo site_url() . 'Result/Result/show_result_detail'; ?>">
@@ -116,17 +99,40 @@
                     </tr>
                     <tr>
                         <td>
-                            3
+                            <h6 class="text-xs text-secondary mb-0">2</h6>
                         </td>
                         <td>
-                            00013
+                            <h6 class="text-xs text-secondary mb-0"> 00012</h6>
                         </td>
                         <td>
-                            Avander
+                            <h6 class="text-xs text-secondary mb-0"> Nena </h6>
                         </td>
                         <td>
-                            Totally score: 80 points<br>
-                            Get score: 65 points
+                            <h6 class="text-xs text-secondary mb-0"> Totally score: 70 points<br>
+                                Get score: 50 points </h6>
+                        </td>
+                        <td>
+                            <a href="<?php echo site_url() . 'Result/Result/show_result_detail'; ?>">
+                                <button type="button" class="btn btn-primary btn-sm button_size"
+                                    style="background-color: #596CFF;">
+                                    <i class="fas fa-search text-white"></i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h6 class="text-xs text-secondary mb-0"> 3</h6>
+                        </td>
+                        <td>
+                            <h6 class="text-xs text-secondary mb-0">00013</h6>
+                        </td>
+                        <td>
+                            <h6 class="text-xs text-secondary mb-0"> Avander</h6>
+                        </td>
+                        <td>
+                            <h6 class="text-xs text-secondary mb-0"> Totally score: 80 points<br>
+                                Get score: 65 points </h6>
                         </td>
                         <td>
                             <a href="<?php echo site_url() . 'Result/Result/show_result_detail'; ?>">
@@ -145,3 +151,13 @@
     <!-- End card body-->
 </div>
 <!-- End card-->
+
+<!-- JavaScript -->
+<!-- Data Table -->
+<script>
+$(document).ready(function() {
+    $("#list_table").DataTable();
+});
+</script>
+<!-- End Data Table -->
+<!-- End JavaScript -->

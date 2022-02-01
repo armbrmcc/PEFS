@@ -73,7 +73,7 @@ th {
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h1>Result (ผลคะแนนการประเมิน)</h1>
+            <h2>Result (ผลคะแนนการประเมิน)</h2>
         </div>
         <div class="card-body">
             <!-- Logo บริษัท -->
