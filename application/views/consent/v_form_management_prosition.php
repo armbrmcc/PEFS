@@ -54,8 +54,10 @@
 
     <!-- Start conten assessor management -->
     <div class="container-fluid py-2 px-4">
+    <div class="card-header">
       <!-- Title -->
-      <h1 style="color:red">Form Management</h1>
+      <h2>Form Management (จัดการแบบฟอร์ม)</h2>
+      </div>
         <div class="card">
             <!-- Navbar -->
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -101,8 +103,9 @@
             </nav>
           <!-- End Navbar -->
 
+            <div class="card-body px-0 pt-0 pb-2">
             <!-- table-responsive -->
-            <div class="table-responsive">
+            <!-- <div class="table-responsive"> -->
                 <table class="table align-items-center" id="list_table">
                 <thead>
                     <tr>
@@ -113,8 +116,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>General Manager</td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">1</h6>
+                            </div>
+                        </td>
+                        <td class="align-middle text-center">
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">General Manager</h6>
+                            </div>
+                        </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #F6A118;">
@@ -124,8 +135,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>Assistant General Manager</td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">2</h6>
+                            </div>
+                        </td>
+                        <td class="align-middle text-center">
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">Assistant General Manager</h6>
+                        </div>
+                        </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #F6A118;">
@@ -135,8 +154,16 @@
                         </td>
                         </tr>
                     <tr>
-                        <td>3</td>
-                        <td>Manager</td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">3</h6>
+                            </div>
+                        </td>
+                        <td class="align-middle text-center">
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">Manager</h6>
+                            </div>
+                        </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #F6A118;">
@@ -146,8 +173,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td>Assistant  Manager</td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">4</h6>
+                            </div>
+                        </td>
+                        <td class="align-middle text-center">
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">Assistant  Manager</h6>
+                            </div>
+                        </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_detail'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #F6A118;">
@@ -161,8 +196,9 @@
             <!-- End tbody -->
         </table>
         <!-- End table -->
-        </div>
+            </div>
         <!-- End div table-responsive -->
+            </div>
     </div>
     <!-- End card -->
     </div>

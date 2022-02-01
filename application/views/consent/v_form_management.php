@@ -54,8 +54,10 @@
 
     <!-- Start conten assessor management -->
     <div class="container-fluid py-2 px-4">
-      <!-- Title -->
-      <h1 style="color:red">Form Management</h1>
+    <div class="card-header">
+        <!-- Title -->
+        <h2>Form Management (จัดการแบบฟอร์ม)</h2>
+    </div>
         <div class="card">
             <!-- Navbar -->
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -102,8 +104,9 @@
             </nav>
           <!-- End Navbar -->
 
+            <div class="card-body px-0 pt-0 pb-2">
             <!-- table-responsive -->
-            <div class="table-responsive">
+            <!-- <div class="table-responsive"> -->
                 <table class="table align-items-center" id="list_table">
                 <thead>
                     <tr>
@@ -114,8 +117,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>T2</td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">1</h6>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">T2</h6>
+                            </div>
+                        </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
@@ -125,8 +136,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>T3</td>
+                    <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">2</h6>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">T3</h6>
+                            </div>
+                        </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
@@ -136,8 +155,16 @@
                         </td>
                         </tr>
                     <tr>
-                        <td>3</td>
-                        <td>T4</td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">3</h6>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">T4</h6>
+                            </div>
+                        </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
@@ -147,8 +174,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td>T5</td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">4</h6>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">T5</h6>
+                            </div>
+                        </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
@@ -158,8 +193,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>5</td>
-                        <td>T6</td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">5</h6>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="text-xs text-secondary mb-0">T6</h6>
+                            </div>
+                        </td>
                         <td>
                             <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_prosition'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
@@ -172,7 +215,8 @@
             <!-- End tbody -->
         </table>
         <!-- End table -->
-        </div>
+            <!-- </div> -->
+            </div>
         <!-- End div table-responsive -->
     </div>
     <!-- End card -->
