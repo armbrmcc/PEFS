@@ -60,7 +60,7 @@ table {
 
 
                                 <td> <?php { ?>
-                                    <a href='<?php echo site_url() . 'Report/show_detail_report/'
+                                    <a href='<?php echo site_url() . 'Report/Report/show_detail_report/'
                                                             ?>'>
 
                                         <i class="fa fa-search"></i>
@@ -88,7 +88,7 @@ table {
 
                         </td>
                         <td> <?php { ?>
-                            <a href='<?php echo site_url() . 'Report/show_detail/'
+                            <a href='<?php echo site_url() . 'Report/Report/show_detail/'
                                             ?>'>
 
                                 <i class="fa fa-search"></i>
