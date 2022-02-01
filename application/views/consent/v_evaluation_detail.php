@@ -61,7 +61,7 @@
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
         <div class="card-header">
-            <h1>Evaluation (การประเมิน)</h1>
+            <h2>Evaluation (การประเมิน)</h2>
         </div>
         <!-- End cara header-->
             <div class="card-body">
@@ -81,16 +81,16 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    1  
+                                    <h6 class="text-xs text-secondary mb-0">1</h6> 
                                 </td>
                                 <td>
-                                    00010    
+                                    <h6 class="text-xs text-secondary mb-0">00010</h6>
                                 </td>
                                 <td style="text-align: left;">
-                                    Milin Dokthian
+                                    <h6 class="text-xs text-secondary mb-0">Milin Dokthian</h6>
                                 </td>
                                 <td>
-                                    Supervisor
+                                    <h6 class="text-xs text-secondary mb-0">Supervisor</h6>
                                 </td>
                                 <td>
                                     <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
@@ -102,16 +102,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    2  
+                                    <h6 class="text-xs text-secondary mb-0">2</h6>
                                 </td>
                                 <td>
-                                    00011    
+                                    <h6 class="text-xs text-secondary mb-0">00011</h6>    
                                 </td>
                                 <td style="text-align: left;">
-                                    Kanteera Wadcharathadsanakul
+                                    <h6 class="text-xs text-secondary mb-0">Kanteera Wadcharathadsanakul</h6>
                                 </td>
                                 <td>
-                                    Supervisor
+                                    <h6 class="text-xs text-secondary mb-0">Supervisor</h6>
                                 </td>
                                 <td>
                                     <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
@@ -123,16 +123,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    3  
+                                    <h6 class="text-xs text-secondary mb-0">3</h6>
                                 </td>
                                 <td>
-                                    00012    
+                                    <h6 class="text-xs text-secondary mb-0">00012</h6>  
                                 </td>
                                 <td style="text-align: left;">
-                                    Natticha Chantaravareelrkha
+                                    <h6 class="text-xs text-secondary mb-0">Natticha Chantaravareelrkha</h6>
                                 </td>
                                 <td>
-                                    Senior Staff
+                                    <h6 class="text-xs text-secondary mb-0">Senior Staff</h6>
                                 </td>
                                 <td>
                                     <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
@@ -144,16 +144,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    4  
+                                    <h6 class="text-xs text-secondary mb-0">4</h6>
                                 </td>
                                 <td>
-                                    00013    
+                                    <h6 class="text-xs text-secondary mb-0">00013</h6>
                                 </td>
                                 <td style="text-align: left;">
-                                    Nunthapak Kittirattanaviwat
+                                    <h6 class="text-xs text-secondary mb-0">Nunthapak Kittirattanaviwat</h6>
                                 </td>
                                 <td>
-                                    Senior Staff
+                                    <h6 class="text-xs text-secondary mb-0">Senior Staff</h6>
                                 </td>
                                 <td>
                                     <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">

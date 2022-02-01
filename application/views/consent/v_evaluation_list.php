@@ -64,7 +64,7 @@ width: 100%;
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
         <div class="card-header">
-            <h1>Evaluation (การประเมิน)</h1>
+            <h2>Evaluation (การประเมิน)</h2>
         </div>
         <!-- End cara header-->
         <div class="card-body">
@@ -83,39 +83,16 @@ width: 100%;
                     <tbody>
                         <tr>
                             <td>
-                                1
+                                <h6 class="text-xs text-secondary mb-0">1</h6>
                             </td>
                             <td>
-                                T6
+                                <h6 class="text-xs text-secondary mb-0">T6</h6>
                             </td>
                             <td>
-                                Lyra
+                                <h6 class="text-xs text-secondary mb-0">Lyra</h6>
                             </td>
                             <td>
-                                Round 1 : 16/01/2022
-                            </td>
-                            <td>
-                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                2
-                            </td>
-                            <td>
-                                T2
-                            </td>
-                            <td>
-                                SoftEn
-                            </td>
-                            <td>
-                                Round 1 : 25/01/2022<br>
-                                Round 2 : 16/02/2022
+                                <h6 class="text-xs text-secondary mb-0">Round 1 : 16/01/2022</h6>
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
@@ -128,17 +105,17 @@ width: 100%;
                         </tr>
                         <tr>
                             <td>
-                                3
+                                <h6 class="text-xs text-secondary mb-0">2</h6>
                             </td>
                             <td>
-                                T4
+                                <h6 class="text-xs text-secondary mb-0">T2</h6>
                             </td>
                             <td>
-                                Avander
+                                <h6 class="text-xs text-secondary mb-0">SoftEn</h6>
                             </td>
                             <td>
-                                Round 1 : 25/01/2022<br>
-                                Round 2 : 16/02/2022
+                                <h6 class="text-xs text-secondary mb-0">Round 1 : 25/01/2022<br>
+                                Round 2 : 16/02/2022</h6>
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
@@ -151,16 +128,39 @@ width: 100%;
                         </tr>
                         <tr>
                             <td>
-                                4
+                                <h6 class="text-xs text-secondary mb-0">3</h6>
                             </td>
                             <td>
-                                T5
+                                <h6 class="text-xs text-secondary mb-0">T4</h6>
                             </td>
                             <td>
-                                Homeschool
+                                <h6 class="text-xs text-secondary mb-0">Avander</h6>
                             </td>
                             <td>
-                                Round 1 : 25/01/2022
+                                <h6 class="text-xs text-secondary mb-0">Round 1 : 25/01/2022<br>
+                                Round 2 : 16/02/2022</h6>
+                            </td>
+                            <td>
+                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
+                                    <button type="button" class="btn btn-primary btn-sm button_size"
+                                        style="background-color: #596CFF;">
+                                        <i class="fas fa-search text-white"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0">4</h6>
+                            </td>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0">T5</h6>
+                            </td>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0">Homeschool</h6>
+                            </td>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0">Round 1 : 25/01/2022</h6>
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
