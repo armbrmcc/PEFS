@@ -5,7 +5,7 @@
     @output -
     @author Ponprapai Atsawanurak and Phatchara Khongthandee
     Create date 2565-01-25
-    Update date 2565-00-00
+    Update date 2565-01-28
 -->
 <!-- CSS -->
 <style>
@@ -51,7 +51,7 @@
 
 <div class="card" id="card_radius">
     <div class="card-header">
-        <h1>Result management (การจัดการผลคะแนน)</h1>
+        <h1>Result (ผลคะแนนการประเมิน)</h1>
     </div>
     <!-- End cara header-->
     <div class="card-body">
@@ -82,7 +82,7 @@
                             Round 1 : 25/01/2022
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_Result_list'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_result_list'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>
@@ -104,7 +104,7 @@
                             Round 2 : 16/01/2022
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_Result_list'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_result_list'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>
