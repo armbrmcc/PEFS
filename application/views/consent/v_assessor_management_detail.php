@@ -115,7 +115,7 @@
                             <div class="col-6 text-end">
                                 <!-- Select Year -->
                                 <div>
-                                    <label for="year" style="position: absolute; right: 0;font-size:20px;">Select Year:
+                                    <label for="year" style="position: absolute; right: 0;font-size:16px;">Select Year:
                                         <select id="year" name="year">
                                             <option>2021</option>
                                             <option value="2017">2017</option>
