@@ -58,6 +58,13 @@
 
 <!-- End JavaScript -->
 
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+</head>
+
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
         <div class="card-header">
@@ -173,3 +180,14 @@
     <!-- End card-->
 </div>
 <!-- End class container -->
+
+
+<!-- JavaScript -->
+    <!-- Data Table -->
+    <script>
+        $(document).ready(function() {
+            $("#list_table").DataTable();
+        });
+    </script>
+    <!-- End Data Table -->
+<!-- End JavaScript -->
