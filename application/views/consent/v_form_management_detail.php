@@ -48,11 +48,15 @@ div.a {
     text-align: center !important;
 
 }
+p,select,input {
+    font-size: 0.75rem !important;
+}
 </style>
 
-<!-- Table group Nominee list --><div class="container-fluid py-4"> <h1 style="color:red">Form Management</h1><div class="card" id="card_radius">
-<div class="card-header" id="card_radius">
+<!-- Table group Nominee list -->
 
+<div class="container-fluid py-4"> <div class="card-header"  ><h2 >Form Management (จัดการแบบฟอร์ม)</h2></div>
+<div class="card"  >
 <div class="card-body">
     <div class="col-12 text-end" ><button class="btn btn-md btn-primary" 
           id="addBtn" type="button" style="background-color: #596CFF;">
