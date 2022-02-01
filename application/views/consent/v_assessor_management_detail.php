@@ -13,6 +13,11 @@
 
 <head>
     <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -79,12 +84,16 @@
     //     $('#ModalConfirmAssessorSuccess').modal('show');
     // });
 
-    
-        // $('#btn_success').click(function() {
-        //     $('#ModalConfirmAssessorSuccess').modal('show');
-        // });
-    
 
+    // $('#btn_success').click(function() {
+    //     $('#ModalConfirmAssessorSuccess').modal('show');
+    // });
+
+
+    //Data Table
+    $(document).ready(function() {
+            $("#list_table").DataTable();
+        });
     </script>
 
     <!-- End JavaScript -->
@@ -104,6 +113,21 @@
                                 <h4>Promote to T2 : General Manager</h4>
                             </div>
                             <div class="col-6 text-end">
+                                <!-- Select Year -->
+                                <div>
+                                    <label for="year" style="position: absolute; right: 0;font-size:16px;">Select Year:
+                                        <select id="year" name="year">
+                                            <option>2021</option>
+                                            <option value="2017">2017</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                        </select>
+                                    </label><br><br>
+                                </div>
+
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn bg-gradient-info btn-block mb-3" data-bs-toggle="modal"
                                     data-bs-target="#ModalAddAssessor">

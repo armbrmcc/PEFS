@@ -54,6 +54,42 @@ div.tr {
     text-align: center;
 }
 </style>
+<!-- CSS -->
+<style>
+#list_table td,
+#list_table th {
+    padding: 12px;
+    text-align: center;
+}
+
+#list_table tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+#list_table tr:hover {
+    background-color: #adb5bd;
+}
+
+#card_radius {
+    border-radius: 20px;
+    width: auto;
+    min-height: 300px;
+}
+
+#list_table {
+    width: 98%;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.button_size {
+    /* width: 5px; */
+    height: 40px;
+    font-size: 12px;
+    text-align: center;
+}
+</style>
+<!-- End CSS -->
 
 <body class="g-sidenav-show  bg-gray-100">
 
@@ -62,7 +98,10 @@ div.tr {
         <!-- Start conten assessor management -->
         <div class="container-fluid py-2 px-4">
             <!-- Title -->
-            <h1 style="color:red">Group Management</h1>
+            <div class="card-header">
+                <h2>Group Management (การจัดการกลุ่มประเมิน)</h2>
+            </div>
+
             <div class="card">
                 <!-- Navbar -->
                 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
@@ -113,17 +152,40 @@ div.tr {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>T6</td>
-                            <td>AGM</td>
-                            <td>General Manager</td>
                             <td style="text-align:center">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="text-xs text-secondary mb-0">1</h6>
+                                </div>
+
+
+                            </td>
+                            <td style="text-align:center">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="text-xs text-secondary mb-0">T6</h6>
+
+                                </div>
+                            </td>
+                            <td style="text-align:center">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="text-xs text-secondary mb-0">AGM</h6>
+
+                                </div>
+                            </td>
+                            <td style="text-align:center">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="text-xs text-secondary mb-0">General Manager</h6>
+                                </div>
+                            </td>
+                            <td style="text-align:center">
+
                                 <button type="button" class="btn btn-primary"><i class="fa fa-info"
                                         aria-hidden="true"></i></button>
                                 <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 <a href="<?php echo site_url() . 'Group_management/Group_management/add_group' ?>"><button
                                         type="button" class="btn btn-warning"><i class="fa fa-pencil"
                                             aria-hidden="true"></i></button></a>
+
+
                             </td>
 
                         </tr>

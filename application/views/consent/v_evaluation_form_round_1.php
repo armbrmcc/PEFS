@@ -6,7 +6,7 @@
     * @input -
     * @output -
     * @Create date : 2565-01-26 
-    * @Update date : 2564-08-27
+    * @Update date : 2565-01-27
     */
 -->
 
@@ -118,7 +118,7 @@ th {
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h1>Evaluation (แบบฟอร์มการประเมิน)</h1>
+            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2>
         </div>
         <div class="card-body">
             <!-- Logo บริษัท -->
@@ -159,7 +159,7 @@ th {
                     <table class="table table-bordered table-sm">
                         <tr id="Manage">
                             <th colspan="5" id="gray">
-                                <center><b>Stretch Assignment Evaluation Form (Promote to T2) </b>
+                                <center><b>Stretch Assignment Evaluation Form (Promote to T6) </b>
                         </tr>
                         <tbody>
                             <tr id="Manage">
