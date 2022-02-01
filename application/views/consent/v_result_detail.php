@@ -5,7 +5,7 @@
     @output -
     @author Ponprapai Atsawanurak and Phatchara Khongthandee
     Create date 2565-01-25
-    Update date 2565-00-00
+    Update date 2565-01-28
 -->
 <!-- CSS -->
 <style>
@@ -51,7 +51,7 @@
 <div class="card" id="card_radius">
     <div class="card-header">
         <h1>
-            Result management (การจัดการผลคะแนน)
+            Result (ผลคะแนนการประเมิน)
         </h1>
     </div>
     <!-- End cara header-->
@@ -89,7 +89,7 @@
                             -
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_Result_detail'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>
@@ -116,7 +116,7 @@
                             Get score: 56 points
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_Result_detail'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>
@@ -143,7 +143,7 @@
                             Get score: 57 points
                         </td>
                         <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_Result_detail'; ?>">
+                            <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation'; ?>">
                                 <button type="button" class="btn btn-primary btn-sm button_size"
                                     style="background-color: #596CFF;">
                                     <i class="fas fa-search text-white"></i>
