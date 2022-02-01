@@ -53,7 +53,7 @@
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
 
     <!-- Start conten assessor management -->
-    <div class="container-fluid py-2 px-4">
+    <div class="container-fluid py-4">
     <div class="card-header">
       <!-- Title -->
       <h2>Form Management (จัดการแบบฟอร์ม)</h2>
