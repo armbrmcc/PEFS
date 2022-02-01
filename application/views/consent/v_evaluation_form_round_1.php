@@ -69,12 +69,23 @@ th {
 <!-- End CSS -->
 
 <!-- Javascript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.min.js"></script>
 <link rel="stylesheet" href="sweetalert2.min.css">
 <script src="sweetalert2.all.min.js"></script>
 <script>
-    function alert() {
+    /*
+    * alart_evaluation
+    * alert การยืนยันการประเมิน
+    * @input -
+    * @output alert ยืนยันการประเมิน
+    * @author Phatchara Khongthandee
+    * @Create Date 2565-02-01
+    */
+    function alart_evaluation() {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',
@@ -85,7 +96,7 @@ th {
 
         swalWithBootstrapButtons.fire({
             title: 'Evaluation Confirm?',
-            // text: "คุณต้องการยืนยันการลงคะแนนการประเมินหรือไม่",
+            text: '',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Confirm',
@@ -93,13 +104,15 @@ th {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                    'Success'
-                )
-
-
-                window.location.href = "show_evaluation_detail";
-
+                swalWithBootstrapButtons.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    confirmButtonColor: '#3CBF34',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    window.location.href =
+                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>";
+                })
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
@@ -353,7 +366,7 @@ th {
                             <!-- Confirm -->
                             <div class="col-6 text-end">
                                 <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
-                                    data-bs-target="#Modal_confirm" onclick="alert()">Confirm
+                                    data-bs-target="#Modal_confirm" onclick="alart_evaluation()">Confirm
                                 </button>
                             </div>
                     </div>
