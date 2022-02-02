@@ -101,7 +101,7 @@
                                 </td>
                                 <td>
                                     <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
-                                        <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #6c757d;">
+                                        <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
                                             <i class="far fa-file-alt text-white"></i>
                                         </button>
                                     </a>
@@ -122,7 +122,7 @@
                                 </td>
                                 <td>
                                     <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
-                                        <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #6c757d;">
+                                        <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
                                             <i class="far fa-file-alt text-white"></i>
                                         </button>
                                     </a>
@@ -143,7 +143,7 @@
                                 </td>
                                 <td>
                                     <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
-                                        <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #6c757d;">
+                                        <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
                                             <i class="far fa-file-alt text-white"></i>
                                         </button>
                                     </a>
@@ -164,7 +164,7 @@
                                 </td>
                                 <td>
                                     <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
-                                        <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #6c757d;">
+                                        <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
                                             <i class="far fa-file-alt text-white"></i>
                                         </button>
                                     </a>

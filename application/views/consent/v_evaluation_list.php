@@ -103,7 +103,7 @@ width: 100%;
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size"
+                                    <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
                                     </button>
@@ -126,7 +126,7 @@ width: 100%;
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size"
+                                    <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
                                     </button>
@@ -149,7 +149,7 @@ width: 100%;
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size"
+                                    <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
                                     </button>
@@ -171,7 +171,7 @@ width: 100%;
                             </td>
                             <td>
                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-primary btn-sm button_size"
+                                    <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
                                     </button>

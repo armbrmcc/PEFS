@@ -24,9 +24,13 @@
 }
 
 #card_radius {
+    margin-top: 15px;
+    margin-left: 14px;
+    margin-right: 15px;
+    margin-bottom: 15px;
     border-radius: 20px;
-    width: auto;
     min-height: 300px;
+    width: auto;
 }
 
 #list_table {
@@ -55,77 +59,80 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 </head>
 
-<div class="card" id="card_radius">
-    <div class="card-header">
-        <h2>Result (ผลคะแนนการประเมิน)</h2>
-    </div>
-    <!-- End cara header-->
-    <div class="card-body">
-        <!-- Start Table Result List -->
-        <div class="table-responsive">
-            <table class="table align-items-center" id="list_table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Group</th>
-                        <th>Group Name</th>
-                        <th>Date</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <h6 class="text-xs text-secondary mb-0">1</h6>
-                        </td>
-                        <td>
-                            <h6 class="text-xs text-secondary mb-0"> T6</h6>
-                        </td>
-                        <td>
-                            <h6 class="text-xs text-secondary mb-0">SoftEn</h6>
-                        </td>
-                        <td>
-                            <h6 class="text-xs text-secondary mb-0">Round 1 : 25/01/2022</h6>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_result_list'; ?>">
-                                <button type="button" class="btn btn-primary btn-sm button_size"
-                                    style="background-color: #596CFF;">
-                                    <i class="fas fa-search text-white"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h6 class="text-xs text-secondary mb-0"> 2</h6>
-                        </td>
-                        <td>
-                            <h6 class="text-xs text-secondary mb-0">T2</h6>
-                        </td>
-                        <td>
-                            <h6 class="text-xs text-secondary mb-0"> Burapha </h6>
-                        </td>
-                        <td>
-                            <h6 class="text-xs text-secondary mb-0"> Round 2 : 16/01/2022</h6>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url() . 'Result/Result/show_result_list'; ?>">
-                                <button type="button" class="btn btn-primary btn-sm button_size"
-                                    style="background-color: #596CFF;">
-                                    <i class="fas fa-search text-white"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+<div class="container-fluid py-4">
+    <div class="card" id="card_radius">
+        <div class="card-header">
+            <h2>Result (ผลคะแนนการประเมิน)</h2>
         </div>
-        <!-- End Table Result List-->
+        <!-- End cara header-->
+        <div class="card-body">
+            <!-- Start Table Result List -->
+            <div class="table-responsive">
+                <table class="table align-items-center" id="list_table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Group</th>
+                            <th>Group Name</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0">1</h6>
+                            </td>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0"> T6</h6>
+                            </td>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0">SoftEn</h6>
+                            </td>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0">Round 1 : 25/01/2022</h6>
+                            </td>
+                            <td>
+                                <a href="<?php echo site_url() . 'Result/Result/show_result_list'; ?>">
+                                    <button type="button" class="btn btn-xs button_size"
+                                        style="background-color: #596CFF;">
+                                        <i class="fas fa-search text-white"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0"> 2</h6>
+                            </td>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0">T2</h6>
+                            </td>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0"> Burapha </h6>
+                            </td>
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0"> Round 2 : 16/01/2022</h6>
+                            </td>
+                            <td>
+                                <a href="<?php echo site_url() . 'Result/Result/show_result_list'; ?>">
+                                    <button type="button" class="btn btn-xs button_size"
+                                        style="background-color: #596CFF;">
+                                        <i class="fas fa-search text-white"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Table Result List-->
+        </div>
+        <!-- End card body-->
     </div>
-    <!-- End card body-->
+    <!-- End card-->
 </div>
-<!-- End card-->
+<!-- End class container -->
 
 
 <!-- JavaScript -->

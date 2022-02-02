@@ -118,7 +118,9 @@ th {
                 result.dismiss === Swal.DismissReason.cancel
             ) {
                 swalWithBootstrapButtons.fire(
-                    'Cancel'
+                    'Cancel',
+                    '',
+                    'error'
                 )
             }
         })
