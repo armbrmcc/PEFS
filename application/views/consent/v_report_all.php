@@ -3,7 +3,7 @@
     * Display report of Performance Evaluation Factor System
     * @input    -
     * @output   -
-    * @author   Chakrit
+    * @author  Chakrit and Nattakorn
     * @Create Date 2565-01-27
     * @Update Date -
 -->
@@ -248,25 +248,59 @@
                                 <tr>
                                     <td>1</td>
                                     <td>Promote to T6</td>
-                                    <td>3</td>
-                                    <td>2</td>
-                                    <td>1</td>
+                                    <td>20</td>
+                                    <td>6</td>
+                                    <td>14</td>
                                     <td> <?php { ?>
-                                            <a href='<?php echo site_url() . 'Report/Report/show_detail_report/' ?>'>
+                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
                                                 <i class="fa fa-search"></i>
                                             </a><?php } ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>Promote to T1</td>
+                                    <td>Promote to T5</td>
+                                    <td>8</td>
                                     <td>4</td>
-                                    <td>1
-                                    </td>
-                                    <td>10
-                                    </td>
+                                    <td>4</td>
                                     <td> <?php { ?>
-                                            <a href='<?php echo site_url() . 'Report/Report/show_detail/'?>'>
+                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
+                                                <i class="fa fa-search"></i>
+                                            </a><?php } ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Promote to T4</td>
+                                    <td>6</td>
+                                    <td>2</td>
+                                    <td>4</td>
+                                    <td> <?php { ?>
+                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
+                                                <i class="fa fa-search"></i>
+                                            </a><?php } ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Promote to T3</td>
+                                    <td>5</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td> <?php { ?>
+                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
+                                                <i class="fa fa-search"></i>
+                                            </a><?php } ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Promote to T2</td>
+                                    <td>3</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td> <?php { ?>
+                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
                                                 <i class="fa fa-search"></i>
                                             </a><?php } ?>
                                     </td>
@@ -274,11 +308,9 @@
                             </tbody>
                             <tfoot>
                                 <td colspan="2" align="right">Total :</td>
-                                <td id='sum_total'>7</td>
-                                <td id='pass_total'>4</td>
-                                <td id='fail_total'>3</td>
-                                <td></td>
-
+                                <td id='sum_total'>42</td>
+                                <td id='pass_total'>15</td>
+                                <td id='fail_total'>27</td>
                             </tfoot>
                         </table>
                     </div>
