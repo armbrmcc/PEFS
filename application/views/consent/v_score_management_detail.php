@@ -1,51 +1,48 @@
-<style>
-    .card
-    {
-      background: #CECECE;
-    }
-    table
-    {
-      width: 100%;
-    }
-    #scor_table td,
-    #sco_table th
-    {
-      padding: 8px;
-      text-align: center;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+
+</head>
+
+<body class="g-sidenav-show  bg-gray-100">
+    <!-- CSS -->
+    <style>
+    #list_table td,
+    #list_table th {
+        padding: 12px;
+        text-align: center;
     }
 
-    #sco_table tr:nth-child(even)
-    {
-      background-color: #F7F7F7;
+    #list_table tr:nth-child(even) {
+        background-color: #e9ecef;
     }
 
-    #sco_table tr:hover
-    {
-      background-color: #E6E4E4;
+    #list_table tr:hover {
+        background-color: #adb5bd;
     }
 
-    #card_radius
-    {
-      margin-left: 14px;
-      margin-right: 15px;
-      border-radius: 20px;
-      width: auto;
-      min-height: 300px;
+    #card_radius {
+        border-radius: 20px;
+        width: auto;
+        min-height: 300px;
     }
 
-    #sco_table
-    {
-      width: 98%;
-      margin-top: 20px;
-      margin-left: 10px;
+    #list_table {
+        width: 98%;
+        margin-top: 20px;
+        margin-left: 10px;
     }
 
-    #bt-add
-    {
-      width: 200px;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
+    .button_size {
+        /* width: 5px; */
+        height: 40px;
+        font-size: 12px;
+        text-align: center;
     }
     .off  { 
         background:#D90437;
@@ -62,7 +59,7 @@
         border: none;
     }
 </style>
-<!-- End CSS -->
+<!-- JavaScript -->
 <script language="javascript">
         function toggleState(item){
            if(item.className == "off") {
@@ -73,6 +70,23 @@
               item.innerHTML = "close"
            }
         }
+</script>
+<script>
+
+</script>
+
+<script type="text/javascript">
+function showhide() {
+    var choices = document.getElementById('selectBoxx').value;
+    var x = 'pstats',
+        y = 'jdk';
+    if (choices == 2) {
+        x = 'jdk';
+        y = 'pstats';
+    }
+    document.getElementById(y).style.display = 'none';
+    document.getElementById(x).style.display = 'block';
+}
 </script>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -93,14 +107,13 @@
     </div>
   </div>
 </div>
-<!-- JavaScript -->
-  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
-    
+<!-- End JavaScript -->   
     <!-- Start conten scor management -->
     <div class="container-fluid py-2 px-4">
       <!-- Title -->
-      <h1 style="color:red">Score Management Group (การจัดการคะแนนกลุ่ม)</h1>
-      
+      <div class="card-header">
+            <h2>Score Management Group (การจัดการคะแนนกลุ่ม)</h2>
+        </div>
         <div class="card">
           
             <!-- Navbar -->
@@ -115,7 +128,7 @@
         <div class="table-responsive" >
         <div style="margin-left:35px;">
         <h3 >Detail Group   
-            <label for="cars" style="font-size : 18px;margin-left : 66.2%">Group stutas:</label>
+            <label for="cars" style="font-size : 18px;margin-left : 75%">Group stutas:</label>
             <button type="button" class="float-right on" style="text-align: center;" 
             id="btn" value="button" onclick="toggleState(this)">
             open   
@@ -126,7 +139,7 @@
         <hr class="my-4" color="gray">
         <div style="margin-left:35px;">
         <h5 class="mb-0" >Group : T2                 
-            <label for="cars" style="font-size : 23.5px;margin-left : 66.2%">Select Round :</label>
+            <label for="cars" style="font-size : 20.5px;margin-left : 76.5%">Select Round :</label>
             <select name="cars" id="cars">
                 <option value="volvo">Round 1 </option>
                 <option value="saab">Round 2 </option>
@@ -138,7 +151,7 @@
         <h5 class="mb-0">Date : 24/08/2021 </h5>
         </div>
         <hr class="my-4" color="gray">
-            <table class="table align-items-center" id="scor_table">
+            <table class="table align-items-center" id="list_table">
                 <thead class="list text-center">
                 <tr>
                     <th scope="col">#</th>
@@ -163,12 +176,15 @@
                     <td>
                       <!-- ปุ่มดำเนิน -->
                       <div style="width: 60px;height: 58px;margin-left:10px;">
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" >
+                                    <button type="button" class="btn btn-warning button_size" data-toggle="modal" data-target="#exampleModal" >
                                             <i class="fa fa-refresh" style="font-size:15px;"></i>
                                     </button>
-                        </div>
-                                    
+                        </div>          
                       <!-- ปุ่มดำเนิน -->
                     </td>
                   </tr>
-<!-- <div class="card-header" id="card_radius"> -->
+    <script>
+        $(document).ready(function() {
+            $("#list_table").DataTable();
+        });
+    </script>

@@ -21,13 +21,13 @@ class Report extends MainController
     {
         $this->output('consent/v_report_all');
     }
-    public function show_detail_report()
+    public function show_report_group()
     {
-        $this->output('consent/v_detail_report');
+        $this->output('consent/v_report_group');
     }
 
-    public function show_report_asse_detail()
+    public function show_report_person()
     {
-        $this->output('consent/v_report_asse_detail');
+        $this->output('consent/v_report_person');
     }
 }
