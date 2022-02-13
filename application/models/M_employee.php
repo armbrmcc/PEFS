@@ -11,6 +11,11 @@ class M_employee extends Da_employee
 
 
 
+    /**
+     * This function returns all the employees in the database
+     * 
+     * @return An object of type PDOStatement.
+     */
     public function get_employee()
     {
         $sql =
