@@ -18,6 +18,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>">
                                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    <!-- <i class="fas fa-file-signature text-green"></i> -->
                                     <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
