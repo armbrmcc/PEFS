@@ -240,12 +240,11 @@ th {
                                             15
                                         </td>
                                         <!-- แสดง point -->
-                                        <td>
+                                        <td style="vertical-align:middle;text-align: center;">
                                             <div class="form-group">
-                                                <label for="sel"></label>
-                                                <select class="form-control" name="form[]"
-                                                    id="form" style="text-align: center;width:150;" required>
-                                                    <option value="0">selected</option>
+                                            <label for="sel"></label>
+                                                <select name="form[]" id="form" required>
+                                                    <option value="0">score</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -277,12 +276,11 @@ th {
                                             15
                                         </td>
                                         <!-- แสดง point -->
-                                        <td>
+                                        <td style="vertical-align:middle;text-align: center;">
                                             <div class="form-group">
                                                 <label for="sel"></label>
-                                                <select class="form-control" name="form[]"
-                                                    id="form" style="text-align: center;width:150;" required>
-                                                    <option value="0">selected</option>
+                                                <select name="form[]" id="form" required>
+                                                    <option value="0">score</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -314,12 +312,11 @@ th {
                                             15
                                         </td>
                                         <!-- แสดง point -->
-                                        <td>
+                                        <td style="vertical-align:middle;text-align: center;">
                                             <div class="form-group">
                                                 <label for="sel"></label>
-                                                <select class="form-control" name="form[]"
-                                                    id="form" style="text-align: center;width:150;" required>
-                                                    <option value="0">selected</option>
+                                                <select name="form[]" id="form" required>
+                                                    <option value="0">score</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
