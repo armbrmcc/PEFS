@@ -35,9 +35,11 @@ class Assessor_management extends MainController
         
     }
 
-    public function show_assessor_management_detail($id)
+    public function show_assessor_management_detail($id) // มาจาก gro_ase_id
     {
-        echo $id;
-        $this->output('consent/v_assessor_management_detail');
+        // echo $id; 
+        $this->load->model('M_pef_group_assessor', 'gass');
+        $data['arr_ass'] = $this->gass->get_assessor_list($id)->result();
+        $this->output('consent/v_assessor_management_detail', $data);
     }
 }
