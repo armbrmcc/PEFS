@@ -49,5 +49,4 @@ class M_pef_assessor extends Da_pef_assessor
         $query = $this->db->query($sql);
         return $query;
     }//คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมินของกรรมการ
-
 }

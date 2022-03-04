@@ -28,11 +28,16 @@ class Assessor_management extends MainController
     */
     public function show_assessor_management()
     {
-        $this->output('consent/v_assessor_management');
+        $this->load->model('M_pef_group_assessor', 'pef');
+        $data['as_group'] = $this->pef->get_group_assessor_all()->result();
+        // print_r($data);
+        $this->output('consent/v_assessor_management', $data);
+        
     }
 
-    public function show_assessor_management_detail()
+    public function show_assessor_management_detail($id)
     {
+        echo $id;
         $this->output('consent/v_assessor_management_detail');
     }
 }

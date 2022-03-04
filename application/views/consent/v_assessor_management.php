@@ -6,6 +6,7 @@
     * @author Thitima Popila
     * Create date 2565-01-25   
     * Update date 2565-02-01
+    * Update date 2565-03-04
 -->
 
 <!DOCTYPE html>
@@ -102,86 +103,50 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                    for($i=0; $i<count($as_group); $i++)
+                                    {
+                                ?>
                                     <tr>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1</h6>
+                                                <h6 class="text-xs text-secondary mb-0">
+                                                    <?php echo $i+1?>
+                                                </h6>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">T2</h6>
+                                                <h6 class="text-xs text-secondary mb-0">
+                                                    <?php echo 'T'.$as_group[$i]->asp_level?>
+                                                </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">GM</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1. General Manager </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">Type 2</h6>
-                                                <p class="text-xs text-secondary mb-0">(2 Round evalution)</p>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">
-                                            <!-- Start button trigger modal edit -->
-                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail'; ?>">
-                                                <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button"
-                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit me-2"></i>Edit
-                                                </button>
-                                            </a>
-                                            <!-- End button trigger modal edit-->
-
-                                            <!-- Start button trigger modal delete -->
-                                            <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
-                                            </button>
-                                            <!-- End button trigger modal delete -->
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">2</h6>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">T3</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">AGM</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1. Assistant General Manager
+                                                <h6 class="text-xs text-secondary mb-0">
+                                                    <?php echo $as_group[$i]->asp_name?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">Type 2</h6>
-                                                <p class="text-xs text-secondary mb-0">(2 Round evalution)</p>
+                                                <h6 class="text-xs text-secondary mb-0">
+                                                    <?php echo '1. '.$as_group[$i]->Position_name?>
+                                                </h6>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-xs text-secondary mb-0">
+                                                <?php echo "Type ".$as_group[$i]->grp_position_group?>
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0"><?php echo $as_group[$i]->grp_position_group.' Round evaluation'?></p>
                                             </div>
                                         </td>
                                         <td class="align-middle">
                                             <!-- Start button trigger modal edit -->
-                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail'; ?>">
+                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/'.$as_group[$i]->gro_ase_id; ?>">
                                                 <!-- ปุ่มดำเนินการแก้ไข -->
                                                 <button type="button"
                                                     class="btn btn-link text-warning text-gradient px-3 mb-0"
@@ -201,104 +166,9 @@
                                             <!-- End button trigger modal delete -->
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">3</h6>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">T3</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">MGR</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1. Manager </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">Type 1</h6>
-                                                <p class="text-xs text-secondary mb-0">(1 Round evalution)</p>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">
-                                            <!-- Start button trigger modal edit -->
-                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail'; ?>">
-                                                <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button"
-                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit me-2"></i>Edit
-                                                </button>
-                                            </a>
-                                            <!-- End button trigger modal edit-->
-
-                                            <!-- Start button trigger modal delete -->
-                                            <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
-                                            </button>
-                                            <!-- End button trigger modal delete -->
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">4</h6>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">T5</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">AM</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1. Assistant Manager </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">Type 1</h6>
-                                                <p class="text-xs text-secondary mb-0">(1 Round evalution)</p>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">
-                                           <!-- Start button trigger modal edit -->
-                                           <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail'; ?>">
-                                                <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button"
-                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit me-2"></i>Edit
-                                                </button>
-                                            </a>
-                                            <!-- End button trigger modal edit-->
-
-                                            <!-- Start button trigger modal delete -->
-                                            <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
-                                            </button>
-                                            <!-- End button trigger modal delete -->
-                                        </td>
-                                    </tr>
+                                    <?php
+                                        }
+                                    ?>   
                                 </tbody>
                             </table>
                         </div>
