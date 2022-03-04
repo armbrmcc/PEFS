@@ -72,13 +72,13 @@
         </div>
         <!-- End cara header-->
             <div class="card-body">
-                <h3>Promote to T6</h3>
+                <h3>Promote to T<?php echo $groupass_detail[0]->asp_level?></h3>
                 <!-- Start Table Evaluation List -->
                 <div class="table-responsive">
                     <table class="table align-items-center mb-0" id="list_table">
                         <thead>
                             <tr>
-                                <th>No.</th>
+                                <th>#</th>
                                 <th>Employee ID</th>
                                 <th style="text-align: left; width: 300px;">List of Nominee</th>
                                 <th>Promote To</th>
@@ -86,27 +86,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">1</h6> 
-                                </td>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">00010</h6>
-                                </td>
-                                <td style="text-align: left;">
-                                    <h6 class="text-xs text-secondary mb-0">Milin Dokthian</h6>
-                                </td>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">Supervisor</h6>
-                                </td>
-                                <td>
-                                    <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
-                                        <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
-                                            <i class="far fa-file-alt text-white"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                            </tr>
+                        <?php $s = 1; ?>
+                        <?php for ($i = 0; $i < count($group_detail); $i++) { ?>
+                                    <tr>
+                                        <td>
+                                            <!-- # -->
+                                            <h6 class="text-xs text-secondary mb-0">
+                                                <?php echo $s ?>
+                                                <?php $s++;  ?>
+                                            </h6> 
+                                        </td>
+                                        <td>
+                                            <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->grn_emp_id?></h6>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->Empname_eng. ' ' . $arr_nominee[$i]->Empsurname_eng?></h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->Position_name?></h6>
+                                        </td>
+                                        <td>
+                                            
+                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
+                                                <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
+                                                    <i class="far fa-file-alt text-white"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

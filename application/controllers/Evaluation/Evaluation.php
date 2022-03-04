@@ -30,10 +30,10 @@ class Evaluation extends MainController
     */
     public function show_evaluation_list()
     {
-        $emp_id = '03695';
+        $ass_id = '03695';
         $this->load->model('M_pef_assessor', 'pef');
-        $data['grass_list'] = $this->pef->get_group_assessor_list($emp_id)->result();
-        $data['grass_detail'] = $this->pef->get_group_detail($emp_id)->result();
+        $data['grass_list'] = $this->pef->get_assessor_by_id($ass_id)->result();
+        $data['grass_detail'] = $this->pef->get_assessor_detail($ass_id)->result();
         // echo "<pre>";
         //     print_r($data['grass_list']);
         // echo "</pre>";
@@ -50,13 +50,15 @@ class Evaluation extends MainController
     */
     public function show_evaluation_detail($group_id, $group_ass)
     {
-        $emp_id = '03695';
+        $ass_id = '03695';
         $this->load->model('M_pef_assessor', 'pef');
         $this->load->model('M_pef_group_assessor', 'pefs');
-        $data['groupass_detail'] = $this->pef->get_group_detail($emp_id)->result();
-        $data['group_detail'] = $this->pefs->get_group_nominee($group_id, $group_ass)->result();
+        $this->load->model('M_pef_group_nominee', 'nominee');
+        $data['groupass_detail'] = $this->pef->get_assessor_by_id($ass_id)->result();
+        $data['group_detail'] = $this->pefs->get_group_assessor($group_id, $group_ass)->result();
+        $data['arr_nominee'] = $this->nominee->get_group_nominee_detail($group_id)->result();
         // echo "<pre>";
-        //     print_r($data['group_detail']);
+        //     print_r($data['nominee']);
         // echo "</pre>";
         $this->output('consent/v_evaluation_detail', $data);
     } //show_evaluation_detail

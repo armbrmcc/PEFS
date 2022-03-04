@@ -35,35 +35,49 @@ th {
     border-width: 1px;
 }
 
-.table tbody tr:last-child td{
+.table tbody tr:last-child td
+{
     border-width: 1px;
 }
 
-#center_th td {
+#center_th td 
+{
     text-align: center;
     font-weight: bold;
 }
 
-#gray {
+#gray 
+{
     background-color: #E3E3E3;
 }
 
-#img {
+#img 
+{
     display: block;
     margin-left: 150px;
 }
 
 /* จัดตำแหน่งชื่อบริษัท */
-.center_com {
+.center_com 
+{
     padding: 70px;
 }
 
-#set_id {
+#set_id 
+{
     width: 10px;
 }
 
-#set_button {
+#set_button 
+{
     font-size: 16px;
+}
+
+/* จัดระยะห่างระหว่างปุ่ม */
+.btn
+{
+    margin-right: 1rem;
+    margin-left: 1rem;
 }
 </style>
 <!-- End CSS -->
@@ -73,8 +87,6 @@ th {
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.min.js"></script>
-<link rel="stylesheet" href="sweetalert2.min.css">
 <script src="sweetalert2.all.min.js"></script>
 <script>
     /*
@@ -108,7 +120,7 @@ th {
                     icon: 'success',
                     title: 'Success',
                     confirmButtonColor: '#3CBF34',
-                    confirmButtonText: 'OK'
+                    confirmButtonText: 'OK',
                 }).then((result) => {
                     window.location.href =
                     href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>";
