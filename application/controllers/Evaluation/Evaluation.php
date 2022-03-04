@@ -30,29 +30,44 @@ class Evaluation extends MainController
     */
     public function show_evaluation_list()
     {
-        $this->output('consent/v_evaluation_list');
+        $emp_id = '03695';
+        $this->load->model('M_pef_assessor', 'pef');
+        $data['grass_list'] = $this->pef->get_group_assessor_list($emp_id)->result();
+        $data['grass_detail'] = $this->pef->get_group_detail($emp_id)->result();
+        // echo "<pre>";
+        //     print_r($data['grass_list']);
+        // echo "</pre>";
+        $this->output('consent/v_evaluation_list', $data);
     } //show_evaluation_list
 
     /*
 	* show_evaluation_detail
 	* display view evaluation detail
 	* @input  -
-	* @output  Evaluation detail
-	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
-	* @Create  Date 2565-01-25
+	* @output Evaluation detail
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-01-25
     */
-    public function show_evaluation_detail()
+    public function show_evaluation_detail($group_id, $group_ass)
     {
-        $this->output('consent/v_evaluation_detail');
+        $emp_id = '03695';
+        $this->load->model('M_pef_assessor', 'pef');
+        $this->load->model('M_pef_group_assessor', 'pefs');
+        $data['groupass_detail'] = $this->pef->get_group_detail($emp_id)->result();
+        $data['group_detail'] = $this->pefs->get_group_nominee($group_id, $group_ass)->result();
+        // echo "<pre>";
+        //     print_r($data['group_detail']);
+        // echo "</pre>";
+        $this->output('consent/v_evaluation_detail', $data);
     } //show_evaluation_detail
 
     /*
 	* show_evaluation_form_round_1
 	* display view evaluation form 1 round
 	* @input  -
-	* @output  Evaluation form 1 round
-	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
-	* @Create  Date 2565-01-26
+	* @output Evaluation form 1 round
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-01-26
     */
     public function show_evaluation_form_round_1()
     {
@@ -63,9 +78,9 @@ class Evaluation extends MainController
 	* show_evaluation_form_round_2
 	* display view evaluation form 2 round
 	* @input  -
-	* @output  Evaluation form 2 round
-	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
-	* @Create  Date 2565-01-26
+	* @output Evaluation form 2 round
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-01-26
     */
     public function show_evaluation_form_round_2()
     {

@@ -107,69 +107,6 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">2</h6>
-                                </td>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">00011</h6>    
-                                </td>
-                                <td style="text-align: left;">
-                                    <h6 class="text-xs text-secondary mb-0">Kanteera Wadcharathadsanakul</h6>
-                                </td>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">Supervisor</h6>
-                                </td>
-                                <td>
-                                    <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
-                                        <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
-                                            <i class="far fa-file-alt text-white"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">3</h6>
-                                </td>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">00012</h6>  
-                                </td>
-                                <td style="text-align: left;">
-                                    <h6 class="text-xs text-secondary mb-0">Natticha Chantaravareelrkha</h6>
-                                </td>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">Senior Staff</h6>
-                                </td>
-                                <td>
-                                    <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
-                                        <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
-                                            <i class="far fa-file-alt text-white"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">4</h6>
-                                </td>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">00013</h6>
-                                </td>
-                                <td style="text-align: left;">
-                                    <h6 class="text-xs text-secondary mb-0">Nunthapak Kittirattanaviwat</h6>
-                                </td>
-                                <td>
-                                    <h6 class="text-xs text-secondary mb-0">Senior Staff</h6>
-                                </td>
-                                <td>
-                                    <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
-                                        <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
-                                            <i class="far fa-file-alt text-white"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
