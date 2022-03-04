@@ -1,10 +1,10 @@
 <?php
 /*
 * Assessor_management
-* @input  -   
-* @output -
+* Controller for Group Assessor module   
 * @author Thitima Popila and Apinya Phadungkit
 * @Create Date 2565-01-25
+* @Update Date 2565-03-04
 */
 ?>
 <?php

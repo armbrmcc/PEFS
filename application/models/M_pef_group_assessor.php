@@ -21,6 +21,15 @@ class M_pef_group_assessor extends Da_pef_group_assessor
         return $query;
     }//คืนค่าข้อมูลรายละเอียดของ Nominee ของกลุ่มการประเมิน
 
+    /*
+	* get_group_assessor_all
+	* get data form pef_group_assessor, pef_group, pef_assessor_promote, pef_assessor_position
+	* @input  -
+	* @output  all 
+	* @author  Thitima Popila
+	* @Create  Date 2565-03-04
+    * @Update  Date 2565-03-04
+    */
     public function get_group_assessor_all()
     {
         $sql = "SELECT * FROM pefs_database.pef_group_assessor AS gss
