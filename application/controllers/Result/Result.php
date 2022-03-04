@@ -29,7 +29,11 @@ class Result extends MainController
     */
     public function show_result_group()
     {
-        $this->output('consent/v_result_group');
+        $emp_id = '03695';
+        $this->load->model('M_pef_assessor', 'pef');
+        $data['grass_list'] = $this->pef->get_group_assessor_list($emp_id)->result();
+        $data['grass_detail'] = $this->pef->get_group_detail($emp_id)->result();
+        $this->output('consent/v_result_group', $data);
     }
     //show_result_group
 
@@ -43,6 +47,7 @@ class Result extends MainController
     */
     public function show_result_list()
     {
+
         $this->output('consent/v_result_list');
     } //show_result_list
 
