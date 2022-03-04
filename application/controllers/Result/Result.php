@@ -29,10 +29,10 @@ class Result extends MainController
     */
     public function show_result_group()
     {
-        $emp_id = '03695';
+        $ass_id = '03695';
         $this->load->model('M_pef_assessor', 'pef');
-        $data['grass_list'] = $this->pef->get_group_assessor_list($emp_id)->result();
-        $data['grass_detail'] = $this->pef->get_group_detail($emp_id)->result();
+        $data['grass_list'] = $this->pef->get_assessor_by_id($ass_id)->result();
+        $data['grass_detail'] = $this->pef->get_assessor_detail($ass_id)->result();
         $this->output('consent/v_result_group', $data);
     }
     //show_result_group
@@ -45,10 +45,19 @@ class Result extends MainController
 	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create  Date 2565-01-25
     */
-    public function show_result_list()
+    public function show_result_list($group_id, $group_ass)
     {
-
-        $this->output('consent/v_result_list');
+        $ass_id = '03695';
+        $this->load->model('M_pef_assessor', 'pef');
+        $this->load->model('M_pef_group_assessor', 'pefs');
+        $this->load->model('M_pef_group_nominee', 'nominee');
+        $data['groupass_detail'] = $this->pef->get_assessor_by_id($ass_id)->result();
+        $data['group_detail'] = $this->pefs->get_group_assessor($group_id, $group_ass)->result();
+        $data['arr_nominee'] = $this->nominee->get_group_nominee_detail($group_id)->result();
+        // echo "<pre>";
+        //     print_r($data['nominee']);
+        // echo "</pre>";
+        $this->output('consent/v_result_list', $data);
     } //show_result_list
 
     /*

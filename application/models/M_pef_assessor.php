@@ -34,7 +34,7 @@ class M_pef_assessor extends Da_pef_assessor
                 WHERE  ass.ase_emp_id = '$ass_id'";
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
+    } //คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
 
     public function get_assessor_detail($ass_id)
     {
@@ -48,5 +48,19 @@ class M_pef_assessor extends Da_pef_assessor
                 WHERE  ass.ase_emp_id = '$ass_id'";
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมินของกรรมการ
+    } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมินของกรรมการ
+
+    public function get_relsult_list($ass_id)
+    {
+        $sql = "SELECT * FROM pefs_database.pef_assessor AS ass
+                    INNER JOIN pefs_database.pef_group_assessor AS grass
+                    ON ass.ase_gro_id = grass.gro_ase_id
+                    INNER JOIN pefs_database.pef_group AS gr
+                    ON grass.gro_grp_id=  gr.grp_id
+                    INNER JOIN pefs_database.pef_group_schedule AS schedu
+                    ON gr.grp_id = schedu.grd_grp_id
+                WHERE  ass.ase_emp_id = '$ass_id'";
+        $query = $this->db->query($sql);
+        return $query;
+    } //คืนค่าข้อมูลรายละเอียดผลการประเมินของกรรมการ
 }

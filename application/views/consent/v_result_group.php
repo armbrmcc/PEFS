@@ -115,7 +115,7 @@
                             <!-- Action -->
                             <td>
                                 <a
-                                    href="<?php echo site_url() . 'Result/Result/show_result_list' . $grass_detail[$i]->ase_gro_id . '/' . $grass_detail[$i]->grp_id; ?>">
+                                    href="<?php echo site_url() . 'Result/Result/show_result_list/' . $grass_detail[$i]->ase_gro_id . '/' . $grass_detail[$i]->grp_id; ?>">
                                     <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
