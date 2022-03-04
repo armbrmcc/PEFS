@@ -17,7 +17,7 @@ class M_pef_assessor extends Da_pef_assessor
         parent::__construct();
     }
 
-    public function get_group_assessor_list($emp_id)
+    public function get_assessor_by_id($ass_id)
     {
         $sql = "SELECT * FROM pefs_database.pef_assessor AS ass
                     INNER JOIN pefs_database.pef_group_assessor AS grass
@@ -31,12 +31,12 @@ class M_pef_assessor extends Da_pef_assessor
                     INNER JOIN dbmc.position AS pos
                     ON position.gap_promote = pos.Position_ID
                     
-                WHERE  ass.ase_emp_id = '$emp_id'";
+                WHERE  ass.ase_emp_id = '$ass_id'";
         $query = $this->db->query($sql);
         return $query;
     }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
 
-    public function get_group_detail($emp_id)
+    public function get_assessor_detail($ass_id)
     {
         $sql = "SELECT * FROM pefs_database.pef_assessor AS ass
                     INNER JOIN pefs_database.pef_group_assessor AS grass
@@ -45,7 +45,7 @@ class M_pef_assessor extends Da_pef_assessor
                     ON grass.gro_grp_id=  gr.grp_id
                     INNER JOIN pefs_database.pef_group_schedule AS schedu
                     ON gr.grp_id = schedu.grd_grp_id
-                WHERE  ass.ase_emp_id = '$emp_id'";
+                WHERE  ass.ase_emp_id = '$ass_id'";
         $query = $this->db->query($sql);
         return $query;
     }//คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมินของกรรมการ
