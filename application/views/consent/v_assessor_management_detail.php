@@ -14,84 +14,84 @@
 <head>
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
-    
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+
 
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
     <!-- CSS -->
     <style>
-    #list_table td,
-    #list_table th {
-        padding: 12px;
-        text-align: center;
-    }
+        #list_table td,
+        #list_table th {
+            padding: 12px;
+            text-align: center;
+        }
 
-    #list_table tr:nth-child(even) {
-        background-color: #e9ecef;
-    }
+        #list_table tr:nth-child(even) {
+            background-color: #e9ecef;
+        }
 
-    #list_table tr:hover {
-        background-color: #adb5bd;
-    }
+        #list_table tr:hover {
+            background-color: #adb5bd;
+        }
 
-    #card_radius {
-        border-radius: 20px;
-        width: auto;
-        min-height: 300px;
-    }
+        #card_radius {
+            border-radius: 20px;
+            width: auto;
+            min-height: 300px;
+        }
 
-    #list_table {
-        width: 98%;
-        margin-top: 20px;
-        margin-left: 10px;
-    }
+        #list_table {
+            width: 98%;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
 
-    .button_size {
-        /* width: 5px; */
-        height: 40px;
-        font-size: 12px;
-        text-align: center;
-    }
+        .button_size {
+            /* width: 5px; */
+            height: 40px;
+            font-size: 12px;
+            text-align: center;
+        }
     </style>
     <!-- End CSS -->
 
     <!-- JavaScript -->
     <script>
-    // $(document).ready(function() {
-    //     $("#btn_success").click(function() {
-    //         // $("#ModalConfirmAssessor").hide();
-    //         $("#ModalConfirmAssessor").hide();
-    //     });
+        // $(document).ready(function() {
+        //     $("#btn_success").click(function() {
+        //         // $("#ModalConfirmAssessor").hide();
+        //         $("#ModalConfirmAssessor").hide();
+        //     });
 
-    // });
+        // });
 
-    // $(document).ready(function() {
-    //     $("#btn_success").click(function() {
-    //         $('#ModalConfirmAssessor').modal('hide');
-    //         // $("#ModalConfirmAssessor").hide();
-    //         $('#ModalConfirmAssessor').on('hide.bs.modal', function(e) {
-    //             e.stopPropagation();
-    //         })
+        // $(document).ready(function() {
+        //     $("#btn_success").click(function() {
+        //         $('#ModalConfirmAssessor').modal('hide');
+        //         // $("#ModalConfirmAssessor").hide();
+        //         $('#ModalConfirmAssessor').on('hide.bs.modal', function(e) {
+        //             e.stopPropagation();
+        //         })
 
-    //     });
-    // });
-
-
-    // $('#btn_success').on("click", function (e) {
-    //     $('#ModalConfirmAssessorSuccess').modal('show');
-    // });
+        //     });
+        // });
 
 
-    // $('#btn_success').click(function() {
-    //     $('#ModalConfirmAssessorSuccess').modal('show');
-    // });
+        // $('#btn_success').on("click", function (e) {
+        //     $('#ModalConfirmAssessorSuccess').modal('show');
+        // });
 
 
-    //Data Table
-    $(document).ready(function() {
+        // $('#btn_success').click(function() {
+        //     $('#ModalConfirmAssessorSuccess').modal('show');
+        // });
+
+
+        //Data Table
+        $(document).ready(function() {
             $("#list_table").DataTable();
         });
     </script>
@@ -129,8 +129,7 @@
                                 </div>
 
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn bg-gradient-info btn-block mb-3" data-bs-toggle="modal"
-                                    data-bs-target="#ModalAddAssessor">
+                                <button type="button" class="btn bg-gradient-info btn-block mb-3" data-bs-toggle="modal" data-bs-target="#ModalAddAssessor">
                                     <i class="fas fa-plus"></i>&nbsp;&nbsp;Add Assessor
                                 </button>
                             </div>
@@ -152,73 +151,44 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">1</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">00025</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">Natticha Chantaravareelrkha</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">AM</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">Accountant</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                            <i class="far fa-trash-alt me-2"></i>Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">2</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">00026</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">Natruja Chutiwansopon</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">AM</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-xs text-secondary mb-0">Accountant</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                            data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                            <i class="far fa-trash-alt me-2"></i>Delete</button>
-                                    </td>
-                                </tr>
-
+                                <?php
+                                for ($i = 0; $i < count($arr_ass); $i++) {
+                                ?>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-xs text-secondary mb-0"><?php echo $i + 1 ?></h6>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->ase_emp_id ?></h6>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Empname_eng . '  ' . $arr_ass[$i]->Empsurname_eng ?></h6>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Pos_shortName ?></h6>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Position_name ?></h6>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0" data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
+                                                <i class="far fa-trash-alt me-2"></i>Delete</button>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
 
@@ -227,8 +197,7 @@
                 </div>
                 <div class="col-12 text-end">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
-                        data-bs-target="#ModalConfirmAssessor">Confirm
+                    <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal" data-bs-target="#ModalConfirmAssessor">Confirm
                     </button>
                 </div>
             </div>
@@ -245,8 +214,7 @@
 
 
 <!-- Modal Add Assessor-->
-<div class="modal fade" id="ModalAddAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalAddAssessorTitle"
-    aria-hidden="true">
+<div class="modal fade" id="ModalAddAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalAddAssessorTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -278,8 +246,7 @@
 
 
 <!-- Modal Delete Assessor-->
-<div class="modal fade" id="ModalDeleteAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteAssessorTitle"
-    aria-hidden="true">
+<div class="modal fade" id="ModalDeleteAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteAssessorTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="col-12 text-end">
@@ -307,8 +274,7 @@
 </div>
 
 <!-- Modal Confirm Create Group Assessor -->
-<div class="modal fade" id="ModalConfirmAssessor" tabindex="-1" role="dialog"
-    aria-labelledby="ModalConfirmAssessorTitle" aria-hidden="true">
+<div class="modal fade" id="ModalConfirmAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalConfirmAssessorTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="col-12 text-end">
@@ -330,8 +296,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal"
-                    data-bs-target="#ModalConfirmAssessorSuccess" id="btn_success">Confirm
+                <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#ModalConfirmAssessorSuccess" id="btn_success">Confirm
                 </button>
 
                 <!-- <button type="button" class="btn bg-gradient-success" data-bs-dismiss="modal" id="btn_success">Confirm
@@ -342,8 +307,7 @@
 </div>
 
 <!-- Modal Confirm Create Group Assessor Success-->
-<div class="modal fade" id="ModalConfirmAssessorSuccess" tabindex="-1" role="dialog"
-    aria-labelledby="ModalConfirmAssessorSuccessTitle" aria-hidden="true">
+<div class="modal fade" id="ModalConfirmAssessorSuccess" tabindex="-1" role="dialog" aria-labelledby="ModalConfirmAssessorSuccessTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="col-12 text-end">
