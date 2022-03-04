@@ -1,8 +1,8 @@
 <!--
     * v_assessor_management
     * display for assessor management by add or delete information
-    * @input  -
-    * @output -
+    * @input  Group name, Level, Position to promote, Type evaluation
+    * @output Group assessor list
     * @author Thitima Popila
     * Create date 2565-01-25   
     * Update date 2565-02-01
@@ -103,10 +103,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                    for($i=0; $i<count($as_group); $i++)
-                                    {
-                                ?>
+                                    <?php
+                                        for($i=0; $i<count($as_group); $i++) {
+                                    ?>
                                     <tr>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
