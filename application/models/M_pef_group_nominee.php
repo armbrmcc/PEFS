@@ -1,4 +1,4 @@
-<<?php
+<?php
     /* 
     * M_pef_assessor
     * Model for 

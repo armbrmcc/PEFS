@@ -236,130 +236,61 @@ th {
                                         <td>[Fill score 1-5]</td>
                                         <td>(AxB)</td>
                                     </tr>
-                                    <tr>
-                                        <!--แสดง Item -->
-                                        <td style="text-align: center; width: 50px;">
-                                            Awareness of the issue<br>
-                                            ตระหนักในปัญหา
-                                        </td>
-                                        <!-- แสดง Disription    -->
-                                        <td>
-                                            Is aware of the issues of the business <br>
-                                            in their area of responsibility; understands <br>
-                                            ตระหนักในปัญหาของงานที่รับผิดชอบ เข้าใจสิ่งแวดล้อม <br>
-                                            หรือสภาพปัญหาของแผนกตนเอง
-                                        </td>
-                                        <!-- แสดง % Weight -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            15
-                                        </td>
-                                        <!-- แสดง point -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            <div class="form-group">
-                                            <label for="sel"></label>
-                                                <select name="form[]" id="form" required>
-                                                    <option value="0">score</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <!-- แสดง Score -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            0
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!--แสดง Item -->
-                                        <td style="text-align: center; width: 50px;">
-                                            Analytical ability<br>
-                                            ความสามารถเชิงวิเคราะห์
-                                        </td>
-                                        <!-- แสดง Disription    -->
-                                        <td>
-                                            Can logically analyze issues in order to solve them and extract <br>
-                                            the problems appropriately based on the analysis. <br>
-                                            สามารถวิเคราะห์ปัญหาได้อย่างมีเหตุผลเพื่อแก้ไขและขจัดปัญหาออกไป <br>
-                                            ได้อย่างเหมาะสมโดยใช้หลักการวิเคราะห์
-                                        </td>
-                                        <!-- แสดง % Weight -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            15
-                                        </td>
-                                        <!-- แสดง point -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            <div class="form-group">
-                                                <label for="sel"></label>
-                                                <select name="form[]" id="form" required>
-                                                    <option value="0">score</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <!-- แสดง Score -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            0
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!--แสดง Item -->
-                                        <td style="text-align: center; width: 50px;">
-                                            Problem solving ability<br>
-                                            ความสามารถในการแก้ปัญหา
-                                        </td>
-                                        <!-- แสดง Disription    -->
-                                        <td>
-                                            Figures out new solutions or mechanisms for solving <br>
-                                            the issues by combining existing facts with information. <br>
-                                            หาหนทางใหม่ๆ หรือกลวิธีในการแก้ไขปัญหา โดยการรวบรวมข้อเท็จจริง <br>
-                                            และข้อมูล
-                                        </td>
-                                        <!-- แสดง % Weight -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            15
-                                        </td>
-                                        <!-- แสดง point -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            <div class="form-group">
-                                                <label for="sel"></label>
-                                                <select name="form[]" id="form" required>
-                                                    <option value="0">score</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <!-- แสดง Score -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            0
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!-- แสดง total -->
-                                        <td colspan="2" align='right'><b>Total</b></td>
-                                        <td align='center'>100</td>
-                                        <!-- แสดง point รวม -->
-                                        <td align='center'>
-                                            0
-                                        </td align='center'>
-                                        <!-- แสดงเปอร์เซ็นคะแนน -->
-                                        <td align='center'>
-                                            0.00%
-                                        </td>
-                                    </tr>
+    
+                                            <tr>
+                                                <!--แสดง Item -->
+                                                <td style="text-align: center; width: 50px;">
+                                                    <b>
+                                                        <?php echo $arr_form[0]->itm_name; ?>
+                                                    </b>    
+                                                </td>
+                                                <!-- แสดง Disription    -->
+                                                <td>
+                                                    <?php $pos = strrpos($arr_form[0]->des_description_eng, ";"); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_form[0]->des_description_eng, 0, $pos + 1); ?>
+                                                    <!-- <?php echo $arr_form[0]->des_description_eng; ?>
+                                                    <?php echo $arr_form[0]->des_description_th; ?> -->
+                                                </td>
+                                                <!-- แสดง % Weight -->
+                                                <td style="vertical-align:middle;text-align: center;">
+                                                    <?php echo $arr_form[0]->des_weight; ?>
+                                                </td>
+                                                <!-- แสดง point -->
+                                                <td style="vertical-align:middle;text-align: center;">
+                                                    <div class="form-group">
+                                                    <label for="sel"></label>
+                                                        <select name="form[]" id="form" required>
+                                                            <option value="0">score</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <!-- แสดง Score -->
+                                                <td style="vertical-align:middle;text-align: center;">
+                                                    0
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <!-- แสดง total -->
+                                                <td colspan="2" align='right'><b>Total</b></td>
+                                                <td align='center'>100</td>
+                                                <!-- แสดง point รวม -->
+                                                <td align='center'>
+                                                    0
+                                                </td align='center'>
+                                                <!-- แสดงเปอร์เซ็นคะแนน -->
+                                                <td align='center'>
+                                                    0.00%
+                                                </td>
+                                            </tr>
+                                </tbody>
                             </table>
-                            <!-- End table evaluation form -->
-                            <br>
+                                <!-- End table evaluation form -->
+                                <br>
 
                             <!-- Comment -->
                             <div class="form-group">
@@ -393,4 +324,3 @@ th {
 </div>
 <!-- End class container -->
 <!-- End html -->
-

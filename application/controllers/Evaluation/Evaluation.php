@@ -55,9 +55,6 @@ class Evaluation extends MainController
         $this->load->model('M_pef_group_nominee', 'nominee');
         $data['arr_group'] = $this->pef-> get_group_evaluation($ass_id)->result();
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
-        // echo "<pre>";
-        //     print_r($data['arr_group']);
-        // echo "</pre>";
         $this->output('consent/v_evaluation_detail', $data);
     } //show_evaluation_detail
 
@@ -70,17 +67,16 @@ class Evaluation extends MainController
 	* @Create Date 2565-01-26
     * @Update Date 2565-03-04
     */
-    public function show_evaluation_form_round_1($group_id, $id_assessor, $id_nominee)
+    public function show_evaluation_form_round_1($group_id, $id_assessor, $id_nominee, $promote)
     {
         $this->load->model('M_pef_assessor', 'assessor');
         $this->load->model('M_pef_group_nominee', 'nominee');
+        $this->load->model('M_pef_format_form', 'form');
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
-        $data['obj_promote'] = $this->nominee-> get_promote_to($id_nominee)->result();
-        // echo "<pre>";
-        //     print_r($data['obj_nominee']);
-        // echo "</pre>";
+        $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
+        $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
         $this->output('consent/v_evaluation_form_round_1', $data);
     } //show_evaluation_detail
 

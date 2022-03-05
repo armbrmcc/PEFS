@@ -110,7 +110,7 @@
                                         </td>
                                         <!-- Action -->
                                         <td>
-                                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id;?>">
+                                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to;?>">
                                                     <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
                                                         <i class="far fa-file-alt text-white"></i>
                                                     </button>
