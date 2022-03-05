@@ -1,27 +1,63 @@
-<!--
+<<?php
     /* 
-    * M_pef_group_assessor
+    * M_pef_assessor
     * Model for 
-    * @author Phatchara Khongthandee and 
-    * @Create Date 2564-08-14  
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * @Create Date 2565-03-04
     */
--->
+?>
+
 <?php
 include_once("Da_pef_group_nominee.php");
 
 class M_pef_group_nominee extends Da_pef_group_nominee
 {
-    public function get_group_nominee_detail($group_id)
+    public function get_nominee_detail($group_id)
     {
         $sql = "SELECT *
             FROM pefs_database.pef_group_nominee AS groupno
             INNER JOIN pefs_database.pef_group AS gr
             ON groupno.grn_grp_id = gr.grp_id
+            INNER JOIN pefs_database.pef_group_assessor AS grass
+            ON gr.grp_id = grass.gro_grp_id
+            INNER JOIN pefs_database.pef_assessor AS ass
+            ON grass.gro_ase_id = ass.ase_id
             INNER JOIN dbmc.employee
             ON groupno.grn_emp_id = employee.Emp_ID
-            INNER JOIN dbmc.position 
-            ON position.Position_ID = employee.Position_ID 
+            INNER JOIN dbmc.position AS position
+            ON groupno.grn_promote_to = position.Position_ID 
         WHERE gr.grp_id = $group_id";
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่าข้อมูลรายละเอียดของ Nominee
+
+    public function get_nominee_by_id($id_nominee)
+    {
+        $sql = "SELECT *
+                    FROM pefs_database.pef_group_nominee AS groupno
+                    INNER JOIN dbmc.employee
+                    ON groupno.grn_emp_id = employee.Emp_ID 
+                    INNER JOIN dbmc.position 
+                    ON position.Position_ID = employee.Position_ID 
+                    INNER JOIN dbmc.sectioncode 
+                    ON sectioncode.Sectioncode = employee.Sectioncode_ID
+                    INNER JOIN dbmc.company
+                    ON employee.Company_ID = company.Company_ID
+                    INNER JOIN dbmc.sectioncode AS section
+                    ON section.Sectioncode = employee.Sectioncode_ID
+                WHERE Emp_ID = groupno.grn_emp_id && groupno.grn_id = $id_nominee";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function get_promote_to($id_nominee)
+    {
+        $sql = "SELECT *
+                    FROM pefs_database.pef_group_nominee AS groupno
+                    INNER JOIN dbmc.position AS position
+                    ON groupno.grn_promote_to = position.Position_ID 
+                WHERE groupno.grn_id = $id_nominee";
+
         $query = $this->db->query($sql);
         return $query;
     }

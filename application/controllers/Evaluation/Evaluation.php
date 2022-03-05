@@ -24,18 +24,18 @@ class Evaluation extends MainController
 	* show_evaluation_list
 	* display view evaluation list
 	* @input  -
-	* @output  Evaluation list
-	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
-	* @Create  Date 2565-01-25
+	* @output Evaluation list
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-01-25
+    * @Update Date 2565-03-04
     */
     public function show_evaluation_list()
     {
         $ass_id = '03695';
-        $this->load->model('M_pef_assessor', 'pef');
-        $data['grass_list'] = $this->pef->get_assessor_by_id($ass_id)->result();
-        $data['grass_detail'] = $this->pef->get_assessor_detail($ass_id)->result();
+        $this->load->model('M_pef_group', 'pef');
+        $data['arr_group'] = $this->pef-> get_group_evaluation($ass_id)->result();
         // echo "<pre>";
-        //     print_r($data['grass_list']);
+        //     print_r($data['arr_group']);
         // echo "</pre>";
         $this->output('consent/v_evaluation_list', $data);
     } //show_evaluation_list
@@ -47,18 +47,16 @@ class Evaluation extends MainController
 	* @output Evaluation detail
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-01-25
+    * @Update Date 2565-03-04
     */
-    public function show_evaluation_detail($group_id, $group_ass)
+    public function show_evaluation_detail($ass_id, $group_id)
     {
-        $ass_id = '03695';
-        $this->load->model('M_pef_assessor', 'pef');
-        $this->load->model('M_pef_group_assessor', 'pefs');
+        $this->load->model('M_pef_group', 'pef');
         $this->load->model('M_pef_group_nominee', 'nominee');
-        $data['groupass_detail'] = $this->pef->get_assessor_by_id($ass_id)->result();
-        $data['group_detail'] = $this->pefs->get_group_assessor($group_id, $group_ass)->result();
-        $data['arr_nominee'] = $this->nominee->get_group_nominee_detail($group_id)->result();
+        $data['arr_group'] = $this->pef-> get_group_evaluation($ass_id)->result();
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         // echo "<pre>";
-        //     print_r($data['nominee']);
+        //     print_r($data['arr_group']);
         // echo "</pre>";
         $this->output('consent/v_evaluation_detail', $data);
     } //show_evaluation_detail
@@ -70,10 +68,20 @@ class Evaluation extends MainController
 	* @output Evaluation form 1 round
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-01-26
+    * @Update Date 2565-03-04
     */
-    public function show_evaluation_form_round_1()
+    public function show_evaluation_form_round_1($group_id, $id_assessor, $id_nominee)
     {
-        $this->output('consent/v_evaluation_form_round_1');
+        $this->load->model('M_pef_assessor', 'assessor');
+        $this->load->model('M_pef_group_nominee', 'nominee');
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
+        $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
+        $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
+        $data['obj_promote'] = $this->nominee-> get_promote_to($id_nominee)->result();
+        // echo "<pre>";
+        //     print_r($data['obj_nominee']);
+        // echo "</pre>";
+        $this->output('consent/v_evaluation_form_round_1', $data);
     } //show_evaluation_detail
 
     /*

@@ -156,7 +156,7 @@ th {
                 </div>
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
-                    <h4>Siam DENSO Manufacturing Co., Ltd.</h4>
+                    <h4><?php echo $obj_nominee[0]->Company_name ?></h4>
                 </div>
             </div>
             <!-- icon file present nominee -->
@@ -173,10 +173,11 @@ th {
             <!-- ชื่อกรรมการ และวันประเมิน -->
             <div class="row">
                 <div class="col-sm-6">
-                    <h6>Assessor Name :&nbsp; Cherprang Areekul</h6>
+                    <h6>Assessor Name : <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6>
                 </div>
                 <div class="col-sm-6">
-                    <h6>Date : 16/01/2022</h6>
+                    <?php $newDate = date("d/m/Y", strtotime($arr_nominee[0]->grp_date)); ?>
+                    <h6>Date : <?php echo $newDate ?></h6>
                 </div>
             </div>
 
@@ -186,30 +187,31 @@ th {
                     <table class="table table-bordered table-sm">
                         <tr id="Manage">
                             <th colspan="5" id="gray">
-                                <center><b>Stretch Assignment Evaluation Form (Promote to T6) </b>
+                                <center><b>Stretch Assignment Evaluation Form (<?php echo $obj_promote[0]->Position_name?>) </b>
                         </tr>
                         <tbody>
                             <tr id="Manage">
                                 <!-- ชื่อ-นามสกุล Nominee -->
                                 <th width="50px" id="gray">Name - Surname</th>
                                 <td colspan="2">
-                                    Milin Dokthian
+                                    <?php echo $obj_nominee[0]->Empname_eng. ' ' . $obj_nominee[0]->Empsurname_eng?>  
                                 </td>
                                 <!-- ตำแหน่ง Nominee -->
                                 <th width="40px" id="gray">Position</th>
                                 <td>
-                                    Senior Staff
+                                    <?php echo $obj_nominee[0]->Position_name?>
                                 </td>
                             </tr>
-
                             <tr id="Manage">
                                 <!-- แผนก Promote to -->
                                 <th width="40px" id="gray">Promote to</th>
-                                <td colspan="2">Supervisor</td>
+                                <td colspan="2">
+                                    <?php echo $obj_promote[0]->Position_name?>
+                                </td>
                                 <!-- แผนก Nominee -->
                                 <th width="40px" id="gray">Department/Section</th>
                                 <td>
-                                    Accountant
+                                    <?php echo $obj_nominee[0]->Department?>
                                 </td>
                             </tr>
                         </tbody>

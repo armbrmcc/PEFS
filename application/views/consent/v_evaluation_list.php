@@ -89,8 +89,8 @@ width: 100%;
                     </thead>
                     <tbody>
                         <?php $s = 1; ?>
-                        <?php for ($i = 0; $i < count($grass_list); $i++) { ?>
-                            <?php if(date("Y-m-d") ==  $grass_detail[$i]->grp_date || $grass_detail[$i]->grp_date > date("Y-m-d")) {?>
+                        <?php for ($i = 0; $i < count($arr_group); $i++) { ?>
+                            <?php if(date("Y-m-d") ==  $arr_group[$i]->grp_date || $arr_group[$i]->grp_date > date("Y-m-d")) {?>
                                         <tr>
                                             <!-- # -->
                                             <td>
@@ -101,25 +101,20 @@ width: 100%;
                                             </td>
                                             <!-- Group Level -->
                                             <td>
-                                                <h6 class="text-xs text-secondary mb-0">T<?php echo $grass_list[$i]->asp_level?></h6>
+                                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->asp_level?></h6>
                                             </td>
                                             <!-- Group Name -->
                                             <td>
-                                                <h6 class="text-xs text-secondary mb-0"><?php echo $grass_list[$i]->asp_name?></h6>
+                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_group[$i]->asp_name?></h6>
                                             </td>
                                             <!-- Date -->
                                             <td>
-                                                <?php if($grass_detail[$i]->grd_round == 1){ ?>
-                                                    <?php $newDate = date("d/m/Y", strtotime($grass_detail[$i]->grp_date)); ?>
-                                                    <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$grass_detail[$i]->grd_round.' '?>:<?php echo ' '.$newDate ?></h6>
-                                                <?php }else{ ?>
-                                                    <?php $newDate = date("d/m/Y", strtotime($grass_detail[$i]->grp_date)); ?>
-                                                    <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$grass_detail[$i]->grd_round.' '?>:<?php echo ' '.$newDate ?></h6>
-                                                <?php } ?>
+                                                    <?php $newDate = date("d/m/Y", strtotime($arr_group[$i]->grp_date)); ?>
+                                                    <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$newDate ?></h6>
                                             </td>
                                             <!-- Action -->
                                             <td>
-                                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail/'.$grass_detail[$i]->ase_gro_id. '/'.$grass_detail[$i]->grp_id; ?>">
+                                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail/'.$arr_group[$i]->ase_emp_id. '/'.$arr_group[$i]->grp_id; ?>">
                                                     <button type="button" class="btn btn-xs button_size"
                                                         style="background-color: #596CFF;">
                                                         <i class="fas fa-search text-white"></i>

@@ -72,7 +72,7 @@
         </div>
         <!-- End cara header-->
             <div class="card-body">
-                <h3>Promote to T<?php echo $groupass_detail[0]->asp_level?></h3>
+                <h3>Promote to T<?php echo $arr_group[0]->asp_level?></h3>
                 <!-- Start Table Evaluation List -->
                 <div class="table-responsive">
                     <table class="table align-items-center mb-0" id="list_table">
@@ -87,7 +87,7 @@
                         </thead>
                         <tbody>
                         <?php $s = 1; ?>
-                        <?php for ($i = 0; $i < count($group_detail); $i++) { ?>
+                        <?php for ($i = 0; $i < count($arr_nominee); $i++) { ?>
                                     <tr>
                                         <td>
                                             <!-- # -->
@@ -96,22 +96,26 @@
                                                 <?php $s++;  ?>
                                             </h6> 
                                         </td>
+                                        <!-- Employee ID -->
                                         <td>
                                             <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->grn_emp_id?></h6>
                                         </td>
+                                        <!-- List of Nominee -->
                                         <td style="text-align: left;">
                                             <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->Empname_eng. ' ' . $arr_nominee[$i]->Empsurname_eng?></h6>
                                         </td>
+                                        <!-- Promote to -->
                                         <td>
                                             <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->Position_name?></h6>
                                         </td>
+                                        <!-- Action -->
                                         <td>
+                                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id;?>">
+                                                    <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
+                                                        <i class="far fa-file-alt text-white"></i>
+                                                    </button>
+                                                </a>
                                             
-                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1'; ?>">
-                                                <button type="button" class="btn btn-xs button_size" style="background-color: #6c757d;">
-                                                    <i class="far fa-file-alt text-white"></i>
-                                                </button>
-                                            </a>
                                         </td>
                                     </tr>
                             <?php } ?>
