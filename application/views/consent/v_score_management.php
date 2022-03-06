@@ -98,7 +98,7 @@
                                         <th>Group</th>
                                         <th>Group Name</th>
                                         <th>Promote</th>
-                                        <th>Type Evaluation </th>
+                                        <th>Date </th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -138,14 +138,14 @@
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                <?php echo "Type ".$as_group[$i]->grp_position_group?>
+                                                <?php echo "Round ".$as_group[$i]->grp_date?>
                                                 </h6>
                                                 <p class="text-xs text-secondary mb-0"><?php echo $as_group[$i]->grp_position_group.' Round evaluation'?></p>
                                             </div>
                                         </td>
                                         <td class="align-middle">
                                             <!-- Start button trigger modal edit -->
-                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/'.$as_group[$i]->gro_ase_id; ?>">
+                                            <a href="<?php echo site_url() . 'Score_management/Score_management/show_score_management_detail/'.$as_group[$i]->gro_ase_id; ?>">
                                                 <!-- ปุ่มดำเนินการแก้ไข -->
                                                 <button type="button"
                                                     class="btn btn-link text-warning text-gradient px-3 mb-0"

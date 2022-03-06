@@ -30,7 +30,9 @@ class Score_management extends MainController
     */
     public function show_score_management_list()
     {
-        $this->output('consent/v_score_management');
+        $this->load->model('M_pef_score_management', 'psm');
+        $data['as_group'] = $this->psm->get_score_management_list()->result();
+        $this->output('consent/v_score_management', $data);
     } //show_score_management_list
 
     public function show_score_management_detail()
