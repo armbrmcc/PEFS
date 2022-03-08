@@ -22,38 +22,38 @@
 <body class="g-sidenav-show  bg-gray-100">
     <!-- CSS -->
     <style>
-        #list_table td,
-        #list_table th {
-            padding: 12px;
-            text-align: center;
-        }
+    #list_table td,
+    #list_table th {
+        padding: 12px;
+        text-align: center;
+    }
 
-        #list_table tr:nth-child(even) {
-            background-color: #e9ecef;
-        }
+    #list_table tr:nth-child(even) {
+        background-color: #e9ecef;
+    }
 
-        #list_table tr:hover {
-            background-color: #adb5bd;
-        }
+    #list_table tr:hover {
+        background-color: #adb5bd;
+    }
 
-        #card_radius {
-            border-radius: 20px;
-            width: auto;
-            min-height: 300px;
-        }
+    #card_radius {
+        border-radius: 20px;
+        width: auto;
+        min-height: 300px;
+    }
 
-        #list_table {
-            width: 98%;
-            margin-top: 20px;
-            margin-left: 10px;
-        }
+    #list_table {
+        width: 98%;
+        margin-top: 20px;
+        margin-left: 10px;
+    }
 
-        .button_size {
-            /* width: 5px; */
-            height: 40px;
-            font-size: 12px;
-            text-align: center;
-        }
+    .button_size {
+        /* width: 5px; */
+        height: 40px;
+        font-size: 12px;
+        text-align: center;
+    }
     </style>
     <!-- End CSS -->
 
@@ -87,7 +87,7 @@
                             </div>
                         </nav>
                         <!-- End Navbar -->
-                    <!-- ปุ่มดำเนินการเพิ่ม  -->
+                        <!-- ปุ่มดำเนินการเพิ่ม  -->
 
                         <!-- Start content in table -->
                         <div class="card-body px-0 pt-0 pb-2">
@@ -138,14 +138,17 @@
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                <?php echo "Type ".$as_group[$i]->grp_position_group?>
+                                                    <?php echo "Type ".$as_group[$i]->grp_position_group?>
                                                 </h6>
-                                                <p class="text-xs text-secondary mb-0"><?php echo $as_group[$i]->grp_position_group.' Round evaluation'?></p>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <?php echo $as_group[$i]->grp_position_group.' Round evaluation'?>
+                                                </p>
                                             </div>
                                         </td>
                                         <td class="align-middle">
                                             <!-- Start button trigger modal edit -->
-                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/'.$as_group[$i]->gro_ase_id; ?>">
+                                            <a
+                                                href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/'.$as_group[$i]->gro_ase_id; ?>">
                                                 <!-- ปุ่มดำเนินการแก้ไข -->
                                                 <button type="button"
                                                     class="btn btn-link text-warning text-gradient px-3 mb-0"
@@ -155,6 +158,9 @@
                                             </a>
                                             <!-- End button trigger modal edit-->
 
+                                            <?php
+                                                if($as_group[$i]->asp_status == '-1'){
+                                            ?>
                                             <!-- Start button trigger modal delete -->
                                             <!-- ปุ่มดำเนินการลบ -->
                                             <button type="button"
@@ -163,11 +169,25 @@
                                                 <i class="far fa-trash-alt me-2"></i>Delete
                                             </button>
                                             <!-- End button trigger modal delete -->
+                                            <?php
+                                                }
+                                                else{
+                                             ?>
+                                            <!-- Start button trigger modal delete -->
+                                            <!-- ปุ่มดำเนินการลบ -->
+                                            <button type="button"
+                                                class="btn btn-link text-secondary text-gradient px-3 mb-0">
+                                                <i class="far fa-trash-alt me-2"></i>Delete
+                                            </button>
+                                            <!-- End button trigger modal delete -->
+                                            <?php
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
                                     <?php
                                         }
-                                    ?>   
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -179,8 +199,9 @@
         </div>
         <!-- End div row -->
     </div>
-     <!-- End Conten Assessor Management -->
+    <!-- End Conten Assessor Management -->
 </body>
+
 </html>
 
 <!-- Start modal add group assessor -->
@@ -240,7 +261,8 @@
             </div>
             <div class="modal-footer">
                 <!-- ปุ่มปิด modal -->
-                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
+                <a
+                    href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
                     <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
                 </a>
                 <!-- ปุ่มบันทึก -->
@@ -273,11 +295,12 @@
             </div>
             <div class="modal-footer">
                 <!-- ปุ่มยกเลิกการลบ -->
-                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
+                <a
+                    href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
                     <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
                 </a>
                 <!-- ปุ่มยืนยันการลบ -->
-                <a href="<?php echo site_url() . ''; ?>">
+                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/delete_group_assessor/'.$as_group[$i]->gro_grp_id; ?>">
                     <button type="button" class="btn bg-gradient-success">Confirm</button>
                 </a>
             </div>
@@ -287,11 +310,11 @@
 <!-- End modal delete group assessor -->
 
 <!-- JavaScript -->
-    <!-- Data Table -->
-    <script>
-        $(document).ready(function() {
-            $("#list_table").DataTable();
-        });
-    </script>
-    <!-- End Data Table -->
+<!-- Data Table -->
+<script>
+$(document).ready(function() {
+    $("#list_table").DataTable();
+});
+</script>
+<!-- End Data Table -->
 <!-- End  JavaScript -->

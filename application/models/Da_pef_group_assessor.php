@@ -18,4 +18,12 @@ class Da_pef_group_assessor extends pefs_model
         parent::__construct();
     }
 
+    public function delete()
+    {
+        $sql =
+            "DELETE FROM pefs_database.pef_group_assessor
+            WHERE gro_grp_id=?";
+        $this->db->query($sql, array($this->gro_grp_id));
+    }
+
 }

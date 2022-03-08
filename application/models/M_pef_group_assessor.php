@@ -24,7 +24,7 @@ class M_pef_group_assessor extends Da_pef_group_assessor
 
     /*
 	* get_group_assessor_all
-	* get data form pef_group_assessor, pef_group, pef_assessor_promote, pef_assessor_position
+	* get data form pef_group_assessor, pef_group, pef_assessor_promote, pef_section
 	* @input  -
 	* @output  all 
 	* @author  Thitima Popila
@@ -33,15 +33,31 @@ class M_pef_group_assessor extends Da_pef_group_assessor
     */
     public function get_group_assessor_all()
     {
-        $sql = "SELECT * FROM pefs_database.pef_group_assessor AS gss
+        // $sql = "SELECT * FROM pefs_database.pef_group_assessor AS gss
+        //             INNER JOIN pefs_database.pef_group AS gro
+        //             ON gss.gro_grp_id = gro.grp_id
+        //             INNER JOIN pefs_database.pef_assessor_promote AS promote
+        //             ON gss.gro_asp_id =  promote.asp_id
+        //             INNER JOIN pefs_database.pef_assessor_position AS position
+        //             ON promote.asp_id = position.gap_asp_id
+        //             INNER JOIN dbmc.position AS pos
+        //             ON position.gap_promote = pos.Position_ID";
+                
+        // $query = $this->db->query($sql);
+        // return $query;
+
+        $sql = "SELECT * FROM pefs_database.pef_group_assessor AS gas
+                    INNER JOIN pefs_database.pef_assessor_promote AS asp
+                    ON gas.gro_asp_id = asp.asp_id
+                    INNER JOIN pefs_database.pef_section AS section
+                    ON asp.asp_level =  section.sec_level
                     INNER JOIN pefs_database.pef_group AS gro
-                    ON gss.gro_grp_id = gro.grp_id
-                    INNER JOIN pefs_database.pef_assessor_promote AS promote
-                    ON gss.gro_asp_id =  promote.asp_id
+                    ON gas.gro_grp_id = gro.grp_id
                     INNER JOIN pefs_database.pef_assessor_position AS position
-                    ON promote.asp_id = position.gap_asp_id
+                    ON position.gap_asp_id = gas.gro_asp_id
                     INNER JOIN dbmc.position AS pos
-                    ON position.gap_promote = pos.Position_ID";
+                    ON position.gap_promote = pos.Position_ID
+                    GROUP BY position.gap_asp_id";
                 
         $query = $this->db->query($sql);
         return $query;

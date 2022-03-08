@@ -42,4 +42,13 @@ class Assessor_management extends MainController
         $data['arr_ass'] = $this->gass->get_assessor_list($id)->result();
         $this->output('consent/v_assessor_management_detail', $data);
     }
+
+    public function delete_group_assessor($id)
+    {
+        $this->load->model('Da_pef_group_assessor', 'dpef');
+        $this->dpef->gro_grp_id = $id;
+        $this->dpef->delete();
+        echo $id;
+        // redirect('Plant_management/Plant_list/index');
+    }
 }
