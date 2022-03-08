@@ -28,8 +28,8 @@ class Assessor_management extends MainController
     */
     public function show_assessor_management()
     {
-        $this->load->model('M_pef_group_assessor', 'pef');
-        $data['as_group'] = $this->pef->get_group_assessor_all()->result();
+        $this->load->model('M_pef_group_assessor', 'mpef');
+        $data['arr_group'] = $this->mpef->get_group_assessor_all()->result();
         // print_r($data);
         $this->output('consent/v_assessor_management', $data);
         
@@ -46,7 +46,7 @@ class Assessor_management extends MainController
     public function delete_group_assessor($id)
     {
         $this->load->model('Da_pef_group_assessor', 'dpef');
-        $this->dpef->gro_grp_id = $id;
+        $this->dpef->gro_id = $id;
         $this->dpef->delete();
         echo $id;
         // redirect('Plant_management/Plant_list/index');

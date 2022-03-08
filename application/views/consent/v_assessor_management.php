@@ -104,7 +104,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        for($i=0; $i<count($as_group); $i++) {
+                                        for($i=0; $i<count($arr_group); $i++) {
                                     ?>
                                     <tr>
                                         <td>
@@ -117,56 +117,56 @@
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo 'T'.$as_group[$i]->asp_level?>
+                                                    <?php echo 'T'.$arr_group[$i]->asp_level?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo $as_group[$i]->asp_name?>
+                                                    <?php echo $arr_group[$i]->asp_name?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo '1. '.$as_group[$i]->Position_name?>
+                                                    <?php echo '1. '.$arr_group[$i]->Position_name?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo "Type ".$as_group[$i]->grp_position_group?>
+                                                    <?php echo "Type ".$arr_group[$i]->grp_position_group?>
                                                 </h6>
                                                 <p class="text-xs text-secondary mb-0">
-                                                    <?php echo $as_group[$i]->grp_position_group.' Round evaluation'?>
+                                                    <?php echo $arr_group[$i]->grp_position_group.' Round evaluation'?>
                                                 </p>
                                             </div>
                                         </td>
                                         <td class="align-middle">
                                             <!-- Start button trigger modal edit -->
                                             <a
-                                                href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/'.$as_group[$i]->gro_ase_id; ?>">
+                                                href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/'.$arr_group[$i]->gro_ase_id; ?>">
                                                 <!-- ปุ่มดำเนินการแก้ไข -->
                                                 <button type="button"
-                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
+                                                    class="btn btn-warning"
                                                     data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit me-2"></i>Edit
+                                                    <i class="fas fa-edit"></i>
                                                 </button>
                                             </a>
                                             <!-- End button trigger modal edit-->
 
                                             <?php
-                                                if($as_group[$i]->asp_status == '-1'){
+                                                if($arr_group[$i]->asp_status == '-1'){
                                             ?>
                                             <!-- Start button trigger modal delete -->
                                             <!-- ปุ่มดำเนินการลบ -->
                                             <button type="button"
-                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                class="btn btn-danger"
                                                 data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
+                                                <i class="fa fa-trash"></i>
                                             </button>
                                             <!-- End button trigger modal delete -->
                                             <?php
@@ -176,8 +176,8 @@
                                             <!-- Start button trigger modal delete -->
                                             <!-- ปุ่มดำเนินการลบ -->
                                             <button type="button"
-                                                class="btn btn-link text-secondary text-gradient px-3 mb-0">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
+                                                class="btn btn-secondary ">
+                                                <i class="fa fa-trash"></i>
                                             </button>
                                             <!-- End button trigger modal delete -->
                                             <?php
@@ -261,12 +261,11 @@
             </div>
             <div class="modal-footer">
                 <!-- ปุ่มปิด modal -->
-                <a
-                    href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
+                <a href="">
                     <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
                 </a>
                 <!-- ปุ่มบันทึก -->
-                <a href="<?php echo site_url() . ''; ?>">
+                <a href="">
                     <button type="button" class="btn bg-gradient-success">Submit</button>
                 </a>
             </div>
@@ -295,12 +294,11 @@
             </div>
             <div class="modal-footer">
                 <!-- ปุ่มยกเลิกการลบ -->
-                <a
-                    href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
+                <a href="">
                     <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
                 </a>
                 <!-- ปุ่มยืนยันการลบ -->
-                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/delete_group_assessor/'.$as_group[$i]->gro_grp_id; ?>">
+                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/delete_group_assessor/'.$arr_group[$i]->gro_id; ?>">
                     <button type="button" class="btn bg-gradient-success">Confirm</button>
                 </a>
             </div>
