@@ -57,7 +57,7 @@ class Assessor_management extends MainController
         $this->load->model('Da_pef_group_assessor', 'dpef');
         $this->dpef->gro_id = $id;
         $this->dpef->delete();
-        echo $id;
-        // redirect('Plant_management/Plant_list/index');
+        // echo $id;
+        redirect('Assessor_management/Assessor_management/show_assessor_management');
     }
 }

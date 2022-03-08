@@ -150,9 +150,8 @@
                                             <a
                                                 href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/'.$arr_group[$i]->gro_ase_id; ?>">
                                                 <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button"
-                                                    class="btn btn-warning"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                    data-bs-target="#ModalDeleteAssessor">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                             </a>
@@ -163,9 +162,8 @@
                                             ?>
                                             <!-- Start button trigger modal delete -->
                                             <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-danger"
-                                                data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#ModalDeleteGroup<?php echo $i; ?>">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                             <!-- End button trigger modal delete -->
@@ -175,8 +173,7 @@
                                              ?>
                                             <!-- Start button trigger modal delete -->
                                             <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-secondary ">
+                                            <button type="button" class="btn btn-secondary ">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                             <!-- End button trigger modal delete -->
@@ -185,8 +182,46 @@
                                             ?>
                                         </td>
                                     </tr>
+                                    <!-- Start modal delete group assessor -->
+                                    <div class="modal fade" id="ModalDeleteGroup<?php echo $i; ?>" tabindex="-1"
+                                        role="dialog" aria-labelledby="ModalDeleteGroupTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="col-12 text-end">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="py-3 text-center">
+                                                        <div>
+                                                            <i class="fas fa-exclamation-triangle fa-8x"
+                                                                style="color:#FBD418"></i>
+                                                        </div>
+                                                        <h4 class="text-gradient text-danger mt-4">Confirm Delete Group?
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <!-- ปุ่มยกเลิกการลบ -->
+                                                    <a href="">
+                                                        <button type="button" class="btn bg-gradient-danger"
+                                                            data-bs-dismiss="modal">Cancel</button>
+                                                    </a>
+                                                    <!-- ปุ่มยืนยันการลบ -->
+                                                    <a
+                                                        href="<?php echo base_url() . 'Assessor_management/Assessor_management/delete_group_assessor/'.$arr_group[$i]->gro_id; ?>">
+                                                        <button type="button"
+                                                            class="btn bg-gradient-success">Confirm</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End modal delete group assessor -->
                                     <?php
-                                        }
+                                    }
                                     ?>
                                 </tbody>
                             </table>
@@ -274,38 +309,8 @@
 </div>
 <!-- End modal add group assessor -->
 
-<!-- Start modal delete group assessor -->
-<div class="modal fade" id="ModalDeleteGroup" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteGroupTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="col-12 text-end">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="py-3 text-center">
-                    <div>
-                        <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
-                    </div>
-                    <h4 class="text-gradient text-danger mt-4">Confirm Delete Group?</h4>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <!-- ปุ่มยกเลิกการลบ -->
-                <a href="">
-                    <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
-                </a>
-                <!-- ปุ่มยืนยันการลบ -->
-                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/delete_group_assessor/'.$arr_group[$i]->gro_id; ?>">
-                    <button type="button" class="btn bg-gradient-success">Confirm</button>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End modal delete group assessor -->
+
+
 
 <!-- JavaScript -->
 <!-- Data Table -->
