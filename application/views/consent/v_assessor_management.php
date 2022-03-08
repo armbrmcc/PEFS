@@ -199,7 +199,10 @@
                                                             <i class="fas fa-exclamation-triangle fa-8x"
                                                                 style="color:#FBD418"></i>
                                                         </div>
-                                                        <h4 class="text-gradient text-danger mt-4">Confirm Delete Group?
+                                                        <h4 class="text-gradient text-danger mt-4">
+                                                            Confirm Delete 
+                                                            <br>
+                                                            <?php echo "Assessor Group Name: ".$arr_group[$i]->asp_name.'?' ?>
                                                         </h4>
                                                     </div>
                                                 </div>
