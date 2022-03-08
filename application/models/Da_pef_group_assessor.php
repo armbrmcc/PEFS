@@ -18,6 +18,15 @@ class Da_pef_group_assessor extends pefs_model
         parent::__construct();
     }
 
+    /*
+	* delete
+	* delete group_assessor
+	* @input   gro_id
+	* @output  - 
+	* @author  Thitima Popila
+	* @Create  Date 2565-03-08
+    * @Update  Date 2565-03-08
+    */
     public function delete()
     {
         $sql =

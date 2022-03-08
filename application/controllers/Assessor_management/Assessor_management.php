@@ -43,6 +43,15 @@ class Assessor_management extends MainController
         $this->output('consent/v_assessor_management_detail', $data);
     }
 
+    /*
+	* delete_group_assesso
+	* delete group_assessor
+	* @input   id
+	* @output  All group assessor list 
+	* @author  Thitima Popila
+	* @Create  Date 2565-03-08
+    * @Update  Date 2565-03-08
+    */
     public function delete_group_assessor($id)
     {
         $this->load->model('Da_pef_group_assessor', 'dpef');
