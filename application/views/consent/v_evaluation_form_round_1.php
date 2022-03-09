@@ -3,7 +3,7 @@
     * v_evaluation_form_round_1
     * display for Evaluation Form 1 Round (แบบฟอร์มการประเมิน 1 รอบ)
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
-    * @input -
+    * @input  -
     * @output -
     * @Create date : 2565-01-26 
     * @Update date : 2565-01-27
@@ -14,11 +14,13 @@
 
 <!-- CSS -->
 <style>
-table {
+table 
+{
     width: 100%;
 }
 
-#card_radius {
+#card_radius 
+{
     margin-top: 15px;
     margin-bottom: 15px;
     border-radius: 20px;
@@ -96,7 +98,7 @@ th {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.all.min.js"></script>
-<script>
+<script type="text/javascript">
     /*
     * alart_evaluation
     * alert การยืนยันการประเมิน
@@ -131,7 +133,7 @@ th {
                     confirmButtonText: 'OK',
                 }).then((result) => {
                     window.location.href =
-                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>";
+                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>";
                 })
             } else if (
                 /* Read more about handling dismissals below */
@@ -226,6 +228,8 @@ th {
             $("#point_list_" + i).val(h * w);
         }
     }
+
+    
 </script>
 <!-- End Javascript -->
 
@@ -270,10 +274,10 @@ th {
                 </div>
             </div>
 
-            <!-- Start data form evaluation -->
+            <!-- Start data Nominee form evaluation -->
             <div class="table-responsive">
                 <!-- Start form evaluation -->
-                <form action="" method="post" enctype="multipart/form-data" name="evaluation">
+                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post" enctype="multipart/form-data" name="evaluation">
                     <table class="table table-bordered table-sm">
                         <tr id="Manage">
                             <th colspan="5" id="gray">
@@ -306,7 +310,7 @@ th {
                             </tr>
                         </tbody>
                     </table>
-                    <!-- End table data form evaluation -->
+                    <!-- End table data Nominee -->
                     <br>
 
                     <!-- Start evaluation form -->
@@ -315,7 +319,7 @@ th {
                         <table class="table table-bordered table-sm">
                             <tbody>
                                 <tr id="center_th">
-                                    <td rowspan="2" width="300px" style="vertical-align:middle;text-align: center;">ITems</td>
+                                    <td rowspan="2" width="300px" id="width_col" style="vertical-align:middle;text-align: center;">ITems</td>
                                     <td rowspan="2" width="800px" id="width_col" style="vertical-align:middle;text-align: center;">Points for observation</td>
                                     <td style="vertical-align:middle;text-align: center;">% weight</td>
                                     <td style="vertical-align:middle;text-align: center;">Rating(B)</td>
@@ -352,7 +356,7 @@ th {
                                         <tr>
                                             <!--แสดง Item -->
                                             <?php if ($loop_dis === 1) { ?>
-                                                <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;">
+                                                <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
                                                     <?php echo $arr_form[$count_discription]->itm_name; ?>
                                                 </td>
                                                 <!-- แสดง Disription -->
@@ -389,6 +393,7 @@ th {
                                                 <?php $count_discription++;
                                                 $loop_dis++;
                                     } ?>
+                                        <!-- <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"> -->
                                         </tr>  
                                 <?php } ?>
                                     <tr>
@@ -428,6 +433,11 @@ th {
                         </div>
                         <br>
 
+                        <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
+                        <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id">
+                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id">
+                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
+                        
                         <!-- Confirm -->
                         <div class="col-6 text-end">
                             <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"

@@ -63,6 +63,147 @@ th {
     font-size: 16px;
 }
 </style>
+<!-- End CSS -->
+
+<!-- Javascript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script>
+    /*
+    * alart_evaluation
+    * alert การยืนยันการประเมิน
+    * @input -
+    * @output alert ยืนยันการประเมิน
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * @Create Date 2565-03-07
+    */
+    function alart_evaluation() {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Evaluation Confirm?',
+            text: '',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    confirmButtonColor: '#3CBF34',
+                    confirmButtonText: 'OK',
+                }).then((result) => {
+                    window.location.href =
+                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>";
+                })
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancel',
+                    '',
+                    'error'
+                )
+            }
+        })
+    }
+
+    /*
+    * calculete
+    * คำนวณคะแนนต่างๆ
+    * @input  -
+    * @output -
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * @Create Date 2565-03-07
+    */
+    $(document).ready(function() {
+        /*
+        * total_calculete
+        * คืนค่าคะแนนรวม
+        * @input  form
+        * @output -
+        * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+        * @Create Date 2565-03-07
+        */
+        $("select").change(function() {
+            var toplem = 0;
+            var i = 0;
+            $("select[name='form[]']").each(function() {
+
+                var w = document.getElementById("weight_list_" + i).value;
+                var s = w * parseInt($(this).val());
+                toplem = toplem + s;
+                i = i + 1;
+            })
+
+            $("input[name=total]").val(toplem);
+        });
+
+        /*
+        * total_calculate_weight
+        * คืนค่าคะแนนรวมแบบเปอเซ็น
+        * @input  form
+        * @output -
+        * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+        * @Create Date 2565-03-07
+        */
+        $("select").change(function() {
+            var toplem = 0;
+            var i = 0;
+            var weight = $("#weight-per").val();
+            $("select[name='form[]']").each(function() {
+                var w = document.getElementById("weight_list_" + i).value;
+                var s = w * parseInt($(this).val());
+                toplem = toplem + s;
+                i = i + 1;
+
+            })
+
+            toplem = Math.round(toplem / weight * 100);
+            var a = '%'
+            $("input[name=total_weight]").val(toplem + a);
+
+        });
+
+
+        //คืนค่าคะแนนรวมแบบรายการ
+        calculate_weight();
+
+    })
+
+    /*
+    * calculate_weight
+    * คืนค่าคะแนนรวมแบบรายการ
+    * @input  form, count_index
+    * @output -
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * @Create Date 2565-03-07
+    */
+    function calculate_weight() {
+    var count = document.getElementById("count_index").value;
+        for (i = 0; i < count; i++) {
+            var h = document.getElementById("form_" + i).value;
+            var w = document.getElementById("weight_list_" + i).value;
+            $("#show_weight_" + i).html(h * w);
+            $("#point_list_" + i).val(h * w);
+        }
+    }
+</script>
+<!-- End Javascript -->
 
 <!-- Evaluation form -->
 <div class="container">
@@ -79,7 +220,7 @@ th {
                 </div>
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
-                    <h4>Siam DENSO Manufacturing Co., Ltd.</h4>
+                    <h4><?php echo $obj_nominee[0]->Company_name ?></h4>
                 </div>
             </div>
             <!-- icon file present nominee -->
@@ -96,60 +237,66 @@ th {
             <!-- ชื่อกรรมการ และวันประเมิน -->
             <div class="row">
                 <div class="col-sm-6">
-                    <h5>Assessor Name :&nbsp; Cherprang Areekul</h5>
+                    <h6>Assessor Name : <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6>
                 </div>
                 <div class="col-sm-6">
-                    <h5>Date : 16/01/2022</h5>
+                    <?php $newDate = date("d/m/Y", strtotime($arr_nominee[0]->grp_date)); ?>
+                    <h6>Date : <?php echo $newDate ?></h6>
                 </div>
             </div>
+
             <div class="table-responsive">
+                <!-- Start form evaluation -->
                 <form action="" method="post" enctype="multipart/form-data" name="evaluation">
+                    <!-- Start table data Nominee -->
                     <table class="table table-bordered table-sm">
                         <tr id="Manage">
                             <th colspan="5" id="gray">
-                                <center><b>Stretch Assignment Evaluation Form (Promote to T2) </b>
+                                <center><b>Stretch Assignment Evaluation Form (<?php echo $obj_promote[0]->Position_name?>) </b>
                         </tr>
                         <tbody>
                             <tr id="Manage">
                                 <!-- ชื่อ-นามสกุล Nominee -->
                                 <th width="50px" id="gray">Name - Surname</th>
                                 <td colspan="2">
-                                    Milin Dokthian
+                                    <?php echo $obj_nominee[0]->Empname_eng. ' ' . $obj_nominee[0]->Empsurname_eng?> 
                                 </td>
                                 <!-- ตำแหน่ง Nominee -->
                                 <th width="40px" id="gray">Position</th>
                                 <td>
-                                    Senior Staff
+                                    <?php echo $obj_nominee[0]->Position_name?>
                                 </td>
                             </tr>
 
                             <tr id="Manage">
                                 <!-- แผนก Promote to -->
                                 <th width="40px" id="gray">Promote to</th>
-                                <td colspan="2">Supervisor</td>
+                                <td colspan="2">
+                                    <?php echo $obj_promote[0]->Position_name?>
+                                </td>
                                 <!-- แผนก Nominee -->
                                 <th width="40px" id="gray">Department/Section</th>
                                 <td>
-                                    Accountant
+                                    <?php echo $obj_nominee[0]->Department?>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <!-- End table data Nominee -->
                     <br>
 
-
+                    <!-- Start table Evaluation form -->
                     <div class="table-responsive">
-                        <form action="" method="post" enctype="multipart/form-data" name="evaluation">
                             <table class="table table-bordered table-sm">
                                 <tbody>
                                     <tr id="center_th">
-                                        <td rowspan="2" colspan="1">ITems</td>
-                                        <td rowspan="2" colspan="2">Points for observation</td>
-                                        <td colspan="4">Rating [Fill score 1-5]</td>
+                                        <td rowspan="2" width="300px" id="width_col" style="vertical-align:middle;text-align: center;">ITems</td>
+                                        <td rowspan="2" width="800px" id="width_col" style="vertical-align:middle;text-align: center;">Points for observation</td>
+                                        <td colspan="4" style="vertical-align:middle;text-align: center;">Rating [Fill score 1-5]</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" align='center'>1st round</td>
-                                        <td colspan="2" align='center'>Final round</td>
+                                        <td colspan="2" style="vertical-align:middle;text-align: center;">1st round</td>
+                                        <td colspan="2" style="vertical-align:middle;text-align: center;">Final round</td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: center; width: 50px;">
@@ -174,11 +321,11 @@ th {
                                         </td>
                                     </tr>
                                     <td rowspan="2">
-                                        5 ： Exceed expected level for Manager level
-                                        <br>4 ： Absolutely satisfies expected level for Manager level
+                                        5 ： Exceed expected level for Next level
+                                        <br>4 ： Absolutely satisfies expected level for Next level
                                         <br> 3 ： Meet expected level for Manager level
-                                        <br>2 ： Partially lower that expected level for Manager level
-                                        <br>1 ： Do Not satisfy expected level for Manager level
+                                        <br>2 ： Partially lower that expected level for Next level
+                                        <br>1 ： Do Not satisfy expected level for Next level
                                     </td>
                                     <td>Total</td>
                                     </tr>
@@ -208,36 +355,13 @@ th {
                             <button type="button" class="btn btn-success float-right" data-toggle="modal"
                                 data-target="#Modal_confirm">Confirm</button>
                     </div>
+                    <!-- End table Evaluation form -->
+                </form>
+                <!-- End form evaluation -->
             </div>
         </div>
+        <!-- End card body -->
     </div>
-
-    <!-- Modal ยืนยันการประเมิน -->
-    <!-- <div class="modal fade" data-backdrop="static" id="Modal_confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header" id="img">
-                    <!-- icon -->
-    <!-- <img src=<?php echo base_url() . "argon/assets/img/brand/danger.png" ?> width="150" height="150">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" align="center">
-                    <div class="modal-title" id="ModalLabel">
-                        <h1><b>Evaluation Confirm</b></h1>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-lg float-right" data-dismiss="modal">Cancel</button>
-
-                    <!-- Modal Confirm Evaluation -->
-    <!-- <button type="button" class="btn btn-success btn-lg float-right" id="btn_success" data-toggle="modal" data-target="#successModal">
-                        Confirm
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </div> -->
-    <!-- End Modal Confirm Evaluation -->
+    <!-- End card -->
+</div>
+<!-- End Evaluation form -->

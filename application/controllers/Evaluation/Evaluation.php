@@ -93,4 +93,41 @@ class Evaluation extends MainController
         $this->output('consent/v_evaluation_form_round_2');
     } //show_evaluation_detail
 
+    function insert_evaluation_form()
+    {
+        // echo "<pre>";
+        //     print_r($_POST);
+        // echo "</pre>";
+        $date = date("Y-m-d");
+        $this->load->model('Da_pef_performance_form', 'per');
+        $this->per->per_q_and_a = $this->input->post('QnA');
+        $this->per->per_comment = $this->input->post('comment');
+        $this->per->per_date = $date;
+        $this->per->per_ase_id = $this->input->post('ase_id');
+        $this->per->per_emp_id = $this->input->post('emp_id');
+        // $this->load->model('M_pef_evaluation', 'pef');
+
+        // $this->per->ptf_point = $this->input->post('form');
+        // $this->per->ptf_date = $date; 
+        // $this->per->ptf_ase_id = $this->input->post('ase_id');
+        // $this->per->ptf_for_id = $this->input->post('for_id[]');
+        // $this->per->ptf_emp_id = $this->input->post('nor_id');
+        $this->per->insert_performance_form();
+        // $max = $this->pef->get_point()->row();
+        // $this->per->ptf_per_id = $max->max_id;
+        // // print_r( $this->per->ptf_per_id);
+        // $this->per->insert_point();
+        // $this->per->grn_emp_id = $emp;
+        // $status = $this->input->post('grn_status');
+        
+        //     $this->per->grn_status = 0;
+
+        // $get_group['data']=$this->pef->get_group_nominee($emp)->result();
+        // $group= $get_group['data'][0]->grp_id;
+        // $this->per->update_status_used($group);
+        // $this->per->update_status();
+
+        redirect('Evaluation/Evaluation/show_evaluation_list');
+    }
+
 }//End class Evaluation
