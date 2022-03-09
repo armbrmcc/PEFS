@@ -29,7 +29,7 @@ class Da_pef_performance_form extends pefs_model
     */
     function insert_performance_form()
     {
-        $sql = "INSERT INTO {$this->pefs_database}.pef_performance_form (
+        $sql = "INSERT INTO pefs_database.pef_performance_form (
             per_q_and_a, 
             per_comment, 
             per_date, 

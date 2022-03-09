@@ -108,6 +108,29 @@ th {
     * @Create Date 2565-03-07
     */
     function alart_evaluation() {
+        var score = [];
+        var comment = $('#comment').val();
+        var qa = $('#QnA').val();
+        var check_error;
+        var count_score = $('#count_score').val();
+        var ase_id = $('#ase_id').val();
+        var emp_id = $('#emp_id').val();
+        for(i=0;i<count_score;i++){
+            score[i] = $('#form_'+i).val();
+        }
+        var count_form = $('#count_form').val();
+        var form = []
+        for(i=0;i<count_form;i++){
+            form[i] = $('#formid_'+i).val();
+        }
+    
+
+        for(i=0;i<count_score;i++){
+            if(score[i] == 0){
+                check_error = 1;
+            }
+        }
+
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',
@@ -116,36 +139,64 @@ th {
             buttonsStyling: false
         })
 
-        swalWithBootstrapButtons.fire({
-            title: 'Evaluation Confirm?',
-            text: '',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Confirm',
-            cancelButtonText: 'Cancel',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    confirmButtonColor: '#3CBF34',
-                    confirmButtonText: 'OK',
-                }).then((result) => {
-                    window.location.href =
-                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>";
-                })
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                    'Cancel',
-                    '',
-                    'error'
-                )
-            }
-        })
+        if(comment == ''){
+            check_error = 1;
+        }
+        if(qa == ''){
+            check_error = 1;
+        }
+        if(check_error == 1){
+            swalWithBootstrapButtons.fire({
+                title: 'no value',
+                text: '',
+                icon: 'warning',
+                confirmButtonText: 'OK',
+            });
+        }else{
+
+            swalWithBootstrapButtons.fire({
+                title: 'Evaluation Confirm?',
+                text: '',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Confirm',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'post',
+                        url: "<?php echo site_url().'Evaluation/Evaluation/insert_evaluation_form'; ?>",
+                        data: {
+                            'QnA': qa,
+                            'comment': comment,
+                            'point': score,
+                            'ase_id': ase_id,
+                            'emp_id': emp_id,
+                            'form': form,
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            /* Start Alert บันทึกข้อมูลสำเร็จ */
+                            if (data['message'] == 'Success') {
+                                swalWithBootstrapButtons.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    confirmButtonColor: '#3CBF34',
+                                    confirmButtonText: 'OK',
+                                }).then((result) => {
+                                    window.location.href = "<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>";
+                                })
+                            } else {
+                            
+                            }
+                            
+                        }
+                    });
+
+                }
+            })
+        }
     }
 
     /*
@@ -342,7 +393,9 @@ th {
                                     }
                                     $weight =  $weight + $arr_form[$i]->des_weight;
                                 } //นับหัวข้อหลัก
-
+                                ?>
+                                <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
+                                <?php 
                                 for ($i = 0; $i < $count_itm; $i++) { //ลูปตามหัวข้อหลัก?>
                                     <?php $count_rowspan = 0;
                                     for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
@@ -373,6 +426,7 @@ th {
                                                 <?php echo $arr_form[$count_discription]->des_weight; ?>
                                             </td>
                                             <!-- แสดง point -->
+                                            
                                             <td style="vertical-align:middle;text-align: center;">
                                                 <div class="form-group" >
                                                     <label for="sel"></label>
@@ -386,6 +440,7 @@ th {
                                                         </select>
                                                 </div>
                                             </td>
+                                            <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"  id="formid_<?php echo $i ?>">
                                             <!-- แสดง Score -->
                                             <td colspan="2" id="show_weight_<?php echo $count_discription; ?>" style="vertical-align:middle; text-align: center;"></td>
                                                 <input type="text" name="point_list[]" id="point_list_<?php echo  $count_discription; ?>" value="0" hidden>
@@ -393,9 +448,10 @@ th {
                                                 <?php $count_discription++;
                                                 $loop_dis++;
                                     } ?>
-                                        <!-- <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"> -->
+                                        
                                         </tr>  
                                 <?php } ?>
+                                <input type="hidden" id="count_score" value="<?php echo $count_discription ?>" >
                                     <tr>
                                         <!-- แสดง total -->
                                         <input type="text" id="count_index" value=<?php echo $count_discription; ?> hidden>
@@ -434,8 +490,8 @@ th {
                         <br>
 
                         <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
-                        <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id">
-                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id">
+                        <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id" id="ase_id">
+                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id" id="emp_id">
                         <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
                         
                         <!-- Confirm -->

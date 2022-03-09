@@ -95,39 +95,40 @@ class Evaluation extends MainController
 
     function insert_evaluation_form()
     {
-        // echo "<pre>";
-        //     print_r($_POST);
-        // echo "</pre>";
+        echo "<pre>";
+        print_r($this->input->post());
+        echo "</pre>";
         $date = date("Y-m-d");
         $this->load->model('Da_pef_performance_form', 'per');
         $this->per->per_q_and_a = $this->input->post('QnA');
         $this->per->per_comment = $this->input->post('comment');
         $this->per->per_date = $date;
-        $this->per->per_ase_id = $this->input->post('ase_id');
+        $this->per->per_ase_id = (int) $this->input->post('ase_id');
         $this->per->per_emp_id = $this->input->post('emp_id');
-        // $this->load->model('M_pef_evaluation', 'pef');
-
-        // $this->per->ptf_point = $this->input->post('form');
-        // $this->per->ptf_date = $date; 
-        // $this->per->ptf_ase_id = $this->input->post('ase_id');
-        // $this->per->ptf_for_id = $this->input->post('for_id[]');
-        // $this->per->ptf_emp_id = $this->input->post('nor_id');
         $this->per->insert_performance_form();
-        // $max = $this->pef->get_point()->row();
-        // $this->per->ptf_per_id = $max->max_id;
-        // // print_r( $this->per->ptf_per_id);
-        // $this->per->insert_point();
-        // $this->per->grn_emp_id = $emp;
-        // $status = $this->input->post('grn_status');
-        
-        //     $this->per->grn_status = 0;
+        // // $this->load->model('M_pef_evaluation', 'pef');
+        $this->load->model('Da_pef_point_form', 'point');
+        $this->point->ptf_point = $this->input->post('point');
+        $this->point->ptf_date = $date; 
+        $this->point->ptf_for_id = $this->input->post('form');
+        $this->load->model('M_pef_point_form', 'pef');
+        $max = $this->pef->get_point()->row();
+        $this->point->ptf_per_id = $max->max_id;
+        // print_r( $this->point->ptf_per_id);
+        $this->point->ptf_round = 1;
+        $this->point->insert_point();
+
+        $this->load->model('Da_pef_group', 'group');
+        $this->per->grn_status = 1;
 
         // $get_group['data']=$this->pef->get_group_nominee($emp)->result();
         // $group= $get_group['data'][0]->grp_id;
         // $this->per->update_status_used($group);
         // $this->per->update_status();
+        $data['message'] = 'Success';
 
-        redirect('Evaluation/Evaluation/show_evaluation_list');
+        echo json_encode($data);
+        // redirect('Evaluation/Evaluation/show_evaluation_list');
     }
 
 }//End class Evaluation
