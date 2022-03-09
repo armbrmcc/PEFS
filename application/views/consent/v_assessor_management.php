@@ -6,7 +6,8 @@
     * @author Thitima Popila
     * Create date 2565-01-25   
     * Update date 2565-02-01
-    * Update date 2565-03-04
+    * Update date 2565-03-08
+    * Update date 2565-03-09
 -->
 
 <!DOCTYPE html>
@@ -109,40 +110,46 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">
+                                                <h6 class="text-xs mb-0">
                                                     <?php echo $i+1?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">
+                                                <h6 class="text-xs mb-0">
                                                     <?php echo 'T'.$arr_group[$i]->asp_level?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">
+                                                <h6 class="text-xs mb-0">
                                                     <?php echo $arr_group[$i]->asp_name?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo '1. '.$arr_group[$i]->Position_name?>
+                                                <h6 class="text-xs mb-0">
+                                                    <?php 
+                                                        for($j=0; $j<count($arr_position); $j++){
+                                                            echo $j+1;
+                                                            echo '. '.$arr_position[$j]->Position_name;
+                                                            echo "<br/>";
+                                                        }
+                                                    ?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">
+                                                <h6 class="text-xs mb-0">
                                                     <?php echo "Type ".$arr_group[$i]->grp_position_group?>
                                                 </h6>
-                                                <p class="text-xs text-secondary mb-0">
+                                                <h6 class="text-xs mb-0">
                                                     <?php echo $arr_group[$i]->grp_position_group.' Round evaluation'?>
-                                                </p>
+                                                </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle">

@@ -25,11 +25,15 @@ class Assessor_management extends MainController
 	* @output  Assessor group list
 	* @author  Thitima Popila
 	* @Create  Date 2565-01-25
+    * @Update  Date 2565-03-09
     */
     public function show_assessor_management()
     {
         $this->load->model('M_pef_group_assessor', 'mpef');
+        $this->load->model('M_pef_assessor_position', 'map');
         $data['arr_group'] = $this->mpef->get_group_assessor_all()->result();
+        $data['arr_position'] = $this->map->get_position_all()->result();
+        // print_r($data['arr_position']);
         // print_r($data);
         $this->output('consent/v_assessor_management', $data);
         
