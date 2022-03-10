@@ -32,6 +32,45 @@ class Score_management extends MainController
     {
         $this->load->model('M_pef_score_management', 'psm');
         $data['as_group'] = $this->psm->get_score_management_list()->result();
+        $data['as_group_date'] = $this->psm->get_score_management_list_date()->result();
+     
+    for ($i=0; $i < count($data["as_group"]) ; $i++) { 
+        $a=array();
+        for ($j=0; $j < count($data["as_group_date"]) ; $j++) {
+        //   $date_sql =  $data['as_group'][$i]
+        // var_dump($data["as_group_date"][$j]->grp_date);
+        // echo "<pre/>";
+       
+    
+     
+            if($data["as_group_date"][$j]->grp_id == $data["as_group"][$i]->gap_id){
+                // var_dump($data['as_group_date'][$j] );
+           
+                array_push($a,$data['as_group_date'][$j]);
+            
+                $data_all[$i] = [
+                    'data' =>$data['as_group'][$i],
+                    'date' =>  $a 
+                ];
+            }
+        }
+    }
+    
+    $data['data_all'] = $data_all;
+
+//  echo "<pre>";
+ 
+//  var_dump($data["data_all"]);
+//  echo "</pre>";
+//  echo "<br/>";
+//  echo "<pre>";
+ 
+//  var_dump($data_all);
+//  echo "</pre>";
+//  echo "<br/>";
+// var_dump($data["as_group"][0]);
+// var_export($data);
+
         $this->output('consent/v_score_management', $data);
     } //show_score_management_list
 

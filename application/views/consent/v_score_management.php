@@ -104,7 +104,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        for($i=0; $i<count($as_group); $i++) {
+                                        for($i=0; $i<count($data_all); $i++) {
                                     ?>
                                     <tr>
                                         <td>
@@ -117,52 +117,44 @@
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo 'T'.$as_group[$i]->asp_level?>
+                                                    <?php echo 'T'.$data_all[$i]["data"]->asp_level?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo $as_group[$i]->asp_name?>
+                                                    <?php echo $data_all[$i]["data"]->asp_name?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo '1. '.$as_group[$i]->Position_name?>
+                                                    <?php echo '1. '.$data_all[$i]["data"]->Position_name?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
+                                                <?php $cot = 1 ;?>
+                                                <?php for ($j=0; $j < count($data_all[$i]["date"]); $j++) { ?>
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                <?php echo "Round ".$as_group[$i]->grp_date?>
+                                                <?php echo "Round ".$cot++." ".date("d/m/Y", strtotime($data_all[$i]["date"][$j]->grp_date));?>
                                                 </h6>
-                                                <p class="text-xs text-secondary mb-0"><?php echo $as_group[$i]->grp_position_group.' Round evaluation'?></p>
+                                                <?php } ?>
+                                                
                                             </div>
                                         </td>
                                         <td class="align-middle">
                                             <!-- Start button trigger modal edit -->
                                             <a href="<?php echo site_url() . 'Score_management/Score_management/show_score_management_detail/'.$as_group[$i]->gro_ase_id; ?>">
                                                 <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button"
-                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit me-2"></i>Edit
+                                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
+                                                <i class="fas fa-search text-white"></i>
                                                 </button>
                                             </a>
                                             <!-- End button trigger modal edit-->
-
-                                            <!-- Start button trigger modal delete -->
-                                            <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
-                                            </button>
-                                            <!-- End button trigger modal delete -->
                                         </td>
                                     </tr>
                                     <?php

@@ -22,7 +22,15 @@ class M_pef_score_management extends Da_pef_score_management
                     INNER JOIN pefs_database.pef_assessor_position AS position
                     ON promote.asp_id = position.gap_asp_id
                     INNER JOIN dbmc.position AS pos
-                    ON position.gap_promote = pos.Position_ID";
+                    ON position.gap_promote = pos.Position_ID
+                    GROUP by promote.asp_level";
+                
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
+    public function get_score_management_list_date()
+    {
+        $sql = "SELECT grp_date,grp_id FROM pefs_database.pef_group";
                 
         $query = $this->db->query($sql);
         return $query;
