@@ -2,8 +2,8 @@
     /* 
     * M_pef_format_form
     * Model for 
-    * @author Phatchara Khongthandee and 
-    * @Create Date 2564-08-14  
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
+    * @Create Date 2565-03-04  
     */
 ?>
 
@@ -12,6 +12,14 @@ include_once("Da_pef_format_form.php");
 
 class M_pef_format_form extends Da_pef_format_form
 {
+    /*
+    * get_evaluation_form
+	* get form evaluation by position
+	* @input  -
+	* @output form evaluation
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak 
+	* @Create Date 2565-03-04
+	*/
     public function get_evaluation_form($promote){
         $sql = "SELECT *
                 FROM  pefs_database.pef_format_form AS form

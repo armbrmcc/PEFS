@@ -1,6 +1,6 @@
 <?php
     /* 
-    * M_pef_assessor
+    * M_pef_group
     * Model for 
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @Create Date 2565-03-04

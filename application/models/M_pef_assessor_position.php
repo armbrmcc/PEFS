@@ -12,7 +12,7 @@ include_once("Da_pef_group_assessor.php");
 
 class M_pef_assessor_position extends Da_pef_group_assessor
 {
-     /*
+    /*
 	* get_position_all
 	* get position to promote list
 	* @input  -

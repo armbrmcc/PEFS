@@ -12,6 +12,14 @@ include_once("Da_pef_group_assessor.php");
 
 class M_pef_group_assessor extends Da_pef_group_assessor
 {
+    /*
+	* get_group_assessor
+	* get 
+	* @input  -
+	* @output -
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-03-03
+    */
     public function get_group_assessor($group_id, $group_ass)
     {
         $sql = "SELECT * FROM pefs_database.pef_group_assessor AS grass

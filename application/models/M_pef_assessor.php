@@ -3,7 +3,7 @@
     * M_pef_assessor
     * Model for 
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
-    * @Create Date 2565-03-04
+    * @Create Date 2565-03-03
     */
 ?>
 
@@ -18,6 +18,14 @@ class M_pef_assessor extends Da_pef_assessor
         parent::__construct();
     }
 
+    /*
+	* get_assessor_by_id
+	* get 
+	* @input  $id_assessor
+	* @output -
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-03-03
+    */
     public function get_assessor_by_id($id_assessor)
     {
         $sql = "SELECT * FROM pefs_database.pef_assessor AS ass
@@ -28,6 +36,14 @@ class M_pef_assessor extends Da_pef_assessor
         return $query;
     } //คืนค่าข้อมูลของกรรมการ
 
+    /*
+	* get_assessor_detail
+	* get 
+	* @input  $ass_id
+	* @output -
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-03-03
+    */
     public function get_assessor_detail($ass_id)
     {
         $sql = "SELECT * FROM pefs_database.pef_assessor AS ass

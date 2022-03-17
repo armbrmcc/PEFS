@@ -2,8 +2,8 @@
     /*
     * Da_pef_evaluation
     * add evaluation form to database 
-    * @Author Phatchara Khongthandee and Pontakon Mujit 
-    * @Create Date 2564-08-16
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
+    * @Create Date 2565-03-09
     */
 ?>
 
@@ -23,9 +23,9 @@ class Da_pef_point_form extends pefs_model
     * เพิ่มข้อมูลลงใน database ตาราง pef_point_form
     * @input  ptf_point, ptf_date, ptf_row, ptf_ase_id, ptf_for_id, ptf_emp_id, ptf_per_id
     * @output -
-    * @Author Phatchara Khongthandee and Pontakon Mujit 
-    * @Create Date 2564-08-18
-    * @Update Date 2564-08-19
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
+    * @Create Date 2565-03-09
+    * @Update Date 2565-03-10
     */
     function insert_point()
     {

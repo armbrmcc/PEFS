@@ -2,7 +2,7 @@
     /* 
     * M_pef_group_assessor
     * Model for 
-    * @author Phatchara Khongthandee and 
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
     * @Create Date 2564-08-14  
     */
 ?>
@@ -15,12 +15,11 @@ class M_pef_point_form extends Da_pef_point_form
 
 /*
 	* get_point
-	* คืนค่าคะแนนของฟอร์ม
-	* @input   position
-	* @output  ข้อมูลคะแนนของฟอร์ม
-	* @author  Phatchara Khongthandee and Pontakon Mujit 
-	* @Create  Date 2564-08-18 
-	* @Update  Date 2564-08-19
+	* get point form evaluation
+	* @input  -
+	* @output point form
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak 
+	* @Create Date 2565-03-10 
 	*/
     function get_point()
     {
