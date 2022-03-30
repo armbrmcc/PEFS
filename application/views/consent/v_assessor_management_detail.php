@@ -17,6 +17,10 @@
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
 
 </head>
 
@@ -186,6 +190,37 @@
                                                 <i class="far fa-trash-alt me-2"></i>Delete</button>
                                         </td>
                                     </tr>
+                                    <!-- Modal Add Assessor-->
+<div class="modal fade" id="ModalAddAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalAddAssessorTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalAddAssessorLabel">Add Assessor</h5>&nbsp;
+                <i class="fas fa-user-plus fa-1x"></i>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_assessor'; ?>" method="post" enctype="multipart/form-data">
+                    <input class="form-control" type="text" id="ase_year" name="ase_year" value="<?php echo $arr_ass[$i]->ase_year ?>" hidden>
+                    <div class="mb-3">
+                        <label for="focusedinput" class="col-form-label">Employee ID</label>
+                        <input type="text" class="form-control" name="ase_emp_id" id="ase_emp_id_modal" placeholder="Employee ID.." onkeyup="get_Emp()" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="focusedinput" class="col-form-label">Name</label>
+                        <input type="text" class="form-control" id="showname_modal" disabled name="assessor_name">
+                    </div>
+                    <input class="form-control" type="text" id="group_id" name="group_id" value="<?php echo $arr_ass[$i]->ase_gro_id ?>" hidden>
+
+                    <button type="submit" class="btn btn-success float-right">Submit</button>
+                    <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
                                 <?php
                                 }
                                 ?>
@@ -213,36 +248,7 @@
 </html>
 
 
-<!-- Modal Add Assessor-->
-<div class="modal fade" id="ModalAddAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalAddAssessorTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ModalAddAssessorLabel">Add Assessor</h5>&nbsp;
-                <i class="fas fa-user-plus fa-1x"></i>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Enter ID Assessor</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Name</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn bg-gradient-success">Submit</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <!-- Modal Delete Assessor-->
@@ -332,3 +338,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    function get_Emp() {
+        ase_emp_id = document.getElementById('ase_emp_id_modal').value;
+        var empname = "";
+        console.log(ase_emp_id)
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>Assessor_Management/Assessor_Management/search_by_employee_id",
+            data: {
+                "ase_emp_id": ase_emp_id
+            },
+            dataType: "JSON",
+            success: function(data, status) {
+                console.log(data);
+                if (data.length == 0) {
+                    document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
+                } else {
+                    empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
+                    document.getElementById("showname_modal").value = empname;
+                    console.log(999)
+                    console.log(empname)
+                }
+            }
+        });
+    }
+</script>

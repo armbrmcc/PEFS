@@ -64,4 +64,50 @@ class Assessor_management extends MainController
         // echo $id;
         redirect('Assessor_management/Assessor_management/show_assessor_management');
     }
+
+
+        /*
+	* search_by_employee_id
+	* search employee detail by ase_emp_id
+	* @input ase_emp_id
+	* @output employee detail
+	* @author Apinya Phadungkit
+	* @Create Date 2566-02-30
+	*/
+    function search_by_employee_id()
+    {
+
+        $ase_emp_id = $this->input->post('ase_emp_id');
+        $this->load->model('M_pef_assessor', 'emp');
+        $this->emp->Emp_ID = $ase_emp_id;
+        $data = $this->emp->get_name_emp()->result();
+
+        echo json_encode($data);
+    }
+
+
+        /*
+	* add_assessor
+	* add_assessor data into model
+	* @input Emp_ID,plant_name,plant_No,plant_ID 
+	* @output -
+	* @author ApinyaPhadungkit
+	* @Create Date 2565-03-30
+	*/
+    function add_assessor()
+    {
+        
+        $this->load->model('Da_pef_assessor', 'dass');
+        $this->dass->ase_year = $this->input->post('ase_year');
+        $this->dass->ase_emp_id = $this->input->post('ase_emp_id');
+        $this->dass->ase_gro_id = $this->input->post('group_id');
+
+        // print_r($this->input->post('ase_year'));
+        // print_r($this->input->post('ase_emp_id'));
+        // print_r($this->input->post('group_id'));
+        $this->dass->insert();
+        
+        
+    }
+
 }

@@ -1,5 +1,5 @@
 <?php
-    /* 
+/* 
     * M_pef_assessor
     * Model for 
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
@@ -79,4 +79,22 @@ class M_pef_assessor extends Da_pef_assessor
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลรายละเอียดผลการประเมินของกรรมการ
+
+    /*
+* get_name_emp
+* get name
+* @input  -
+* @output - 
+* @author Apinya Phadungkit
+* @Create Date 2565-03-30
+*/
+    public function get_name_emp()
+    {
+        $sql =
+            "SELECT *
+    FROM dbmc.employee
+    WHERE Emp_ID = ?";
+        $query = $this->db->query($sql, array($this->Emp_ID));
+        return $query;
+    }
 }
