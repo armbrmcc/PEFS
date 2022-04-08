@@ -14,7 +14,7 @@
             <div class="navbar-inner">
                 <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
                     <?php $id = $_SESSION['Usrole'];
-                    if ($id == 1) { ?>
+                    if ($id == 2) { ?>
 
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -151,7 +151,7 @@
                             </li>
                         </ul>
 
-                    <?php } else if ($id == 2) { ?>
+                    <?php } else if ($id == 1) { ?>
                         <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
 
                             <ul class="navbar-nav">
