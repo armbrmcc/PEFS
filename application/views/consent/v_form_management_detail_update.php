@@ -55,7 +55,7 @@ table,  td{
 
  
 
-
+ 
 <!-- set data -->
 <?php  for($i=0;$i < count($arr_des) ;$i++){ ?>
 
@@ -63,10 +63,6 @@ table,  td{
     <input type="hidden" name="des_eng<?php echo $i?>" id="des_eng<?php echo $arr_des[$i]->des_item_id?>" value='<?php echo $arr_des[$i]->des_description_eng ?>'  >
    
 <?php }?>
-
-<!-- //hidden -->
-
-
 <?php for($i=0;$i < count($arr_item) ;$i++){  //ลูปตามหัวข้อหลัก
                                     ?>
 
@@ -82,16 +78,12 @@ table,  td{
                                         <?php
                                     }
                                     ?>
-
-
-
-
-
+ 
 
 
 
 <!-- start Form -->
-<form  action="<?php echo site_url() ?>Form_Management/Form_Management/form_management_insert" method="post" enctype="multipart/form-data" name="event" >
+<form  action="<?php echo site_url() ?>Form_Management/Form_Management/form_management_update" method="post" enctype="multipart/form-data" name="event" >
 
 
 
@@ -114,29 +106,30 @@ table,  td{
                     </tr>
                 </thead>
                 <tbody id="tbody">
-
+<?php for($loop_form=0;$loop_form < count($arr_form_num) ;$loop_form++){  //ลูปตามจำนวนหัวข้อใน arr_form ?>      
+                    <tr>  
                         <td >
-                            <p>1</p>
+                            <p><?php echo $loop_form+1  ;?></p>
                         </td>
-                        <?php //echo count($arr_item) ?>
+                       
             
                         <td class="text-center">
                         <!-- เลือกหัวข้อ -->
-                            <select name="select_item0" id="select_item0" onchange="show_selectvalue(this)" >
+                            <select name="select_item<?php echo $loop_form  ;?>" id="select_item<?php echo $loop_form  ;?>"  value="<?php echo $arr_form[$loop_form]->for_item_id  ;?>" onchange="show_selectvalue(this)" >
                             <option  value="0">please selected</option>
                             <?php for($i=0;$i < count($arr_item) ;$i++){ ?>
-                                <option value="<?php echo $arr_item[$i]->itm_id ;?>"><?php echo $arr_item[$i]->itm_name; ?></option>
+                                <option value="<?php echo $arr_item[$i]->itm_id ;?>" <?php if($arr_item[$i]->itm_id==$arr_form[$loop_form]->for_item_id){echo ' selected="selected"';}?> ><?php echo $arr_item[$i]->itm_name; ?></option>
                             <?php }?>
                             </select>
+                             
                         </td>
-
-                        <td style='text-align: left;' id="discrip0">
-                            <!-- แสดงรายละเอียด -->
-                            
+                       
+                        <td style='text-align: left;' id="discrip<?php echo $loop_form  ;?>">
+                           
                         </td>
                         
                         <td>
-                            <input type="text" name="weight0" id="weight0" value=0 size='1'>
+                            <input type="text" name="weight<?php echo $loop_form  ;?>" id="weight<?php echo $loop_form  ;?>" value=0 size='1'>
                         </td>
 
                         <!-- column ดำเนินการ -->
@@ -146,10 +139,14 @@ table,  td{
                         </td>
                     </tr>
 
+                    <?php }?>
+
+                   
+
                 </tbody>
             </table>
-            <!-- Confirm --><div class="col-12 text-end" >
-             
+            <!-- Confirm -->
+            <div class="col-12 text-end" > 
             <button type="submit" class="btn btn-success float-right" data-toggle="modal"
                                     data-target="#Modal_confirm">Submit</button>
                                     </a>
@@ -159,72 +156,67 @@ table,  td{
 </div>
 
 <!-- เก็บว่ามีกี่หัวข้อ -->
-<input type="hidden" name="allitem" id="allitem" value=1 size='1'>
- 
+<input type="hidden" name="allitem" id="allitem" value=<?php echo count($arr_form_num) ?> size='1'>
+
+ <input type="hidden" name="form_insert_num" id="form_insert_num" value='<?php echo count($arr_form_num) ?>' size='1'>
 <input type="hidden" name="pos_id"  value='<?php echo $pos_id  ?>'  >
 </form >
 <script>
 
      $(document).ready(function(){
-        $("#p"+0+"").hide();
-        $("input[id='weight"+0+"']").hide();
 
-        // $("#p").hide();
-        // $("input[name='weight[]']").hide();
+        // insert data desciption
+        var loop =  document.getElementById("form_insert_num").value ;
+        console.log(loop);
+        for(i=0;i<loop;i++){
+            show_selectvalue_insert("select_item"+i);
+        }
 
+        var rowIdx = document.getElementById("form_insert_num").value ;
+        var i=document.getElementById("form_insert_num").value;
+        $('#addBtn').on('click', function () {
+        // Adding a row inside the tbody.
 
-  //====================
-  var rowIdx = 1;
-  var i=1;
-    $('#addBtn').on('click', function () {
-  // Adding a row inside the tbody.
+        $('#tbody').append(`<tr id="R${++rowIdx}">
+                                <th scope="col">#</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Points for observation</th>
+                                <th scope="col">weight</th>
+                                <th scope="col"> Action</th>
+                             </tr>
+                             
+                            <tbody id="tbody">
 
-  $('#tbody').append(`<tr id="R${++rowIdx}">
-                    <th scope="col">#</th>
-                    <th scope="col">Item</th>
-                    <th scope="col">Points for observation</th>
-                    <th scope="col">weight</th>
-                    <th scope="col"> Action</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
+                            <td >
+                                <p>${rowIdx}</p>    
+                            </td>
+                            <td class="text-center">
+                                <select name="select_item${i}" id="select_item${i}" onchange="show_selectvalue(this)">
+                                    <option  value="0">please selected</option>
+                                    <?php for($i=0;$i < count($arr_item) ;$i++){ ?>
+                                        <option value="<?php echo $arr_item[$i]->itm_id ;?>"><?php echo $arr_item[$i]->itm_name; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </td>
+                            <td style='text-align: left;' id="discrip${i}">
 
-            <td >
-        <p>${rowIdx}</p>    
-        </td>
+                            </td>
+                            <td>
+                                <input type="text" name="weight${i}" id="weight${i}"  value=0 size='1'>
+                            </td>
+                            <!-- column ดำเนินการ -->
+                            <td style='text-align: center;'>
+                                <button class="btn btn-danger remove"
+                                type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            </td>
+                                <!-- ปุ่มดำเนินการ -->
+                            </td>
+                            </tr>`);
 
-
- 
-
-                    <td class="text-center">
-                    <select name="select_item${i}" id="select_item${i}" onchange="show_selectvalue(this)">
-                    <option  value="0">please selected</option>
-                    <?php for($i=0;$i < count($arr_item) ;$i++){ ?>
-        <option value="<?php echo $arr_item[$i]->itm_id ;?>"><?php echo $arr_item[$i]->itm_name; ?></option>
-        <?php } ?>
-    </select>
-
-                    </td>
-                    <td style='text-align: left;' id="discrip${i}">
- 
-                    
-                    </td>
-                    <td>
-                    <input type="text" name="weight${i}" id="weight${i}"  value=0 size='1'>
-                    </td>
-                    <!-- column ดำเนินการ -->
-                    <td style='text-align: center;'>
-                    <button class="btn btn-danger remove"
-                type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
-            </td>
-                        <!-- ปุ่มดำเนินการ -->
-                        </td>
-                </tr>`);
-
-                $("#p"+i+"").hide();
-                 $("input[id='weight"+i+"']").hide();
-                 i++;
-                 document.getElementById("allitem").value = rowIdx;
+                        $("#p"+i+"").hide();
+                        $("input[id='weight"+i+"']").hide();
+                        i++;
+                        document.getElementById("allitem").value = rowIdx;
 
     });
 
@@ -257,7 +249,55 @@ table,  td{
 
 
 
+function show_selectvalue_insert (id){
+                //var id=select.id;    //รับ id ของ select มา
+                var num = id.substr(11);  //ตัดค่าเอาเลข
+                
+                var mylist = document.getElementById(id);  //รับ select
+                var item = mylist.options[mylist.selectedIndex].value; //รับผล select
+                if(item == "0"){
+                    $("#p_th"+num+"").hide();
+                    $("#p_eng"+num+"").hide();
+                    $("input[id='weight"+num+"']").hide();
+                }else{ 
+                    var name_th = "des_th"+ item; //รับตั้งเพื่อเอาค่า
+                    var name_eng = "des_eng"+ item; //รับตั้งเพื่อเอาค่า
+                    var des_th =  document.getElementById(name_th).value; // เอาค่า
+                    var des_eng =  document.getElementById(name_eng).value; // เอาค่า
 
+                    delete_descript (num); //ลบ des อันเก่าทิ้ง
+                    create_descript (num,0); //เพิ่ม des อันใหม่ เอาจริงๆ ตรงนี้ทำไม่ถูก แต่ขี้เกียจแก้ละ
+                    
+                    document.getElementById("des"+num).value = item;
+                    
+                    $("input[id='weight"+num+"']").show();
+                    
+                    var data_num = "data_num"+ item; //รับตั้งเพื่อเอาค่า
+                    var mynum =  document.getElementById(data_num).value;
+                    document.getElementById("p_th"+num).innerHTML = des_th;
+                    document.getElementById("p_th"+num).innerHTML += "<br>"+des_eng;
+                    var engname =  document.getElementById(name_eng).name;
+                    var namenum =  engname.substr(7);
+                    
+                    if(mynum>1){
+                        for(i=1;i<mynum;i++){   
+                            console.log(namenum);
+                            justnum = parseInt(namenum);
+                            justnum = justnum+i;
+                            console.log(justnum);
+                            name_th = "des_th"+ justnum; //รับตั้งเพื่อเอาค่า
+                            name_eng = "des_eng"+ justnum; //รับตั้งเพื่อเอาค่า
+                            console.log(name_th);
+                            console.log(name_eng);
+                            des_th =  document.getElementsByName(name_th); // เอาค่า
+                            des_eng =  document.getElementsByName(name_eng); // เอาค่า
+                           
+                             document.getElementById("p_th"+num).innerHTML += "<hr>"+des_th[0].value;
+                             document.getElementById("p_th"+num).innerHTML += "<br>"+des_eng[0].value;
+                        }   
+                    } 
+                }
+}
 
 function show_selectvalue (select){
                 var id=select.id;    //รับ id ของ select มา
@@ -347,6 +387,7 @@ function delete_descript (num){
     $("#des"+num).remove();
  
 }  
+
 
 // for(i=0;i<=2;i++){
 //                         des_th=des_th+"<br>"+des_eng;

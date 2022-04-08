@@ -1,19 +1,16 @@
 <!--
     /*
-    * v_form_management_position
-    * display Management form position
-    * @author Natthanit
-    * input
-    * output
+    * v_evaluation_list
+    * display Evaluation list
+    * @input -
+    * @output -
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
     * @Create date : 2565-01-25
-
+    * @Update date : 2565-03-12
     */
 -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
-
+<!-- CSS -->
 <style>
 #list_table td,
 #list_table th {
@@ -51,166 +48,104 @@
     font-size: 12px;
     text-align: center;
 }
+
+.btn {
+    margin-bottom: 0rem;
+}
+
 </style>
+<!-- End CSS -->
 
-<body class="g-sidenav-show  bg-gray-100">
+<!-- JavaScript -->
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+</head>
 
-  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+<!-- Data Table -->
+<script>
+$(document).ready(function() {
+    $("#list_table").DataTable();
+});
+</script>
+<!-- End JavaScript -->
 
-    <!-- Start conten assessor management -->
-    <div class="container-fluid py-4">
-    <div class="card-header">
-      <!-- Title -->
-      <h2>Form Management (จัดการแบบฟอร์ม)</h2>
-      </div>
-        <div class="card">
-            <!-- Navbar -->
-            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-              <div class="container-fluid py-1 px-3">
-                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                  </div>
-                </div>
-              </div>
-            </nav>
-            <!-- End Navbar -->
-
-        <!-- Select Year -->
-        <div>
-            <label for="year" style="position: absolute; right: 0;">Select Year:
-                <select id="year" name="year" >
-                    <option >2021</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
+<!-- set data -->
+    <input type="text" name="num_pos"  id="num_pos" value='<?php echo  count($pos); ?>'  >
+<!-- End  set data -->
+<div class="container-fluid py-4">
+    <div class="card" id="card_radius">
+        <div class="card-header">
+            <h2>Form Management (จัดการแบบฟอร์ม)</h2>
+            
+            <div class="col-12 text-end">year :
+                <select name="pos_year"id="year_select" onchange="set_selectvalue()">
+                    <?php 
+                        for($i = date('Y') ; $i > date('Y')-5; $i--){
+                            echo "<option value=$i>$i</option>";
+                        }
+                    ?>
                 </select>
-            </label>
+            </div>
         </div>
-        <br>
-
-          <!-- ช่องดำเนินการค้นหา -->
-          <!-- Navbar -->
-          <!-- <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
-            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-              <div class="container-fluid py-1 px-3">
-                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <div class="input-group">
-                      <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                      <input type="text" class="form-control" placeholder="Search here...">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </nav> -->
-          <!-- End Navbar -->
-
-            <div class="card-body px-0 pt-0 pb-2">
-            <!-- table-responsive -->
-            <!-- <div class="table-responsive"> -->
+        <!-- End cara header-->
+        <div class="card-body">
+            <!-- Start Table Evaluation List -->
+            <div class="table-responsive">
                 <table class="table align-items-center" id="list_table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Prosition</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="text-xs text-secondary mb-0">1</h6>
-                            </div>
-                        </td>
-                        <td class="align-middle text-center">
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="text-xs text-secondary mb-0">General Manager</h6>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_detail'; ?>">
-                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #F6A118;">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="text-xs text-secondary mb-0">2</h6>
-                            </div>
-                        </td>
-                        <td class="align-middle text-center">
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="text-xs text-secondary mb-0">Assistant General Manager</h6>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_detail'; ?>">
-                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #F6A118;">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                </button>
-                            </a>
-                        </td>
+                    <thead>
+                        <tr>
+                            <th>#</th> 
+                            <th>Level</th>
+                            <th>Action</th>
                         </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="text-xs text-secondary mb-0">3</h6>
-                            </div>
-                        </td>
-                        <td class="align-middle text-center">
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="text-xs text-secondary mb-0">Manager</h6>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_detail'; ?>">
-                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #F6A118;">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="text-xs text-secondary mb-0">4</h6>
-                            </div>
-                        </td>
-                        <td class="align-middle text-center">
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="text-xs text-secondary mb-0">Assistant Manager</h6>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="<?php echo site_url() . 'Form_Management/Form_Management/form_management_detail'; ?>">
-                                <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #F6A118;">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-            </tbody>
-            <!-- End tbody -->
-        </table>
-        <!-- End table -->
+                    </thead>
+                    <tbody> 
+                    <?php  for($i=0;$i < count($pos) ;$i++){ ?>
+                                        <tr>
+                                            <!-- # -->
+                                            <td>
+                                                <?php  echo $i+1 ;?>
+                                            </td>
+                                            <!--  pos -->
+                                            <td>
+                                                <?php  echo $pos[$i]->Position_name ;?>
+                                            </td>
+                                           
+                                            <!-- Action -->
+                                            <td>
+                                            <form  action="<?php echo site_url() ?>Form_Management/Form_Management/form_management_detail" method="post" enctype="multipart/form-data" name="form">
+                                            <input type="hidden" name="pos_year"  id="year<?php echo $i; ?>" value='<?php echo date('Y'); ?>'  >
+                                            <input type="hidden" name="position" id="position" value='<?php  echo $pos[$i]->Position_ID ;?>'  >
+                                            <button type="submit" class="btn btn-primary btn-sm button_size" style="background-color: #F6A118;">
+                                                     <i class="fa fa-pencil-square-o"></i>
+                                            </button>
+                                            </form>
+                                            </td>
+                                        </tr>
+                                    <?php }?>
+                    </tbody>
+                </table>
             </div>
-        <!-- End div table-responsive -->
-            </div>
+            <!-- End Table Evaluation List-->
+        </div>
+        <!-- End card body-->
     </div>
-    <!-- End card -->
-    </div>
-    <!-- End div container-fluid -->
-    <!-- End conten form management -->
-    <script>
-        $(document).ready(function() {
-            $("#list_table").DataTable();
-        });
-    </script>
+    <!-- End card-->
+</div>
+<!-- End class container -->
+
+<script>
+function set_selectvalue (){
+    var year_select = document.getElementById("year_select");
+    
+    var year_value =  year_select.options[year_select.selectedIndex].value
+     for(var i=0;i<document.getElementById("num_pos").value;i++){
+    
+        document.getElementById("year"+i).value = year_value;
+    }
+
+}
+</script>
