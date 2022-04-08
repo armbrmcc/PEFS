@@ -31,5 +31,24 @@ class M_pef_format_form extends Da_pef_format_form
         $query = $this->db->query($sql);
         return $query;
     }
-
+    
+    public function get_form($promote){
+        $sql = "SELECT for_pos_id
+                FROM  pefs_database.pef_format_form AS form
+                INNER JOIN pefs_database.pef_item_form AS item
+                ON form.for_item_id = item.itm_id
+                INNER JOIN pefs_database.pef_description_form AS desform
+                ON item.itm_id = desform.des_item_id
+                WHERE form.for_pos_id = '$promote'";
+        $query = $this->db->query($sql);
+        
+        return $query;
+    }
+    public function get_form_by_id($promote){
+        $sql = "SELECT *
+                FROM  pefs_database.pef_format_form AS form
+                WHERE form.for_pos_id = '$promote'";
+    $query = $this->db->query($sql);              
+    return $query;
+                }
 }
