@@ -97,13 +97,7 @@ date_default_timezone_set("Asia/Bangkok");
                                 <div class="col">
                                     <label for="year" style="font-size:20px;">Year:
                                         <select id="year" name="year">
-                                            <option>2021</option>
-                                            <option value="2017">2017</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2021">2021</option>
-                                            <option value="2022">2022</option>
+
                                         </select>
                                     </label>
                                 </div>
@@ -277,8 +271,34 @@ date_default_timezone_set("Asia/Bangkok");
 
     <script>
     $(document).ready(function() {
-        // $("#nominee_table").DataTable();
-        // $("#assessor_table").DataTable();
+        const d = new Date();
+        let years = d.getFullYear();
+        console.log('option')
+        years = years - 3
+        // var x = document.getElementById("year");
+        // var option = document.createElement("option");
+        for (i = 0; i < 7; i++) {
+            if (years == d.getFullYear()) {
+                var x = document.getElementById("year");
+                var option = document.createElement("option");
+                option.text = years;
+                option.value = years;
+                option.selected = true;
+                years++
+                x.add(option);
+                console.log(i)
+            } else {
+                var x = document.getElementById("year");
+                var option = document.createElement("option");
+                option.text = years;
+                option.value = years;
+                years++
+                x.add(option);
+                console.log(i)
+            }
+
+        }
+
     });
     </script>
     <script>

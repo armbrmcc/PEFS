@@ -41,7 +41,7 @@ class Get_nominee extends MainController
     {
 
         $Emp_id = $this->input->post('Emp_id');
-        $this->load->model('M_employee', 'emp');
+        $this->load->model('M_pef_employee', 'emp');
         $this->emp->Emp_ID = $Emp_id;
         $data = $this->emp->get_name_emp()->result();
         echo json_encode($data);
@@ -57,7 +57,7 @@ class Get_nominee extends MainController
     function get_position_by_sec()
     {
         $pos = $this->input->post('pos');
-        $this->load->model('M_employee', 'emp');
+        $this->load->model('M_pef_employee', 'emp');
         $this->emp->sec_id = $pos;
         $data = $this->emp->get_position()->result();
         echo json_encode($data);
@@ -92,7 +92,7 @@ class Get_nominee extends MainController
     function get_position()
     {
         $position_level_id = $this->input->post('position_level_id');
-        $this->load->model('M_employee', 'emp');
+        $this->load->model('M_pef_employee', 'emp');
         $this->emp->position_level_id = $position_level_id;
         $data = $this->emp->get_position()->result();
         // echo $data['assessor'];

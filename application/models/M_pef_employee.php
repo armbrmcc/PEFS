@@ -7,10 +7,10 @@
 */
 defined('BASEPATH') or exit('No direct script access allowed');
 
-include_once("Da_employee.php");
+include_once("Da_pef_employee.php");
 
 
-class M_employee extends Da_employee
+class M_pef_employee extends Da_pef_employee
 { //class M_ttp_login
 
     public function __construct()
