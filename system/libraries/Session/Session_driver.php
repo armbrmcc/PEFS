@@ -184,4 +184,33 @@ abstract class CI_Session_driver implements SessionHandlerInterface {
 
 		return TRUE;
 	}
+	#[\ReturnTypeWillChange]
+	public function open($save_path, $name)
+	{
+	}
+
+	#[\ReturnTypeWillChange]
+	public function read($session_id)
+	{
+	}
+
+	#[\ReturnTypeWillChange]
+	public function write($session_id, $session_data)
+	{
+	}
+
+	#[\ReturnTypeWillChange]
+	public function close()
+	{
+	}
+
+	#[\ReturnTypeWillChange]
+	public function destroy($session_id)
+	{
+	}
+
+	#[\ReturnTypeWillChange]
+	public function gc($maxlifetime)
+	{
+	}
 }
