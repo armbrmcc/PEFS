@@ -79,21 +79,43 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $s = 1; ?>
+                        <?php for ($i = 0; $i < count($grass_list); $i++) { ?>
+                        <?php if (date("Y-m-d") ==  $grass_detail[$i]->grp_date || $grass_detail[$i]->grp_date > date("Y-m-d")) { ?>
                         <tr>
+                            <!-- # -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">1</h6>
+                                <h6 class="text-xs text-secondary mb-0">
+                                    <?php echo $s ?>
+                                    <?php $s++;  ?>
+                                </h6>
                             </td>
+                            <!-- Group Level -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0"> T6</h6>
+                                <h6 class="text-xs text-secondary mb-0">T<?php echo $grass_list[$i]->asp_level ?></h6>
                             </td>
+                            <!-- Group Name -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">SoftEn</h6>
+                                <h6 class="text-xs text-secondary mb-0"><?php echo $grass_list[$i]->asp_name ?></h6>
                             </td>
+                            <!-- Date -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">Round 1 : 25/01/2022</h6>
+                                <?php if ($grass_detail[$i]->grd_round == 1) { ?>
+                                <?php $newDate = date("d/m/Y", strtotime($grass_detail[$i]->grp_date)); ?>
+                                <h6 class="text-xs text-secondary mb-0">
+                                    Round<?php echo ' ' . $grass_detail[$i]->grd_round . ' ' ?>:<?php echo ' ' . $newDate ?>
+                                </h6>
+                                <?php } else { ?>
+                                <?php $newDate = date("d/m/Y", strtotime($grass_detail[$i]->grp_date)); ?>
+                                <h6 class="text-xs text-secondary mb-0">
+                                    Round<?php echo ' ' . $grass_detail[$i]->grd_round . ' ' ?>:<?php echo ' ' . $newDate ?>
+                                </h6>
+                                <?php } ?>
                             </td>
+                            <!-- Action -->
                             <td>
-                                <a href="<?php echo site_url() . 'Result/Result/show_result_list'; ?>">
+                                <a
+                                    href="<?php echo site_url() . 'Result/Result/show_result_list/' . $grass_detail[$i]->ase_gro_id . '/' . $grass_detail[$i]->grp_id; ?>">
                                     <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
@@ -101,28 +123,8 @@
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0"> 2</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">T2</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0"> Burapha </h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0"> Round 2 : 16/01/2022</h6>
-                            </td>
-                            <td>
-                                <a href="<?php echo site_url() . 'Result/Result/show_result_list'; ?>">
-                                    <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
+                        <?php } ?>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

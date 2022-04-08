@@ -79,75 +79,38 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $s = 1; ?>
+                        <?php for ($i = 0; $i < count($group_detail); $i++) { ?>
                         <tr>
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">1</h6>
+                                <!-- # -->
+                                <h6 class="text-xs text-secondary mb-0">
+                                    <?php echo $s ?>
+                                    <?php $s++;  ?>
+                                </h6>
                             </td>
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">00011</h6>
+                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->grn_emp_id ?></h6>
                             </td>
                             <td style="text-align: left;">
-                                <h6 class="text-xs text-secondary mb-0">Nunthapak Kittirattanaviwat</h6>
+                                <h6 class="text-xs text-secondary mb-0">
+                                    <?php echo $arr_nominee[$i]->Empname_eng . ' ' . $arr_nominee[$i]->Empsurname_eng ?>
+                                </h6>
                             </td>
+                            <!-- <td>
+                                            <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->Position_name ?></h6>
+                                        </td> -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">Totally score: 70 points<br>
-                                    Get score: 56 points</h6>
-                            </td>
-                            <td>
-                                <a href="<?php echo site_url() . 'Result/Result/show_result_detail'; ?>">
+
+                                <a href="<?php echo site_url() . 'Result/Result/show_result_detail/'; ?>">
                                     <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
+                                        style="background-color: #6c757d;">
+                                        <i class="far fa-file-alt text-white"></i>
                                     </button>
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">2</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0"> 00012</h6>
-                            </td>
-                            <td style="text-align: left;">
-                                <h6 class="text-xs text-secondary mb-0">Natticha Chantaravareelrkha</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0"> Totally score: 70 points<br>
-                                    Get score: 50 points </h6>
-                            </td>
-                            <td>
-                                <a href="<?php echo site_url() . 'Result/Result/show_result_detail'; ?>">
-                                    <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0"> 3</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">00013</h6>
-                            </td>
-                            <td style="text-align: left;">
-                                <h6 class="text-xs text-secondary mb-0">Kanteera Wadcharathadsanakul</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0"> Totally score: 80 points<br>
-                                    Get score: 65 points </h6>
-                            </td>
-                            <td>
-                                <a href="<?php echo site_url() . 'Result/Result/show_result_detail'; ?>">
-                                    <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

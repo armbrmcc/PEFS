@@ -3,10 +3,12 @@
     * v_evaluation_form_round_1
     * display for Evaluation Form 1 Round (แบบฟอร์มการประเมิน 1 รอบ)
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
-    * @input -
+    * @input  -
     * @output -
     * @Create date : 2565-01-26 
     * @Update date : 2565-01-27
+    * @Update date : 2565-03-07
+    * @Update date : 2565-03-08
     */
 -->
 
@@ -29,41 +31,60 @@ tbody,
 tfoot,
 tr,
 td,
-th {
+th 
+{
     border-color: inherit;
     border-style: solid;
     border-width: 1px;
 }
 
-.table tbody tr:last-child td{
+.table tbody tr:last-child td {
     border-width: 1px;
 }
 
-#center_th td {
+#center_th td 
+{
     text-align: center;
     font-weight: bold;
 }
 
-#gray {
+#gray 
+{
     background-color: #E3E3E3;
 }
 
-#img {
+#img 
+{
     display: block;
     margin-left: 150px;
 }
 
 /* จัดตำแหน่งชื่อบริษัท */
-.center_com {
+.center_com 
+{
     padding: 70px;
 }
 
-#set_id {
+#set_id 
+{
     width: 10px;
 }
 
-#set_button {
+#set_button 
+{
     font-size: 16px;
+}
+
+/* จัดระยะห่างระหว่างปุ่ม */
+.btn 
+{
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+#width_col 
+{
+    white-space: initial !important;
 }
 </style>
 <!-- End CSS -->
@@ -72,27 +93,64 @@ th {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.min.js"></script>
-<link rel="stylesheet" href="sweetalert2.min.css">
 <script src="sweetalert2.all.min.js"></script>
-<script>
-    /*
-    * alart_evaluation
-    * alert การยืนยันการประเมิน
-    * @input -
-    * @output alert ยืนยันการประเมิน
-    * @author Phatchara Khongthandee
-    * @Create Date 2565-02-01
-    */
-    function alart_evaluation() {
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        })
+<script type="text/javascript">
+/*
+ * alart_evaluation
+ * alert การยืนยันการประเมิน
+ * @input -
+ * @output alert ยืนยันการประเมิน
+ * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+ * @Create Date 2565-03-07
+ */
+function alart_evaluation() {
+    var score = [];
+    var comment = $('#comment').val();
+    var qa = $('#QnA').val();
+    var check_error;
+    var count_score = $('#count_score').val();
+    var ase_id = $('#ase_id').val();
+    var emp_id = $('#emp_id').val();
+    for (i = 0; i < count_score; i++) {
+        score[i] = $('#form_' + i).val();
+    }
+    var count_form = $('#count_form').val();
+    var form = []
+    for (i = 0; i < count_form; i++) {
+        form[i] = $('#formid_' + i).val();
+    }
+
+
+    for (i = 0; i < count_score; i++) {
+        if (score[i] == 0) {
+            check_error = 1;
+        }
+    }
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+
+    if (comment == '') {
+        check_error = 1;
+    }
+    if (qa == '') {
+        check_error = 1;
+    }
+    if (check_error == 1) {
+        swalWithBootstrapButtons.fire({
+            title: 'no value',
+            text: '',
+            icon: 'warning',
+            confirmButtonText: 'OK',
+        });
+    } else {
 
         swalWithBootstrapButtons.fire({
             title: 'Evaluation Confirm?',
@@ -104,27 +162,123 @@ th {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    confirmButtonColor: '#3CBF34',
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    window.location.href =
-                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>";
-                })
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                    'Cancel',
-                    '',
-                    'error'
-                )
+                $.ajax({
+                    type: 'post',
+                    url: "<?php echo site_url().'Evaluation/Evaluation/insert_evaluation_form'; ?>",
+                    data: {
+                        'QnA': qa,
+                        'comment': comment,
+                        'point': score,
+                        'ase_id': ase_id,
+                        'emp_id': emp_id,
+                        'form': form,
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        /* Start Alert บันทึกข้อมูลสำเร็จ */
+                        if (data['message'] == 'Success') {
+                            swalWithBootstrapButtons.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                confirmButtonColor: '#3CBF34',
+                                confirmButtonText: 'OK',
+                            }).then((result) => {
+                                window.location.href =
+                                    href =
+                                    "<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>";
+                            })
+                        } else {
+                            console.log("Error");
+                        }
+
+                    }
+                });
+
             }
         })
     }
+}
+
+/*
+ * calculete
+ * คำนวณคะแนนต่างๆ
+ * @input  -
+ * @output -
+ * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+ * @Create Date 2565-03-07
+ */
+$(document).ready(function() {
+    /*
+     * total_calculete
+     * คืนค่าคะแนนรวม
+     * @input  form
+     * @output -
+     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+     * @Create Date 2565-03-07
+     */
+    $("select").change(function() {
+        var toplem = 0;
+        var i = 0;
+        $("select[name='form[]']").each(function() {
+
+            var w = document.getElementById("weight_list_" + i).value;
+            var s = w * parseInt($(this).val());
+            toplem = toplem + s;
+            i = i + 1;
+        })
+
+        $("input[name=total]").val(toplem);
+    });
+
+    /*
+     * total_calculate_weight
+     * คืนค่าคะแนนรวมแบบเปอเซ็น
+     * @input  form
+     * @output -
+     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+     * @Create Date 2565-03-07
+     */
+    $("select").change(function() {
+        var toplem = 0;
+        var i = 0;
+        var weight = $("#weight-per").val();
+        $("select[name='form[]']").each(function() {
+            var w = document.getElementById("weight_list_" + i).value;
+            var s = w * parseInt($(this).val());
+            toplem = toplem + s;
+            i = i + 1;
+
+        })
+
+        toplem = Math.round(toplem / weight * 100);
+        var a = '%'
+        $("input[name=total_weight]").val(toplem + a);
+
+    });
+
+
+    //คืนค่าคะแนนรวมแบบรายการ
+    calculate_weight();
+
+})
+
+/*
+ * calculate_weight
+ * คืนค่าคะแนนรวมแบบรายการ
+ * @input  form, count_index
+ * @output -
+ * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+ * @Create Date 2565-03-07
+ */
+function calculate_weight() {
+    var count = document.getElementById("count_index").value;
+    for (i = 0; i < count; i++) {
+        var h = document.getElementById("form_" + i).value;
+        var w = document.getElementById("weight_list_" + i).value;
+        $("#show_weight_" + i).html(h * w);
+        $("#point_list_" + i).val(h * w);
+    }
+}
 </script>
 <!-- End Javascript -->
 
@@ -144,7 +298,7 @@ th {
                 </div>
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
-                    <h4>Siam DENSO Manufacturing Co., Ltd.</h4>
+                    <h4><?php echo $obj_nominee[0]->Company_name ?></h4>
                 </div>
             </div>
             <!-- icon file present nominee -->
@@ -161,220 +315,206 @@ th {
             <!-- ชื่อกรรมการ และวันประเมิน -->
             <div class="row">
                 <div class="col-sm-6">
-                    <h6>Assessor Name :&nbsp; Cherprang Areekul</h6>
+                    <h6>Assessor Name :
+                        <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6>
                 </div>
                 <div class="col-sm-6">
-                    <h6>Date : 16/01/2022</h6>
+                    <?php $newDate = date("d/m/Y", strtotime($arr_nominee[0]->grp_date)); ?>
+                    <h6>Date : <?php echo $newDate ?></h6>
                 </div>
             </div>
 
-            <!-- Start table data form evaluation -->
+            <!-- Start data Nominee form evaluation -->
             <div class="table-responsive">
-                <form action="" method="post" enctype="multipart/form-data" name="evaluation">
+                <!-- Start form evaluation -->
+                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post"
+                    enctype="multipart/form-data" name="evaluation">
                     <table class="table table-bordered table-sm">
                         <tr id="Manage">
                             <th colspan="5" id="gray">
-                                <center><b>Stretch Assignment Evaluation Form (Promote to T6) </b>
+                                <center><b>Stretch Assignment Evaluation Form
+                                        (<?php echo $obj_promote[0]->Position_name?>) </b>
                         </tr>
                         <tbody>
                             <tr id="Manage">
                                 <!-- ชื่อ-นามสกุล Nominee -->
                                 <th width="50px" id="gray">Name - Surname</th>
                                 <td colspan="2">
-                                    Milin Dokthian
+                                    <?php echo $obj_nominee[0]->Empname_eng. ' ' . $obj_nominee[0]->Empsurname_eng?>
                                 </td>
                                 <!-- ตำแหน่ง Nominee -->
                                 <th width="40px" id="gray">Position</th>
                                 <td>
-                                    Senior Staff
+                                    <?php echo $obj_nominee[0]->Position_name?>
                                 </td>
                             </tr>
-
                             <tr id="Manage">
                                 <!-- แผนก Promote to -->
                                 <th width="40px" id="gray">Promote to</th>
-                                <td colspan="2">Supervisor</td>
+                                <td colspan="2">
+                                    <?php echo $obj_promote[0]->Position_name?>
+                                </td>
                                 <!-- แผนก Nominee -->
                                 <th width="40px" id="gray">Department/Section</th>
                                 <td>
-                                    Accountant
+                                    <?php echo $obj_nominee[0]->Department?>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <!-- End table data form evaluation -->
+                    <!-- End table data Nominee -->
                     <br>
 
-                    <!-- Start table evaluation form -->
+                    <!-- Start evaluation form -->
                     <div class="table-responsive">
-                        <form action="" method="post" enctype="multipart/form-data" name="evaluation">
-                            <table class="table table-bordered table-sm">
-                                <tbody>
-                                    <tr id="center_th">
-                                        <td rowspan="2">ITems</td>
-                                        <td rowspan="2">Points for observation</td>
-                                        <td>% weight</td>
-                                        <td>Rating(B)</td>
-                                        <td>Score</td>
-                                    </tr>
-                                    <tr id="center_th">
-                                        <td>(A)</td>
-                                        <td>[Fill score 1-5]</td>
-                                        <td>(AxB)</td>
-                                    </tr>
-                                    <tr>
-                                        <!--แสดง Item -->
-                                        <td style="text-align: center; width: 50px;">
-                                            Awareness of the issue<br>
-                                            ตระหนักในปัญหา
-                                        </td>
-                                        <!-- แสดง Disription    -->
-                                        <td>
-                                            Is aware of the issues of the business <br>
-                                            in their area of responsibility; understands <br>
-                                            ตระหนักในปัญหาของงานที่รับผิดชอบ เข้าใจสิ่งแวดล้อม <br>
-                                            หรือสภาพปัญหาของแผนกตนเอง
-                                        </td>
-                                        <!-- แสดง % Weight -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            15
-                                        </td>
-                                        <!-- แสดง point -->
-                                        <td>
-                                            <div class="form-group">
-                                                <label for="sel"></label>
-                                                <select class="form-control" name="form[]"
-                                                    id="form" style="text-align: center;width:150;" required>
-                                                    <option value="0">selected</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <!-- แสดง Score -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            0
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!--แสดง Item -->
-                                        <td style="text-align: center; width: 50px;">
-                                            Analytical ability<br>
-                                            ความสามารถเชิงวิเคราะห์
-                                        </td>
-                                        <!-- แสดง Disription    -->
-                                        <td>
-                                            Can logically analyze issues in order to solve them and extract <br>
-                                            the problems appropriately based on the analysis. <br>
-                                            สามารถวิเคราะห์ปัญหาได้อย่างมีเหตุผลเพื่อแก้ไขและขจัดปัญหาออกไป <br>
-                                            ได้อย่างเหมาะสมโดยใช้หลักการวิเคราะห์
-                                        </td>
-                                        <!-- แสดง % Weight -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            15
-                                        </td>
-                                        <!-- แสดง point -->
-                                        <td>
-                                            <div class="form-group">
-                                                <label for="sel"></label>
-                                                <select class="form-control" name="form[]"
-                                                    id="form" style="text-align: center;width:150;" required>
-                                                    <option value="0">selected</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <!-- แสดง Score -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            0
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!--แสดง Item -->
-                                        <td style="text-align: center; width: 50px;">
-                                            Problem solving ability<br>
-                                            ความสามารถในการแก้ปัญหา
-                                        </td>
-                                        <!-- แสดง Disription    -->
-                                        <td>
-                                            Figures out new solutions or mechanisms for solving <br>
-                                            the issues by combining existing facts with information. <br>
-                                            หาหนทางใหม่ๆ หรือกลวิธีในการแก้ไขปัญหา โดยการรวบรวมข้อเท็จจริง <br>
-                                            และข้อมูล
-                                        </td>
-                                        <!-- แสดง % Weight -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            15
-                                        </td>
-                                        <!-- แสดง point -->
-                                        <td>
-                                            <div class="form-group">
-                                                <label for="sel"></label>
-                                                <select class="form-control" name="form[]"
-                                                    id="form" style="text-align: center;width:150;" required>
-                                                    <option value="0">selected</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <!-- แสดง Score -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            0
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!-- แสดง total -->
-                                        <td colspan="2" align='right'><b>Total</b></td>
-                                        <td align='center'>100</td>
-                                        <!-- แสดง point รวม -->
-                                        <td align='center'>
-                                            0
-                                        </td align='center'>
-                                        <!-- แสดงเปอร์เซ็นคะแนน -->
-                                        <td align='center'>
-                                            0.00%
-                                        </td>
-                                    </tr>
-                            </table>
-                            <!-- End table evaluation form -->
-                            <br>
+                        <!-- Start table evaluation form -->
+                        <table class="table table-bordered table-sm">
+                            <tbody>
+                                <tr id="center_th">
+                                    <td rowspan="2" width="300px" id="width_col"
+                                        style="vertical-align:middle;text-align: center;">ITems</td>
+                                    <td rowspan="2" width="800px" id="width_col"
+                                        style="vertical-align:middle;text-align: center;">Points for observation</td>
+                                    <td style="vertical-align:middle;text-align: center;">% weight</td>
+                                    <td style="vertical-align:middle;text-align: center;">Rating(B)</td>
+                                    <td width="100px" style="vertical-align:middle;text-align: center;">Score</td>
+                                </tr>
+                                <tr id="center_th">
+                                    <td>(A)</td>
+                                    <td>[Fill score 1-5]</td>
+                                    <td>(AxB)</td>
+                                </tr>
+                                <!--เริ่ม ตารางหัวข้อลงคะแนน-->
+                                <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
+                                $count_itm = 1; //จำนวนหัวข้อหลัก
+                                $weight = 0;
+                                for ($i = 0; $i < count($arr_form); $i++) {
+                                    if ($i != 0) {
+                                        if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
+                                            $count_itm++;
+                                        }
+                                    }
+                                    $weight =  $weight + $arr_form[$i]->des_weight;
+                                } //นับหัวข้อหลัก
+                                ?>
+                                <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
+                                <?php 
+                                for ($i = 0; $i < $count_itm; $i++) { //ลูปตามหัวข้อหลัก?>
+                                <?php $count_rowspan = 0;
+                                    for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
+                                        if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
+                                            $count_rowspan++;
+                                        }
+                                    } //นับ discription เพื่อกำหนด rowspan ?>
 
-                            <!-- Comment -->
-                            <div class="form-group">
-                                <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
-                                <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
-                                    style="width: 550px;" required></textarea>
-                            </div>
-                            <br>
-                            <!-- Q/A -->
-                            <div class="form-group">
-                                <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
-                                <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
-                                    style="width: 550px;" required></textarea>
-                            </div>
-                            <br>
+                                <?php $loop_dis = 1;
+                                    while ($loop_dis <= $count_rowspan) { ?>
+                                <tr>
+                                    <!--แสดง Item -->
+                                    <?php if ($loop_dis === 1) { ?>
+                                    <td rowspan="<?php echo $count_rowspan; ?>"
+                                        style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
+                                        <?php echo $arr_form[$count_discription]->itm_name; ?>
+                                    </td>
+                                    <?php } ?>
+                                    <!-- แสดง Disription -->
+                                    <td id="width_col">
+                                        <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                        <br>
+                                        <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
+                                    </td>
+                                    <!-- แสดง % Weight -->
+                                    <td style="vertical-align:middle;text-align: center;">
+                                        <?php echo $arr_form[$count_discription]->des_weight; ?>
+                                    </td>
+                                    <!-- แสดง point -->
 
-                            <!-- Confirm -->
-                            <div class="col-6 text-end">
-                                <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
-                                    data-bs-target="#Modal_confirm" onclick="alart_evaluation()">Confirm
-                                </button>
-                            </div>
+                                    <td style="vertical-align:middle;text-align: center;">
+                                        <div class="form-group">
+                                            <label for="sel"></label>
+                                            <select name="form[]" id="form_<?php echo $count_discription; ?>"
+                                                onchange="calculate_weight()" required>
+                                                <option value="0">score</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
+                                        id="formid_<?php echo $i ?>">
+                                    <!-- แสดง Score -->
+                                    <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"
+                                        style="vertical-align:middle; text-align: center;"></td>
+                                    <input type="text" name="point_list[]"
+                                        id="point_list_<?php echo  $count_discription; ?>" value="0" hidden>
+                                    <input type="text" id="weight_list_<?php echo $count_discription; ?>"
+                                        value=<?php echo $arr_form[$i]->des_weight; ?> hidden>
+                                    <?php $count_discription++;
+                                                $loop_dis++;
+                                    } ?>
+
+                                </tr>
+                                <?php } ?>
+                                <input type="hidden" id="count_score" value="<?php echo $count_discription ?>">
+                                <tr>
+                                    <!-- แสดง total -->
+                                    <input type="text" id="count_index" value=<?php echo $count_discription; ?> hidden>
+                                    <input type="text" name="weight" id="weight" value=<?php echo $weight; ?> hidden>
+                                    <input type="text" name="weight-per" id="weight-per"
+                                        value=<?php echo $weight * 5; ?> hidden>
+                                    <td colspan="2" align='right'><b>Total</b></td>
+                                    <!-- แสดง total 100 -->
+                                    <td align='center'>100</td>
+                                    <!-- แสดง point รวม -->
+                                    <td align='center'>
+                                        <input type="text" name="total" size='1' disabled style='border: none'>
+                                    </td>
+                                    <!-- แสดงเปอร์เซ็นคะแนนรวมทั้งหมด -->
+                                    <td align='center'>
+                                        <input type="text" name="total_weight" size='1' disabled style='border: none' ;>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- End table evaluation form -->
+                        <br>
+
+                        <!-- Comment -->
+                        <div class="form-group">
+                            <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
+                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
+                                style="width: 550px;" required></textarea>
+                        </div>
+                        <br>
+                        <!-- Q/A -->
+                        <div class="form-group">
+                            <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
+                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
+                                style="width: 550px;" required></textarea>
+                        </div>
+                        <br>
+
+                        <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
+                        <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id" id="ase_id">
+                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id"
+                            id="emp_id">
+                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
+
+                        <!-- Confirm -->
+                        <div class="col-6 text-end">
+                            <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
+                                data-bs-target="#Modal_confirm" onclick="alart_evaluation()">Confirm
+                            </button>
+                        </div>
                     </div>
                 </form>
                 <!-- End form evaluation -->
             </div>
+            <!-- End data form evaluation -->
         </div>
         <!-- End class card-body -->
     </div>
@@ -382,4 +522,3 @@ th {
 </div>
 <!-- End class container -->
 <!-- End html -->
-

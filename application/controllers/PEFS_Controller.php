@@ -14,20 +14,18 @@ require_once(dirname(__FILE__) . "/MainController.php");
 class PEFS_Controller extends MainController
 {
 
-	// /*
-	// * index
-	// * 
-	// * @input 
-	// * @output 
-	// * @author 	Kunanya Singmee
-	// * @Create Date 2564-7-10
-	// */
+	/*
+	* index
+	* @input  -
+	* @output -
+	* @author Chakrit Boonprasert
+	* @Create Date 2565-03-31
+	*/
+	function index()
+	{
+		$this->output_login('auth/v_user_login');
+	}
 	// function index()
-	// {
-	// 	// $this->output('Main_index');
-	// 	$this->output_login("login/v_user_login");
-	// }
-	// // function index()
 
 
 }

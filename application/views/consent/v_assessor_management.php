@@ -1,11 +1,13 @@
 <!--
     * v_assessor_management
     * display for assessor management by add or delete information
-    * @input  -
-    * @output -
+    * @input  Group name, Level, Position to promote, Type evaluation
+    * @output Group assessor list
     * @author Thitima Popila
     * Create date 2565-01-25   
     * Update date 2565-02-01
+    * Update date 2565-03-08
+    * Update date 2565-03-09
 -->
 
 <!DOCTYPE html>
@@ -21,38 +23,38 @@
 <body class="g-sidenav-show  bg-gray-100">
     <!-- CSS -->
     <style>
-        #list_table td,
-        #list_table th {
-            padding: 12px;
-            text-align: center;
-        }
+    #list_table td,
+    #list_table th {
+        padding: 12px;
+        text-align: center;
+    }
 
-        #list_table tr:nth-child(even) {
-            background-color: #e9ecef;
-        }
+    #list_table tr:nth-child(even) {
+        background-color: #e9ecef;
+    }
 
-        #list_table tr:hover {
-            background-color: #adb5bd;
-        }
+    #list_table tr:hover {
+        background-color: #adb5bd;
+    }
 
-        #card_radius {
-            border-radius: 20px;
-            width: auto;
-            min-height: 300px;
-        }
+    #card_radius {
+        border-radius: 20px;
+        width: auto;
+        min-height: 300px;
+    }
 
-        #list_table {
-            width: 98%;
-            margin-top: 20px;
-            margin-left: 10px;
-        }
+    #list_table {
+        width: 98%;
+        margin-top: 20px;
+        margin-left: 10px;
+    }
 
-        .button_size {
-            /* width: 5px; */
-            height: 40px;
-            font-size: 12px;
-            text-align: center;
-        }
+    .button_size {
+        /* width: 5px; */
+        height: 40px;
+        font-size: 12px;
+        text-align: center;
+    }
     </style>
     <!-- End CSS -->
 
@@ -86,7 +88,7 @@
                             </div>
                         </nav>
                         <!-- End Navbar -->
-                    <!-- ปุ่มดำเนินการเพิ่ม  -->
+                        <!-- ปุ่มดำเนินการเพิ่ม  -->
 
                         <!-- Start content in table -->
                         <div class="card-body px-0 pt-0 pb-2">
@@ -102,203 +104,135 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                        for($i=0; $i<count($arr_group); $i++) {
+                                    ?>
                                     <tr>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1</h6>
+                                                <h6 class="text-xs mb-0">
+                                                    <?php echo $i+1?>
+                                                </h6>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">T2</h6>
+                                                <h6 class="text-xs mb-0">
+                                                    <?php echo 'T'.$arr_group[$i]->asp_level?>
+                                                </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">GM</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1. General Manager </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">Type 2</h6>
-                                                <p class="text-xs text-secondary mb-0">(2 Round evalution)</p>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">
-                                            <!-- Start button trigger modal edit -->
-                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail'; ?>">
-                                                <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button"
-                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit me-2"></i>Edit
-                                                </button>
-                                            </a>
-                                            <!-- End button trigger modal edit-->
-
-                                            <!-- Start button trigger modal delete -->
-                                            <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
-                                            </button>
-                                            <!-- End button trigger modal delete -->
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">2</h6>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">T3</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">AGM</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1. Assistant General Manager
+                                                <h6 class="text-xs mb-0">
+                                                    <?php echo $arr_group[$i]->asp_name?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">Type 2</h6>
-                                                <p class="text-xs text-secondary mb-0">(2 Round evalution)</p>
+                                                <h6 class="text-xs mb-0">
+                                                    <?php 
+                                                        for($j=0; $j<count($arr_position); $j++){
+                                                            echo $j+1;
+                                                            echo '. '.$arr_position[$j]->Position_name;
+                                                            echo "<br/>";
+                                                        }
+                                                    ?>
+                                                </h6>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-xs mb-0">
+                                                    <?php echo "Type ".$arr_group[$i]->grp_position_group?>
+                                                </h6>
+                                                <h6 class="text-xs mb-0">
+                                                    <?php echo $arr_group[$i]->grp_position_group.' Round evaluation'?>
+                                                </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle">
                                             <!-- Start button trigger modal edit -->
-                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail'; ?>">
+                                            <a
+                                                href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/'.$arr_group[$i]->gro_ase_id; ?>">
                                                 <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button"
-                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit me-2"></i>Edit
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                    data-bs-target="#ModalDeleteAssessor">
+                                                    <i class="fas fa-edit"></i>
                                                 </button>
                                             </a>
                                             <!-- End button trigger modal edit-->
 
+                                            <?php
+                                                if($arr_group[$i]->asp_status == '-1'){
+                                            ?>
                                             <!-- Start button trigger modal delete -->
                                             <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#ModalDeleteGroup<?php echo $i; ?>">
+                                                <i class="fa fa-trash"></i>
                                             </button>
                                             <!-- End button trigger modal delete -->
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">3</h6>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">T3</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">MGR</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1. Manager </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">Type 1</h6>
-                                                <p class="text-xs text-secondary mb-0">(1 Round evalution)</p>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">
-                                            <!-- Start button trigger modal edit -->
-                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail'; ?>">
-                                                <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button"
-                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit me-2"></i>Edit
-                                                </button>
-                                            </a>
-                                            <!-- End button trigger modal edit-->
-
+                                            <?php
+                                                }
+                                                else{
+                                             ?>
                                             <!-- Start button trigger modal delete -->
                                             <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
+                                            <button type="button" class="btn btn-secondary ">
+                                                <i class="fa fa-trash"></i>
                                             </button>
                                             <!-- End button trigger modal delete -->
+                                            <?php
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">4</h6>
+                                    <!-- Start modal delete group assessor -->
+                                    <div class="modal fade" id="ModalDeleteGroup<?php echo $i; ?>" tabindex="-1"
+                                        role="dialog" aria-labelledby="ModalDeleteGroupTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="col-12 text-end">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="py-3 text-center">
+                                                        <div>
+                                                            <i class="fas fa-exclamation-triangle fa-8x"
+                                                                style="color:#FBD418"></i>
+                                                        </div>
+                                                        <h4 class="text-gradient text-danger mt-4">
+                                                            Confirm Delete 
+                                                            <br>
+                                                            <?php echo "Assessor Group Name: ".$arr_group[$i]->asp_name.'?' ?>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <!-- ปุ่มยกเลิกการลบ -->
+                                                    <a href="">
+                                                        <button type="button" class="btn bg-gradient-danger"
+                                                            data-bs-dismiss="modal">Cancel</button>
+                                                    </a>
+                                                    <!-- ปุ่มยืนยันการลบ -->
+                                                    <a
+                                                        href="<?php echo base_url() . 'Assessor_management/Assessor_management/delete_group_assessor/'.$arr_group[$i]->gro_id; ?>">
+                                                        <button type="button"
+                                                            class="btn bg-gradient-success">Confirm</button>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">T5</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">AM</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">1. Assistant Manager </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs text-secondary mb-0">Type 1</h6>
-                                                <p class="text-xs text-secondary mb-0">(1 Round evalution)</p>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">
-                                           <!-- Start button trigger modal edit -->
-                                           <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail'; ?>">
-                                                <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button"
-                                                    class="btn btn-link text-warning text-gradient px-3 mb-0"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit me-2"></i>Edit
-                                                </button>
-                                            </a>
-                                            <!-- End button trigger modal edit-->
-
-                                            <!-- Start button trigger modal delete -->
-                                            <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button"
-                                                class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup">
-                                                <i class="far fa-trash-alt me-2"></i>Delete
-                                            </button>
-                                            <!-- End button trigger modal delete -->
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </div>
+                                    <!-- End modal delete group assessor -->
+                                    <?php
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -310,8 +244,9 @@
         </div>
         <!-- End div row -->
     </div>
-     <!-- End Conten Assessor Management -->
+    <!-- End Conten Assessor Management -->
 </body>
+
 </html>
 
 <!-- Start modal add group assessor -->
@@ -371,11 +306,11 @@
             </div>
             <div class="modal-footer">
                 <!-- ปุ่มปิด modal -->
-                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
+                <a href="">
                     <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
                 </a>
                 <!-- ปุ่มบันทึก -->
-                <a href="<?php echo site_url() . ''; ?>">
+                <a href="">
                     <button type="button" class="btn bg-gradient-success">Submit</button>
                 </a>
             </div>
@@ -384,45 +319,15 @@
 </div>
 <!-- End modal add group assessor -->
 
-<!-- Start modal delete group assessor -->
-<div class="modal fade" id="ModalDeleteGroup" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteGroupTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="col-12 text-end">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="py-3 text-center">
-                    <div>
-                        <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
-                    </div>
-                    <h4 class="text-gradient text-danger mt-4">Confirm Delete Group?</h4>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <!-- ปุ่มยกเลิกการลบ -->
-                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
-                    <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
-                </a>
-                <!-- ปุ่มยืนยันการลบ -->
-                <a href="<?php echo site_url() . ''; ?>">
-                    <button type="button" class="btn bg-gradient-success">Confirm</button>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End modal delete group assessor -->
+
+
 
 <!-- JavaScript -->
-    <!-- Data Table -->
-    <script>
-        $(document).ready(function() {
-            $("#list_table").DataTable();
-        });
-    </script>
-    <!-- End Data Table -->
+<!-- Data Table -->
+<script>
+$(document).ready(function() {
+    $("#list_table").DataTable();
+});
+</script>
+<!-- End Data Table -->
 <!-- End  JavaScript -->

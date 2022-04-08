@@ -6,18 +6,12 @@
     * @output -
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
     * @Create date : 2565-01-25
+    * @Update date : 2565-03-12
     */
 -->
 
 <!-- CSS -->
 <style>
-/*.card{
-        background: #CECECE;
-}
-table
-{
-width: 100%;
-} */
 #list_table td,
 #list_table th {
     padding: 8px;
@@ -54,19 +48,29 @@ width: 100%;
     font-size: 12px;
     text-align: center;
 }
+
+.btn {
+    margin-bottom: 0rem;
+}
+
 </style>
 <!-- End CSS -->
 
 <!-- JavaScript -->
-
-<!-- End JavaScript -->
-
 <head>
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 </head>
+
+<!-- Data Table -->
+<script>
+$(document).ready(function() {
+    $("#list_table").DataTable();
+});
+</script>
+<!-- End JavaScript -->
 
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
@@ -88,96 +92,51 @@ width: 100%;
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">1</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">T6</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">Lyra</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">Round 1 : 16/01/2022</h6>
-                            </td>
-                            <td>
-                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">2</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">T2</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">SoftEn</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">Round 1 : 25/01/2022<br>
-                                Round 2 : 16/02/2022</h6>
-                            </td>
-                            <td>
-                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">3</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">T4</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">Avander</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">Round 1 : 25/01/2022<br>
-                                Round 2 : 16/02/2022</h6>
-                            </td>
-                            <td>
-                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">4</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">T5</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">Homeschool</h6>
-                            </td>
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">Round 1 : 25/01/2022</h6>
-                            </td>
-                            <td>
-                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>">
-                                    <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
+                        <?php if($arr_group[0]->grp_status != 3) { ?>
+                        <?php $s = 1; ?>
+                        <?php for ($i = 0; $i < count($arr_group); $i++) { ?>
+                            <?php if(date("Y-m-d") ==  $arr_group[$i]->grp_date || $arr_group[$i]->grp_date > date("Y-m-d")) {?>
+                                        <tr>
+                                            <!-- # -->
+                                            <td>
+                                                <h6 class="text-xs text-secondary mb-0">
+                                                <?php echo $s ?>
+                                                <?php $s++;  ?>
+                                                </h6>
+                                            </td>
+                                            <!-- Group Level -->
+                                            <td>
+                                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->asp_level?></h6>
+                                            </td>
+                                            <!-- Group Name -->
+                                            <td>
+                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_group[$i]->asp_name?></h6>
+                                            </td>
+                                            <!-- Date -->
+                                            <td>
+                                                <?php if($arr_group[$i]->asp_type == 1) { ?>
+                                                    <?php $newDate = date("d/m/Y", strtotime($obj_date[0]->grd_date)); ?>
+                                                    <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$obj_date[0]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6>
+                                                <? }else if($arr_group[$i]->asp_type == 2) { ?>
+                                                    <?php $newDate = date("d/m/Y", strtotime($obj_date[1]->grd_date)); ?>
+                                                    <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$obj_date[1]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6><br>
+                                                    <?php $newDate = date("d/m/Y", strtotime($obj_date[2]->grd_date)); ?>
+                                                    <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$obj_date[2]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6>
+                                                <? } ?>
+                                            </td>
+                                            <!-- Action -->
+                                            <td>
+                                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail/'.$arr_group[$i]->ase_emp_id. '/'.$arr_group[$i]->grp_id; ?>">
+                                                    <button type="button" class="btn btn-xs button_size"
+                                                        style="background-color: #596CFF;">
+                                                        <i class="fas fa-search text-white"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                            <?php } ?>
+                        <?php } ?>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -189,12 +148,3 @@ width: 100%;
 </div>
 <!-- End class container -->
 
-<!-- JavaScript -->
-    <!-- Data Table -->
-    <script>
-        $(document).ready(function() {
-            $("#list_table").DataTable();
-        });
-    </script>
-    <!-- End Data Table -->
-<!-- End JavaScript -->
