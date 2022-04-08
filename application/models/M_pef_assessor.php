@@ -35,6 +35,30 @@ class M_pef_assessor extends Da_pef_assessor
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลของกรรมการ
+    /*
+	* get_assessor_by_id
+	* get 
+	* @input  $id_assessor
+	* @output -
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-03-03
+    */
+    public function get_assessor_by_year()
+    {
+        $sql =
+            "SELECT *
+        FROM pefs_database.pef_assessor AS ass
+        INNER JOIN dbmc.employee AS emp
+        ON ass.ase_emp_id = emp.Emp_ID 
+        INNER JOIN dbmc.position AS pos
+        ON emp.Position_ID = pos.Position_ID
+        INNER JOIN dbmc.sectioncode AS sec
+        ON sec.Sectioncode = emp.Sectioncode_ID
+         WHERE ass.ase_year=?
+       ";
+        $query = $this->db->query($sql, array($this->ase_year));
+        return $query;
+    } 
 
     /*
 	* get_assessor_detail

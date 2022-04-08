@@ -159,4 +159,13 @@ class M_pef_employee extends Da_pef_employee
         // $query = $this->db->query($sql, array());
         return $query;
     }
+    public function get_assessor_by_year()
+    {
+        $sql =
+            "SELECT *
+        FROM pefs_database.pef_assessor WHERE ase_year=?
+       ";
+        $query = $this->db->query($sql, array($this->ase_year));
+        return $query;
+    } 
 }//end class M_pef_group 

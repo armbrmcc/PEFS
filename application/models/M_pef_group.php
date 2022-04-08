@@ -35,5 +35,13 @@ class M_pef_group extends Da_pef_group
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมิน
-
+    function get_group_id()
+    { //check User_login and Pass_login in database
+        $sql = "SELECT *
+			FROM pefs_database.pef_group 
+			ORDER BY pefs_database.pef_group.grp_id DESC LIMIT 1 
+			";
+        $query = $this->db->query($sql);
+        return $query;
+    } //end  
 }
