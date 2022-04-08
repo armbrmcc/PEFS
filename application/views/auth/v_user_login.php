@@ -69,7 +69,7 @@
                                 <p class="mb-0">Performance Evaluation Factor System</p>
                             </div>
                             <div class="card-body">
-                                <form role="form">
+                                <!-- <form role="form"> -->
                                     <label>Username</label>
                                     <div class="mb-3">
                                         <input type="text" class="form-control" id="User_login" placeholder="Username" aria-label="Username" aria-describedby="username-addon" required>
@@ -82,7 +82,7 @@
                                     <div class="text-center">
                                         <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0" onclick='login()'>Sign in</button>
                                     </div>
-                                </form>
+                                <!-- </form> -->
                             </div>
                             <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                 <p class="mb-4 text-sm mx-auto">
