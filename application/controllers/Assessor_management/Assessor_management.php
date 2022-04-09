@@ -94,7 +94,7 @@ class Assessor_management extends MainController
 	* @author ApinyaPhadungkit
 	* @Create Date 2565-03-30
 	*/
-    function add_assessor()
+    function add_assessor2()
     {
         
         $this->load->model('Da_pef_assessor', 'dass');
@@ -105,9 +105,21 @@ class Assessor_management extends MainController
         // print_r($this->input->post('ase_year'));
         // print_r($this->input->post('ase_emp_id'));
         // print_r($this->input->post('group_id'));
-        $this->dass->insert();
+        // $this->dass->insert();
         
         
     }
+
+    function add_assessor($ase_gro_id)
+    {//insert
+        $this->load->model('Da_pef_assessor', 'pef');
+        // $this->dass->ase_year = $this->input->post('ase_year');
+        $this->dass->ase_emp_id = $this->input->post('ase_emp_id');
+        $this->dass->ase_gro_id = $this->input->post('group_id');
+
+        // print_r($ase_gro_id);
+        redirect('Assessor_management/Assessor_management/show_assessor_management_detail/'.$ase_gro_id);
+    }//end insert  
+
 
 }

@@ -114,7 +114,9 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6 d-flex align-items-center">
-                                <h4>Promote to T2 : General Manager</h4>
+                                <!-- <h4>Promote to T2 : General Manager</h4> -->
+                                <h4>Promote to T<?php echo $arr_ass[0]->asp_level ?> : <?php echo $arr_ass[0]->sec_name ?></h4>
+
                             </div>
                             <div class="col-6 text-end">
                                 <!-- Select Year -->
@@ -202,8 +204,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_assessor'; ?>" method="post" enctype="multipart/form-data">
-                    <input class="form-control" type="text" id="ase_year" name="ase_year" value="<?php echo $arr_ass[$i]->ase_year ?>" hidden>
+                <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_assessor'. '/'. $arr_ass[$i]->ase_gro_id  ?>" method="post" enctype="multipart/form-data">
+                    <!-- <input class="form-control" type="text" id="ase_year" name="ase_year" value="<?php echo $arr_ass[$i]->ase_year ?>" hidden> -->
                     <div class="mb-3">
                         <label for="focusedinput" class="col-form-label">Employee ID</label>
                         <input type="text" class="form-control" name="ase_emp_id" id="ase_emp_id_modal" placeholder="Employee ID.." onkeyup="get_Emp()" required>

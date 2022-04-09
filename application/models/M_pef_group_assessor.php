@@ -72,7 +72,7 @@ class M_pef_group_assessor extends Da_pef_group_assessor
     {
         $sql = "SELECT * FROM pefs_database.pef_group_assessor AS gass
                     INNER JOIN pefs_database.pef_assessor AS ass
-                    ON gass.gro_ase_id = ass.ase_id
+                    ON gass.gro_ase_id = ass.ase_gro_id
                     INNER JOIN dbmc.employee AS emp
                     ON ass.ase_emp_id = emp.Emp_ID
                     INNER JOIN dbmc.position AS pos
