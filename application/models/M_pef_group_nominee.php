@@ -1,5 +1,5 @@
 <?php
-    /* 
+/* 
     * M_pef_group_nominee
     * Model for 
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
@@ -39,7 +39,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                 WHERE gr.grp_id = $group_id";
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่าข้อมูลรายละเอียดของ Nominee
+    } //คืนค่าข้อมูลรายละเอียดของ Nominee
 
     /*
 	* get_nominee_by_id
@@ -64,6 +64,25 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                     INNER JOIN dbmc.sectioncode AS section
                     ON section.Sectioncode = employee.Sectioncode_ID
                 WHERE Emp_ID = groupno.grn_emp_id && groupno.grn_id = $id_nominee";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function get_nominee()
+    {
+        $sql = "SELECT *
+                    FROM pefs_database.pef_group_nominee AS groupno
+                    INNER JOIN dbmc.employee
+                    ON groupno.grn_emp_id = employee.Emp_ID 
+                    INNER JOIN dbmc.position 
+                    ON position.Position_ID = employee.Position_ID 
+                    INNER JOIN dbmc.sectioncode 
+                    ON sectioncode.Sectioncode = employee.Sectioncode_ID
+                    INNER JOIN dbmc.company
+                    ON employee.Company_ID = company.Company_ID
+                    INNER JOIN dbmc.sectioncode AS section
+                    ON section.Sectioncode = employee.Sectioncode_ID
+              ";
         $query = $this->db->query($sql);
         return $query;
     }
