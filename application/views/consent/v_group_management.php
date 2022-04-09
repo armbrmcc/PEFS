@@ -153,42 +153,56 @@ div.tr {
                             <th style="text-align:center">#</th>
                             <th style="text-align:center">Level</th>
                             <th style="text-align:center">Level Name</th>
-                            <th style="text-align:center">Promote</th>
+                            <th style="text-align:center">Promote To</th>
                             <th style="text-align:center">Action</th>
 
                         </tr>
                     </thead>
                     <tbody>
+                        <?php for ($i = 0; $i < count($group); $i++) { ?>
                         <tr>
                             <td style="text-align:center">
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="text-xs text-secondary mb-0">1</h6>
+                                    <h6 class="text-xs text-secondary mb-0"><?php echo $i + 1 ?></h6>
                                 </div>
 
 
                             </td>
                             <td style="text-align:center">
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="text-xs text-secondary mb-0">T6</h6>
+                                    <h6 class="text-xs text-secondary mb-0">
+                                        <?php echo 'T' . $group[$i]->grp_position_group ?>
+                                    </h6>
 
                                 </div>
                             </td>
                             <td style="text-align:center">
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="text-xs text-secondary mb-0">AGM</h6>
+                                    <h6 class="text-xs text-secondary mb-0">
+                                        <?php echo date("l d F Y", strtotime($group[$i]->grp_date))  ?></h6>
 
                                 </div>
                             </td>
                             <td style="text-align:center">
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="text-xs text-secondary mb-0">General Manager</h6>
+                                    <h6 class="text-xs text-secondary mb-0">
+                                        <ul>
+                                            <?php $sec = explode(" ", $group[$i]->sec_name)  ?>
+                                            <?php for ($j = 0; $j < count($sec); $i++) { ?>
+                                            <li><?php echo $sec[$j] ?></li>
+                                            <?php } ?>
+                                        </ul>
+
+                                    </h6>
                                 </div>
                             </td>
                             <td style="text-align:center">
 
-                                <button type="button" class="btn btn-primary"><i class="fa fa-info"
-                                        aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                <a
+                                    href="<?php echo site_url() . 'Group_management/Group_management/delete_group/' . $group[$i]->grp_id; ?>">
+                                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </a>
+
                                 <a href="<?php echo site_url() . 'Group_management/Group_management/add_group' ?>"><button
                                         type="button" class="btn btn-warning"><i class="fa fa-pencil"
                                             aria-hidden="true"></i></button></a>
@@ -197,6 +211,7 @@ div.tr {
                             </td>
 
                         </tr>
+                        <?php } ?>
 
                     </tbody>
                 </table>

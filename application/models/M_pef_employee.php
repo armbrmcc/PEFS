@@ -159,6 +159,16 @@ class M_pef_employee extends Da_pef_employee
         // $query = $this->db->query($sql, array());
         return $query;
     }
+    public function get_position_id()
+    {
+        $sql =
+            "SELECT *
+                FROM dbmc.position WHERE Position_name=?
+       ";
+        $query = $this->db->query($sql, array($this->Position_name));
+        // $query = $this->db->query($sql, array());
+        return $query;
+    }
     public function get_assessor_by_year()
     {
         $sql =
