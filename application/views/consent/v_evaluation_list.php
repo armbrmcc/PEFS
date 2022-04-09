@@ -92,7 +92,7 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if($arr_group[0]->grp_status != 3) { ?>
+                        <!-- <?php if($arr_group[0]->grp_status != 3) { ?> -->
                         <?php $s = 1; ?>
                         <?php for ($i = 0; $i < count($arr_group); $i++) { ?>
                             <?php if(date("Y-m-d") ==  $arr_group[$i]->grp_date || $arr_group[$i]->grp_date > date("Y-m-d")) {?>
@@ -136,7 +136,7 @@ $(document).ready(function() {
                                         </tr>
                             <?php } ?>
                         <?php } ?>
-                        <?php } ?>
+                        <!-- <?php } ?> -->
                     </tbody>
                 </table>
             </div>
