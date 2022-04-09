@@ -32,7 +32,7 @@ class Evaluation extends MainController
     */
     public function show_evaluation_list()
     {
-        $ass_id = '03695';
+        $ass_id = $_SESSION['UsEmp_ID'];
         $this->load->model('M_pef_group', 'pef');
         $this->load->model('M_pef_group_schedule', 'date');
         $data['arr_group'] = $this->pef->get_group_evaluation($ass_id)->result();
