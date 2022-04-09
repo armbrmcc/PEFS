@@ -19,6 +19,9 @@ class File_present_management extends MainController
     }
     public function show_file_present()
     {
-        $this->output('consent/v_add_file_present');
+        $id = $_SESSION['UsEmp_ID'];
+        $this->load->model('M_pef_group_nominee', 'nom');
+        $data['emp_nominee'] = $this->nom->get_nominee()->result();
+        $this->output('consent/v_add_file_present', $data);
     }
 }

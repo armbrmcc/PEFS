@@ -98,5 +98,22 @@ class Get_nominee extends MainController
         // echo $data['assessor'];
         echo json_encode($data);
     }
+    /*
+	* get_position
+	* search nominee detail by group
+	* @input group id
+	* @output nominee detail
+	* @author Jirayut Saifah
+	* @Create Date 2564-8-15
+	*/
+    function get_position_id()
+    {
+        $this->load->model('M_pef_employee', 'emp');
+        $this->emp->Position_name = $this->input->post('position_name');
+        $data = $this->emp->get_position_id()->result();
+        // echo $data['assessor'];
+        print_r($data);
+        echo json_encode($data);
+    }
 }
 // 

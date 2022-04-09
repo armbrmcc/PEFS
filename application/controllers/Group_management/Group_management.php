@@ -18,7 +18,10 @@ class Group_management extends MainController
      */
     public function show_group_management()
     {
-        $this->output('consent/v_group_management');
+        $this->load->model('M_pef_group', 'pef');
+        $data['group'] = $this->pef->get_group()->result();
+        //print_r($data);
+        $this->output('consent/v_group_management', $data);
     }
     /**
      * This function is used to add a new group
@@ -43,47 +46,72 @@ class Group_management extends MainController
 	*/
     function insert()
     {
-        $this->load->model('Da_pef_group', 'pefd');
+        $this->load->model('Da_pef_group', 'ped');
         $this->load->model('M_pef_group', 'pef');
+        $this->load->model('M_pef_employee', 'emp');
         $date[0] = $this->input->post('date');
+        echo $date[0];
         $position_group = $this->input->post('position_group');
         $assessor = $this->input->post('emp_assessor');
         $nominee = $this->input->post('emp_nominee');
-        $pos_id = $this->input->post('pos_id');
-        $this->pefd->grp_date = $date;
-        $this->pefd->grp_year = $this->input->post('year');
-        $this->pefd->grp_position_group = $position_group;
-        $this->pefd->insert_group();
+        $pos = $this->input->post('promote');
+        $this->ped->grp_date = $date[0];
+        $this->ped->grp_date = $date[0];
+        echo $this->input->post('year');
+        $this->ped->grp_year = $this->input->post('year');
+        $this->ped->grp_position_group = $position_group;
+        $this->ped->insert_group();
         $group_id = $this->pef->get_group_id()->result();
         if ($this->input->post('date2') == "") {
-            $this->pefd->grd_grp_id = $group_id[0]->grp_id;
-            $this->pefd->grd_date = $date[0];
-            $this->pefd->grd_round = '1';
-            $this->pefd->insert_group_schedule();
+            $this->ped->grd_grp_id = $group_id[0]->grp_id;
+            $this->ped->grd_date = $date[0];
+            $this->ped->grd_round = '1';
+            $this->ped->insert_group_schedule();
         } else {
             $date[1] = $this->input->post('date2');
             for ($i = 0; $i <= 1; $i++) {
-                $this->pefd->grd_grp_id = $group_id[0]->grp_id;
-                $this->pefd->grd_date = $date[$i];
-                $this->pefd->grd_round = $i + 1;
-                $this->pefd->insert_group_schedule();
+                $this->ped->grd_grp_id = $group_id[0]->grp_id;
+                $this->ped->grd_date = $date[$i];
+                $this->ped->grd_round = $i + 1;
+                $this->ped->insert_group_schedule();
             }
         }
 
         for ($i = 0; $i < sizeof($assessor); $i++) {
-            $this->pefd->gro_grp_id = $group_id[0]->grp_id;
-            $this->pefd->gro_ase_id = $assessor[$i];
-            $this->pefd->insert_assessor();
+            $this->ped->gro_grp_id = $group_id[0]->grp_id;
+            $this->ped->gro_ase_id = $assessor[$i];
+            $this->ped->insert_assessor();
         }
         for ($i = 0; $i < sizeof($nominee); $i++) {
-            $this->pefd->grn_grp_id = $group_id[0]->grp_id;
-            $this->pefd->grn_emp_id = $nominee[$i];
-            $this->pefd->grn_promote_to = $pos_id[$i];
-            $this->pefd->insert_nominee();
+            $this->ped->grn_grp_id = $group_id[0]->grp_id;
+            $this->ped->grn_emp_id = $nominee[$i];
+            $this->emp->Position_name = $pos[$i];
+            $pos_id = $this->emp->get_position_id()->row();
+            print_r($pos_id);
+            echo $pos_id->Position_ID;
+            $this->ped->grn_promote_to = $pos_id->Position_ID;
+            $this->ped->insert_nominee();
         }
         // $data['obj_sec'] = $this->pef->get_section()->result();
         // $this->output('consent/v_group_list', $data);
         $data = "insert_success";
         echo json_encode($data);
+    }
+    function delete_group($id)
+    {
+        $this->load->model('Da_pef_group', 'ped');
+        $this->ped->grn_grp_id = $id;
+        $this->ped->grp_id = $id;
+        $this->ped->gro_grp_id = $id;
+        $this->ped->grd_grp_id = $id;
+        $this->ped->delete_group();
+        $this->ped->delete_group_assessor();
+        $this->ped->delete_group_nominee();
+        $this->ped->delete_group_schedule();
+        // $this->load->model('M_pef_group', 'pef');
+        // $data['group'] = $this->pef->get_group()->result();
+        // $this->output('consent/v_group_management', $data);
+        // $this->show_group_management();
+        redirect('consent/v_group_management');
     }
 }
