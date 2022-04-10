@@ -271,6 +271,7 @@ date_default_timezone_set("Asia/Bangkok");
         $(document).ready(function() {
 
             const d = new Date();
+            $("#date2").hide();
             let years = d.getFullYear();
             console.log('option')
             years = years - 3
@@ -438,18 +439,18 @@ date_default_timezone_set("Asia/Bangkok");
                 success: function(data, status) {
                     console.log(data);
                     var count_index = 0;
-                    var i = 1;
+                    var i = 0;
                     var data_row = '';
                     data.forEach((row, index) => {
                         data_row += '<tr id="ase_' + i + '">'
                         data_row += '<td style="text-align:center">'
-                        data_row += i++;
+                        data_row += i + 1;
                         data_row += '</td>'
                         data_row += '<td style="text-align:center">'
-                        data_row += '<input type="checkbox" id="check_box' + index +
+                        data_row += '<input type="checkbox" id="check_box_' + i +
                             '" name="checkbox1">'
                         data_row += '</td>'
-                        data_row += '<td id="ase_id_' + index +
+                        data_row += '<td id="ase_id_' + i++ +
                             '" style="text-align:center"> '
                         data_row += row.Emp_ID
                         data_row += '</td>'
@@ -462,9 +463,10 @@ date_default_timezone_set("Asia/Bangkok");
                         data_row += '<td style="text-align:center">'
                         data_row += row.Department
                         data_row += '</td>'
-
                         data_row += '</tr>'
+
                         count_index++
+                        index++
                         $("#select_data").append(data_row);
                     })
 
@@ -520,7 +522,7 @@ date_default_timezone_set("Asia/Bangkok");
             position_level_id = document.getElementById('group_position').value;
             var empname = "";
             const num = position_level_id;
-            // position_level_id = position_level_id - 1;
+            position_level_id = position_level_id - 1;
             console.log(position_level_id);
             console.log(num);
             $.ajax({
@@ -614,7 +616,7 @@ date_default_timezone_set("Asia/Bangkok");
 
         function change_date() {
             console.log('status4')
-            if (document.getElementById("group_position").value >= 5) {
+            if (document.getElementById("group_position").value < 5) {
                 $("#date2").hide();
             } else {
                 $("#date2").show();
@@ -643,13 +645,13 @@ date_default_timezone_set("Asia/Bangkok");
             var date = document.getElementById('date').value;
             var year = document.getElementById('year').value;
             var date2 = document.getElementById('date_2').value;
-            if (document.getElementById("select_data").valur == "" && document.getElementById("nominee_data") == "") {
+            if (document.getElementById("select_data").vale == "" && document.getElementById("nominee_data") == "") {
                 alert('Unavailable date');
             } else {
                 console.log(count_nominee);
                 console.log(15)
                 for (var i = 0; i < document.getElementById("select_data").rows.length; i++) {
-                    if (document.getElementById('check_box' + i).checked) {
+                    if ($('#check_box_' + i).is(":checked")) {
                         emp_assessor.push(document.getElementById('ase_id_' + i).innerHTML)
                         console.log(emp_assessor + "55")
                     }
@@ -685,8 +687,8 @@ date_default_timezone_set("Asia/Bangkok");
                     },
                     success: function(data) {
                         console.log(data);
-                        // window.location.href =
-                        //     "<?php echo base_url(); ?>Group_management/Group_management/show_group_management";
+                        window.location.href =
+                            "<?php echo base_url(); ?>Group_management/Group_management/show_group_management";
                     }
                 })
             }

@@ -76,9 +76,9 @@ class Group_management extends MainController
                 $this->ped->insert_group_schedule();
             }
         }
-
         for ($i = 0; $i < sizeof($assessor); $i++) {
             $this->ped->gro_grp_id = $group_id[0]->grp_id;
+            $this->ped->gro_asp_id = $position_group;
             $this->ped->gro_ase_id = $assessor[$i];
             $this->ped->insert_assessor();
         }

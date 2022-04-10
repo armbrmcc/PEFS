@@ -203,7 +203,7 @@ div.tr {
                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </a>
 
-                                <a href="<?php echo site_url() . 'Group_management/Group_management/add_group' ?>"><button
+                                <a href="<?php echo site_url() . 'Group_management/Group_management/edit_group' ?>"><button
                                         type="button" class="btn btn-warning"><i class="fa fa-pencil"
                                             aria-hidden="true"></i></button></a>
 

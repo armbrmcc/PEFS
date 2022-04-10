@@ -37,11 +37,11 @@ class Da_pef_group extends pefs_model
     }
     public function insert_assessor()
     {
-        $sql = "INSERT INTO pefs_database.pef_group_assessor(gro_grp_id,gro_ase_id) 
-                VALUES (?,?)";
+        $sql = "INSERT INTO pefs_database.pef_group_assessor(gro_grp_id,gro_ase_id,gro_asp_id) 
+                VALUES (?,?,?)";
         $this->db->query(
             $sql,
-            array($this->gro_grp_id, $this->gro_ase_id)
+            array($this->gro_grp_id, $this->gro_ase_id, $this->gro_asp_id)
         );
     }
     public function insert_nominee()
