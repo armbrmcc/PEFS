@@ -24,43 +24,65 @@ table {
     width: auto;
 }
 
-/* กำหนดเส้นตารางแบบฟอร์ม */
 thead,
 tbody,
 tfoot,
 tr,
 td,
-th {
+th 
+{
     border-color: inherit;
     border-style: solid;
     border-width: 1px;
 }
 
-#center_th td {
+.table tbody tr:last-child td {
+    border-width: 1px;
+}
+
+#center_th td 
+{
     text-align: center;
     font-weight: bold;
 }
 
-#gray {
+#gray 
+{
     background-color: #E3E3E3;
 }
 
-#img {
+#img 
+{
     display: block;
     margin-left: 150px;
 }
 
 /* จัดตำแหน่งชื่อบริษัท */
-.center_com {
+.center_com 
+{
     padding: 70px;
 }
 
-#set_id {
+#set_id 
+{
     width: 10px;
 }
 
-#set_button {
+#set_button 
+{
     font-size: 16px;
+}
+
+/* จัดระยะห่างระหว่างปุ่ม */
+.btn 
+{
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+#width_col 
+{
+    white-space: initial !important;
 }
 </style>
 <!-- End CSS -->
@@ -78,130 +100,153 @@ th {
     * alert การยืนยันการประเมิน
     * @input -
     * @output alert ยืนยันการประเมิน
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * @author Phatchara Khongthandee
     * @Create Date 2565-03-07
     */
     function alart_evaluation() {
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        })
-
-        swalWithBootstrapButtons.fire({
-            title: 'Evaluation Confirm?',
-            text: '',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Confirm',
-            cancelButtonText: 'Cancel',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    confirmButtonColor: '#3CBF34',
-                    confirmButtonText: 'OK',
-                }).then((result) => {
-                    window.location.href =
-                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>";
-                })
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                    'Cancel',
-                    '',
-                    'error'
-                )
-            }
-        })
+    var score = [];
+    var comment = $('#comment').val();
+    var qa = $('#QnA').val();
+    var check_error;
+    var count_score = $('#count_score').val();
+    var ase_id = $('#ase_id').val();
+    var emp_id = $('#emp_id').val();
+    var group_id = $('#group_id').val();
+    var asp_id = $('#asp_id').val();
+    
+    for (i = 0; i < count_score; i++) {
+        score[i] = $('#form_' + i).val();
+    }
+    
+    var count_form = $('#count_form').val();
+    var form = []
+    for (i = 0; i < count_form; i++) {
+        form[i] = $('#formid_' + i).val();
     }
 
-    /*
-    * calculete
-    * คำนวณคะแนนต่างๆ
-    * @input  -
-    * @output -
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
-    * @Create Date 2565-03-07
-    */
-    $(document).ready(function() {
-        /*
-        * total_calculete
-        * คืนค่าคะแนนรวม
-        * @input  form
-        * @output -
-        * @author Phatchara Khongthandee and Ponprapai Atsawanurak
-        * @Create Date 2565-03-07
-        */
-        $("select").change(function() {
-            var toplem = 0;
-            var i = 0;
-            $("select[name='form[]']").each(function() {
+    var row = [];
+    for (i = 0; i < count_form; i++) {
+        row[i] = $('#dis_row_' + i).val();
+    } 
 
-                var w = document.getElementById("weight_list_" + i).value;
-                var s = w * parseInt($(this).val());
-                toplem = toplem + s;
-                i = i + 1;
-            })
-
-            $("input[name=total]").val(toplem);
-        });
-
-        /*
-        * total_calculate_weight
-        * คืนค่าคะแนนรวมแบบเปอเซ็น
-        * @input  form
-        * @output -
-        * @author Phatchara Khongthandee and Ponprapai Atsawanurak
-        * @Create Date 2565-03-07
-        */
-        $("select").change(function() {
-            var toplem = 0;
-            var i = 0;
-            var weight = $("#weight-per").val();
-            $("select[name='form[]']").each(function() {
-                var w = document.getElementById("weight_list_" + i).value;
-                var s = w * parseInt($(this).val());
-                toplem = toplem + s;
-                i = i + 1;
-
-            })
-
-            toplem = Math.round(toplem / weight * 100);
-            var a = '%'
-            $("input[name=total_weight]").val(toplem + a);
-
-        });
-
-
-        //คืนค่าคะแนนรวมแบบรายการ
-        calculate_weight();
-
-    })
-
-    /*
-    * calculate_weight
-    * คืนค่าคะแนนรวมแบบรายการ
-    * @input  form, count_index
-    * @output -
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
-    * @Create Date 2565-03-07
-    */
-    function calculate_weight() {
-    var count = document.getElementById("count_index").value;
-        for (i = 0; i < count; i++) {
-            var h = document.getElementById("form_" + i).value;
-            var w = document.getElementById("weight_list_" + i).value;
-            $("#show_weight_" + i).html(h * w);
-            $("#point_list_" + i).val(h * w);
+    for (i = 0; i < count_score; i++) {
+        if (score[i] == 0) {
+            check_error = 1;
         }
     }
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+
+    if (comment == '') {
+        check_error = 1;
+    }
+    if (qa == '') {
+        check_error = 1;
+    }
+        if (check_error == 1) {
+            swalWithBootstrapButtons.fire({
+                title: 'no value',
+                text: '',
+                icon: 'warning',
+                confirmButtonText: 'OK',
+            });
+        } else {
+
+            swalWithBootstrapButtons.fire({
+                title: 'Evaluation Confirm?',
+                text: '',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Confirm',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'post',
+                        url: "<?php echo site_url().'Evaluation/Evaluation/insert_evaluation_form'; ?>",
+                        data: {
+                            'QnA': qa,
+                            'comment': comment,
+                            'point': score,
+                            'ase_id': ase_id,
+                            'emp_id': emp_id,
+                            'asp_id': asp_id,
+                            'group_id': group_id,
+                            'form': form,
+                            'row': row,
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            /* Start Alert บันทึกข้อมูลสำเร็จ */
+                            if (data['message'] == 'Success') {
+                                swalWithBootstrapButtons.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    confirmButtonColor: '#3CBF34',
+                                    confirmButtonText: 'OK',
+                                }).then((result) => {
+                                    window.location.href =
+                                        href =
+                                        "<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>";
+                                })
+                            } else {
+                                console.log("Error");
+                            }
+
+                        }
+                    });
+
+                }
+            })
+        }
+    }//end alart_evaluation
+
+    
+    /*
+    * total_calculete
+    * คืนค่าคะแนนรวม
+    * @input   form
+    * @output  -
+    * @author  Phatchara Khongthandee and Pontakon Mujit
+    * @Create  Date 2564-08-18
+    */
+    $("select").change(function() {
+        var toplem = 0;
+            $("select[name='form[]']").each(function() {
+
+                toplem = toplem + parseInt($(this).val());
+            })
+        $("input[name=total]").val(toplem);
+    });
+            
+    /*
+    * total_calculate_weight
+    * คืนค่าคะแนนรวมแบบเปอเซ็น
+    * @input   form
+    * @output  -
+    * @author  Phatchara Khongthandee and Pontakon Mujit
+    * @Create  Date 2564-08-18
+    */
+    $("select").change(function() {
+        var toplem = 0;
+        var weight = $("#weight").val();
+            $("select[name='form[]']").each(function() {
+                toplem = toplem + parseInt($(this).val());
+
+            })
+        //คืนค่าคะแนนรวมแบบรายการ
+        toplem = Math.round(toplem / weight * 100);
+        var a = '%'
+            $("input[name=total_weight]").val(toplem + a);
+
+    });
 </script>
 <!-- End Javascript -->
 
@@ -227,9 +272,9 @@ th {
             <div class="row">
                 <div class="col-sm-12">
                     <!-- <a href="" target="_blank"> -->
-                    <button type="button" class="btn btn-primary" style="background-color: indigo; float: right"
+                    <button type="button" class="btn bg-gradient md-0" style="background-color: #596CFF; float: right"
                         id="set_button">
-                        <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
+                        <i class="far fa-file-pdf text-white"></i> &nbsp; <h7 class="text-white">Present Nominee</h7>
                     </button>
                     </a>
                 </div>
@@ -298,45 +343,96 @@ th {
                                         <td colspan="2" style="vertical-align:middle;text-align: center;">1st round</td>
                                         <td colspan="2" style="vertical-align:middle;text-align: center;">Final round</td>
                                     </tr>
+                                    <!--เริ่ม ตารางหัวข้อลงคะแนน-->
+                                    <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
+                                    $count_itm = 1; //จำนวนหัวข้อหลัก
+                                    $weight = 0;
+                                    $point_old = 0;
+                                    for ($i = 0; $i < count($arr_form); $i++) {
+                                        if ($i != 0) {
+                                            if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
+                                                $count_itm++;
+                                            }
+                                        }
+                                        $weight =  $weight + $arr_form[$i]->des_weight;
+                                    } //นับหัวข้อหลัก
+                                    $weight =  $weight * 5;
+                                    for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
+                                    ?>
+                                        <?php $count_rowspan = 0;
+                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
+                                            if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
+                                                $count_rowspan++;
+                                            }
+                                        } //นับdiscriptionเพื่อกำหนด rowspan 
+                                        ?>
+                                        <?php
+                                        for ($loop_dis = 1; $loop_dis <= $count_rowspan; $loop_dis++) { ?>
+                                            <tr>
+                                                <!-- แสดงห้อข้อหลัก -->
+                                                <?php if ($loop_dis === 1) { ?>
+                                                    <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col"> <b>
+                                                            <?php echo $arr_form[$count_discription]->itm_name; ?>
+                                                            <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
+                                                    </td>
+                                                <?php } ?>
+                                                
+                                                <td id="width_col">
+                                                    <b> <?php echo $arr_form[$count_discription]->des_description_th; ?></b>
+                                                    <br>
+                                                    <!-- แสดง Disription    -->
+                                                    <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                                    <br>
+                                                    <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
+                                                </td>
+
+                                                <td colspan="2" style="vertical-align:middle;text-align: center;">
+                                                        <select style="vertical-align:middle;text-align: center;" class="form-control" name="form[]" id="form" required>
+                                                            <option value="0">score</option>
+                                                            <option value=1>1</option>
+                                                            <option value=2>2</option>
+                                                            <option value=3>3</option>
+                                                            <option value=4>4</option>
+                                                            <option value=5>5</option>
+                                                        </select>
+
+                                                    </td>
+                                                
+                                            <?php $count_discription++; ?>
+                                        <?php } ?>
+                                            </tr>
+                                    <?php } ?>
+                                    <input type="text" name="weight" ID="weight" value=<?php echo $weight; ?> hidden>
                                     <tr>
-                                        <td style="text-align: center; width: 50px;">
-                                            Business I<br>
-                                            ビジネスⅠ
+                                        <td rowspan="2">
+                                            5 ： Exceed expected level for Next level
+                                            <br>4 ： Absolutely satisfies expected level for Next level
+                                            <br> 3 ： Meet expected level for Manager level
+                                            <br>2 ： Partially lower that expected level for Next level
+                                            <br>1 ： Do Not satisfy expected level for Next level
                                         </td>
-                                        <td colspan="2">
-                                            Has the ability to explain and impart knowledge <br>
-                                            and skills of the business in their area of <br>
-                                            responsibility to their more colleagues and enhance <br>
-                                            the total power of the Organization.
-                                        </td>
-                                        <td colspan="2" style="vertical-align:middle;text-align: center;">
-                                            <select class="form-control" name="form[]" id="form" required>
-                                                <option value="0">please selected</option>
-                                                <option value=1>1</option>
-                                                <option value=2>2</option>
-                                                <option value=3>3</option>
-                                                <option value=4>4</option>
-                                                <option value=5>5</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <td rowspan="2">
-                                        5 ： Exceed expected level for Next level
-                                        <br>4 ： Absolutely satisfies expected level for Next level
-                                        <br> 3 ： Meet expected level for Manager level
-                                        <br>2 ： Partially lower that expected level for Next level
-                                        <br>1 ： Do Not satisfy expected level for Next level
-                                    </td>
-                                    <td>Total</td>
+                                        <!-- total -->
+                                        <td>Total</td>
+                                        <td><input type="text" name="total" size='1' disabled style='border: none'> </td>
+                                                <td><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
+                                                <td><input type="text" name="total" size='1' disabled hidden></td>
+                                                <td><input type="text" name="total" size='1' disabled hidden></td>
                                     </tr>
                                     <tr>
                                         <td>Judgement</td>
                                         <td colspan="4"></td>
-
                                     </tr>
-
-                                    <!-- -->
                             </table>
+
+                            <!-- input -->
+                                <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
+                                <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id" id="ase_id">
+                                <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id" id="emp_id">
+                                <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
+                                <input type="hidden" value="<?php echo $arr_nominee[0]->grp_id; ?>" name="group_id" id="group_id">
+                                <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id">
+                            <!-- end input -->
                             <br>
                             <!-- comment -->
                             <div class="form-group">

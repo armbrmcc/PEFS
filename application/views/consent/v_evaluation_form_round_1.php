@@ -113,15 +113,23 @@ function alart_evaluation() {
     var count_score = $('#count_score').val();
     var ase_id = $('#ase_id').val();
     var emp_id = $('#emp_id').val();
+    var group_id = $('#group_id').val();
+    var asp_id = $('#asp_id').val();
+    
     for (i = 0; i < count_score; i++) {
         score[i] = $('#form_' + i).val();
     }
+    
     var count_form = $('#count_form').val();
     var form = []
     for (i = 0; i < count_form; i++) {
         form[i] = $('#formid_' + i).val();
     }
 
+    var row = [];
+    for (i = 0; i < count_form; i++) {
+        row[i] = $('#dis_row_' + i).val();
+    } 
 
     for (i = 0; i < count_score; i++) {
         if (score[i] == 0) {
@@ -171,7 +179,10 @@ function alart_evaluation() {
                         'point': score,
                         'ase_id': ase_id,
                         'emp_id': emp_id,
+                        'group_id': group_id,
+                        'asp_id': asp_id,
                         'form': form,
+                        'row': row,
                     },
                     dataType: 'json',
                     success: function(data) {
@@ -406,58 +417,58 @@ function calculate_weight() {
                                             $count_rowspan++;
                                         }
                                     } //นับ discription เพื่อกำหนด rowspan ?>
-
-                                <?php $loop_dis = 1;
+                                    <input type="hidden" id="count_rowspan" value='<?php echo $count_rowspan ?>'>
+                                    <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
+                                        id="dis_row_<?php echo  $i ; ?>">
+                                    <?php $loop_dis = 1;
                                     while ($loop_dis <= $count_rowspan) { ?>
-                                <tr>
-                                    <!--แสดง Item -->
-                                    <?php if ($loop_dis === 1) { ?>
-                                    <td rowspan="<?php echo $count_rowspan; ?>"
-                                        style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
-                                        <?php echo $arr_form[$count_discription]->itm_name; ?>
-                                    </td>
-                                    <?php } ?>
-                                    <!-- แสดง Disription -->
-                                    <td id="width_col">
-                                        <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                        <tr>
+                                            <!--แสดง Item -->
+                                            <?php if ($loop_dis === 1) { ?>
+                                                <td rowspan="<?php echo $count_rowspan; ?>"
+                                                    style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
+                                                    <?php echo $arr_form[$count_discription]->itm_name; ?>
+                                                    <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
+                                                </td>
+                                            <?php } ?>
+                                            <!-- แสดง Disription -->
+                                            <td id="width_col">
+                                                <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
                                                     echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
-                                        <br>
-                                        <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
-                                    </td>
-                                    <!-- แสดง % Weight -->
-                                    <td style="vertical-align:middle;text-align: center;">
-                                        <?php echo $arr_form[$count_discription]->des_weight; ?>
-                                    </td>
-                                    <!-- แสดง point -->
-
-                                    <td style="vertical-align:middle;text-align: center;">
-                                        <div class="form-group">
-                                            <label for="sel"></label>
-                                            <select name="form[]" id="form_<?php echo $count_discription; ?>"
-                                                onchange="calculate_weight()" required>
-                                                <option value="0">score</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                    </td>
-                                    <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
-                                        id="formid_<?php echo $i ?>">
-                                    <!-- แสดง Score -->
-                                    <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"
-                                        style="vertical-align:middle; text-align: center;"></td>
-                                    <input type="text" name="point_list[]"
-                                        id="point_list_<?php echo  $count_discription; ?>" value="0" hidden>
-                                    <input type="text" id="weight_list_<?php echo $count_discription; ?>"
-                                        value=<?php echo $arr_form[$i]->des_weight; ?> hidden>
-                                    <?php $count_discription++;
+                                                    <br>
+                                                <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
+                                            </td>
+                                            <!-- แสดง % Weight -->
+                                            <td style="vertical-align:middle;text-align: center;">
+                                                <?php echo $arr_form[$count_discription]->des_weight; ?>
+                                            </td>
+                                            <!-- แสดง point -->
+                                            <td style="vertical-align:middle;text-align: center;">
+                                                <div class="form-group">
+                                                    <label for="sel"></label>
+                                                        <select name="form[]" id="form_<?php echo $count_discription; ?>"
+                                                            onchange="calculate_weight()" required>
+                                                            <option value="0">score</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                </div>
+                                            </td>
+                                                <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
+                                                id="formid_<?php echo $i ?>">
+                                            <!-- แสดง Score -->
+                                            <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"
+                                                style="vertical-align:middle; text-align: center;"></td>
+                                                <input type="text" name="point_list[]" id="point_list_<?php echo  $count_discription; ?>" value="0" hidden>
+                                                <input type="text" id="weight_list_<?php echo $count_discription; ?>" value=<?php echo $arr_form[$i]->des_weight; ?> hidden>
+                                            <?php $count_discription++;
                                                 $loop_dis++;
                                     } ?>
 
-                                </tr>
+                                    </tr>
                                 <?php } ?>
                                 <input type="hidden" id="count_score" value="<?php echo $count_discription ?>">
                                 <tr>
@@ -497,12 +508,14 @@ function calculate_weight() {
                                 style="width: 550px;" required></textarea>
                         </div>
                         <br>
-
+                        <!-- input -->
                         <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
                         <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id" id="ase_id">
-                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id"
-                            id="emp_id">
+                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id" id="emp_id">
                         <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
+                        <input type="hidden" value="<?php echo $arr_nominee[0]->grp_id; ?>" name="group_id" id="group_id">
+                        <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id">
+                        <!-- end input -->
 
                         <!-- Confirm -->
                         <div class="col-6 text-end">

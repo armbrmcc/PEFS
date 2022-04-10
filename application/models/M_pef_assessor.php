@@ -35,6 +35,7 @@ class M_pef_assessor extends Da_pef_assessor
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลของกรรมการ
+    
     /*
 	* get_assessor_by_id
 	* get 
@@ -81,10 +82,6 @@ class M_pef_assessor extends Da_pef_assessor
                     ON grass.gro_asp_id =  promote.asp_id
                     INNER JOIN pefs_database.pef_assessor_position AS position
                     ON promote.asp_id = position.gap_asp_id
-                    INNER JOIN dbmc.employee AS emp
-                    ON ass.ase_emp_id = emp.Emp_ID 
-                    INNER JOIN dbmc.position AS pos
-                    ON position.gap_promote = pos.Position_ID
                 WHERE  gr.grp_id = '$ass_id'";
         $query = $this->db->query($sql);
         return $query;

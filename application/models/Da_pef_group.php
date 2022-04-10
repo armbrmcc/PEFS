@@ -117,5 +117,23 @@ class Da_pef_group extends pefs_model
             array($this->grd_grp_id)
         );
     }
- 
+
+    /*
+    * update_status_group
+    * อัพเดตข้อมูล grp_status ใน database ตาราง pef_group
+    * @input  grp_status, grp_id
+    * @output -
+    * @Author Phatchara Khongthandee and Pontakon Mujit 
+    * @Create Date 2564-08-21
+    * @Update Date 2564-08-22
+    */
+    function update_status_group()
+    {
+        $sql = "UPDATE pefs_database.pef_group
+            SET grp_status = ?
+        WHERE grp_id = ?";
+
+        $this->db->query($sql, array($this->grp_status, $this->grp_id));
+    }
+
 }

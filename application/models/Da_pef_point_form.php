@@ -37,11 +37,13 @@ class Da_pef_point_form extends pefs_model
                 ptf_for_id, 
                 ptf_per_id)
 
-            VALUES (?,?,?,?,?)";
+                VALUES (?,?,?,?,?)";
 
-            for ($i= 0; $i < count($this->ptf_for_id);$i++){
-                $this->ptf_round =  1 ;
-                $this->db->query($sql, array($this->ptf_point[$i], $this->ptf_date, $this->ptf_round, $this->ptf_for_id[$i], $this->ptf_per_id));
-            }
+                for ($i = 0; $i < count($this->ptf_for_id);$i++){
+                    for ($j = 0; $j < $this->row[$i]; $j++){
+                        $this->ptf_round =  1 ;
+                        $this->db->query($sql, array($this->ptf_point[$j], $this->ptf_date, $this->ptf_round, $this->ptf_for_id[$i], $this->ptf_per_id));
+                    }  
+                }
     }
 }

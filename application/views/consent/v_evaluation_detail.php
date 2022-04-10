@@ -142,7 +142,7 @@ $(document).ready(function() {
                                         </a>
                                     <?php } else if($arr_nominee[$i]->asp_type == 2) { ?>
                                             <a
-                                                href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to;?>">
+                                                href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to;?>">
                                                 <button type="button" class="btn btn-xs button_size"
                                                     style="background-color: #9FA2B4;">
                                                     <i class="far fa-file-alt text-white"></i>
@@ -150,7 +150,7 @@ $(document).ready(function() {
                                             </a>
 
                                             <a
-                                                href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to;?>">
+                                                href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to;?>">
                                                 <button type="button" class="btn btn-xs button_size"
                                                     style="background-color: #9FA2B4;">
                                                     <i class="far fa-file-alt text-white"></i>
