@@ -187,42 +187,92 @@
                                             </div>
                                         </td>
                                         <td class="align-middle">
+
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0" data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
+                                            <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0" data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor<?php echo $i; ?>">
                                                 <i class="far fa-trash-alt me-2"></i>Delete</button>
+
+
+                                            <!-- Modal Delete Assessor-->
+                                            <div class="modal fade" id="ModalDeleteAssessor<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteAssessorTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="col-12 text-end">
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+
+
+                                                        <div class="modal-body">
+                                                            <div class="py-3 text-center">
+                                                                <div>
+                                                                    <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
+                                                                </div>
+                                                                <h4 class="text-gradient text-danger mt-4">Confirm Delete Assessor?</h4>
+                                                                <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
+                                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/delete_assessor' . '/' . $arr_ass[$i]->ase_emp_id . '/' . $arr_ass[$i]->ase_gro_id; ?>">
+                                                            <!-- <input class="form-control" type="text" id="group_id" name="group_id" value="<?php echo $arr_ass[$i]->ase_gro_id ?>" hidden> -->
+                                                                <button type="button" class="btn bg-gradient-success">Confirm</button>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+
                                         </td>
                                     </tr>
                                     <!-- Modal Add Assessor-->
-<div class="modal fade" id="ModalAddAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalAddAssessorTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ModalAddAssessorLabel">Add Assessor</h5>&nbsp;
-                <i class="fas fa-user-plus fa-1x"></i>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_assessor'. '/'. $arr_ass[$i]->ase_gro_id  ?>" method="post" enctype="multipart/form-data">
-                    <!-- <input class="form-control" type="text" id="ase_year" name="ase_year" value="<?php echo $arr_ass[$i]->ase_year ?>" hidden> -->
-                    <div class="mb-3">
-                        <label for="focusedinput" class="col-form-label">Employee ID</label>
-                        <input type="text" class="form-control" name="ase_emp_id" id="ase_emp_id_modal" placeholder="Employee ID.." onkeyup="get_Emp()" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="focusedinput" class="col-form-label">Name</label>
-                        <input type="text" class="form-control" id="showname_modal" disabled name="assessor_name">
-                    </div>
-                    <input class="form-control" type="text" id="group_id" name="group_id" value="<?php echo $arr_ass[$i]->ase_gro_id ?>" hidden>
+                                    <div class="modal fade" id="ModalAddAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalAddAssessorTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="ModalAddAssessorLabel">Add Assessor</h5>&nbsp;
+                                                    <i class="fas fa-user-plus fa-1x"></i>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_assessor' . '/' . $arr_ass[$i]->ase_gro_id  ?>" method="post" enctype="multipart/form-data">
+                                                        <input class="form-control" type="text" id="ase_year" name="ase_year" value="<?php echo $arr_ass[$i]->ase_year ?>" hidden>
+                                                        <div class="mb-3">
+                                                            <label for="focusedinput" class="col-form-label">Employee ID</label>
+                                                            <input type="text" class="form-control" name="ase_emp_id" id="ase_emp_id_modal" placeholder="Employee ID.." onkeyup="get_Emp()" required>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="focusedinput" class="col-form-label">Name</label>
+                                                            <input type="text" class="form-control" id="showname_modal" disabled name="assessor_name">
+                                                        </div>
+                                                        <input class="form-control" type="text" id="group_id" name="group_id" value="<?php echo $arr_ass[$i]->ase_gro_id ?>" hidden>
+                                                        <input class="form-control" type="text" id="sec_id" name="sec_id" value="<?php echo $arr_ass[$i]->ase_sec_id ?>" hidden>
 
-                    <button type="submit" class="btn btn-success float-right">Submit</button>
-                    <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+                                                        <button type="submit" class="btn btn-success float-right">Submit</button>
+                                                        <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
                                 <?php
                                 }
                                 ?>
@@ -253,33 +303,7 @@
 
 
 
-<!-- Modal Delete Assessor-->
-<div class="modal fade" id="ModalDeleteAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteAssessorTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="col-12 text-end">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
 
-
-            <div class="modal-body">
-                <div class="py-3 text-center">
-                    <div>
-                        <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
-                    </div>
-                    <h4 class="text-gradient text-danger mt-4">Confirm Delete Assessor?</h4>
-                    <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn bg-gradient-success">Confirm</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Modal Confirm Create Group Assessor -->
 <div class="modal fade" id="ModalConfirmAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalConfirmAssessorTitle" aria-hidden="true">
@@ -335,7 +359,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn bg-gradient-success" data-bs-dismiss="modal">OK</button>
+                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
+                    <button type="button" class="btn bg-gradient-success" data-bs-dismiss="modal">OK</button>
+                </a>
             </div>
         </div>
     </div>
