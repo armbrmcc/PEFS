@@ -196,7 +196,7 @@ function alart_evaluation() {
                             }).then((result) => {
                                 window.location.href =
                                     href =
-                                    "<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail'; ?>";
+                                    "<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail/'.$arr_group[$i]->ase_emp_id. '/'.$arr_group[$i]->grp_id; ?>";
                             })
                         } else {
                             console.log("Error");
@@ -417,7 +417,7 @@ function calculate_weight() {
                                             $count_rowspan++;
                                         }
                                     } //นับ discription เพื่อกำหนด rowspan ?>
-                                    <input type="hidden" id="count_rowspan" value='<?php echo $count_rowspan ?>'>
+                                    
                                     <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
                                         id="dis_row_<?php echo  $i ; ?>">
                                     <?php $loop_dis = 1;
@@ -437,6 +437,7 @@ function calculate_weight() {
                                                     echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
                                                 <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
+                                                <?php echo $arr_form[$count_discription]->des_description_th ?>
                                             </td>
                                             <!-- แสดง % Weight -->
                                             <td style="vertical-align:middle;text-align: center;">

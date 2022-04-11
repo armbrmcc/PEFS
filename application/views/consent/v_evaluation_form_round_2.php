@@ -292,7 +292,8 @@ th
 
             <div class="table-responsive">
                 <!-- Start form evaluation -->
-                <form action="" method="post" enctype="multipart/form-data" name="evaluation">
+                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post"
+                    enctype="multipart/form-data" name="evaluation">
                     <!-- Start table data Nominee -->
                     <table class="table table-bordered table-sm">
                         <tr id="Manage">
@@ -356,6 +357,9 @@ th
                                         }
                                         $weight =  $weight + $arr_form[$i]->des_weight;
                                     } //นับหัวข้อหลัก
+                                    ?>
+                                    <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
+                                    <?php
                                     $weight =  $weight * 5;
                                     for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
                                     ?>
@@ -366,6 +370,8 @@ th
                                             }
                                         } //นับdiscriptionเพื่อกำหนด rowspan 
                                         ?>
+                                        <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
+                                        id="dis_row_<?php echo  $i ; ?>">
                                         <?php
                                         for ($loop_dis = 1; $loop_dis <= $count_rowspan; $loop_dis++) { ?>
                                             <tr>
@@ -385,10 +391,11 @@ th
                                                     echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
                                                     <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
+                                                    <?php echo $arr_form[$count_discription]->des_description_th ?>
                                                 </td>
 
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
-                                                        <select style="vertical-align:middle;text-align: center;" class="form-control" name="form[]" id="form" required>
+                                                        <select style="vertical-align:middle;text-align: center;" class="form-control" name="form[]" id="form_<?php echo $count_discription; ?>" required>
                                                             <option value="0">score</option>
                                                             <option value=1>1</option>
                                                             <option value=2>2</option>
@@ -396,7 +403,7 @@ th
                                                             <option value=4>4</option>
                                                             <option value=5>5</option>
                                                         </select>
-
+                                                        <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]" id="formid_<?php echo $i ?>">
                                                     </td>
                                                 
                                             <?php $count_discription++; ?>
@@ -404,6 +411,7 @@ th
                                             </tr>
                                     <?php } ?>
                                     <input type="text" name="weight" ID="weight" value=<?php echo $weight; ?> hidden>
+                                    <input type="hidden" id="count_score" value="<?php echo $count_discription ?>">
                                     <tr>
                                         <td rowspan="2">
                                             5 ： Exceed expected level for Next level
@@ -449,7 +457,7 @@ th
                             </div>
                             <!-- Confirm -->
                             <button type="button" class="btn btn-success float-right" data-toggle="modal"
-                                data-target="#Modal_confirm">Confirm</button>
+                                data-target="#Modal_confirm" onclick="alart_evaluation()">Confirm</button>
                     </div>
                     <!-- End table Evaluation form -->
                 </form>
