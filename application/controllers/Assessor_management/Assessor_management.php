@@ -94,32 +94,37 @@ class Assessor_management extends MainController
 	* @author ApinyaPhadungkit
 	* @Create Date 2565-03-30
 	*/
-    function add_assessor2()
-    {
-        
+    function add_assessor($ase_gro_id)
+    {//insert
         $this->load->model('Da_pef_assessor', 'dass');
         $this->dass->ase_year = $this->input->post('ase_year');
         $this->dass->ase_emp_id = $this->input->post('ase_emp_id');
         $this->dass->ase_gro_id = $this->input->post('group_id');
+        $this->dass->ase_sec_id = $this->input->post('sec_id');
+        $this->dass->insert();
 
-        // print_r($this->input->post('ase_year'));
-        // print_r($this->input->post('ase_emp_id'));
-        // print_r($this->input->post('group_id'));
-        // $this->dass->insert();
-        
-        
-    }
-
-    function add_assessor($ase_gro_id)
-    {//insert
-        $this->load->model('Da_pef_assessor', 'pef');
-        // $this->dass->ase_year = $this->input->post('ase_year');
-        $this->dass->ase_emp_id = $this->input->post('ase_emp_id');
-        $this->dass->ase_gro_id = $this->input->post('group_id');
-
-        // print_r($ase_gro_id);
+        // print_r($this->input->post('sec_id'));
         redirect('Assessor_management/Assessor_management/show_assessor_management_detail/'.$ase_gro_id);
-    }//end insert  
+    }//end insert
+    
+    /*
+	* delete_assessor
+	* delete_assessor
+	* @input   emp_id
+	* @output  assessor list 
+	* @author  Apinya Phadungkit
+	* @Create  Date 2565-04-11
+    * @Update  Date 2565-04-11
+    */
+    public function delete_assessor($emp_id,$ase_gro_id)
+    {
+        // $ase_gro_id = $this->input->post('group_id');
+        $this->load->model('Da_pef_assessor', 'dpef');
+        $this->dpef->ase_emp_id = $emp_id;
+        $this->dpef->delete();
+        // echo $emp_id;
+        redirect('Assessor_management/Assessor_management/show_assessor_management_detail/'.$ase_gro_id);
+    }
 
 
 }
