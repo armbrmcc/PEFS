@@ -50,9 +50,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">The number of people all that must assess</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Must Assess</p>
                                 <h5 class="font-weight-bolder mb-0" id="total_nominee">
-                                    10
+
                                 </h5>
                             </div>
                             <div class="col-4 text-end">
@@ -75,9 +75,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">The Number of people who have been assessed</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Assessed</p>
                                 <span class="font-weight-bolder mb-0" id="total_have">
-                                    10
+
                                 </span>
                             </div>
                             <div class="col-auto">
@@ -101,9 +101,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">The number of people who have not been assessed</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Not Assessed</p>
                                 <span class="font-weight-bolder mb-0" id="total_have_not">
-                                    10
+
                                 </span>
                             </div>
                             <div class="col-auto">
@@ -127,9 +127,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of people who passed the assessment</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Pass</p>
                                 <span class="font-weight-bolder mb-0" id="total_pass">
-                                    10
+
                                 </span>
                             </div>
                             <div class="col-auto">
@@ -153,9 +153,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of people who fail in the assessment</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Fail</p>
                                 <span class="font-weight-bolder mb-0" id="total_fail">
-                                    10
+
                                 </span>
                             </div>
                             <div class="col-auto">
@@ -179,9 +179,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of people (assessed / yearly)</p>
+                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Assessed / Yearly</p>
                                 <span class="font-weight-bolder mb-0" id="total_yearly">
-                                    10
+
                                 </span>
                             </div>
                             <div class="col-auto">
@@ -233,7 +233,7 @@
                     </div>
                     <div class="table-responsive" table id='myTable'>
                         <!-- Projects table -->
-                        <table class="table align-items-center table-flush" style="text-align: center;">
+                        <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">#</th>
@@ -247,84 +247,17 @@
                                 </tr>
                             </thead>
                             <tbody id="data_table">
-                                <tr>
-                                    <td>1</td>
-                                    <td>Promote to T6</td>
-                                    <td>20</td>
-                                    <td>6</td>
-                                    <td>6</td>
-                                    <td>14</td>
-                                    <td>14</td>
-                                    <td> <?php { ?>
-                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
-                                                <i class="fa fa-search"></i>
-                                            </a><?php } ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Promote to T5</td>
-                                    <td>8</td>
-                                    <td>4</td>
-                                    <td>4</td>
-                                    <td>4</td>
-                                    <td>4</td>
-                                    <td> <?php { ?>
-                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
-                                                <i class="fa fa-search"></i>
-                                            </a><?php } ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Promote to T4</td>
-                                    <td>6</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>4</td>
-                                    <td> <?php { ?>
-                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
-                                                <i class="fa fa-search"></i>
-                                            </a><?php } ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Promote to T3</td>
-                                    <td>5</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td> <?php { ?>
-                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
-                                                <i class="fa fa-search"></i>
-                                            </a><?php } ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Promote to T2</td>
-                                    <td>3</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td> <?php { ?>
-                                            <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
-                                                <i class="fa fa-search"></i>
-                                            </a><?php } ?>
-                                    </td>
-                                </tr>
+
                             </tbody>
                             <tfoot>
                                 <td colspan="2" align="right">Total :</td>
-                                <td id='sum_total'>42</td>
-                                <td id='pass_total'>15</td>
-                                <td id='fail_total'>27</td>
-                                <td id='fail_total'>27</td>
-                                <td id='fail_total'>27</td>
+                                <td id='sum_total'></td>
+                                <td id='pass_total'></td>
+                                <td id='fail_total'></td>
+                                <td id='fail_total'></td>
+                                <td id='fail_total'></td>
+                                <td></td>
+
                             </tfoot>
                         </table>
                     </div>
@@ -529,7 +462,7 @@
                 data_row += '<td id="not_assess_' + index + '"></td>';
                 data_row += '<td id="pass_' + index + '"></td>';
                 data_row += '<td id="fail_' + index + '"></td>';
-                data_row += '<td><a href="<?php echo site_url() ?>Report/Report/show_report_detail/' + row.sec_id + ' ">'
+                data_row += '<td><a href="<?php echo site_url() ?>Report/Report/show_report_group/' + row.sec_id + ' ">'
                 data_row += '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
                 data_row += '<i class="fas fa-search"></i></button></a></td>'
                 data_row += '</tr>';
