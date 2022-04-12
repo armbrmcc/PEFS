@@ -73,14 +73,13 @@
                         <tr>
                             <th>No.</th>
                             <th>Employee ID</th>
-                            <th style="text-align: left;">List of Nominee</th>
-                            <th>Score Round 1</th>
+                            <th>List of Nominee</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $s = 1; ?>
-                        <?php for ($i = 0; $i < count($group_detail); $i++) { ?>
+                        <?php for ($i = 0; $i < count($arr_nominee); $i++) { ?>
                         <tr>
                             <td>
                                 <!-- # -->
@@ -92,20 +91,16 @@
                             <td>
                                 <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->grn_emp_id ?></h6>
                             </td>
-                            <td style="text-align: left;">
+                            <td>
                                 <h6 class="text-xs text-secondary mb-0">
                                     <?php echo $arr_nominee[$i]->Empname_eng . ' ' . $arr_nominee[$i]->Empsurname_eng ?>
                                 </h6>
                             </td>
-                            <!-- <td>
-                                            <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->Position_name ?></h6>
-                                        </td> -->
                             <td>
-
-                                <a href="<?php echo site_url() . 'Result/Result/show_result_detail/'; ?>">
+                                <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation'; ?>">
                                     <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #6c757d;">
-                                        <i class="far fa-file-alt text-white"></i>
+                                        style="background-color: #596CFF;">
+                                        <i class="fas fa-search text-white"></i>
                                     </button>
                                 </a>
                             </td>

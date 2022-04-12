@@ -58,13 +58,12 @@
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 </head>
-
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
         <div class="card-header">
             <h2>Result (ผลคะแนนการประเมิน)</h2>
         </div>
-        <!-- End cara header-->
+        <!-- End cara header -->
         <div class="card-body">
             <!-- Start Table Result List -->
             <div class="table-responsive">
@@ -79,43 +78,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $s = 1; ?>
-                        <?php for ($i = 0; $i < count($grass_list); $i++) { ?>
-                        <?php if (date("Y-m-d") ==  $grass_detail[$i]->grp_date || $grass_detail[$i]->grp_date > date("Y-m-d")) { ?>
+                        <?php for ($i = 0; $i < count($arr_assessor_group); $i++) { ?>
                         <tr>
                             <!-- # -->
                             <td>
                                 <h6 class="text-xs text-secondary mb-0">
-                                    <?php echo $s ?>
-                                    <?php $s++;  ?>
+                                    <?php echo $i+1 ?>
                                 </h6>
                             </td>
                             <!-- Group Level -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">T<?php echo $grass_list[$i]->asp_level ?></h6>
+                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_assessor_group[$i]->asp_level ?></h6>
                             </td>
                             <!-- Group Name -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0"><?php echo $grass_list[$i]->asp_name ?></h6>
+                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_assessor_group[$i]->asp_name ?></h6>
                             </td>
                             <!-- Date -->
                             <td>
-                                <?php if ($grass_detail[$i]->grd_round == 1) { ?>
-                                <?php $newDate = date("d/m/Y", strtotime($grass_detail[$i]->grp_date)); ?>
+                                <?php if ($arr_assessor_group[$i]->asp_type == 1) { ?>
+                                <?php $newDate = date("d/m/Y", strtotime($arr_assessor_group[$i]->grp_date)); ?>
                                 <h6 class="text-xs text-secondary mb-0">
-                                    Round<?php echo ' ' . $grass_detail[$i]->grd_round . ' ' ?>:<?php echo ' ' . $newDate ?>
+                                    Round
+                                    <?php echo ' ' . $arr_assessor_group[$i]->asp_type . ' ' ?>:<?php echo ' ' . $newDate ?>
                                 </h6>
-                                <?php } else { ?>
-                                <?php $newDate = date("d/m/Y", strtotime($grass_detail[$i]->grp_date)); ?>
+                                <?php }
+                                else { ?>
+                                <?php $newDate = date("d/m/Y", strtotime($arr_assessor_group[$i]->grp_date)); ?>
                                 <h6 class="text-xs text-secondary mb-0">
-                                    Round<?php echo ' ' . $grass_detail[$i]->grd_round . ' ' ?>:<?php echo ' ' . $newDate ?>
+                                    Round
+                                    <?php echo ' ' . $arr_assessor_group[$i]->asp_type . ' ' ?>:<?php echo ' ' . $newDate ?>
                                 </h6>
                                 <?php } ?>
                             </td>
                             <!-- Action -->
                             <td>
                                 <a
-                                    href="<?php echo site_url() . 'Result/Result/show_result_list/' . $grass_detail[$i]->ase_gro_id . '/' . $grass_detail[$i]->grp_id; ?>">
+                                    href="<?php echo site_url() . 'Result/Result/show_result_list/' . $arr_assessor_group[$i]->grp_id; ?>">
                                     <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
@@ -123,7 +122,6 @@
                                 </a>
                             </td>
                         </tr>
-                        <?php } ?>
                         <?php } ?>
                     </tbody>
                 </table>
