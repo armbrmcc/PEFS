@@ -26,7 +26,7 @@ class M_pef_format_form extends Da_pef_format_form
                 INNER JOIN pefs_database.pef_item_form AS item
                 ON form.for_item_id = item.itm_id
                 INNER JOIN pefs_database.pef_description_form AS desform
-                ON item.itm_id = desform.des_item_id
+                ON form.for_des_id = desform.des_id
                 WHERE form.for_pos_id = '$promote'";
         $query = $this->db->query($sql);
         return $query;

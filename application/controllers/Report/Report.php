@@ -120,17 +120,17 @@ class Report extends MainController
 
 
     
-    public function show_report_all()
-    {
-        $this->output('consent/v_report_all');
-    }
-    public function show_report_group()
-    {
-        $this->output('consent/v_report_group');
-    }
+    // public function show_report_all()
+    // {
+    //     $this->output('consent/v_report_all');
+    // }
+    // public function show_report_group()
+    // {
+    //     $this->output('consent/v_report_group');
+    // }
 
-    public function show_report_person()
-    {
-        $this->output('consent/v_report_person');
-    }
+    // public function show_report_person()
+    // {
+    //     $this->output('consent/v_report_person');
+    // }
 }

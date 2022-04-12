@@ -74,7 +74,7 @@ div.a {
                             <?php echo ($i + 1); ?>
                         </td>
                         <td>
-                            <?php echo $emp_nominee[$i]->Emp_ID ?>
+                            <?php echo $emp_nominee[$i]->Emp_ID  ?>
 
                         </td>
                         <td>
@@ -91,41 +91,102 @@ div.a {
                         </td>
                         <!-- column ดำเนินการ -->
                         <td style='text-align: center;'>
+
                             <!-- ปุ่มดำเนินการ -->
-                            <button type=" button" class="btn btn-success" data-toggle="modal"
-                                data-target="#insert_modal_file"><i class="fas fa-file-upload"></i></button>
+                            <?php
+                            // ตรวจสอบว่ามีไฟล์หรือยัง
+                            $check = 0;
+                            foreach ($emp_file as $row) {
+                                if ($row->fil_emp_id == $emp_nominee[$i]->Emp_ID) {
+                                    $check++;
+                                }
+                                // if 
+                            }
+                            // foreach 
+                            // ยังไม่มีไฟล์จะเพิ่มไฟล์
+                            if ($check == 0) { ?>
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                                data-target="#insert_modal_file<?php echo $i ?>"><i
+                                    class="fas fa-file-upload"></i></button>
+                            <?php  }
+                            // if
+                            //เคยมีไฟล์แล้วจะอัปเดต
+                            else { ?>
+                            <button type=" button" class="btn btn-success btn-lg" data-toggle="modal"
+                                data-target="#edit_modal_file<?php echo $i ?>"><i
+                                    class="fas fa-file-upload"></i></button>
+                            <?php  } ?>
+                            <!-- else -->
+
+
+                            <!-- Modal insert-->
+                            <div class="modal fade" id="insert_modal_file<?php echo $i ?>" role="dialog">
+                                <form
+                                    action="<?php echo site_url() ?>File_present_management/File_present_management/insert_file_nominee"
+                                    method="post" enctype="multipart/form-data"
+                                    onSubmit="JavaScript:return fncSubmit();" name="present">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="b">
+                                                <h4 class="modal-title">&emsp;Attachment :</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="file" name="fil" class="form-control" required=""
+                                                    accept="application/pdf">
+                                                <input type="text" name="Emp_ID"
+                                                    value="<?php echo $emp_nominee[$i]->Emp_ID ?>" hidden>
+                                                <br>
+                                                <button type="submit" class="btn btn-success"
+                                                    onclick="show_message_success()">Upload This File</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal edit -->
+                            <div class="modal fade" id="edit_modal_file<?php echo $i ?>" role="dialog">
+                                <form
+                                    action="<?php echo site_url() ?>File_present_management/File_present_management/edit_file_nominee"
+                                    method="post" enctype="multipart/form-data"
+                                    onSubmit="JavaScript:return fncSubmit();" name="present">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="b">
+                                                <h4 class="modal-title">&emsp;Attachment :</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="file" name="fil" class="form-control" required=""
+                                                    accept="application/pdf">
+                                                <input type="text" name="Emp_ID"
+                                                    value="<?php echo $emp_nominee[$i]->Emp_ID ?>" hidden>
+                                                <br>
+                                                <button type="submit" class="btn btn-success"
+                                                    onclick="show_message_success()">Upload This File</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
                         </td>
                     </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <!-- Modal insert-->
-            <div class="modal fade" id="insert_modal_file" role="dialog">
-                <!-- <form
-                    action="<?php echo site_url() ?>File_present_management/File_present_management/insert_file_nominee"
-                    method="post" enctype="multipart/form-data" onSubmit="JavaScript:return fncSubmit();"
-                    name="present"> -->
-                <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="b">
-                            <h4 class="modal-title">&emsp;Attachment :</h4>
-                        </div>
-                        <div class="modal-body">
-                            <!-- <input type="file" name="fil" class="form-control" required="" accept="application/pdf">
-                                <input type="text" name="Emp_ID" value="<?php echo $emp_nominee[$i]->Emp_ID ?>" hidden> -->
-                            <br>
-                            <button type="submit" class="btn btn-success" onclick="show_message_success()">Upload
-                                This File</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- </form> -->
-            </div>
         </div>
     </div>
 </div>

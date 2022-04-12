@@ -170,7 +170,7 @@ th
                 if (result.isConfirmed) {
                     $.ajax({
                         type: 'post',
-                        url: "<?php echo site_url().'Evaluation/Evaluation/insert_evaluation_form'; ?>",
+                        url: "<?php echo site_url().'Evaluation/Evaluation/insert_evaluation_form_2'; ?>",
                         data: {
                             'QnA': qa,
                             'comment': comment,
@@ -256,6 +256,7 @@ th
         <div class="card-header">
             <h2>Evaluation (แบบฟอร์มการประเมิน)</h2>
         </div>
+        
         <div class="card-body">
             <!-- Logo บริษัท -->
             <div class="row">
@@ -285,14 +286,14 @@ th
                     <h6>Assessor Name : <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6>
                 </div>
                 <div class="col-sm-6">
-                    <?php $newDate = date("d/m/Y", strtotime($arr_nominee[0]->grp_date)); ?>
+                    <?php $newDate = date("d/m/Y", strtotime($obj_date[1]->grd_date)); ?>
                     <h6>Date : <?php echo $newDate ?></h6>
                 </div>
             </div>
 
             <div class="table-responsive">
                 <!-- Start form evaluation -->
-                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post"
+                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form_2" method="post"
                     enctype="multipart/form-data" name="evaluation">
                     <!-- Start table data Nominee -->
                     <table class="table table-bordered table-sm">
@@ -383,7 +384,7 @@ th
                                                             <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
                                                     </td>
                                                 <?php } ?>
-                                                
+                                                <!-- แสดง Disription    -->
                                                 <td id="width_col">
                                                     <b> <?php echo $arr_form[$count_discription]->des_description_th; ?></b>
                                                     <br>
@@ -394,7 +395,11 @@ th
                                                     <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
                                                     <?php echo $arr_form[$count_discription]->des_description_th ?>
                                                 </td>
-
+                                                <!-- score 1st round -->
+                                                <td colspan="2" style="vertical-align:middle;text-align: center;">
+                                                    <?php echo $arr_point[$count_discription]->ptf_point; ?>
+                                                </td>
+                                                <!-- score 2st round -->
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
                                                         <select style="vertical-align:middle;text-align: center;" class="form-control" name="form[]" id="form_<?php echo $count_discription; ?>" required>
                                                             <option value="0">score</option>
@@ -418,7 +423,7 @@ th
                                         <td rowspan="2">
                                             5 ： Exceed expected level for Next level
                                             <br>4 ： Absolutely satisfies expected level for Next level
-                                            <br> 3 ： Meet expected level for Manager level
+                                            <br>3 ： Meet expected level for Manager level
                                             <br>2 ： Partially lower that expected level for Next level
                                             <br>1 ： Do Not satisfy expected level for Next level
                                         </td>
@@ -443,6 +448,7 @@ th
                                 <input type="hidden" value="<?php echo $arr_nominee[0]->grp_id; ?>" name="group_id" id="group_id">
                                 <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id">
                             <!-- end input -->
+
                             <br>
                             <!-- comment -->
                             <div class="form-group">
