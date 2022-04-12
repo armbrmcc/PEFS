@@ -1,4 +1,4 @@
-<!--
+<!-- <!--
     * v_group_management
     * display for group management
     * @input  -
@@ -128,13 +128,6 @@ div.tr {
                     <div>
                         <label for="year" style="position: absolute; right: 0;font-size:20px;">Select Year:
                             <select id="year" name="year">
-                                <option>2021</option>
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>
-                                <option value="2019">2019</option>
-                                <option value="2020">2020</option>
-                                <option value="2021">2021</option>
-                                <option value="2022">2022</option>
                             </select>
                         </label><br><br>
                     </div>
@@ -155,7 +148,6 @@ div.tr {
                             <th style="text-align:center">Level Name</th>
                             <th style="text-align:center">Promote To</th>
                             <th style="text-align:center">Action</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -186,12 +178,7 @@ div.tr {
                             <td style="text-align:center">
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="text-xs text-secondary mb-0">
-                                        <ul>
-                                            <?php $sec = explode(" ", $group[$i]->sec_name)  ?>
-                                            <?php for ($j = 0; $j < count($sec); $i++) { ?>
-                                            <li><?php echo $sec[$j] ?></li>
-                                            <?php } ?>
-                                        </ul>
+                                        <?php echo $group[$i]->sec_name ?>
 
                                     </h6>
                                 </div>
@@ -224,6 +211,35 @@ div.tr {
         <!-- End conten form management -->
         <script>
         $(document).ready(function() {
+            console.log("years");
             $("#myTable").DataTable();
+            const d = new Date();
+            let years = d.getFullYear();
+            years = years - 3
+            console.log(years);
+
+            // var x = document.getElementById("year");
+            // var option = document.createElement("option");
+            for (i = 0; i < 7; i++) {
+                if (years == d.getFullYear()) {
+                    var x = document.getElementById("year");
+                    var option = document.createElement("option");
+                    option.text = years;
+                    option.value = years;
+                    option.selected = true;
+                    years++
+                    x.add(option);
+                    console.log(i)
+                } else {
+                    var x = document.getElementById("year");
+                    var option = document.createElement("option");
+                    option.text = years;
+                    option.value = years;
+                    years++
+                    x.add(option);
+                    console.log(i)
+                }
+
+            }
         });
         </script>

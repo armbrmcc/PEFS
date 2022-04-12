@@ -62,7 +62,7 @@ class Group_management extends MainController
         $this->ped->grp_position_group = $position_group;
         $this->ped->insert_group();
         $group_id = $this->pef->get_group_id()->result();
-        if ($this->input->post('date2') == "") {
+        if ($position_group < 5) {
             $this->ped->grd_grp_id = $group_id[0]->grp_id;
             $this->ped->grd_date = $date[0];
             $this->ped->grd_round = '1';
@@ -96,6 +96,7 @@ class Group_management extends MainController
         // $this->output('consent/v_group_list', $data);
         $data = "insert_success";
         echo json_encode($data);
+        //redirect('consent/v_group_management');
     }
     function delete_group($id)
     {
@@ -112,6 +113,6 @@ class Group_management extends MainController
         // $data['group'] = $this->pef->get_group()->result();
         // $this->output('consent/v_group_management', $data);
         // $this->show_group_management();
-        redirect('consent/v_group_management');
+        redirect('Group_management/Group_management/show_group_management');
     }
 }

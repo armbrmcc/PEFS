@@ -50,7 +50,6 @@ class M_pef_group extends Da_pef_group
 			FROM pefs_database.pef_group AS grp
             INNER JOIN pefs_database.pef_section AS sec
             ON grp.grp_position_group = sec.sec_level
-			ORDER BY grp.grp_date DESC  
 			";
         $query = $this->db->query($sql);
         return $query;
