@@ -30,7 +30,6 @@ class M_pef_point_form extends Da_pef_point_form
         return $query;
     }
 
-<<<<<<< Updated upstream
     /* Report
     * get_data_point
     * get data section, point_form, nominee, group
@@ -76,8 +75,7 @@ class M_pef_point_form extends Da_pef_point_form
         $query = $this->db->query($sql, array($this->grn_id));
         return $query;
     }
-}
-=======
+
     /*
 	* get_point_list
 	* คืนค่าคะแนนของแต่ละฟอร์ม
@@ -97,4 +95,4 @@ class M_pef_point_form extends Da_pef_point_form
         return $query;
     }
 }
->>>>>>> Stashed changes
+

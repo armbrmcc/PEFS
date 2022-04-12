@@ -81,8 +81,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                     INNER JOIN dbmc.company
                     ON employee.Company_ID = company.Company_ID
                     INNER JOIN dbmc.sectioncode AS section
-                    ON section.Sectioncode = employee.Sectioncode_ID
-              ";
+                    ON section.Sectioncode = employee.Sectioncode_ID";
         $query = $this->db->query($sql);
         return $query;
     }
@@ -107,8 +106,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         return $query;
     }
 
-<<<<<<< Updated upstream
-     /* Report
+    /* Report
     * get_all_nominee
     * get data norminee
     * @input    -
@@ -123,7 +121,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         $query = $this->db->query($sql);
         return $query;
     }
-=======
+
     /*
 	* get_nominee_detail
 	* get 
@@ -152,5 +150,5 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลรายละเอียดของ Nominee
->>>>>>> Stashed changes
+
 }
