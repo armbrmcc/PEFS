@@ -145,7 +145,7 @@ div.tr {
                         <tr>
                             <th style="text-align:center">#</th>
                             <th style="text-align:center">Level</th>
-                            <th style="text-align:center">Level Name</th>
+                            <th style="text-align:center">Evaluation Date</th>
                             <th style="text-align:center">Promote To</th>
                             <th style="text-align:center">Action</th>
                         </tr>
