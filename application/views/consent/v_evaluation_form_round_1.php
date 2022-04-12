@@ -196,7 +196,7 @@ function alart_evaluation() {
                             }).then((result) => {
                                 window.location.href =
                                     href =
-                                    "<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_detail/'.$arr_group[$i]->ase_emp_id. '/'.$arr_group[$i]->grp_id; ?>";
+                                    "<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>";
                             })
                         } else {
                             console.log("Error");
@@ -459,7 +459,7 @@ function calculate_weight() {
                                                 </div>
                                             </td>
                                                 <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
-                                                id="formid_<?php echo $i ?>">
+                                                id="formid_<?php echo $i; ?>">
                                             <!-- แสดง Score -->
                                             <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"
                                                 style="vertical-align:middle; text-align: center;"></td>
@@ -499,14 +499,14 @@ function calculate_weight() {
                         <div class="form-group">
                             <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
                             <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
-                                style="width: 550px;" required></textarea>
+                                required></textarea>
                         </div>
                         <br>
                         <!-- Q/A -->
                         <div class="form-group">
                             <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
                             <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
-                                style="width: 550px;" required></textarea>
+                                required></textarea>
                         </div>
                         <br>
                         <!-- input -->

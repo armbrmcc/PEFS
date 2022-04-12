@@ -107,6 +107,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         return $query;
     }
 
+<<<<<<< Updated upstream
      /* Report
     * get_all_nominee
     * get data norminee
@@ -122,4 +123,34 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         $query = $this->db->query($sql);
         return $query;
     }
+=======
+    /*
+	* get_nominee_detail
+	* get 
+	* @input  -
+	* @output -
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-03-03
+    */
+    public function get_nominee_date($group_id)
+    {
+        $sql = "SELECT gr.grp_date
+                    FROM pefs_database.pef_group_nominee AS groupno
+                    INNER JOIN pefs_database.pef_group AS gr
+                    ON groupno.grn_grp_id = gr.grp_id
+                    INNER JOIN pefs_database.pef_group_assessor AS grass
+                    ON gr.grp_id = grass.gro_grp_id
+                    INNER JOIN pefs_database.pef_assessor AS ass
+                    ON grass.gro_ase_id = ass.ase_id
+                    INNER JOIN pefs_database.pef_assessor_promote AS promote
+                    ON grass.gro_asp_id = promote.asp_id
+                    INNER JOIN dbmc.employee
+                    ON groupno.grn_emp_id = employee.Emp_ID
+                    INNER JOIN dbmc.position AS position
+                    ON groupno.grn_promote_to = position.Position_ID 
+                WHERE gr.grp_id = $group_id";
+        $query = $this->db->query($sql);
+        return $query;
+    } //คืนค่าข้อมูลรายละเอียดของ Nominee
+>>>>>>> Stashed changes
 }
