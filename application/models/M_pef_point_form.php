@@ -1,5 +1,5 @@
 <?php
-    /* 
+/* 
     * M_pef_group_assessor
     * Model for 
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
@@ -13,7 +13,7 @@ include_once("Da_pef_point_form.php");
 class M_pef_point_form extends Da_pef_point_form
 {
 
-/*
+    /*
 	* get_point
 	* get point form evaluation
 	* @input  -
@@ -27,6 +27,52 @@ class M_pef_point_form extends Da_pef_point_form
         FROM pefs_database.pef_performance_form";
 
         $query = $this->db->query($sql);
+        return $query;
+    }
+
+    /* Report
+    * get_data_point
+    * get data section, point_form, nominee, group
+    * @input    -
+    * @output   get data section, point_form, nominee, group
+    * @author   Chakrit
+    * @Create Date 2565-04-11
+    */
+    public function get_data_point()
+    {
+        $sql = "SELECT * 
+                FROM pefs_database.pef_point_form AS poi
+                INNER JOIN pefs_database.pef_group_nominee AS grn
+                ON poi.ptf_emp_id = grn.grn_id
+                INNER JOIN pefs_database.pef_group AS grp
+                ON grp.grp_id = grn.grn_grp_id
+                INNER JOIN pefs_database.pef_section AS sec
+                ON sec.sec_id = grp.grp_position_group
+                WHERE sec.sec_id = ?";
+        $query = $this->db->query($sql, array($this->sec_id));
+        return $query;
+    }
+
+    /* Report
+    * get_data_point_by_nor_id
+    * get data point_form, nominee, group, section
+    * @input    -
+    * @output   get data point_form, nominee, group, section
+    * @author   Chakrit
+    * @Create Date 2565-04-12
+    */
+    public function get_data_point_by_nor_id()
+    {
+        $sql = "SELECT * 
+                FROM pefs_database.pef_point_form AS poi
+                INNER JOIN pefs_database.pef_group_nominee AS grn
+                ON poi.ptf_emp_id = grn.grn_id
+                INNER JOIN pefs_database.pef_group AS grp
+                ON grp.grp_id = grn.grn_grp_id
+                INNER JOIN pefs_database.pef_section AS sec
+                ON sec.sec_id = grp.grp_position_group
+                WHERE grn.grn_id = ?";
+        $query = $this->db->query($sql, array($this->grn_id));
         return $query;
     }
 }

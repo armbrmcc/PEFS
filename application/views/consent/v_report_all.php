@@ -239,6 +239,8 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Position</th>
                                     <th scope="col">Number</th>
+                                    <th scope="col">Assessed</th>
+                                    <th scope="col">Not Assessed</th>
                                     <th scope="col">Pass</th>
                                     <th scope="col">Fail</th>
                                     <th scope="col">Details</th>
@@ -250,6 +252,8 @@
                                     <td>Promote to T6</td>
                                     <td>20</td>
                                     <td>6</td>
+                                    <td>6</td>
+                                    <td>14</td>
                                     <td>14</td>
                                     <td> <?php { ?>
                                             <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
@@ -263,6 +267,8 @@
                                     <td>8</td>
                                     <td>4</td>
                                     <td>4</td>
+                                    <td>4</td>
+                                    <td>4</td>
                                     <td> <?php { ?>
                                             <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
                                                 <i class="fa fa-search"></i>
@@ -274,6 +280,8 @@
                                     <td>Promote to T4</td>
                                     <td>6</td>
                                     <td>2</td>
+                                    <td>2</td>
+                                    <td>4</td>
                                     <td>4</td>
                                     <td> <?php { ?>
                                             <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
@@ -285,6 +293,8 @@
                                     <td>4</td>
                                     <td>Promote to T3</td>
                                     <td>5</td>
+                                    <td>2</td>
+                                    <td>2</td>
                                     <td>2</td>
                                     <td>3</td>
                                     <td> <?php { ?>
@@ -299,6 +309,8 @@
                                     <td>3</td>
                                     <td>1</td>
                                     <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
                                     <td> <?php { ?>
                                             <a href='<?php echo site_url() . 'Report/Report/show_report_group/' ?>'>
                                                 <i class="fa fa-search"></i>
@@ -310,6 +322,8 @@
                                 <td colspan="2" align="right">Total :</td>
                                 <td id='sum_total'>42</td>
                                 <td id='pass_total'>15</td>
+                                <td id='fail_total'>27</td>
+                                <td id='fail_total'>27</td>
                                 <td id='fail_total'>27</td>
                             </tfoot>
                         </table>

@@ -106,4 +106,20 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         $query = $this->db->query($sql);
         return $query;
     }
+
+     /* Report
+    * get_all_nominee
+    * get data norminee
+    * @input    -
+    * @output   data of norminee
+    * @author   Chakrit
+    * @Create Date 2564-08-16
+    */
+    public function get_all_nominee()
+    {
+        $sql = "SELECT *
+                FROM pefs_database.pef_group_nominee";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }
