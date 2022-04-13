@@ -34,4 +34,20 @@ class M_pef_performance_form extends Da_pef_performance_form
         return $query;
     }
 
+    /*
+	* get_performance_by_id
+	* get 
+	* @input  nominee id, assessor id
+	* @output q and a, comment
+	* @author  
+	* @Create Date 2565-04-13 
+    */
+    function get_performance_by_id($nor_id, $id_assessor)
+    {
+        $sql = "SELECT performance.per_q_and_a, performance.per_comment
+        FROM  pefs_database.pef_performance_form as performance
+        WHERE performance.per_emp_id = '$nor_id' AND performance.per_ase_id = '$id_assessor'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }

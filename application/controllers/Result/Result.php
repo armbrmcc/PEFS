@@ -24,10 +24,9 @@ class Result extends MainController
 	* display view result group
 	* @input  -
 	* @output  Result group
-	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @author  Thitima Popila and Ponprapai Atsawanurak
 	* @Create  Date 2565-01-25
     * @Update  Date 2565-04-12
-    * Update By Thitima Popila
     */
     public function show_result_group()
     {
@@ -44,10 +43,9 @@ class Result extends MainController
 	* display view result list
 	* @input  -
 	* @output  result list
-	* @author  Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @author  Thitima Popila and Ponprapai Atsawanurak
 	* @Create  Date 2565-01-25
     * @Update  Date 2565-04-12
-    * Update By Thitima Popila
     */
     public function show_result_list($group_id)
     {
@@ -64,24 +62,56 @@ class Result extends MainController
 	* display view Result evaluation of round 1
 	* @input  -
 	* @output  eesult evaluation
-	* @author  Ponprapai Atsawanurak and Phatchara Khongthandee
+	* @author  Thitima Popila and Ponprapai Atsawanurak
 	* @Create  Date 2565-01-25
     */
-    public function show_result_evaluation_type1()
+    public function show_result_evaluation_type1($group_id, $id_nominee, $promote)
     {
-        $this->output('consent/v_result_evaluation_assessor_round1');
+
+        $this->load->model('M_pef_assessor', 'assessor');
+        $this->load->model('M_pef_group_nominee', 'nominee');
+        $this->load->model('M_pef_format_form', 'format');
+        $this->load->model('M_pef_performance_form', 'form');
+        
+        $ass_id = $_SESSION['UsEmp_ID'];
+
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
+        $data['obj_assessor'] = $this->assessor->get_assessor_by_id($ass_id)->result();
+        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
+        $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
+        $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
+        $data['arr_form'] = $this->format->get_evaluation_form($promote)->result();
+        
+        $data['arr_performance'] = $this->form->get_performance_by_id($id_nominee, $ass_id)->result();
+
+        $this->output('consent/v_result_evaluation_assessor_round1', $data);
     } //show_result_evaluation_type1
 
     /*
 	* show_result_evaluation
 	* display view Result evaluation of round 2
 	* @input  -
-	* @output  eesult evaluation
-	* @author  Ponprapai Atsawanurak and Thitima Popila
+	* @output  result evaluation
+	* @author  Thitima Popila and Ponprapai Atsawanurak
 	* @Create  Date 2565-04-13
     */
-    public function show_result_evaluation_type2()
+    public function show_result_evaluation_type2($group_id, $id_nominee, $promote)
     {
-        $this->output('consent/v_result_evaluation_assessor_round2');
+        $this->load->model('M_pef_assessor', 'assessor');
+        $this->load->model('M_pef_group_nominee', 'nominee');
+        $this->load->model('M_pef_format_form', 'format');
+        $this->load->model('M_pef_performance_form', 'form');
+        
+        $ass_id = $_SESSION['UsEmp_ID'];
+
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
+        $data['obj_assessor'] = $this->assessor->get_assessor_by_id($ass_id)->result();
+        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
+        $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
+        $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
+        $data['arr_form'] = $this->format->get_evaluation_form($promote)->result();
+        
+        $data['arr_performance'] = $this->form->get_performance_by_id($id_nominee, $ass_id)->result();
+        $this->output('consent/v_result_evaluation_assessor_round2', $data);
     } //show_result_evaluation_type2
 }//End class Result

@@ -73,7 +73,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Employee ID</th>
-                            <th>List of Nominee</th>
+                            <th>Nominee Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -97,12 +97,27 @@
                                 </h6>
                             </td>
                             <td>
-                                <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation'; ?>">
-                                    <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
+                                <?php 
+                                    if($arr_nominee[$i]->asp_type == 1){
+                                ?>
+                                    <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type1'.'/'.$arr_nominee[$i]->grn_grp_id.'/'.$arr_nominee[$i]->grn_emp_id.'/'.$arr_nominee[$i]->asp_level; ?>">
+                                        <button type="button" class="btn btn-xs button_size"
+                                            style="background-color: #596CFF;">
+                                            <i class="fas fa-search text-white"></i>
+                                        </button>
+                                    </a>        
+                                <?php 
+                                }else if($arr_nominee[$i]->asp_type == 2){
+                                ?>
+                                    <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2'.'/'.$arr_nominee[$i]->grn_grp_id.'/'.$arr_nominee[$i]->grn_emp_id.'/'.$arr_nominee[$i]->asp_level; ?>">
+                                        <button type="button" class="btn btn-xs button_size"
+                                            style="background-color: #596CFF;">
+                                            <i class="fas fa-search text-white"></i>
+                                        </button>
+                                    </a>
+                                <?php           
+                                }
+                                ?>
                             </td>
                         </tr>
                         <?php } ?>

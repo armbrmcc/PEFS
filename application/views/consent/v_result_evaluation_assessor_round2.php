@@ -1,12 +1,11 @@
 <!--
     /*
-    * v_result_evaluation
-    * display for Result Evaluation  (ผลคะแนนแบบฟอร์มการประเมิน)
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * v_result_evaluation_round2
+    * display for Result evaluation form 2 Round (แบบฟอร์มการประเมิน 2 รอบ)
+    * @author Thitima Popila and Ponprapai Atsawanurak
     * @input -
     * @output -
-    * @Create date : 2565-01-26 
-    * @Update date : 2564-08-28
+    * @Create date : 2565-04-13   
     */
 -->
 
@@ -65,15 +64,66 @@ th {
 #set_button {
     font-size: 16px;
 }
+
+/* จัดระยะห่างระหว่างปุ่ม */
+.btn {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+#width_col {
+    white-space: initial !important;
+}
 </style>
 <!-- End CSS -->
 
-<!-- html -->
-<!-- Result -->
+<!-- Javascript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script>
+$(document).ready(function() {
+
+    $("select").change(function() {
+
+        var toplem = 0;
+        $("select[name=form]").each(function() {
+
+            toplem = toplem + parseInt($(this).val());
+
+        })
+        $("input[name=total]").val(toplem);
+    }); //คืนค่าคะแนนรวม
+
+    $("select").change(function() {
+        var toplem = 0;
+        var weight = $("#weight").val();
+        $("select[name=form]").each(function() {
+            toplem = toplem + parseInt($(this).val());
+
+        })
+
+        toplem = Math.round(toplem / weight * 100);
+        var a = '%'
+        $("input[name=total_weight]").val(toplem + a);
+
+    }); //คืนค่าคะแนนรวมแบบเปอเซ็น
+
+
+    //คืนค่าคะแนนรวมแบบรายการ
+
+})
+</script>
+<!-- End Javascript -->
+
+<!-- Evaluation form -->
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h2>Result (ผลคะแนนการประเมิน)</h2>
+            <h2>Result (คะแนนการประเมิน)</h2>
         </div>
         <div class="card-body">
             <!-- Logo บริษัท -->
@@ -84,208 +134,211 @@ th {
                 </div>
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
-                    <h4>Siam DENSO Manufacturing Co., Ltd.</h4>
-                </div>
-            </div>
-            <!-- icon file present nominee -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <!-- <a href="" target="_blank"> -->
-                    <button type="button" class="btn bg-gradient md-0" style="background-color: #596CFF; float: right"
-                        id="set_button">
-                        <i class="far fa-file-pdf text-white"></i> &nbsp; <h7 class="text-white">Present Nominee</h7>
-                    </button>
-                    </a>
+                    <h4><?php echo $obj_nominee[0]->Company_name ?></h4>
                 </div>
             </div>
             <!-- ชื่อกรรมการ และวันประเมิน -->
             <div class="row">
                 <div class="col-sm-6">
-                    <h6>Assessor Name :&nbsp; Cherprang Areekul</h6>
+                    <h6>Assessor Name :
+                        <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6>
                 </div>
                 <div class="col-sm-6">
-                    <h6>Date : 16/01/2022</h6>
+                    <?php $newDate = date("d/m/Y", strtotime($arr_nominee[0]->grp_date)); ?>
+                    <h6>Date : <?php echo $newDate ?></h6>
                 </div>
             </div>
 
-            <!-- Start table data form evaluation -->
             <div class="table-responsive">
-                <form action="" method="post" enctype="multipart/form-data" name="evaluation">
+                <!-- Start form evaluation -->
+                <form name="evaluation">
+                    <!-- Start table data Nominee -->
                     <table class="table table-bordered table-sm">
                         <tr id="Manage">
                             <th colspan="5" id="gray">
-                                <center><b>Stretch Assignment Evaluation Form (Promote to T2) </b>
+                                <center><b>Stretch Assignment Evaluation Form
+                                        (<?php echo $obj_promote[0]->Position_name?>) </b>
                         </tr>
                         <tbody>
                             <tr id="Manage">
                                 <!-- ชื่อ-นามสกุล Nominee -->
                                 <th width="50px" id="gray">Name - Surname</th>
                                 <td colspan="2">
-                                    Milin Dokthian
+                                    <?php echo $obj_nominee[0]->Empname_eng. ' ' . $obj_nominee[0]->Empsurname_eng?>
                                 </td>
                                 <!-- ตำแหน่ง Nominee -->
                                 <th width="40px" id="gray">Position</th>
                                 <td>
-                                    Senior Staff
+                                    <?php echo $obj_nominee[0]->Position_name?>
                                 </td>
                             </tr>
 
                             <tr id="Manage">
                                 <!-- แผนก Promote to -->
                                 <th width="40px" id="gray">Promote to</th>
-                                <td colspan="2">Supervisor</td>
+                                <td colspan="2">
+                                    <?php echo $obj_promote[0]->Position_name?>
+                                </td>
                                 <!-- แผนก Nominee -->
                                 <th width="40px" id="gray">Department/Section</th>
                                 <td>
-                                    Accountant
+                                    <?php echo $obj_nominee[0]->Department?>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <!-- End table data form evaluation -->
+                    <!-- End table data Nominee -->
                     <br>
 
-                    <!-- Start table evaluation form -->
+                    <!-- Start table Evaluation form -->
                     <div class="table-responsive">
-                        <form action="" method="post" enctype="multipart/form-data" name="evaluation">
-                            <table class="table table-bordered table-sm">
-                                <tbody>
-                                    <tr id="center_th">
-                                        <td rowspan="2">ITems</td>
-                                        <td rowspan="2">Points for observation</td>
-                                        <td>% weight</td>
-                                        <td>Rating(B)</td>
-                                        <td>Score</td>
-                                    </tr>
-                                    <tr id="center_th">
-                                        <td>(A)</td>
-                                        <td>[Fill score 1-5]</td>
-                                        <td>(AxB)</td>
-                                    </tr>
-                                    <tr>
-                                        <!--แสดง Item -->
-                                        <td style="text-align: center; width: 50px;">
-                                            Awareness of the issue<br>
-                                            ตระหนักในปัญหา
-                                        </td>
-                                        <!-- แสดง Disription    -->
-                                        <td>
-                                            Is aware of the issues of the business <br>
-                                            in their area of responsibility; understands <br>
-                                            ตระหนักในปัญหาของงานที่รับผิดชอบ เข้าใจสิ่งแวดล้อม <br>
-                                            หรือสภาพปัญหาของแผนกตนเอง
-                                        </td>
-                                        <!-- แสดง % Weight -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            15
-                                        </td>
-                                        <!-- แสดง point -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            5
-                                        </td>
-                                        <!-- แสดง Score -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            75
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!--แสดง Item -->
-                                        <td style="text-align: center; width: 50px;">
-                                            Analytical ability<br>
-                                            ความสามารถเชิงวิเคราะห์
-                                        </td>
-                                        <!-- แสดง Disription    -->
-                                        <td>
-                                            Can logically analyze issues in order to solve them and extract <br>
-                                            the problems appropriately based on the analysis. <br>
-                                            สามารถวิเคราะห์ปัญหาได้อย่างมีเหตุผลเพื่อแก้ไขและขจัดปัญหาออกไป <br>
-                                            ได้อย่างเหมาะสมโดยใช้หลักการวิเคราะห์
-                                        </td>
-                                        <!-- แสดง % Weight -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            15
-                                        </td>
-                                        <!-- แสดง point -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            5
-                                        </td>
-                                        <!-- แสดง Score -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            75
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!--แสดง Item -->
-                                        <td style="text-align: center; width: 50px;">
-                                            Problem solving ability<br>
-                                            ความสามารถในการแก้ปัญหา
-                                        </td>
-                                        <!-- แสดง Disription    -->
-                                        <td>
-                                            Figures out new solutions or mechanisms for solving <br>
-                                            the issues by combining existing facts with information. <br>
-                                            หาหนทางใหม่ๆ หรือกลวิธีในการแก้ไขปัญหา โดยการรวบรวมข้อเท็จจริง <br>
-                                            และข้อมูล
-                                        </td>
-                                        <!-- แสดง % Weight -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            15
-                                        </td>
-                                        <!-- แสดง point -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            5
-                                        </td>
-                                        <!-- แสดง Score -->
-                                        <td style="vertical-align:middle;text-align: center;">
-                                            75
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!-- แสดง total -->
-                                        <td colspan="2" align='right'><b>Total</b></td>
-                                        <td align='center'>100</td>
-                                        <!-- แสดง point รวม -->
-                                        <td align='center'>
-                                            15
-                                        </td align='center'>
-                                        <!-- แสดงเปอร์เซ็นคะแนน -->
-                                        <td align='center'>
-                                            100%
-                                        </td>
-                                    </tr>
-                            </table>
-                            <!-- End table evaluation form -->
-                            <br>
+                        <table class="table table-bordered table-sm">
+                            <tbody>
+                                <tr id="center_th">
+                                    <td rowspan="2" width="300px" id="width_col"
+                                        style="vertical-align:middle;text-align: center;">ITems</td>
+                                    <td rowspan="2" width="800px" id="width_col"
+                                        style="vertical-align:middle;text-align: center;">Points for observation</td>
+                                    <td colspan="4" style="vertical-align:middle;text-align: center;">Rating [Fill score
+                                        1-5]</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="vertical-align:middle;text-align: center;">1st round</td>
+                                    <td colspan="2" style="vertical-align:middle;text-align: center;">Final round</td>
+                                </tr>
+                                <!--เริ่ม ตารางหัวข้อลงคะแนน-->
+                                <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
+                                    $count_itm = 1; //จำนวนหัวข้อหลัก
+                                    $weight = 0;
+                                    $point_old = 0;
+                                    for ($i = 0; $i < count($arr_form); $i++) {
+                                        if ($i != 0) {
+                                            if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
+                                                $count_itm++;
+                                            }
+                                        }
+                                        $weight =  $weight +5;
+                                        //
+                                    } //นับหัวข้อหลัก
+                                    
+                                    ?>
+                                <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
+                                <?php
+                                    $weight =  $weight;
+                                    for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
+                                    ?>
+                                <?php $count_rowspan = 0;
+                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
+                                            if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
+                                                $count_rowspan++;
+                                            }
+                                        } //นับdiscriptionเพื่อกำหนด rowspan 
+                                        
+                                        ?>
+                                <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
+                                    id="dis_row_<?php echo  $i ; ?>">
+                                <?php
+                                        for ($loop_dis = 1; $loop_dis <= $count_rowspan; $loop_dis++) { ?>
+                                <tr>
+                                    <!-- แสดงห้อข้อหลัก -->
+                                    <?php if ($loop_dis === 1) { ?>
+                                    <td rowspan="<?php echo $count_rowspan; ?>"
+                                        style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
+                                        <b>
+                                            <?php echo $arr_form[$count_discription]->itm_name; ?>
+                                            <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
+                                    </td>
+                                    <?php } ?>
 
-                            <!-- Comment -->
-                            <div class="form-group">
-                                <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
-                                <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
-                                    style="width: 550px;" required>มีความเชี่ยวชาญ สามารถแก้ปัญหางานได้ดี</textarea>
-                            </div>
-                            <br>
-                            <!-- Q/A -->
-                            <div class="form-group">
-                                <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
-                                <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
-                                    style="width: 550px;"
-                                    required>เข้าใจในมุมมองกว้าง และกล้าตัดสินใจ ตอบได้ตรงประเด็น</textarea>
-                            </div>
-                            <br>
+                                    <td id="width_col">
+                                        <b> <?php echo $arr_form[$count_discription]->des_description_th; ?></b>
+                                        <br>
+                                        <!-- แสดง Disription    -->
+                                        <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                        <br>
+                                        <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
+                                        <?php echo $arr_form[$count_discription]->des_description_th ?>
+                                    </td>
 
-                            <!-- Back button -->
-                            <a href="<?php echo base_url() . 'Result/Result/show_result_detail/' ?>">
-                                <center><button type="button" class="btn btn-secondary btn-lg canter">Back</button>
-                                </center>
-                            </a>
+                                    <td colspan="2" style="vertical-align:middle;text-align: center;">
+                                        <select style="vertical-align:middle;text-align: center;" class="form-control"
+                                            name="form" id="form_<?php echo $count_discription; ?>" required>
+                                            <option value="0">score</option>
+                                            <option value=1>1</option>
+                                            <option value=2>2</option>
+                                            <option value=3>3</option>
+                                            <option value=4>4</option>
+                                            <option value=5>5</option>
+                                        </select>
+
+                                    </td>
+                                    <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>"
+                                        name="for_id[]" id="formid_<?php echo $count_discription; ?>">
+                                    <?php $count_discription++; ?>
+                                    <?php } ?>
+                                </tr>
+
+                                <?php } ?>
+                                <input type="text" name="weight" ID="weight" value=<?php echo $weight; ?> hidden>
+                                <input type="hidden" id="count_score" value="<?php echo $count_discription; ?>">
+                                <tr>
+                                    <td rowspan="2">
+                                        5 ： Exceed expected level for Next level
+                                        <br>4 ： Absolutely satisfies expected level for Next level
+                                        <br> 3 ： Meet expected level for Manager level
+                                        <br>2 ： Partially lower that expected level for Next level
+                                        <br>1 ： Do Not satisfy expected level for Next level
+                                    </td>
+                                    <!-- total -->
+                                    <td>Total</td>
+                                    <td style="text-align: center;"><input type="text" name="total" size='1' disabled
+                                            style='border: none'> </td>
+                                    <td style="text-align: center;"><input type="text" name="total_weight" size='1'
+                                            disabled style='border: none' ;></td>
+                                    <td><input type="text" name="total" size='1' disabled hidden></td>
+                                    <td><input type="text" name="total" size='1' disabled hidden></td>
+                                </tr>
+                                <tr>
+                                    <td>Judgement</td>
+                                    <td colspan="4"></td>
+                                </tr>
+                        </table>
+
+                        <!-- input -->
+                        <!-- <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
+                        <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id" id="ase_id">
+                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id"
+                            id="emp_id">
+                        <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
+                        <input type="hidden" value="<?php echo $arr_nominee[0]->grp_id; ?>" name="group_id"
+                            id="group_id">
+                        <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id"> -->
+                        <!-- end input -->
+                        <br>
+                        <!-- Comment -->
+                        <div class="form-group">
+                            <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
+                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment" disabled>
+                                <?php echo $arr_performance->per_comment; ?>
+                            </textarea>
+                        </div>
+                        <br>
+                        <!-- Q/A -->
+                        <div class="form-group">
+                            <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
+                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA" disabled>
+                                <?php echo $arr_performance->per_q_and_a; ?>
+                            </textarea>
+                        </div>
                     </div>
+                    <!-- End table Evaluation form -->
                 </form>
                 <!-- End form evaluation -->
             </div>
         </div>
-        <!-- End class card-body -->
+        <!-- End card body -->
     </div>
-    <!-- End class card -->
+    <!-- End card -->
 </div>
-<!-- End class container -->
-<!-- End html -->
+<!-- End Evaluation form -->
