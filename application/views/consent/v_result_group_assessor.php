@@ -114,7 +114,7 @@
                             <!-- Action -->
                             <td>
                                 <a
-                                    href="<?php echo site_url() . 'Result/Result/show_result_list_assessor/' . $arr_assessor_group[$i]->grp_id; ?>">
+                                    href="<?php echo site_url() . 'Result/Result/show_result_list/' . $arr_assessor_group[$i]->grp_id; ?>">
                                     <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
