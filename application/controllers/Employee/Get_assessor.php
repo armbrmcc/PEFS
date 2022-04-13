@@ -46,5 +46,42 @@ class Get_assessor extends MainController
         // echo $data['assessor'];
         echo json_encode($data);
     }
+    function get_assessor_by_group()
+    {
+
+        $this->load->model('M_pef_assessor', 'ass');
+        $this->ass->gro_grp_id = $this->input->post('group_id');
+        $this->ass->gro_ase_id = $this->input->post('ase_id');
+        $data = $this->ass->get_assessor_by_group()->result();
+        // echo $this->input->post('ase_id');
+        // $num = 0;
+        // // echo $data[0]->gro_ase_id;
+        // for ($i = 0; $i < count($data); $i++) {
+        //     if ($data[$i]->gro_ase_id == $this->input->post('ase_id')) {
+        //         $num++;
+        //     }
+        // }
+        // if ($num == 0) {
+        //     $data = '0';
+        //     echo json_encode($data);
+        // } else {
+        //     $data = $this->input->post('ase_id');
+        //     echo json_encode($data);
+        // }
+
+        echo json_encode($data);
+        //echo $data;
+        // print_r($data);
+
+    }
+    function get_group_by_year()
+    {
+
+        $this->load->model('M_pef_group', 'grp');
+        $this->grp->grp_year = $this->input->post('years');
+        $data = $this->grp->get_group_by_year()->result();
+        // echo $data['assessor'];
+        echo json_encode($data);
+    }
 }
 // 

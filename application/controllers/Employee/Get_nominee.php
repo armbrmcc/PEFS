@@ -81,6 +81,7 @@ class Get_nominee extends MainController
         // echo $data['assessor'];
         echo json_encode($data);
     }
+    
     /*
 	* get_position
 	* search nominee detail by group

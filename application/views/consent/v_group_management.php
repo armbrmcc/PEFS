@@ -127,7 +127,7 @@ div.tr {
                 <div>
                     <div>
                         <label for="year" style="position: absolute; right: 0;font-size:20px;">Select Year:
-                            <select id="year" name="year">
+                            <select id="year" name="year" onchange="get_group()">
                             </select>
                         </label><br><br>
                     </div>
@@ -150,8 +150,8 @@ div.tr {
                             <th style="text-align:center">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php for ($i = 0; $i < count($group); $i++) { ?>
+                    <tbody id="group_data">
+                        <!-- <?php for ($i = 0; $i < count($group); $i++) { ?>
                         <tr>
                             <td style="text-align:center">
                                 <div class="d-flex flex-column justify-content-center">
@@ -190,7 +190,8 @@ div.tr {
                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </a>
 
-                                <a href="<?php echo site_url() . 'Group_management/Group_management/edit_group' ?>"><button
+                                <a
+                                    href="<?php echo site_url() . 'Group_management/Group_management/edit_group/' . $group[$i]->grp_id ?>"><button
                                         type="button" class="btn btn-warning"><i class="fa fa-pencil"
                                             aria-hidden="true"></i></button></a>
 
@@ -198,7 +199,7 @@ div.tr {
                             </td>
 
                         </tr>
-                        <?php } ?>
+                        <?php } ?> -->
 
                     </tbody>
                 </table>
@@ -212,11 +213,12 @@ div.tr {
         <script>
         $(document).ready(function() {
             console.log("years");
-            $("#myTable").DataTable();
+            //$("#myTable").DataTable();
             const d = new Date();
             let years = d.getFullYear();
             years = years - 3
             console.log(years);
+
 
             // var x = document.getElementById("year");
             // var option = document.createElement("option");
@@ -241,5 +243,90 @@ div.tr {
                 }
 
             }
+            get_group();
         });
+        </script>
+        <script>
+        function get_group() {
+            var group_year = document.getElementById("year").value;
+            console.log(group_year)
+            //$("#select_data").remove();
+            document.getElementById("group_data").innerHTML = "";
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>Employee/Get_assessor/get_group_by_year ",
+                data: {
+                    "years": group_year,
+                },
+                dataType: "JSON",
+                success: function(data, status) {
+                    console.log(data);
+                    var count_index = 0;
+                    var i = 0;
+                    var data_row = '';
+                    data.forEach((row, index) => {
+                        const date = new Date(row.grp_date)
+                        const result = date.toLocaleDateString('th-TH', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            weekday: 'long',
+                        })
+                        console.log(i);
+                        console.log(row);
+                        data_row += '<tr id="ase_' + i + '">'
+                        data_row += '<td style="text-align:center">'
+                        data_row += i + 1;
+                        data_row += '</td>'
+                        data_row += '<td style="text-align:center">'
+                        data_row += "T" + row.grp_position_group
+                        data_row += '</td>'
+                        data_row += '<td id="ase_id_' + i++ +
+                            '" style="text-align:center"> '
+                        data_row += result
+                        data_row += '</td>'
+                        data_row += '<td style="text-align:center">'
+                        data_row += row.sec_name
+                        data_row += '</td>'
+
+                        data_row += '<td style="text-align:center">'
+                        data_row +=
+                            "<button type='button' onclick='edit_group(" + row.grp_id +
+                            ")' class='btn btn-warning'>"
+                        data_row += " <i class = 'fa fa-pencil '> </i>"
+                        data_row += "</button>"
+                        data_row +=
+                            "<button type='button' onclick='delete_group(" + row.grp_id +
+                            ")' class='btn btn-danger'>"
+                        data_row += " <i class = 'fa fa-trash '> </i>"
+                        data_row += "</button>"
+                        data_row += '</td>'
+                        data_row += '</tr>'
+                        $("#group_data").append(data_row);
+                        count_index++
+                        index++
+                    })
+                    for (var i = 0; i < data.d.length; i++) {
+
+                    }
+                    i++
+
+                    count = count_index;
+                    $("#myTable").DataTable();
+                },
+                error: function(error) {
+                    console.log('error');
+                }
+
+            });
+
+        }
+
+        function edit_group(id) {
+            window.location.href = "<?php echo base_url(); ?>Group_management/Group_management/edit_group/" + id;
+        }
+
+        function delete_group(id) {
+            window.location.href = "<?php echo base_url(); ?>Group_management/Group_management/delete_group/" + id;
+        }
         </script>

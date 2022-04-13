@@ -59,6 +59,22 @@ class M_pef_assessor extends Da_pef_assessor
        ";
         $query = $this->db->query($sql, array($this->ase_year));
         return $query;
+    }
+    public function get_assessor_by_group()
+    {
+        $sql =
+            "SELECT *
+                FROM pefs_database.pef_group_assessor 
+                WHERE  gro_grp_id=?
+           ";
+        $query = $this->db->query($sql, array($this->gro_grp_id));
+        return $query;
+        //     $sql =
+        //         "SELECT *
+        // FROM dbmc.employee
+        // WHERE Emp_ID = '00009'";
+        //     $query = $this->db->query($sql, array($this->Emp_ID));
+        //     return $query;
     } 
 
     /*
@@ -82,7 +98,7 @@ class M_pef_assessor extends Da_pef_assessor
                     ON grass.gro_asp_id =  promote.asp_id
                     INNER JOIN pefs_database.pef_assessor_position AS position
                     ON promote.asp_id = position.gap_asp_id
-                WHERE  gr.grp_id = '$ass_id'";
+                    WHERE  gr.grp_id = '$ass_id'";
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลรายละเอียดของกรรมการ

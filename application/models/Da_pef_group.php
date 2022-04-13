@@ -135,5 +135,15 @@ class Da_pef_group extends pefs_model
 
         $this->db->query($sql, array($this->grp_status, $this->grp_id));
     }
+    public function group_update()
+    {
+        $sql = " UPDATE pefs_database.pef_group as up
+        SET up.grp_date = ? AND up.grp_year = ?
+        WHERE up.grp_id = ? ";
+        $this->db->query(
+            $sql,
+            array($this->grp_date, $this->grp_year, $this->grp_id)
+        );
+    }
 
 }

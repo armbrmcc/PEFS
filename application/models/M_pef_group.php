@@ -44,6 +44,17 @@ class M_pef_group extends Da_pef_group
         $query = $this->db->query($sql);
         return $query;
     } //end  
+    function get_group_detail()
+    { //check User_login and Pass_login in database
+        $sql = "SELECT *
+			FROM pefs_database.pef_group AS grp
+            INNER JOIN pefs_database.pef_group_schedule AS sch
+             ON grp.grp_id = sch.grd_grp_id
+			WHERE grp.grp_id=? 
+			";
+        $query = $this->db->query($sql, array($this->grp_id));
+        return $query;
+    } //end  
     function get_group()
     { //check User_login and Pass_login in database
         $sql = "SELECT *
@@ -52,6 +63,17 @@ class M_pef_group extends Da_pef_group
             ON grp.grp_position_group = sec.sec_level
 			";
         $query = $this->db->query($sql);
+        return $query;
+    } //end  
+    function get_group_by_year()
+    { //check User_login and Pass_login in database
+        $sql = "SELECT *
+			FROM pefs_database.pef_group AS grp
+            INNER JOIN pefs_database.pef_section AS sec
+            ON grp.grp_position_group = sec.sec_level
+            WHERE grp.grp_year=?
+			";
+        $query = $this->db->query($sql, array($this->grp_year));
         return $query;
     } //end  
 
@@ -153,4 +175,48 @@ class M_pef_group extends Da_pef_group
         $query = $this->db->query($sql, array($this->grn_id));
         return $query;
     }
+    /*
+* get_nominee_by_group
+* get nominee detail from database
+* @input grn_grp_id
+* @output nominee detail 
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
+*/
+    function get_nominee_by_group()
+    { //check User_login and Pass_login in database
+        $sql = "SELECT *
+			FROM pefs_database.pef_group_nominee AS nom INNER JOIN dbmc.employee AS emp 
+            ON emp.Emp_ID=nom.grn_emp_id
+            INNER JOIN dbmc.sectioncode AS sec
+            ON emp.Sectioncode_ID=sec.Sectioncode
+            INNER JOIN dbmc.position AS pos
+            ON pos.Position_ID = nom.grn_promote_to
+            WHERE grn_grp_id =? 
+			";
+        $query = $this->db->query($sql, array($this->grn_grp_id));
+        return $query;
+    } //end  get_group
+    /*
+* get_pos_nominee_by_group
+* get nominee detail from database
+* @input grn_grp_id
+* @output nominee detail 
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
+*/
+    function get_pos_nominee_by_group()
+    { //check User_login and Pass_login in database
+        $sql = "SELECT *
+			FROM pefs_database.pef_group_nominee AS nom INNER JOIN dbmc.employee AS emp 
+            ON emp.Emp_ID=nom.grn_emp_id
+            INNER JOIN dbmc.sectioncode AS sec
+            ON emp.Sectioncode_ID=sec.Sectioncode
+            INNER JOIN dbmc.position AS pos
+            ON pos.Position_ID = emp.Position_ID AND emp.Position_ID=pos.Position_ID
+            WHERE grn_grp_id =? 
+			";
+        $query = $this->db->query($sql, array($this->grn_grp_id));
+        return $query;
+    } //end  get_group
 }
