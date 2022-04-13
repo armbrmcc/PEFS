@@ -73,7 +73,7 @@ $(document).ready(function() {
 <!-- End JavaScript -->
 
 <!-- set data -->
-    <input type="text" name="num_pos"  id="num_pos" value='<?php echo  count($pos); ?>'  >
+    <input type="hidden" name="num_pos"  id="num_pos" value='<?php echo  count($pos); ?>'  >
 <!-- End  set data -->
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
