@@ -1,5 +1,5 @@
 <!--
-    v_review
+    v_result_group_assessor
     display for review list
     @input -
     @output -
@@ -11,7 +11,7 @@
 <style>
 #list_table td,
 #list_table th {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
 }
 
@@ -58,54 +58,66 @@
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 </head>
-
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
         <div class="card-header">
             <h2>Result (ผลคะแนนการประเมิน)</h2>
         </div>
-        <!-- End cara header-->
+        <!-- End cara header -->
         <div class="card-body">
             <!-- Start Table Result List -->
             <div class="table-responsive">
                 <table class="table align-items-center" id="list_table">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Employee ID</th>
-                            <th style="text-align: left;">List of Nominee</th>
-                            <th>Score Round 1</th>
+                            <th>#</th>
+                            <th>Group</th>
+                            <th>Group Name</th>
+                            <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $s = 1; ?>
-                        <?php for ($i = 0; $i < count($group_detail); $i++) { ?>
+                        <?php for ($i = 0; $i < count($arr_assessor_group); $i++) { ?>
                         <tr>
+                            <!-- # -->
                             <td>
-                                <!-- # -->
                                 <h6 class="text-xs text-secondary mb-0">
-                                    <?php echo $s ?>
-                                    <?php $s++;  ?>
+                                    <?php echo $i+1 ?>
                                 </h6>
                             </td>
+                            <!-- Group Level -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->grn_emp_id ?></h6>
+                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_assessor_group[$i]->asp_level ?></h6>
                             </td>
-                            <td style="text-align: left;">
+                            <!-- Group Name -->
+                            <td>
+                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_assessor_group[$i]->asp_name ?></h6>
+                            </td>
+                            <!-- Date -->
+                            <td>
+                                <?php if ($arr_assessor_group[$i]->asp_type == 1) { ?>
+                                <?php $newDate = date("d/m/Y", strtotime($arr_assessor_group[$i]->grp_date)); ?>
                                 <h6 class="text-xs text-secondary mb-0">
-                                    <?php echo $arr_nominee[$i]->Empname_eng . ' ' . $arr_nominee[$i]->Empsurname_eng ?>
+                                    Round
+                                    <?php echo ' ' . $arr_assessor_group[$i]->asp_type . ' ' ?>:<?php echo ' ' . $newDate ?>
                                 </h6>
+                                <?php }
+                                else { ?>
+                                <?php $newDate = date("d/m/Y", strtotime($arr_assessor_group[$i]->grp_date)); ?>
+                                <h6 class="text-xs text-secondary mb-0">
+                                    Round
+                                    <?php echo ' ' . $arr_assessor_group[$i]->asp_type . ' ' ?>:<?php echo ' ' . $newDate ?>
+                                </h6>
+                                <?php } ?>
                             </td>
-                            <!-- <td>
-                                            <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->Position_name ?></h6>
-                                        </td> -->
+                            <!-- Action -->
                             <td>
-
-                                <a href="<?php echo site_url() . 'Result/Result/show_result_detail/'; ?>">
+                                <a
+                                    href="<?php echo site_url() . 'Result/Result/show_result_list/' . $arr_assessor_group[$i]->grp_id; ?>">
                                     <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #6c757d;">
-                                        <i class="far fa-file-alt text-white"></i>
+                                        style="background-color: #596CFF;">
+                                        <i class="fas fa-search text-white"></i>
                                     </button>
                                 </a>
                             </td>
@@ -121,6 +133,7 @@
     <!-- End card-->
 </div>
 <!-- End class container -->
+
 
 <!-- JavaScript -->
 <!-- Data Table -->

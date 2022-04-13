@@ -75,4 +75,24 @@ class M_pef_point_form extends Da_pef_point_form
         $query = $this->db->query($sql, array($this->grn_id));
         return $query;
     }
+
+    /*
+	* get_point_list
+	* คืนค่าคะแนนของแต่ละฟอร์ม
+	* @input 	$per_id
+	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
+	* @author 	Phatchara Khongthandee and Pontakon Mujit 
+	* @Create   Date 2564-08-18 
+	* @Update   Date 2564-08-19
+	*/
+    function get_point_list($per_id)
+    {
+        $sql = "SELECT *
+            FROM  pefs_database.pef_point_form
+            WHERE pef_point_form.ptf_per_id = '$per_id' ";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }
+

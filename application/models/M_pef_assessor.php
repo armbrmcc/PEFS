@@ -35,7 +35,7 @@ class M_pef_assessor extends Da_pef_assessor
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลของกรรมการ
-    
+
     /*
 	* get_assessor_by_id
 	* get 
@@ -75,7 +75,7 @@ class M_pef_assessor extends Da_pef_assessor
         // WHERE Emp_ID = '00009'";
         //     $query = $this->db->query($sql, array($this->Emp_ID));
         //     return $query;
-    } 
+    }
 
     /*
 	* get_assessor_detail

@@ -22,7 +22,11 @@ class M_pef_group extends Da_pef_group
     */
     public function get_group_evaluation($ass_id)
     {
-        $sql = "SELECT * FROM pefs_database.pef_group AS gr
+        $sql = "SELECT gr_schedule.grd_date, gr_schedule.grd_round, gr_schedule.grd_grp_id, promote.asp_name, 
+        promote.asp_level, promote.asp_type,gr.grp_id, gr.grp_status,  position.gap_promote, ass.ase_emp_id, gr.grp_id
+                    FROM pefs_database.pef_group AS gr
+                    INNER JOIN pefs_database.pef_group_schedule AS gr_schedule
+                    ON gr.grp_id = gr_schedule.grd_grp_id
                     INNER JOIN pefs_database.pef_group_assessor AS grass
                     ON gr.grp_id = grass.gro_grp_id
                     INNER JOIN pefs_database.pef_assessor AS ass
@@ -35,6 +39,26 @@ class M_pef_group extends Da_pef_group
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมิน
+
+    /*
+	* get_group_evaluation
+	* get 
+	* @input  -
+	* @output -
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-03-03
+    */
+    public function get_group_date_round($group_id)
+    {
+        $sql = "SELECT gr_schedule.grd_date
+                    FROM pefs_database.pef_group AS gr
+                    INNER JOIN pefs_database.pef_group_schedule AS gr_schedule
+                    ON gr.grp_id = gr_schedule.grd_grp_id
+                    WHERE  gr.grp_id = '$group_id'";
+        $query = $this->db->query($sql);
+        return $query;
+    } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมิน
+
     function get_group_id()
     { //check User_login and Pass_login in database
         $sql = "SELECT *
@@ -55,6 +79,7 @@ class M_pef_group extends Da_pef_group
         $query = $this->db->query($sql, array($this->grp_id));
         return $query;
     } //end  
+
     function get_group()
     { //check User_login and Pass_login in database
         $sql = "SELECT *

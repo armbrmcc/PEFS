@@ -11,7 +11,7 @@
 <style>
 #list_table td,
 #list_table th {
-    padding: 8px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -71,51 +71,33 @@
                 <table class="table align-items-center" id="list_table">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Group</th>
-                            <th>Group Name</th>
-                            <th>Date</th>
+                            <th>No.</th>
+                            <th>Employee ID</th>
+                            <th>List of Nominee</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $s = 1; ?>
-                        <?php for ($i = 0; $i < count($grass_list); $i++) { ?>
-                        <?php if (date("Y-m-d") ==  $grass_detail[$i]->grp_date || $grass_detail[$i]->grp_date > date("Y-m-d")) { ?>
+                        <?php for ($i = 0; $i < count($arr_nominee); $i++) { ?>
                         <tr>
-                            <!-- # -->
                             <td>
+                                <!-- # -->
                                 <h6 class="text-xs text-secondary mb-0">
                                     <?php echo $s ?>
                                     <?php $s++;  ?>
                                 </h6>
                             </td>
-                            <!-- Group Level -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">T<?php echo $grass_list[$i]->asp_level ?></h6>
+                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->grn_emp_id ?></h6>
                             </td>
-                            <!-- Group Name -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0"><?php echo $grass_list[$i]->asp_name ?></h6>
-                            </td>
-                            <!-- Date -->
-                            <td>
-                                <?php if ($grass_detail[$i]->grd_round == 1) { ?>
-                                <?php $newDate = date("d/m/Y", strtotime($grass_detail[$i]->grp_date)); ?>
                                 <h6 class="text-xs text-secondary mb-0">
-                                    Round<?php echo ' ' . $grass_detail[$i]->grd_round . ' ' ?>:<?php echo ' ' . $newDate ?>
+                                    <?php echo $arr_nominee[$i]->Empname_eng . ' ' . $arr_nominee[$i]->Empsurname_eng ?>
                                 </h6>
-                                <?php } else { ?>
-                                <?php $newDate = date("d/m/Y", strtotime($grass_detail[$i]->grp_date)); ?>
-                                <h6 class="text-xs text-secondary mb-0">
-                                    Round<?php echo ' ' . $grass_detail[$i]->grd_round . ' ' ?>:<?php echo ' ' . $newDate ?>
-                                </h6>
-                                <?php } ?>
                             </td>
-                            <!-- Action -->
                             <td>
-                                <a
-                                    href="<?php echo site_url() . 'Result/Result/show_result_list/' . $grass_detail[$i]->ase_gro_id . '/' . $grass_detail[$i]->grp_id; ?>">
+                                <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation'; ?>">
                                     <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #596CFF;">
                                         <i class="fas fa-search text-white"></i>
@@ -123,7 +105,6 @@
                                 </a>
                             </td>
                         </tr>
-                        <?php } ?>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -135,7 +116,6 @@
     <!-- End card-->
 </div>
 <!-- End class container -->
-
 
 <!-- JavaScript -->
 <!-- Data Table -->
