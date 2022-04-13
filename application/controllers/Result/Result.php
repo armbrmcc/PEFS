@@ -35,7 +35,7 @@ class Result extends MainController
         $this->load->model('M_pef_assessor_promote', 'as_group');
         $data['arr_assessor_group'] = $this->as_group->get_assessor_group_by_id($ass_id)->result();
         
-        $this->output('consent/v_result_group', $data);
+        $this->output('consent/v_result_group_assessor', $data);
     }
     //show_result_group
 
@@ -56,7 +56,7 @@ class Result extends MainController
         // echo "<pre>";
         //     print_r($data['arr_nominee']);
         // echo "</pre>";
-        $this->output('consent/v_result_list', $data);
+        $this->output('consent/v_result_list_assessor', $data);
     } //show_result_list
 
     /*
@@ -69,7 +69,7 @@ class Result extends MainController
     */
     public function show_result_evaluation_type1()
     {
-        $this->output('consent/v_result_evaluation');
+        $this->output('consent/v_result_evaluation_assessor_round1');
     } //show_result_evaluation_type1
 
     /*
@@ -82,6 +82,6 @@ class Result extends MainController
     */
     public function show_result_evaluation_type2()
     {
-        $this->output('consent/v_result_evaluation');
+        $this->output('consent/v_result_evaluation_assessor_round2');
     } //show_result_evaluation_type2
 }//End class Result
