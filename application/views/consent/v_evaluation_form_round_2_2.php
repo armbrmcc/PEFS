@@ -350,6 +350,7 @@ th
                                     <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
                                     $count_itm = 1; //จำนวนหัวข้อหลัก
                                     $weight = 0;
+                                    $total_round_1 = 0;
                                     $point_old = 0;
                                     for ($i = 0; $i < count($arr_form); $i++) {
                                         if ($i != 0) {
@@ -358,9 +359,8 @@ th
                                             }
                                         }
                                         $weight =  $weight + 5;
-                                       
+                                        $total_round_1 += $arr_point[$i]->ptf_point;
                                     } //นับหัวข้อหลัก
-                                    
                                     ?>
                                     <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
                                     <?php
@@ -432,10 +432,14 @@ th
                                         </td>
                                         <!-- total -->
                                         <td>Total</td>
-                                        <td><input type="text" name="total" size='1' disabled hidden></td>
-                                                <td><input type="text" name="total" size='1' disabled hidden></td>
-                                        <td><input type="text" name="total" size='1' disabled style='border: none'> </td>
-                                                <td><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
+                                            <!-- total round 1 -->
+                                            <td style="text-align: center;"><?php echo $total_round_1;?></td>
+                                            <td style="text-align: center;"><?php echo (int)($total_round_1 * 100/$weight);?>%</td>
+                                            <!-- total round 2 -->
+                                            <input type="text" name="total" size='1' disabled hidden>
+                                            <input type="text" name="total" size='1' disabled hidden>
+                                            <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'> </td>
+                                            <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
                                                 
                                     </tr>
                                     <tr>

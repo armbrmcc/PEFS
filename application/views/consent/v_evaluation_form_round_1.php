@@ -447,7 +447,7 @@ function calculate_weight() {
                                             <td style="vertical-align:middle;text-align: center;">
                                                 <div class="form-group">
                                                     <label for="sel"></label>
-                                                        <select name="form[]" id="form_<?php echo $count_discription; ?>"
+                                                        <select style="vertical-align:middle;text-align: center;" name="form[]" id="form_<?php echo $count_discription; ?>"
                                                             onchange="calculate_weight()" required>
                                                             <option value="0">score</option>
                                                             <option value="1">1</option>

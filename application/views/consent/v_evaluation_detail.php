@@ -133,36 +133,60 @@ $(document).ready(function() {
                                         } ?>
                                 <?php } ?>
                                 <?php if ($check == 1) { ?>
+                                    <!-- check per_id -->
+                                    <?php $check_per = 0; ?>
+                                    <?php for ($k = 0; $k < count($obj_per); $k++) { ?>
+                                        <?php if ($arr_nominee[$i]->grn_emp_id == $obj_per[$k]->per_emp_id) { 
+                                                $check_per++;   
+                                            } ?>
+                                    <?php } ?>
+                                    <!-- round 1 -->
                                     <?php if($arr_nominee[$i]->asp_type == 1) { ?>
                                         <?php if($obj_date[0]->grd_date == date("Y-m-d")) {?>
-                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to;?>">
-                                                <button type="button" class="btn btn-xs button_size"
-                                                    style="background-color: #2dce89;">
+                                            <?php if($check_per == 0) { ?>
+                                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to;?>">
+                                                    <button type="button" class="btn btn-xs button_size"
+                                                        style="background-color: #2dce89;">
+                                                        <i class="far fa-file-alt text-white"></i>
+                                                    </button>
+                                                </a>
+                                            <?php }else{ ?>
+                                                <button type="button" class="btn bg-gradient-danger btn-xs button_size">
                                                     <i class="far fa-file-alt text-white"></i>
                                                 </button>
-                                            </a>
+                                            <?php } ?>
                                         <?php }else {?>
                                                 <button type="button" class="btn btn-xs button_size"
                                                     style="background-color: #9FA2B4;">
                                                     <i class="far fa-file-alt text-white"></i>
                                                 </button>
                                         <?php } ?>
+                                    <!-- round 2 -->
                                     <?php } else if($arr_nominee[$i]->asp_type == 2) { ?>
+                                        <!-- round 2/1 -->
                                         <?php if($obj_date[0]->grd_date == date("Y-m-d")) {?>    
+                                            <?php if($check_per == 0) { ?>
                                                 <a
                                                     href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to;?>">
                                                     <button type="button" class="btn btn-xs button_size"
-                                                        style="background-color: #2dce89;">
+                                                            style="background-color: #2dce89;">
                                                         <i class="far fa-file-alt text-white"></i>
                                                     </button>
                                                 </a>
+                                            <?php }else{ ?>
+                                                <button type="button" class="btn bg-gradient-danger btn-xs button_size">
+                                                    <i class="far fa-file-alt text-white"></i>
+                                                </button>
+                                            <?php } ?>
                                         <?php }else{ ?>
                                             <button type="button" class="btn btn-xs button_size"
                                                     style="background-color: #9FA2B4;">
                                                     <i class="far fa-file-alt text-white"></i>
                                             </button>
                                         <?php } ?>
+                                        <!-- round 2/2 -->
                                         <?php if($obj_date[1]->grd_date == date("Y-m-d")) {?>
+                                            <?php if($check_per == 0 || $check_per == 1) { ?>
                                                 <a
                                                     href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_2_2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id.'/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id;?>">
                                                     <button type="button" class="btn btn-xs button_size"
@@ -170,6 +194,11 @@ $(document).ready(function() {
                                                         <i class="far fa-file-alt text-white"></i>
                                                     </button>
                                                 </a>
+                                            <?php }else{ ?>
+                                                <button type="button" class="btn bg-gradient-danger btn-xs button_size">
+                                                    <i class="far fa-file-alt text-white"></i>
+                                                </button>
+                                            <?php } ?>
                                         <?php }else{ ?>
                                             <button type="button" class="btn btn-xs button_size"
                                                     style="background-color: #9FA2B4;">

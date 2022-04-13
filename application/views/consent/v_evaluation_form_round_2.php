@@ -425,8 +425,8 @@ $( document ).ready(function() {
                                         </td>
                                         <!-- total -->
                                         <td>Total</td>
-                                        <td><input type="text" name="total" size='1' disabled style='border: none'> </td>
-                                                <td><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
+                                        <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'> </td>
+                                                <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                     </tr>

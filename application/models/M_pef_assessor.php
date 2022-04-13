@@ -69,7 +69,7 @@ class M_pef_assessor extends Da_pef_assessor
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03
     */
-    public function get_assessor_detail($ass_id)
+    public function get_assessor_detail($group_id)
     {
         $sql = "SELECT * FROM pefs_database.pef_assessor AS ass
                     INNER JOIN pefs_database.pef_group_assessor AS grass
@@ -82,7 +82,7 @@ class M_pef_assessor extends Da_pef_assessor
                     ON grass.gro_asp_id =  promote.asp_id
                     INNER JOIN pefs_database.pef_assessor_position AS position
                     ON promote.asp_id = position.gap_asp_id
-                WHERE  gr.grp_id = '$ass_id'";
+                WHERE  gr.grp_id = '$group_id'";
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลรายละเอียดของกรรมการ

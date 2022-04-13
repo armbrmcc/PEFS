@@ -58,11 +58,16 @@ class Evaluation extends MainController
         $this->load->model('M_pef_group', 'pef');
         $this->load->model('M_pef_group_nominee', 'nominee');
         $this->load->model('M_pef_file', 'file');
+        $this->load->model('M_pef_performance_form', 'per');
+        $date = date("Y-m-d");
+        $data['arr_group'] = $this->pef->get_group_evaluation($ass_id)->result();
         $data['arr_group'] = $this->pef->get_group_evaluation($ass_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         // print_r($data['obj_date']);
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         $data['obj_file'] = $this->file->get_file_nominee()->result();
+        $data['obj_per'] = $this->per->get_performance_detail($group_id, $date)->result();
+        // print_r($data['obj_per']);
 
         $this->output('consent/v_evaluation_detail', $data);
     } //end show_evaluation_detail
@@ -84,7 +89,7 @@ class Evaluation extends MainController
         $this->load->model('M_pef_format_form', 'form');
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
-        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($id_assessor)->result();
+        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
@@ -111,7 +116,7 @@ class Evaluation extends MainController
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
-        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($id_assessor)->result();
+        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
@@ -140,7 +145,7 @@ class Evaluation extends MainController
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
-        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($id_assessor)->result();
+        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
@@ -172,9 +177,9 @@ class Evaluation extends MainController
     */
     function insert_evaluation_form()
     {
-        echo "<pre>";
-        print_r($this->input->post());
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($this->input->post());
+        // echo "</pre>";
         $date = date("Y-m-d");
         //insert data to database pef_performance_form
         $this->load->model('Da_pef_performance_form', 'per');
@@ -232,9 +237,9 @@ class Evaluation extends MainController
     */
     function insert_evaluation_form_2()
     {
-        echo "<pre>";
-        print_r($this->input->post());
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($this->input->post());
+        // echo "</pre>";
         $date = date("Y-m-d");
         //insert data to database pef_performance_form
         $this->load->model('Da_pef_performance_form', 'per');

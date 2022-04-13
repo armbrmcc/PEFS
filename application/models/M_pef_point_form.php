@@ -79,7 +79,7 @@ class M_pef_point_form extends Da_pef_point_form
     /*
 	* get_point_list
 	* คืนค่าคะแนนของแต่ละฟอร์ม
-	* @input 	position
+	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
 	* @author 	Phatchara Khongthandee and Pontakon Mujit 
 	* @Create   Date 2564-08-18 
