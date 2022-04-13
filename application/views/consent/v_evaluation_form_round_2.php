@@ -209,44 +209,43 @@ th
     }//end alart_evaluation
 
     
-    /*
-    * total_calculete
-    * คืนค่าคะแนนรวม
-    * @input   form
-    * @output  -
-    * @author  Phatchara Khongthandee and Pontakon Mujit
-    * @Create  Date 2564-08-18
-    */
-    $("select").change(function() {
-        var toplem = 0;
-            $("select[name='form[]']").each(function() {
 
-                toplem = toplem + parseInt($(this).val());
-            })
-        $("input[name=total]").val(toplem);
-    });
+   
+$( document ).ready(function() {
+ 
+    $("select").change(function(){
+         
+        var toplem=0;
+        $("select[name=form]").each(function(){
             
-    /*
-    * total_calculate_weight
-    * คืนค่าคะแนนรวมแบบเปอเซ็น
-    * @input   form
-    * @output  -
-    * @author  Phatchara Khongthandee and Pontakon Mujit
-    * @Create  Date 2564-08-18
-    */
-    $("select").change(function() {
-        var toplem = 0;
+            toplem = toplem + parseInt($(this).val());
+             
+        })
+        $("input[name=total]").val(toplem);
+    });  //คืนค่าคะแนนรวม
+    
+    $("select").change(function(){
+        var toplem=0;
         var weight = $("#weight").val();
-            $("select[name='form[]']").each(function() {
-                toplem = toplem + parseInt($(this).val());
+        $("select[name=form]").each(function(){
+            toplem = toplem + parseInt($(this).val());
+            
+        }) 
+        
+            toplem = Math.round(toplem / weight*100);
+            var a = '%'
+        $("input[name=total_weight]").val(toplem + a);
 
-            })
-        //คืนค่าคะแนนรวมแบบรายการ
-        toplem = Math.round(toplem / weight * 100);
-        var a = '%'
-            $("input[name=total_weight]").val(toplem + a);
+    }); //คืนค่าคะแนนรวมแบบเปอเซ็น
 
-    });
+
+    //คืนค่าคะแนนรวมแบบรายการ
+    
+})
+        
+       
+ 
+
 </script>
 <!-- End Javascript -->
 
@@ -355,12 +354,14 @@ th
                                                 $count_itm++;
                                             }
                                         }
-                                        $weight =  $weight + $arr_form[$i]->des_weight;
+                                        $weight =  $weight +5;
+                                        //
                                     } //นับหัวข้อหลัก
+                                    
                                     ?>
                                     <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
                                     <?php
-                                    $weight =  $weight * 5;
+                                    $weight =  $weight;
                                     for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
                                     ?>
                                         <?php $count_rowspan = 0;
@@ -396,7 +397,7 @@ th
                                                 </td>
 
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
-                                                        <select style="vertical-align:middle;text-align: center;" class="form-control" name="form[]" id="form_<?php echo $count_discription; ?>" required>
+                                                        <select style="vertical-align:middle;text-align: center;" class="form-control" name="form" id="form_<?php echo $count_discription; ?>" required>
                                                             <option value="0">score</option>
                                                             <option value=1>1</option>
                                                             <option value=2>2</option>

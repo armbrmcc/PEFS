@@ -208,7 +208,7 @@ th
         }
     }//end alart_evaluation
 
-    
+    $( document ).ready(function() {
     /*
     * total_calculete
     * คืนค่าคะแนนรวม
@@ -219,7 +219,7 @@ th
     */
     $("select").change(function() {
         var toplem = 0;
-            $("select[name='form[]']").each(function() {
+            $("select[name='form']").each(function() {
 
                 toplem = toplem + parseInt($(this).val());
             })
@@ -237,9 +237,9 @@ th
     $("select").change(function() {
         var toplem = 0;
         var weight = $("#weight").val();
-            $("select[name='form[]']").each(function() {
+            $("select[name='form']").each(function() {
                 toplem = toplem + parseInt($(this).val());
-
+                
             })
         //คืนค่าคะแนนรวมแบบรายการ
         toplem = Math.round(toplem / weight * 100);
@@ -247,6 +247,7 @@ th
             $("input[name=total_weight]").val(toplem + a);
 
     });
+})
 </script>
 <!-- End Javascript -->
 
@@ -356,12 +357,14 @@ th
                                                 $count_itm++;
                                             }
                                         }
-                                        $weight =  $weight + $arr_form[$i]->des_weight;
+                                        $weight =  $weight + 5;
+                                       
                                     } //นับหัวข้อหลัก
+                                    
                                     ?>
                                     <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
                                     <?php
-                                    $weight =  $weight * 5;
+                                    
                                     for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
                                     ?>
                                         <?php $count_rowspan = 0;
@@ -401,7 +404,7 @@ th
                                                 </td>
                                                 <!-- score 2st round -->
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
-                                                        <select style="vertical-align:middle;text-align: center;" class="form-control" name="form[]" id="form_<?php echo $count_discription; ?>" required>
+                                                        <select style="vertical-align:middle;text-align: center;" class="form-control" name="form" id="form_<?php echo $count_discription; ?>" required>
                                                             <option value="0">score</option>
                                                             <option value=1>1</option>
                                                             <option value=2>2</option>
@@ -429,10 +432,11 @@ th
                                         </td>
                                         <!-- total -->
                                         <td>Total</td>
+                                        <td><input type="text" name="total" size='1' disabled hidden></td>
+                                                <td><input type="text" name="total" size='1' disabled hidden></td>
                                         <td><input type="text" name="total" size='1' disabled style='border: none'> </td>
                                                 <td><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
-                                                <td><input type="text" name="total" size='1' disabled hidden></td>
-                                                <td><input type="text" name="total" size='1' disabled hidden></td>
+                                                
                                     </tr>
                                     <tr>
                                         <td>Judgement</td>
