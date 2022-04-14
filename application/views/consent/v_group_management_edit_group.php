@@ -179,7 +179,7 @@ date_default_timezone_set("Asia/Bangkok");
                         </div>
                         <div>
 
-                            <button class="btn btn-primary float-right" id="btn_add_nominee"
+                            <button class="btn bg-gradient-info btn-block mb-3" id="btn_add_nominee"
                                 style="position: absolute; right: 0;" data-toggle="modal"
                                 data-target="#exampleModalCenter">
                                 Add Nominee</button>
@@ -277,6 +277,7 @@ date_default_timezone_set("Asia/Bangkok");
             get_group_detail()
             get_position()
             get_position_to_promote()
+
             promote = document.getElementById("promote_nominee").value;
             const d = new Date();
             $("#date2").hide();
@@ -372,6 +373,7 @@ date_default_timezone_set("Asia/Bangkok");
 
             change_button_status()
             change_type()
+            change_date()
 
 
         });
@@ -751,7 +753,7 @@ date_default_timezone_set("Asia/Bangkok");
 
         function change_date() {
             console.log('status4')
-            if (document.getElementById("group_position").value < 5) {
+            if (document.getElementById("group_position").value > 4) {
                 $("#date2").hide();
             } else {
                 $("#date2").show();

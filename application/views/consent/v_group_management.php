@@ -133,7 +133,7 @@ div.tr {
                     </div>
                     <div>
                         <a href="<?php echo site_url() . 'Group_management/Group_management/add_group' ?>">
-                            <button class="btn btn-primary float-right" style="position: absolute; right: 0;"
+                            <button class="btn bg-gradient-info btn-block mb-3" style="position: absolute; right: 0;"
                                 value="Add group"> Add Group</button></a>
                         <br>
                     </div>

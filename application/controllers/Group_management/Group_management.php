@@ -78,7 +78,7 @@ class Group_management extends MainController
         $this->ped->grp_position_group = $position_group;
         $this->ped->insert_group();
         $group_id = $this->pef->get_group_id()->result();
-        if ($position_group < 5) {
+        if ($position_group > 4) {
             $this->ped->grd_grp_id = $group_id[0]->grp_id;
             $this->ped->grd_date = $date[0];
             $this->ped->grd_round = '1';
@@ -165,7 +165,7 @@ class Group_management extends MainController
         $this->ped->grp_position_group = $position_group;
         $this->ped->insert_group();
         $group_id = $this->pef->get_group_id()->result();
-        if ($position_group < 5) {
+        if ($position_group > 4) {
             $this->ped->grd_grp_id = $group_id[0]->grp_id;
             $this->ped->grd_date = $date[0];
             $this->ped->grd_round = '1';
