@@ -148,7 +148,7 @@
                                         </td>
                                         <td class="align-middle">
                                             <!-- Start button trigger modal edit -->
-                                            <a href="<?php echo site_url() . 'Score_management/Score_management/show_score_management_detail/'.$as_group[$i]->gro_ase_id; ?>">
+                                            <a href="<?php echo site_url() . 'Score_management/Score_management/show_score_management_detail/'.$as_group[$i]->grp_id; ?>">
                                                 <!-- ปุ่มดำเนินการแก้ไข -->
                                                 <button type="button" class="btn btn-primary btn-sm button_size" style="background-color: #596CFF;">
                                                 <i class="fas fa-search text-white"></i>
@@ -180,4 +180,3 @@
 </body>
 
 </html>
-

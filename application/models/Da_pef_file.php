@@ -29,10 +29,10 @@ class Da_pef_file extends pefs_model
 	*/
     function insert_file()
     {
-        $sql = "INSERT INTO pefs_database.pef_file(fil_location,fil_emp_id) 
-        VALUES (?,?)";
+        $sql = "INSERT INTO pefs_database.pef_file(fil_location,fil_emp_id,fil_year) 
+        VALUES (?,?,?)";
 
-        $this->db->query($sql, array($this->fil_location, $this->fil_emp_id));
+        $this->db->query($sql, array($this->fil_location, $this->fil_emp_id, $this->fil_year));
     }
 
     /*
