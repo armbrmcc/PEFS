@@ -450,9 +450,11 @@ date_default_timezone_set("Asia/Bangkok");
                         data_row += '<input type="checkbox" id="check_box_' + i +
                             '" name="checkbox1">'
                         data_row += '</td>'
-                        data_row += '<td id="ase_id_' + i++ +
+                        data_row += '<td id="ase_emp_id_' + i +
                             '" style="text-align:center"> '
                         data_row += row.Emp_ID
+                        data_row += '<input type="text" id="ase_id_' + i++ +
+                            '" name="checkbox1" value="' + row.ase_id + '" hidden>'
                         data_row += '</td>'
                         data_row += '<td style="text-align:center">'
                         data_row += row.Empname_eng + "          " + row.Empsurname_eng
@@ -651,7 +653,7 @@ date_default_timezone_set("Asia/Bangkok");
                 console.log(15)
                 for (var i = 0; i < document.getElementById("select_data").rows.length; i++) {
                     if ($('#check_box_' + i).is(":checked")) {
-                        emp_assessor.push(document.getElementById('ase_id_' + i).innerHTML)
+                        emp_assessor.push(document.getElementById('ase_id_' + i).value)
                         console.log(emp_assessor + "55")
                     }
                 }

@@ -548,9 +548,11 @@ date_default_timezone_set("Asia/Bangkok");
                         }
 
                         data_row += '</td>'
-                        data_row += '<td id="ase_id_' + i++ +
+                        data_row += '<td id="ase_emp_id_' + i +
                             '" style="text-align:center"> '
                         data_row += row.Emp_ID
+                        data_row += '<input type="text" id="ase_id_' + i++ +
+                            '" name="checkbox1" value="' + row.ase_id + '" hidden>'
                         data_row += '</td>'
                         data_row += '<td style="text-align:center">'
                         data_row += row.Empname_eng + "          " + row.Empsurname_eng
