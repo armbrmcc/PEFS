@@ -43,7 +43,8 @@ class File_present_management extends MainController
         $this->pef->fil_year = $year;
         $this->pef->insert_file(); // add file to table pef_file
         copy($pefs_file, 'upload/' . $Emp_ID . "_" . $fil_name); // add file to floder upload
-        $this->show_list_nominee();
+        // $this->show_list_nominee();
+        redirect('/File_present_management/File_present_management/show_list_nominee');
     }
 
     /*
@@ -66,6 +67,7 @@ class File_present_management extends MainController
 
         $this->pef->update_file(); // update file to table pef_file
         copy($pefs_file, 'upload/' . $Emp_ID . "_" . $fil_name); // add file to floder upload
-        $this->show_list_nominee();
+        // $this->show_list_nominee();
+        redirect('/File_present_management/File_present_management/show_list_nominee');
     }
 }
