@@ -82,7 +82,7 @@ div.a {
 
                         </td>
                         <td>
-                            <?php echo $emp_nominee[$i]->Pos_shortName ?>
+                            <?php echo $emp_nominee[$i]->Pos_shortName  ?>
 
                         </td>
                         <td>
@@ -105,22 +105,22 @@ div.a {
                             // foreach 
                             // ยังไม่มีไฟล์จะเพิ่มไฟล์
                             if ($check == 0) { ?>
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-                                data-target="#insert_modal_file<?php echo $i ?>"><i
+                            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                                data-bs-target="#modalAddfile<?php echo $i ?>"><i
                                     class="fas fa-file-upload"></i></button>
                             <?php  }
                             // if
                             //เคยมีไฟล์แล้วจะอัปเดต
                             else { ?>
-                            <button type=" button" class="btn btn-success btn-lg" data-toggle="modal"
-                                data-target="#edit_modal_file<?php echo $i ?>"><i
+                            <button type=" button" class="btn btn-success btn-lg" data-bs-toggle="modal"
+                                data-bs-target="#edit_modal_file<?php echo $i ?>"><i
                                     class="fas fa-file-upload"></i></button>
                             <?php  } ?>
                             <!-- else -->
 
 
                             <!-- Modal insert-->
-                            <div class="modal fade" id="insert_modal_file<?php echo $i ?>" role="dialog">
+                            <div class="modal fade" id="modalAddfile<?php echo $i ?>" role="dialog">
                                 <form
                                     action="<?php echo site_url() ?>File_present_management/File_present_management/insert_file_nominee"
                                     method="post" enctype="multipart/form-data"

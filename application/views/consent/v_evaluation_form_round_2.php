@@ -229,7 +229,7 @@ $( document ).ready(function() {
         var weight = $("#weight").val();
         $("select[name=form]").each(function(){
             toplem = toplem + parseInt($(this).val());
-            
+
         }) 
         
             toplem = Math.round(toplem / weight*100);
@@ -253,7 +253,7 @@ $( document ).ready(function() {
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2>
+            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2> 
         </div>
         <div class="card-body">
             <!-- Logo บริษัท -->
@@ -345,28 +345,20 @@ $( document ).ready(function() {
                                     </tr>
                                     <!--เริ่ม ตารางหัวข้อลงคะแนน-->
                                     <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
-                                    $count_itm = 1; //จำนวนหัวข้อหลัก
-                                    $weight = 0;
+                                    
+                                    $weight = 5*count($arr_des); //กำหนด weight แบบง่ายๆ
                                     $point_old = 0;
-                                    for ($i = 0; $i < count($arr_form); $i++) {
-                                        if ($i != 0) {
-                                            if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
-                                                $count_itm++;
-                                            }
-                                        }
-                                        $weight =  $weight +5;
-                                        //
-                                    } //นับหัวข้อหลัก
+                                    
                                     
                                     ?>
-                                    <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
+                                    <input type="hidden" id="count_form" value='<?php echo count($arr_item) ?>'>
                                     <?php
-                                    $weight =  $weight;
-                                    for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
+                                    
+                                    for ($i = 0; $i < count($arr_item); $i++) {   //ลูปตามหัวข้อหลัก
                                     ?>
                                         <?php $count_rowspan = 0;
-                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
-                                            if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
+                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_des); $loop_rowspan++) {
+                                            if ($arr_des[$loop_rowspan]->des_item_id == $arr_item[$i]->itm_id) {
                                                 $count_rowspan++;
                                             }
                                         } //นับdiscriptionเพื่อกำหนด rowspan 
@@ -380,20 +372,21 @@ $( document ).ready(function() {
                                                 <!-- แสดงห้อข้อหลัก -->
                                                 <?php if ($loop_dis === 1) { ?>
                                                     <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col"> <b>
-                                                            <?php echo $arr_form[$count_discription]->itm_name; ?>
-                                                            <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
+                                                            <?php echo $arr_item[$count_discription]->itm_name; ?>
+                                                            <br><?php echo $arr_item[$count_discription]->itm_item_detail; ?></b>
                                                     </td>
                                                 <?php } ?>
                                                 
                                                 <td id="width_col">
-                                                    <b> <?php echo $arr_form[$count_discription]->des_description_th; ?></b>
+                                                     <!-- แสดง Disription    -->
+                                                    <b> <?php echo $arr_des[$count_discription]->des_description_th; ?></b>
                                                     <br>
-                                                    <!-- แสดง Disription    -->
-                                                    <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
-                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                                   
+                                                    <?php $pos = strrpos($arr_des[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
-                                                    <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
-                                                    <?php echo $arr_form[$count_discription]->des_description_th ?>
+                                                    <?php echo substr($arr_des[$count_discription]->des_description_eng, $pos + 1, strlen($arr_des[$count_discription]->des_description_eng)) ?>
+                                                    <?php echo $arr_des[$count_discription]->des_description_th ?>
                                                 </td>
 
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
@@ -407,7 +400,8 @@ $( document ).ready(function() {
                                                         </select>
                                                         
                                                     </td>
-                                                    <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>" name="for_id[]" id="formid_<?php echo $count_discription; ?>">
+                                                    
+                                                    <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]" id="formid_<?php echo $count_discription; ?>">
                                             <?php $count_discription++; ?>
                                         <?php } ?>
                                         </tr>
