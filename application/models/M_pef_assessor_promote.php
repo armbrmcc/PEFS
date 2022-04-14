@@ -32,7 +32,8 @@ class M_pef_assessor_promote extends Da_pef_assessor_promote
                 ON group_as.gro_asp_id = assessor.ase_id
                 INNER JOIN pefs_database.pef_group AS group_ev
                 ON group_as.gro_asp_id = group_ev.grp_position_group
-                WHERE ase_emp_id = '$id_assessor'";
+                WHERE ase_emp_id = '$id_assessor'
+                GROUP BY promote.asp_id";
 
         $query = $this->db->query($sql);
         return $query;

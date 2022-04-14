@@ -74,6 +74,10 @@ th {
 #width_col {
     white-space: initial !important;
 }
+
+textarea {
+    text-align: left !important;
+}
 </style>
 <!-- End CSS -->
 
@@ -262,7 +266,7 @@ th {
                         <!-- Comment -->
                         <div class="form-group">
                             <label>Comment :</b></label>
-                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA">
+                            <textarea class="form-control" rows="5" id="Comment" type="text" name="Comment">
                                 <?php echo $arr_per_id[0]->per_comment; ?>
                             </textarea>
                         </div>
