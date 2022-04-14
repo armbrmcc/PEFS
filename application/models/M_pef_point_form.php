@@ -42,8 +42,10 @@ class M_pef_point_form extends Da_pef_point_form
     {
         $sql = "SELECT * 
                 FROM pefs_database.pef_point_form AS poi
+                INNER JOIN pefs_database.pef_performance_form AS pfm
+                ON poi.ptf_per_id = pfm.per_id
                 INNER JOIN pefs_database.pef_group_nominee AS grn
-                ON poi.ptf_emp_id = grn.grn_id
+                ON pfm.per_emp_id = grn.grn_emp_id
                 INNER JOIN pefs_database.pef_group AS grp
                 ON grp.grp_id = grn.grn_grp_id
                 INNER JOIN pefs_database.pef_section AS sec
@@ -65,8 +67,10 @@ class M_pef_point_form extends Da_pef_point_form
     {
         $sql = "SELECT * 
                 FROM pefs_database.pef_point_form AS poi
+                INNER JOIN pefs_database.pef_performance_form AS pfm
+                ON poi.ptf_per_id = pfm.per_id
                 INNER JOIN pefs_database.pef_group_nominee AS grn
-                ON poi.ptf_emp_id = grn.grn_id
+                ON pfm.per_emp_id = grn.grn_emp_id
                 INNER JOIN pefs_database.pef_group AS grp
                 ON grp.grp_id = grn.grn_grp_id
                 INNER JOIN pefs_database.pef_section AS sec
@@ -95,4 +99,3 @@ class M_pef_point_form extends Da_pef_point_form
         return $query;
     }
 }
-

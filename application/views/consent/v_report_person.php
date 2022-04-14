@@ -98,7 +98,7 @@
                 </h5>
                 <br>
                 <div class="card-footer" style="background-color: #F8F8F8">
-                    <center><a href="<?php echo site_url() . 'Report/Report/show_report_group/' ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
+                    <center><a href="<?php echo site_url() . 'Report/Report/show_report_detail/' ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
                 </div>
             </div>
         </div>

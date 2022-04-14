@@ -74,7 +74,7 @@ date_default_timezone_set("Asia/Bangkok");
 <div class="container-fluid py-4">
     <div class="card-header">
         <h2>Group Management (การแก้ไขกลุ่มการประเมิน)</h2>
-        <input type="text" id="old_id" value="<?php echo $id[0] ?>" hidden>
+        <input type="text" id="old_id" value="<?php echo $id ?>" hidden>
     </div>
     <div class="col-12">
         <div class="card mb-4">
@@ -271,7 +271,12 @@ date_default_timezone_set("Asia/Bangkok");
         <script>
         var emp_as = [];
         $(document).ready(function() {
+            var grp_id = document.getElementById("old_id").value;
+            var group_id = document.getElementById("old_id").value;
+            var ase_id = id;
             get_group_detail()
+            get_position()
+            get_position_to_promote()
             promote = document.getElementById("promote_nominee").value;
             const d = new Date();
             $("#date2").hide();
@@ -301,9 +306,7 @@ date_default_timezone_set("Asia/Bangkok");
                 }
 
             }
-            var grp_id = document.getElementById("old_id").value;
-            var group_id = document.getElementById("old_id").value;
-            var ase_id = id;
+
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>Employee/Get_assessor/get_assessor_by_group ",
@@ -350,7 +353,7 @@ date_default_timezone_set("Asia/Bangkok");
                         data_row += '<td style="text-align:center">' + row.Department +
                             '</td>';
                         data_row += '<td style="text-align:center" id="Promote_' + num +
-                            '">' + row.grn_promote_to + '</td>';
+                            '">' + row.Position_name + '</td>';
                         data_row += '<td style="text-align:center"> ' +
                             '<button class="btn btn-danger" onclick = "remove_row(' + num +
                             ') " >delete</button></td>';
@@ -368,6 +371,8 @@ date_default_timezone_set("Asia/Bangkok");
             // get_assessor().call()
 
             change_button_status()
+            change_type()
+
 
         });
         </script>
@@ -572,7 +577,42 @@ date_default_timezone_set("Asia/Bangkok");
         /**
          * This function removes the row from the table
          */
+        function get_group_detail() {
+            var group_id = document.getElementById("old_id").value;
+            console.log(group_id);
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>Group_management/Group_management/get_group_detail ",
+                data: {
+                    "grp_id": group_id,
+                },
+                dataType: "JSON",
+                success: function(data, status) {
+                    console.log("data");
+                    console.log(data[0].grp_id);
+                    console.log(group_id);
+                    document.getElementById("group_position").value = data[0].grp_position_group
+                    console.log(data[0].grp_position_group);
+                    sessionStorage.setItem('grp_id', data[0].grp_position_group);
+                    console.log(sessionStorage.getItem('grp_id'));
+                    console.log(document.getElementById("group_position").value)
+                    document.getElementById("year").value = data[0].grp_year
+                    if (data[0].grp_position_group < 5) {
+                        document.getElementById("date").value = data[0].grd_date
+                    } else {
+                        document.getElementById("date").value = data[0].grd_date
+                        document.getElementById("date2").value = data[1].grd_date
+                    }
+                }
 
+            });
+
+            console.log(sessionStorage.getItem('grp_id'));
+            document.getElementById("group_position").value = sessionStorage.getItem('grp_id')
+            console.log(document.getElementById("group_position").value)
+
+
+        }
 
         /**
          * This function is used to get the position name from the database.
@@ -582,7 +622,9 @@ date_default_timezone_set("Asia/Bangkok");
             position_level_id = document.getElementById('group_position').value;
             document.getElementById("position_list").innerHTML = "";
             var empname = "";
-            console.log(position_level_id)
+
+            console.log("position_level_id")
+            console.log(document.getElementById('group_position').value)
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>Employee/Get_nominee/get_position ",
@@ -603,6 +645,7 @@ date_default_timezone_set("Asia/Bangkok");
 
             });
         }
+
 
         /**
          * This function is used to get the position name of the employee to be promoted
@@ -657,33 +700,7 @@ date_default_timezone_set("Asia/Bangkok");
 
         }
 
-        function get_group_detail() {
-            var group_id = document.getElementById("old_id").value;
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url(); ?>Group_management/Group_management/get_group_detail ",
-                data: {
-                    "grp_id": group_id,
-                },
-                dataType: "JSON",
-                success: function(data, status) {
-                    console.log(data);
-                    console.log(data[0].grp_id);
-                    document.getElementById("group_position").value = data[0].grp_position_group
-                    document.getElementById("year").value = data[0].grp_year
-                    if (data[0].grp_position_group < 5) {
-                        document.getElementById("date").value = data[0].grd_date
-                    } else {
-                        document.getElementById("date").value = data[0].grd_date
-                        document.getElementById("date2").value = data[1].grd_date
-                    }
-                }
 
-            });
-            console.log("Position_ID");
-
-
-        }
 
         /**
          * *This function changes the type of evaluation based on the position level.*
