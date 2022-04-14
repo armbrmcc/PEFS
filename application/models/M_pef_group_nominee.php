@@ -36,7 +36,8 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                     ON groupno.grn_emp_id = employee.Emp_ID
                     INNER JOIN dbmc.position AS position
                     ON groupno.grn_promote_to = position.Position_ID 
-                WHERE gr.grp_id = $group_id";
+                WHERE gr.grp_id = $group_id
+                GROUP BY groupno.grn_emp_id";
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลรายละเอียดของ Nominee
@@ -63,7 +64,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                     ON employee.Company_ID = company.Company_ID
                     INNER JOIN dbmc.sectioncode AS section
                     ON section.Sectioncode = employee.Sectioncode_ID
-                WHERE Emp_ID = groupno.grn_emp_id && groupno.grn_id = $id_nominee";
+                WHERE Emp_ID = groupno.grn_emp_id AND groupno.grn_id = $id_nominee";
         $query = $this->db->query($sql);
         return $query;
     }

@@ -115,11 +115,11 @@ class Report extends MainController
         $data['emp_data'] = $this->grp->get_emp_by_id()->row();
         $data['ass_data'] = $this->sec->get_ass_by_nor_id()->result();
         $data['point_data'] = $this->ptf->get_data_point_by_nor_id()->result();
-        $this->output('consent/v_report_detail_assessor', $data);
+        $this->output('consent/v_report_person', $data);
     }
 
 
-    
+
     // public function show_report_all()
     // {
     //     $this->output('consent/v_report_all');
