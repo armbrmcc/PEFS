@@ -23,9 +23,9 @@ class Da_pef_score_management extends pefs_model
     * update data for summary
     * @input    -
     * @output   -
-    * @author   Chakrit and Jirayut
-    * @Create Date 2564-08-22
-    * @Update Date 2564-08-23
+    * @author   Niphat Kuhoksiw
+    * @Create Date 2565-04-10
+    * @Update Date 2565-04-14
     */
     public function update_grn_status()
     {
@@ -41,9 +41,9 @@ class Da_pef_score_management extends pefs_model
     * update data for summary
     * @input    -
     * @output   -
-    * @author   Chakrit and Jirayut
-    * @Create Date 2564-08-22
-    * @Update Date 2564-08-23
+    * @author   Niphat Kuhoksiw
+    * @Create Date 2565-04-10
+    * @Update Date 2565-04-14
     */
     public function update_nom_stat()
     {
@@ -58,9 +58,9 @@ class Da_pef_score_management extends pefs_model
     * update data for summary
     * @input    -
     * @output   -
-    * @author   Chakrit and Jirayut
-    * @Create Date 2564-08-22
-    * @Update Date 2564-08-23
+    * @author   Niphat Kuhoksiw
+    * @Create Date 2565-04-10
+    * @Update Date 2565-04-14
     */
     public function update_pass()
     {
