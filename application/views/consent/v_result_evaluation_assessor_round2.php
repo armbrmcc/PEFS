@@ -185,21 +185,31 @@ th {
                                     <td colspan="2" style="vertical-align:middle;text-align: center;">Final round</td>
                                 </tr>
                                 <!--เริ่ม ตารางหัวข้อลงคะแนน-->
-                                <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
-                                    
-                                    $weight = 5*count($arr_des); //กำหนด weight แบบง่ายๆ
+                                    <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
+                                    $count_itm = 1; //จำนวนหัวข้อหลัก
+                                    $weight = 0;
+                                    $total_round_1 = 0;
                                     $point_old = 0;
-                                    
-                                    
-                                    ?>
-                                <input type="hidden" id="count_form" value='<?php echo count($arr_item) ?>'>
+                                ?>
+                                <input type="hidden" id="count_form" value='<?php echo count($arr_form) ?>'>
                                 <?php
                                     
-                                    for ($i = 0; $i < count($arr_item); $i++) {   //ลูปตามหัวข้อหลัก
+                                for ($i = 0; $i < count($arr_form); $i++) {   //ลูปตามหัวข้อหลัก
+                                ?>
+                                        <?php if ($i != 0) {
+                                            if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
+                                                $count_itm++;
+                                            }
+                                        }
+                                        $weight =  $weight + 5;
+                                        $total_round_1 += $arr_point[$i]->ptf_point;
+                                    } //นับหัวข้อหลัก
                                     ?>
-                                <?php $count_rowspan = 0;
-                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_des); $loop_rowspan++) {
-                                            if ($arr_des[$loop_rowspan]->des_item_id == $arr_item[$i]->itm_id) {
+                                    <?php for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
+                                    ?>
+                                        <?php $count_rowspan = 0;
+                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
+                                            if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
                                                 $count_rowspan++;
                                             }
                                         } //นับdiscriptionเพื่อกำหนด rowspan 
@@ -215,30 +225,32 @@ th {
                                     <td rowspan="<?php echo $count_rowspan; ?>"
                                         style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
                                         <b>
-                                            <?php echo $arr_item[$count_discription]->itm_name; ?>
-                                            <br><?php echo $arr_item[$count_discription]->itm_item_detail; ?></b>
+                                            <?php echo $arr_form[$count_discription]->itm_name; ?>
+                                            <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
                                     </td>
                                     <?php } ?>
 
                                     <td id="width_col">
                                         <!-- แสดง Disription    -->
-                                        <b> <?php echo $arr_des[$count_discription]->des_description_th; ?></b>
+                                        <b> <?php echo $arr_form[$count_discription]->des_description_th; ?></b>
                                         <br>
 
-                                        <?php $pos = strrpos($arr_des[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
-                                                    echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                        <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                         <br>
-                                        <?php echo substr($arr_des[$count_discription]->des_description_eng, $pos + 1, strlen($arr_des[$count_discription]->des_description_eng)) ?>
-                                        <?php echo $arr_des[$count_discription]->des_description_th ?>
+                                        <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
+                                        <?php echo $arr_form[$count_discription]->des_description_th ?>
                                     </td>
 
-                                    <!-- แสดง point -->
-                                    <td style="vertical-align:middle;text-align: center;">
-                                        <?php echo $arr_point[$count_discription]->ptf_point; ?>
+                                    <!-- แสดง point round 1-->
+                                    <td colspan="2">
+                                        <div class="form-group" align="center">
+                                            <?php echo $arr_point[$count_discription]->ptf_point;?>
+                                        </div>
                                     </td>
-
-                                    <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
-                                        id="formid_<?php echo $count_discription; ?>">
+                                
+                                    <!-- แสดง point round 2-->
+                                    
                                     <?php $count_discription++; ?>
                                     <?php } ?>
                                 </tr>
@@ -257,8 +269,9 @@ th {
                                 
                                     <!-- total -->
                                     <td>Total</td>
-                                    <td align='center'><?php echo $total; ?></td>
-                                    <td align='center'><?php echo (int)($total_per); ?>%</td>
+                                        <!-- total round 1 -->
+                                        <td style="text-align: center;"><?php echo $total_round_1;?></td>
+                                        <td style="text-align: center;"><?php echo (int)($total_round_1 * 100/$weight);?>%</td>
                                 </tr>
                                 <tr>
                                     <td>Judgement</td>
@@ -269,14 +282,17 @@ th {
                         <!-- comment -->
                         <div class="form-group">
                             <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
-                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
-                                disabled></textarea>
+                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment" disabled>
+                                <?php echo $arr_per_id[0]->per_comment; ?>
+                            </textarea>
                         </div>
                         <br>
                         <!-- Q/A -->
                         <div class="form-group">
                             <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
-                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA" disabled></textarea>
+                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA" disabled>
+                                <?php echo $arr_per_id[0]->per_q_and_a; ?>
+                            </textarea>
                         </div>
                     </div>
                     <!-- End table Evaluation form -->
