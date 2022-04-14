@@ -7,6 +7,14 @@
     * @Create Date 2565-01-27
     * @Update Date -
 -->
+
+<style>
+    td {
+        text-align: center !important;
+    }
+</style>
+
+
 <div class="container-fluid py-4">
     <div class="card-header">
         <h2> Report (รายงานข้อมูล)</h2>
@@ -457,13 +465,13 @@
             var data_row = '';
             obj.forEach((row, index) => {
                 data_row += '<tr>';
-                data_row += '<td>' + (index + 1) + '</td>';
+                data_row += '<td text-align: center>' + (index + 1) + '</td>';
                 data_row += '<td>' + "Promote to T" + row.sec_level + '</td>';
-                data_row += '<td id="sum_' + index + '"></td>';
-                data_row += '<td id="assess_' + index + '"></td>';
-                data_row += '<td id="not_assess_' + index + '"></td>';
-                data_row += '<td id="pass_' + index + '"></td>';
-                data_row += '<td id="fail_' + index + '"></td>';
+                data_row += '<td text-align: center id="sum_' + index + '"></td>';
+                data_row += '<td text-align: center id="assess_' + index + '"></td>';
+                data_row += '<td text-align: center id="not_assess_' + index + '"></td>';
+                data_row += '<td text-align: center id="pass_' + index + '"></td>';
+                data_row += '<td text-align: center id="fail_' + index + '"></td>';
                 data_row += '<td><a href="<?php echo site_url() ?>Report/Report/show_report_detail/' + row.sec_id + ' ">'
                 data_row += '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
                 data_row += '<i class="fas fa-search"></i></button></a></td>'

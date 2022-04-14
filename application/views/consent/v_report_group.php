@@ -186,9 +186,11 @@
             </div>
         </div>
     </div>
-    <div class="card-footer">
+    <!-- <div class="card-footer">
         <center><a href="<?php echo site_url() . 'Report/Report/show_report'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
-    </div>
+        <td><a href="<?php echo site_url() . 'Report/Report/show_report_detail_assessor/' . $sec_data[$i]->grn_id; ?>">
+
+    </div> -->
 </div>
 <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 <script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
