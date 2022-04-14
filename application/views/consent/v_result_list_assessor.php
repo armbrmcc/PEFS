@@ -109,7 +109,7 @@
                                 <?php 
                                 }else if($arr_nominee[$i]->asp_type == 2){
                                 ?>
-                                    <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2'.'/'.$arr_nominee[$i]->grn_grp_id.'/'.$arr_nominee[$i]->grn_emp_id.'/'.$arr_nominee[$i]->asp_level; ?>">
+                                    <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
                                         <button type="button" class="btn btn-xs button_size"
                                             style="background-color: #596CFF;">
                                             <i class="fas fa-search text-white"></i>

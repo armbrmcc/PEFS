@@ -78,50 +78,51 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 0; $i < count($arr_assessor_group); $i++) { ?>
-                        <tr>
-                            <!-- # -->
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">
-                                    <?php echo $i+1 ?>
-                                </h6>
-                            </td>
-                            <!-- Group Level -->
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_assessor_group[$i]->asp_level ?></h6>
-                            </td>
-                            <!-- Group Name -->
-                            <td>
-                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_assessor_group[$i]->asp_name ?></h6>
-                            </td>
-                            <!-- Date -->
-                            <td>
-                                <?php if ($arr_assessor_group[$i]->asp_type == 1) { ?>
-                                <?php $newDate = date("d/m/Y", strtotime($arr_assessor_group[$i]->grp_date)); ?>
-                                <h6 class="text-xs text-secondary mb-0">
-                                    Round
-                                    <?php echo ' ' . $arr_assessor_group[$i]->asp_type . ' ' ?>:<?php echo ' ' . $newDate ?>
-                                </h6>
-                                <?php }
-                                else { ?>
-                                <?php $newDate = date("d/m/Y", strtotime($arr_assessor_group[$i]->grp_date)); ?>
-                                <h6 class="text-xs text-secondary mb-0">
-                                    Round
-                                    <?php echo ' ' . $arr_assessor_group[$i]->asp_type . ' ' ?>:<?php echo ' ' . $newDate ?>
-                                </h6>
-                                <?php } ?>
-                            </td>
-                            <!-- Action -->
-                            <td>
-                                <a
-                                    href="<?php echo site_url() . 'Result/Result/show_result_list/' . $arr_assessor_group[$i]->grp_id; ?>">
-                                    <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
-                                        <i class="fas fa-search text-white"></i>
-                                    </button>
-                                </a>
-                            </td>
-                        </tr>
+                        <?php for ($i = 0; $i < count($arr_group); $i++) { ?>
+                            <?php $use_round = 0; ?>
+                            <tr>
+                                <!-- # -->
+                                <td>
+                                    <h6 class="text-xs text-secondary mb-0">
+                                        <?php echo $i+1 ?>
+                                    </h6>
+                                </td>
+                                <!-- Group Level -->
+                                <td>
+                                    <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->asp_level ?></h6>
+                                </td>
+                                <!-- Group Name -->
+                                <td>
+                                    <h6 class="text-xs text-secondary mb-0"><?php echo $arr_group[$i]->asp_name ?></h6>
+                                </td>
+                                
+                                <!-- Date -->
+                                <td>
+                                    <?php if($arr_group[$i]->asp_type == 1) { ?>
+                                        <?php $newDate = date("d/m/Y", strtotime($arr_group[$i]->grd_date)); ?>
+                                            <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$arr_group[$i]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6>
+                                    <? }else if($arr_group[$i]->asp_type == 2) { ?>  
+                                        <?php $use_round++; ?>
+                                        <?php $newDate = date("d/m/Y", strtotime($arr_group[$i]->grd_date)); ?>
+                                        <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$arr_group[$i]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6><br>
+                                        <?php $newDate = date("d/m/Y", strtotime($arr_group[$i+1]->grd_date)); ?>
+                                        <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$arr_group[$i+1]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6>
+                                    <? } ?>
+                                </td>
+                                <!-- Action -->
+                                <td>
+                                    <a
+                                        href="<?php echo site_url() . 'Result/Result/show_result_list/' . $arr_group[$i]->grp_id; ?>">
+                                        <button type="button" class="btn btn-xs button_size"
+                                            style="background-color: #596CFF;">
+                                            <i class="fas fa-search text-white"></i>
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php if($use_round > 0) {?>
+                                    <?php $i++; ?>
+                            <?php } ?>
                         <?php } ?>
                     </tbody>
                 </table>

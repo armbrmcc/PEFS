@@ -31,9 +31,14 @@ class Result extends MainController
     public function show_result_group()
     {
         $ass_id = $_SESSION['UsEmp_ID'];
-        $this->load->model('M_pef_assessor_promote', 'as_group');
-        $data['arr_assessor_group'] = $this->as_group->get_assessor_group_by_id($ass_id)->result();
-        
+        $this->load->model('M_pef_group', 'pef');
+        $this->load->model('M_pef_group_schedule', 'date');
+        $data['arr_group'] = $this->pef->get_group_evaluation($ass_id)->result();
+        $data['obj_date'] = $this->date->get_date_evaluation($ass_id)->result();
+        // echo "<pre>";
+        //     print_r($data['arr_group']);
+        // echo "</pre>";
+
         $this->output('consent/v_result_group_assessor', $data);
     }
     //show_result_group
@@ -123,6 +128,7 @@ class Result extends MainController
         // print_r($date);
         // print_r($id_assessor);
         // print_r($nor_id);
+
         $data['arr_per'] = $this->per->get_performance($nor_id, $id_assessor, $date)->result();
         // print_r($data['arr_per']);
         $data['arr_per_id'] = $this->per->get_performance_by_id($nor_id, $id_assessor, $date)->result();
@@ -130,6 +136,15 @@ class Result extends MainController
         // print_r($per_get);
         $data['arr_point'] = $this->point->get_point_list($per_get)->result();
         
+
+            $data['arr_per'] = $this->per->get_performance($nor_id, $id_assessor, $date)->result();
+            // print_r($data['arr_per']);
+            $data['arr_per_id'] = $this->per->get_performance_by_id($nor_id, $id_assessor, $date)->result();
+            $per_get =  $data['arr_per'][0]->per_id;
+            // print_r($per_get);
+            
+            $data['arr_point'] = $this->point->get_point_list($per_get)->result();
+
         $this->output('consent/v_result_evaluation_assessor_round2', $data);
     } //show_result_evaluation_type2
 }//End class Result

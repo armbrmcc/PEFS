@@ -204,7 +204,7 @@ th {
                                             }
                                         } //นับdiscriptionเพื่อกำหนด rowspan 
                                         
-                                        ?>
+                                    ?>
                                 <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
                                     id="dis_row_<?php echo  $i ; ?>">
                                 <?php
@@ -254,14 +254,11 @@ th {
                                         <br>2 ： Partially lower that expected level for Next level
                                         <br>1 ： Do Not satisfy expected level for Next level
                                     </td>
+                                
                                     <!-- total -->
                                     <td>Total</td>
-                                    <td style="text-align: center;"><input type="text" name="total" size='1' disabled
-                                            style='border: none'> </td>
-                                    <td style="text-align: center;"><input type="text" name="total_weight" size='1'
-                                            disabled style='border: none' ;></td>
-                                    <td><input type="text" name="total" size='1' disabled hidden></td>
-                                    <td><input type="text" name="total" size='1' disabled hidden></td>
+                                    <td align='center'><?php echo $total; ?></td>
+                                    <td align='center'><?php echo (int)($total_per); ?>%</td>
                                 </tr>
                                 <tr>
                                     <td>Judgement</td>
