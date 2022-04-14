@@ -273,7 +273,7 @@ div.tr {
                             weekday: 'long',
                         })
                         console.log(i);
-                        console.log(row);
+                        console.log(row.grp_id);
                         data_row += '<tr id="ase_' + i + '">'
                         data_row += '<td style="text-align:center">'
                         data_row += i + 1;

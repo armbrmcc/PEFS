@@ -39,7 +39,7 @@ class Group_management extends MainController
     public function edit_group($id)
     {
         $data['id'] = $id;
-        // print_r($data);
+        //print_r($data);
         $this->output('consent/v_group_management_edit_group', $data);
         //$this->output('consent/v_group_management_add_group');
     }
@@ -70,6 +70,7 @@ class Group_management extends MainController
         $assessor = $this->input->post('emp_assessor');
         $nominee = $this->input->post('emp_nominee');
         $pos = $this->input->post('promote');
+        echo  $this->input->post('promote');
         $this->ped->grp_date = $date[0];
         $this->ped->grp_date = $date[0];
         echo $this->input->post('year');
@@ -101,6 +102,7 @@ class Group_management extends MainController
             $this->ped->grn_grp_id = $group_id[0]->grp_id;
             $this->ped->grn_emp_id = $nominee[$i];
             $this->emp->Position_name = $pos[$i];
+            print_r($pos);
             $pos_id = $this->emp->get_position_id()->row();
             print_r($pos_id);
             echo $pos_id->Position_ID;
@@ -141,6 +143,7 @@ class Group_management extends MainController
         $assessor = $this->input->post('emp_assessor');
         $nominee = $this->input->post('emp_nominee');
         $pos = $this->input->post('promote');
+        print_r($pos);
         $group = $this->input->post('grp_id');
         $this->ped->grn_grp_id = $group;
         $this->ped->grp_id = $group;
@@ -156,7 +159,6 @@ class Group_management extends MainController
         $assessor = $this->input->post('emp_assessor');
         $nominee = $this->input->post('emp_nominee');
         $pos = $this->input->post('promote');
-        $this->ped->grp_date = $date[0];
         $this->ped->grp_date = $date[0];
         echo $this->input->post('year');
         $this->ped->grp_year = $this->input->post('year');
@@ -187,9 +189,8 @@ class Group_management extends MainController
             $this->ped->grn_grp_id = $group_id[0]->grp_id;
             $this->ped->grn_emp_id = $nominee[$i];
             $this->emp->Position_name = $pos[$i];
+            echo $pos[$i];
             $pos_id = $this->emp->get_position_id()->row();
-            print_r($pos_id);
-            echo $pos_id->Position_ID;
             $this->ped->grn_promote_to = $pos_id->Position_ID;
             $this->ped->insert_nominee();
         }
