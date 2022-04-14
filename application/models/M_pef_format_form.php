@@ -22,12 +22,13 @@ class M_pef_format_form extends Da_pef_format_form
 	*/
     public function get_evaluation_form($promote){
         $sql = "SELECT *
-                FROM  pefs_database.pef_format_form AS form
-                INNER JOIN pefs_database.pef_item_form AS item
-                ON form.for_item_id = item.itm_id
-                INNER JOIN pefs_database.pef_description_form AS desform
-                ON form.for_des_id = desform.des_id
-                WHERE form.for_pos_id = '$promote'";
+        FROM  pefs_database.pef_format_form AS form
+        INNER JOIN pefs_database.pef_item_form AS item
+        ON form.for_item_id = item.itm_id
+        INNER JOIN pefs_database.pef_description_form AS desform
+        ON form.for_des_id = desform.des_id
+        WHERE form.for_pos_id = '$promote'
+        ";
         $query = $this->db->query($sql);
         return $query;
     }

@@ -122,7 +122,7 @@ function alart_evaluation() {
     
     var count_form = $('#count_form').val();
     var form = []
-    for (i = 0; i < count_form; i++) {
+    for (i = 0; i < count_score; i++) {
         form[i] = $('#formid_' + i).val();
     }
 
@@ -407,6 +407,7 @@ function calculate_weight() {
                                     }
                                     $weight =  $weight + $arr_form[$i]->des_weight;
                                 } //นับหัวข้อหลัก
+                                // print_r($count_itm);
                                 ?>
                                 <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
                                 <?php 
@@ -431,6 +432,7 @@ function calculate_weight() {
                                                     <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
                                                 </td>
                                             <?php } ?>
+
                                             <!-- แสดง Disription -->
                                             <td id="width_col">
                                                 <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
@@ -439,10 +441,12 @@ function calculate_weight() {
                                                 <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
                                                 <?php echo $arr_form[$count_discription]->des_description_th ?>
                                             </td>
+
                                             <!-- แสดง % Weight -->
                                             <td style="vertical-align:middle;text-align: center;">
                                                 <?php echo $arr_form[$count_discription]->des_weight; ?>
                                             </td>
+                                        
                                             <!-- แสดง point -->
                                             <td style="vertical-align:middle;text-align: center;">
                                                 <div class="form-group">
@@ -460,15 +464,17 @@ function calculate_weight() {
                                             </td>
                                                 <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
                                                 id="formid_<?php echo $i; ?>">
+
                                             <!-- แสดง Score -->
                                             <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"
                                                 style="vertical-align:middle; text-align: center;"></td>
                                                 <input type="text" name="point_list[]" id="point_list_<?php echo  $count_discription; ?>" value="0" hidden>
                                                 <input type="text" id="weight_list_<?php echo $count_discription; ?>" value=<?php echo $arr_form[$i]->des_weight; ?> hidden>
-                                            <?php $count_discription++;
-                                                $loop_dis++;
-                                    } ?>
-
+                                        <?php $count_discription++;
+                                        $loop_dis++; ?>
+                                    <?php } ?>
+                                    <!-- end loop while -->
+                                    
                                     </tr>
                                 <?php } ?>
                                 <input type="hidden" id="count_score" value="<?php echo $count_discription ?>">
