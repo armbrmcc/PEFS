@@ -92,6 +92,7 @@ th {
         <div class="card-header">
             <h2>Result (คะแนนการประเมิน)</h2>
         </div>
+        
         <div class="card-body">
             <!-- Logo บริษัท -->
             <div class="row">
@@ -101,14 +102,14 @@ th {
                 </div>
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
-                    <!-- <h4><?php echo $obj_nominee[0]->Company_name ?></h4> -->
+                    <h4><?php echo $obj_nominee[0]->Company_name ?></h4>
                 </div>
             </div>
             <!-- ชื่อกรรมการ และวันประเมิน -->
             <div class="row">
                 <div class="col-sm-6">
                     <h6>Assessor Name :
-                        <!-- <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6> -->
+                        <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6>
                 </div>
                 <div class="col-sm-6">
                     <?php $newDate = date("d/m/Y", strtotime($arr_nominee[0]->grp_date)); ?>
@@ -124,31 +125,31 @@ th {
                         <tr id="Manage">
                             <th colspan="5" id="gray">
                                 <center><b>Stretch Assignment Evaluation Form
-                                        <!-- (<?php echo $obj_promote[0]->Position_name?>) </b> -->
+                                        (<?php echo $obj_promote[0]->Position_name?>) </b>
                         </tr>
                         <tbody>
                             <tr id="Manage">
                                 <!-- ชื่อ-นามสกุล Nominee -->
                                 <th width="50px" id="gray">Name - Surname</th>
                                 <td colspan="2">
-                                    <!-- <?php echo $obj_nominee[0]->Empname_eng. ' ' . $obj_nominee[0]->Empsurname_eng?> -->
+                                    <?php echo $obj_nominee[0]->Empname_eng. ' ' . $obj_nominee[0]->Empsurname_eng?>
                                 </td>
                                 <!-- ตำแหน่ง Nominee -->
                                 <th width="40px" id="gray">Position</th>
                                 <td>
-                                    <!-- <?php echo $obj_nominee[0]->Position_name?> -->
+                                    <?php echo $obj_nominee[0]->Position_name?>
                                 </td>
                             </tr>
                             <tr id="Manage">
                                 <!-- แผนก Promote to -->
                                 <th width="40px" id="gray">Promote to</th>
                                 <td colspan="2">
-                                    <!-- <?php echo $obj_promote[0]->Position_name?> -->
+                                    <?php echo $obj_promote[0]->Position_name?>
                                 </td>
                                 <!-- แผนก Nominee -->
                                 <th width="40px" id="gray">Department/Section</th>
                                 <td>
-                                    <!-- <?php echo $obj_nominee[0]->Department?> -->
+                                    <?php echo $obj_nominee[0]->Department?>
                                 </td>
                             </tr>
                         </tbody>
@@ -178,6 +179,9 @@ th {
                                 <!--เริ่ม ตารางหัวข้อลงคะแนน-->
                                 <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
                                 $count_itm = 1; //จำนวนหัวข้อหลัก
+                                $total = 0; //ผลรวมของคะแนน
+                                $total_weight = 0; //ผลรวมของน้ำหนัก
+                                $total_per = 0;
                                 $weight = 0;
                                 for ($i = 0; $i < count($arr_form); $i++) {
                                     if ($i != 0) {
@@ -202,54 +206,42 @@ th {
                                     id="dis_row_<?php echo  $i ; ?>">
                                 <?php $loop_dis = 1;
                                     while ($loop_dis <= $count_rowspan) { ?>
-                                <tr>
-                                    <!--แสดง Item -->
-                                    <?php if ($loop_dis === 1) { ?>
-                                    <td rowspan="<?php echo $count_rowspan; ?>"
-                                        style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
-                                        <?php echo $arr_form[$count_discription]->itm_name; ?>
-                                        <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
-                                    </td>
-                                    <?php } ?>
-                                    <!-- แสดง Disription -->
-                                    <td id="width_col">
-                                        <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
-                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
-                                        <br>
-                                        <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
-                                        <?php echo $arr_form[$count_discription]->des_description_th ?>
-                                    </td>
-                                    <!-- แสดง % Weight -->
-                                    <td style="vertical-align:middle;text-align: center;">
-                                        <?php echo $arr_form[$count_discription]->des_weight; ?>
-                                    </td>
-                                    <!-- แสดง point -->
-                                    <td style="vertical-align:middle;text-align: center;">
-                                        <div class="form-group">
-                                            <label for="sel"></label>
-                                            <input style="vertical-align:middle;text-align: center;" name="form[]"
-                                                id="form_<?php echo $count_discription; ?>"
-                                                onchange="calculate_weight()" disabled>
-                                                <option value="0">score</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                    </input>
-                                        </div>
-                                    </td>
-                                    <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
-                                        id="formid_<?php echo $i; ?>">
-                                    <!-- แสดง Score -->
-                                    <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"
-                                        style="vertical-align:middle; text-align: center;"></td>
-                                    <input type="text" name="point_list[]"
-                                        id="point_list_<?php echo  $count_discription; ?>" value="0" hidden>
-                                    <input type="text" id="weight_list_<?php echo $count_discription; ?>"
-                                        value=<?php echo $arr_form[$i]->des_weight; ?> hidden>
-                                    <?php $count_discription++;
-                                                $loop_dis++;
+                                    <tr>
+                                        <!--แสดง Item -->
+                                        <?php if ($loop_dis === 1) { ?>
+                                        <td rowspan="<?php echo $count_rowspan; ?>"
+                                            style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
+                                            <?php echo $arr_form[$count_discription]->itm_name; ?>
+                                            <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
+                                        </td>
+                                        <?php } ?>
+                                        <!-- แสดง Disription -->
+                                        <td id="width_col">
+                                            <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                        echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                            <br>
+                                            <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
+                                            <?php echo $arr_form[$count_discription]->des_description_th ?>
+                                        </td>
+                                        <!-- แสดง % Weight -->
+                                        <td style="vertical-align:middle;text-align: center;">
+                                            <?php echo $arr_form[$count_discription]->des_weight; ?>
+                                        </td>
+                                        <!-- แสดง point -->
+                                        <td style="vertical-align:middle;text-align: center;">
+                                            <?php echo $arr_point[$count_discription]->ptf_point; ?>
+                                        </td>
+                                        <!-- แสดง Score -->
+                                        <td id="show_weight_<?php echo $count_discription; ?>"
+                                            style="vertical-align:middle; text-align: center;">
+                                            <?php echo $arr_form[$count_discription]->des_weight * $arr_point[$count_discription]->ptf_point;
+                                            $total = $total + $arr_form[$count_discription]->des_weight * $arr_point[$count_discription]->ptf_point;
+                                            $weight += 5 * $arr_form[$count_discription]->des_weight;
+                                            $total_per = ($total / $weight) * 100;
+                                            ?>
+                                        </td>
+                                        <?php $count_discription++;
+                                        $loop_dis++;
                                     } ?>
 
                                 </tr>
@@ -257,21 +249,10 @@ th {
                                 <input type="hidden" id="count_score" value="<?php echo $count_discription ?>">
                                 <tr>
                                     <!-- แสดง total -->
-                                    <input type="text" id="count_index" value=<?php echo $count_discription; ?> hidden>
-                                    <input type="text" name="weight" id="weight" value=<?php echo $weight; ?> hidden>
-                                    <input type="text" name="weight-per" id="weight-per"
-                                        value=<?php echo $weight * 5; ?> hidden>
                                     <td colspan="2" align='right'><b>Total</b></td>
-                                    <!-- แสดง total 100 -->
                                     <td align='center'>100</td>
-                                    <!-- แสดง point รวม -->
-                                    <td align='center'>
-                                        <input type="text" name="total" size='1' disabled style='border: none'>
-                                    </td>
-                                    <!-- แสดงเปอร์เซ็นคะแนนรวมทั้งหมด -->
-                                    <td align='center'>
-                                        <input type="text" name="total_weight" size='1' disabled style='border: none' ;>
-                                    </td>
+                                    <td align='center'><?php echo $total; ?></td>
+                                    <td align='center'><?php echo (int)($total_per); ?>%</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -280,30 +261,20 @@ th {
 
                         <!-- Comment -->
                         <div class="form-group">
-                            <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
-                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment" disabled>
-                                <?php echo $arr_performance->per_comment; ?>
+                            <label>Comment :</b></label>
+                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA">
+                                <?php echo $arr_per_id[0]->per_comment; ?>
                             </textarea>
                         </div>
                         <br>
                         <!-- Q/A -->
                         <div class="form-group">
-                            <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
-                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA" disabled>
-                                <?php echo $arr_performance->per_q_and_a; ?>
+                            <label>Q/A :</b></label>
+                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA">
+                                <?php echo $arr_per_id[0]->per_q_and_a; ?>
                             </textarea>
                         </div>
                         <br>
-                        <!-- input -->
-                        <!-- <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>"> -->
-                        <!-- <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id" id="ase_id"> -->
-                        <!-- <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id" -->
-                            <!-- id="emp_id"> -->
-                        <!-- <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id"> -->
-                        <!-- <input type="hidden" value="<?php echo $arr_nominee[0]->grp_id; ?>" name="group_id" -->
-                            <!-- id="group_id"> -->
-                        <!-- <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id"> -->
-                        <!-- end input -->
                     </div>
                 </form>
                 <!-- End form evaluation -->
