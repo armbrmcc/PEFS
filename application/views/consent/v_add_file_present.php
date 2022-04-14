@@ -55,7 +55,7 @@ div.a {
     <!-- Table group Nominee list -->
     <div class="card-body" id="card_radius">
         <div class="table-responsive">
-            <table class="table align-items-center" id="Nominee_file_table">
+            <table class="table align-items-center" id="Nominee_file_table" id="list_table">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">#</th>
@@ -70,24 +70,30 @@ div.a {
                     <tr>
                         <?php for ($i = 0; $i < count($emp_nominee); $i++) { ?>
                     <tr>
-                        <td class="text-center">
-                            <?php echo ($i + 1); ?>
+                        <td class="text-center">]
+                            <h6 class="text-xs text-secondary mb-0">
+                                <?php echo ($i + 1); ?>
+                            </h6>
                         </td>
                         <td>
-                            <?php echo $emp_nominee[$i]->Emp_ID  ?>
-
+                            <h6 class="text-xs text-secondary mb-0">
+                                <?php echo $emp_nominee[$i]->Emp_ID  ?>
+                            </h6>
                         </td>
                         <td>
-                            <?php echo $emp_nominee[$i]->Empname_eng . ' ' . $emp_nominee[$i]->Empsurname_eng ?>
-
+                            <h6 class="text-xs text-secondary mb-0">
+                                <?php echo $emp_nominee[$i]->Empname_eng . ' ' . $emp_nominee[$i]->Empsurname_eng ?>
+                            </h6>
                         </td>
                         <td>
-                            <?php echo $emp_nominee[$i]->Pos_shortName  ?>
-
+                            <h6 class="text-xs text-secondary mb-0">
+                                <?php echo $emp_nominee[$i]->Pos_shortName  ?>
+                            </h6>
                         </td>
                         <td>
-                            <?php echo $emp_nominee[$i]->Department ?>
-
+                            <h6 class="text-xs text-secondary mb-0">
+                                <?php echo $emp_nominee[$i]->Department ?>
+                            </h6>
                         </td>
                         <!-- column ดำเนินการ -->
                         <td style='text-align: center;'>
@@ -105,16 +111,14 @@ div.a {
                             // foreach 
                             // ยังไม่มีไฟล์จะเพิ่มไฟล์
                             if ($check == 0) { ?>
-                            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-                                data-bs-target="#modalAddfile<?php echo $i ?>"><i
-                                    class="fas fa-file-upload"></i></button>
+                            <i class="fas fa-file-upload" style="color: grey; font-size:2vw;" data-bs-toggle="modal"
+                                data-bs-target="#modalAddfile<?php echo $i ?>"></i>
                             <?php  }
                             // if
                             //เคยมีไฟล์แล้วจะอัปเดต
                             else { ?>
-                            <button type=" button" class="btn btn-success btn-lg" data-bs-toggle="modal"
-                                data-bs-target="#edit_modal_file<?php echo $i ?>"><i
-                                    class="fas fa-file-upload"></i></button>
+                            <i class="fas fa-file-upload" style="color:#00FF40; font-size:2vw;" data-bs-toggle="modal"
+                                data-bs-target="#edit_modal_file<?php echo $i ?>"></i></button>
                             <?php  } ?>
                             <!-- else -->
 
