@@ -271,6 +271,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
 <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 <script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
     var section = [];
@@ -380,6 +381,7 @@
                 "year": year
             },
             success: function(data_charts) {
+                console.log(year);
                 data_charts.forEach((row, index) => {
                     row.sec_level = 'T' + row.sec_level;
 
@@ -462,7 +464,7 @@
                 data_row += '<td id="not_assess_' + index + '"></td>';
                 data_row += '<td id="pass_' + index + '"></td>';
                 data_row += '<td id="fail_' + index + '"></td>';
-                data_row += '<td><a href="<?php echo site_url() ?>Report/Report/show_report_group/' + row.sec_id + ' ">'
+                data_row += '<td><a href="<?php echo site_url() ?>Report/Report/show_report_detail/' + row.sec_id + ' ">'
                 data_row += '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
                 data_row += '<i class="fas fa-search"></i></button></a></td>'
                 data_row += '</tr>';
