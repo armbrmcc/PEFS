@@ -28,7 +28,11 @@ class File_present_management extends MainController
         $this->output('consent/v_add_file_present', $data);
     }
     function insert_file_nominee()
-    {
+    { //apply DateTime.
+        $currentDate = new DateTime();
+        //Get the year by using the format method.
+        $year = $currentDate->format("Y");
+        //Printing that out
         $pefs_file =  $_FILES['fil']['tmp_name'];
         $fil_name = iconv("UTF-8", "TIS-620", $_FILES['fil']['name']);
         $Emp_ID = $this->input->post("Emp_ID");
@@ -36,7 +40,7 @@ class File_present_management extends MainController
         $this->load->model('Da_pef_file', 'pef');
         $this->pef->fil_location = $Emp_ID . "_" . $fil_name;
         $this->pef->fil_emp_id = $Emp_ID;
-
+        $this->pef->fil_year = $year;
         $this->pef->insert_file(); // add file to table pef_file
         copy($pefs_file, 'upload/' . $Emp_ID . "_" . $fil_name); // add file to floder upload
         $this->show_list_nominee();
