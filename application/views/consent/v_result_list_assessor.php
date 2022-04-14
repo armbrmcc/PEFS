@@ -97,26 +97,50 @@
                                 </h6>
                             </td>
                             <td>
-                                <?php 
-                                    if($arr_nominee[$i]->asp_type == 1){
+                                <?php
+                                    if($arr_nominee[$i]->grn_no_status == 0 || $arr_nominee[$i]->grn_no_status == NULL){
                                 ?>
-                                    <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
+                                <a>
+                                    <button type="button" class="btn btn-xs button_size"
+                                        style="background-color: #83848C;" disabled>
+                                        <i class="fas fa-search text-white"></i>
+                                    </button>
+                                </a>
+                                <?php
+                                    }
+                                    // if check nominee status of evaluated  
+                                    else{
+                                        // check round evalution form
+                                        if($arr_nominee[$i]->asp_type == 1){
+                                        // round 1
+                                ?>
+                                    <a
+                                        href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
                                         <button type="button" class="btn btn-xs button_size"
                                             style="background-color: #596CFF;">
                                             <i class="fas fa-search text-white"></i>
                                         </button>
-                                    </a>        
+                                    </a>
                                 <?php 
-                                }else if($arr_nominee[$i]->asp_type == 2){
+                                        }
+                                        // end if round 1 
+                                        else if($arr_nominee[$i]->asp_type == 2){
+                                        // round 2
                                 ?>
-                                    <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
+                                    <a
+                                        href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2'.'/'.$arr_nominee[$i]->grn_grp_id.'/'.$arr_nominee[$i]->grn_emp_id.'/'.$arr_nominee[$i]->asp_level; ?>">
                                         <button type="button" class="btn btn-xs button_size"
                                             style="background-color: #596CFF;">
                                             <i class="fas fa-search text-white"></i>
                                         </button>
                                     </a>
                                 <?php           
-                                }
+                                        }
+                                        // end else round 2
+                                ?>
+                                <?php
+                                    }
+                                    // else check nominee status of yet evaluate 
                                 ?>
                             </td>
                         </tr>

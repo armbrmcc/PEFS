@@ -151,5 +151,4 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลรายละเอียดของ Nominee
-
 }
