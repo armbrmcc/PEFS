@@ -83,7 +83,7 @@ table,  td{
 
 
 <!-- start Form -->
-<form  action="<?php echo site_url() ?>Form_Management/Form_Management/form_management_update" method="post" enctype="multipart/form-data" name="event" >
+<form  action="<?php echo site_url() ?>Form_Management/Form_Management/form_management_update" method="post" enctype="multipart/form-data" name="event" onsubmit="return checkform()">
 
 
 
@@ -101,7 +101,7 @@ table,  td{
                         <th scope="col" style="width : 5% ">#</th>
                         <th scope="col" style="width : 40% ">Item</th>
                         <th scope="col"style="width : 40% ">Points for observation</th>
-                        <th scope="col"style="width : 5% ">weight</th>
+                       
                         <th scope="col"style="width : 10% "> Action</th>
                     </tr>
                 </thead>
@@ -128,9 +128,7 @@ table,  td{
                            
                         </td>
                         
-                        <td>
-                            <input type="text" name="weight<?php echo $loop_form  ;?>" id="weight<?php echo $loop_form  ;?>" value=0 size='1'>
-                        </td>
+                  
 
                         <!-- column ดำเนินการ -->
                         <td style='text-align: center;'>
@@ -147,10 +145,10 @@ table,  td{
             </table>
             <!-- Confirm -->
             <div class="col-12 text-end" > 
-            <button type="submit" class="btn btn-success float-right" data-toggle="modal"
-                                    data-target="#Modal_confirm">Submit</button>
-                                    </a>
-                                
+            <button type="submit" class="btn btn-success float-right" data-toggle="modal"data-target="#Modal_confirm" >
+            Submit</button>
+ 
+
         </div>
     </div>
 </div>
@@ -167,7 +165,7 @@ table,  td{
 
         // insert data desciption
         var loop =  document.getElementById("form_insert_num").value ;
-        console.log(loop);
+        
         for(i=0;i<loop;i++){
             show_selectvalue_insert("select_item"+i);
         }
@@ -201,9 +199,7 @@ table,  td{
                             <td style='text-align: left;' id="discrip${i}">
 
                             </td>
-                            <td>
-                                <input type="text" name="weight${i}" id="weight${i}"  value=0 size='1'>
-                            </td>
+
                             <!-- column ดำเนินการ -->
                             <td style='text-align: center;'>
                                 <button class="btn btn-danger remove"
@@ -243,6 +239,7 @@ table,  td{
         $(this).closest('tr').remove();
         // Decreasing total number of rows by 1.
         rowIdx--;
+        i--;
         document.getElementById("allitem").value = rowIdx;
         });
 });
@@ -281,14 +278,13 @@ function show_selectvalue_insert (id){
                     
                     if(mynum>1){
                         for(i=1;i<mynum;i++){   
-                            console.log(namenum);
+                             
                             justnum = parseInt(namenum);
                             justnum = justnum+i;
-                            console.log(justnum);
+                            
                             name_th = "des_th"+ justnum; //รับตั้งเพื่อเอาค่า
                             name_eng = "des_eng"+ justnum; //รับตั้งเพื่อเอาค่า
-                            console.log(name_th);
-                            console.log(name_eng);
+                           
                             des_th =  document.getElementsByName(name_th); // เอาค่า
                             des_eng =  document.getElementsByName(name_eng); // เอาค่า
                            
@@ -343,14 +339,13 @@ function show_selectvalue (select){
                     if(mynum>1){
                         
                         for(i=1;i<mynum;i++){   
-                            console.log(namenum);
+                            
                             justnum = parseInt(namenum);
                             justnum = justnum+i;
-                            console.log(justnum);
+                           
                             name_th = "des_th"+ justnum; //รับตั้งเพื่อเอาค่า
                             name_eng = "des_eng"+ justnum; //รับตั้งเพื่อเอาค่า
-                            console.log(name_th);
-                            console.log(name_eng);
+                            
                             des_th =  document.getElementsByName(name_th); // เอาค่า
                             des_eng =  document.getElementsByName(name_eng); // เอาค่า
                            
@@ -389,10 +384,13 @@ function delete_descript (num){
 }  
 
 
-// for(i=0;i<=2;i++){
-//                         des_th=des_th+"<br>"+des_eng;
-//                         if(i!=2){
-//                             des_th= des_th+"<hr>";
-//                         }
-//                     }
+function checkform() {
+    if(document.event.allitem.value < 1) {
+        alert("Please enter at least 1 form.");
+        return false;
+    } else {
+        document.event.submit();
+    }
+}
+
     </script>
