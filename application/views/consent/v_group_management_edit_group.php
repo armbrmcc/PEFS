@@ -283,10 +283,10 @@ date_default_timezone_set("Asia/Bangkok");
             $("#date2").hide();
             let years = d.getFullYear();
             console.log('option')
-            years = years - 3
+            years = years - 2
             // var x = document.getElementById("year");
             // var option = document.createElement("option");
-            for (i = 0; i < 7; i++) {
+            for (i = 0; i < 5; i++) {
                 if (years == d.getFullYear()) {
                     var x = document.getElementById("year");
                     var option = document.createElement("option");
