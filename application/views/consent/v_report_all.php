@@ -231,7 +231,7 @@
 
                         </div>
                     </div>
-                    <div class="table-responsive" table id='myTable'>
+                    <div class="table-responsive">
                         <!-- Projects table -->
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
