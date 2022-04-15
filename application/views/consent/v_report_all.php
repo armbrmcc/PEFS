@@ -12,6 +12,10 @@
     td {
         text-align: center !important;
     }
+
+    th {
+        text-align: center !important;
+    }
 </style>
 
 
@@ -260,9 +264,9 @@
                             <tfoot>
                                 <td colspan="2" align="right">Total :</td>
                                 <td id='sum_total'></td>
+                                <td id='assess_total'></td>
+                                <td id='not_assess_total'></td>
                                 <td id='pass_total'></td>
-                                <td id='fail_total'></td>
-                                <td id='fail_total'></td>
                                 <td id='fail_total'></td>
                                 <td></td>
 
