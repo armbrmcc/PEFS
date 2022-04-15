@@ -174,7 +174,7 @@
                                                 ?>
                                                     <!-- Start button trigger modal delete -->
                                                     <!-- ปุ่มดำเนินการลบ -->
-                                                    <button type="button" class="btn btn-secondary ">
+                                                    <button type="button" class="btn btn-secondary " disabled>
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                     <!-- End button trigger modal delete -->
