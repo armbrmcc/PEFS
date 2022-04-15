@@ -70,7 +70,7 @@ div.a {
                     <tr>
                         <?php for ($i = 0; $i < count($emp_nominee); $i++) { ?>
                     <tr>
-                        <td class="text-center">]
+                        <td class="text-center">
                             <h6 class="text-xs text-secondary mb-0">
                                 <?php echo ($i + 1); ?>
                             </h6>
