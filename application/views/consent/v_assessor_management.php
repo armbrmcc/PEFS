@@ -23,38 +23,38 @@
 <body class="g-sidenav-show  bg-gray-100">
     <!-- CSS -->
     <style>
-    #list_table td,
-    #list_table th {
-        padding: 12px;
-        text-align: center;
-    }
+        #list_table td,
+        #list_table th {
+            padding: 12px;
+            text-align: center;
+        }
 
-    #list_table tr:nth-child(even) {
-        background-color: #e9ecef;
-    }
+        #list_table tr:nth-child(even) {
+            background-color: #e9ecef;
+        }
 
-    #list_table tr:hover {
-        background-color: #adb5bd;
-    }
+        #list_table tr:hover {
+            background-color: #adb5bd;
+        }
 
-    #card_radius {
-        border-radius: 20px;
-        width: auto;
-        min-height: 300px;
-    }
+        #card_radius {
+            border-radius: 20px;
+            width: auto;
+            min-height: 300px;
+        }
 
-    #list_table {
-        width: 98%;
-        margin-top: 20px;
-        margin-left: 10px;
-    }
+        #list_table {
+            width: 98%;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
 
-    .button_size {
-        /* width: 5px; */
-        height: 40px;
-        font-size: 12px;
-        text-align: center;
-    }
+        .button_size {
+            /* width: 5px; */
+            height: 40px;
+            font-size: 12px;
+            text-align: center;
+        }
     </style>
     <!-- End CSS -->
 
@@ -71,15 +71,13 @@
                     <!-- ปุ่มดำเนินการเพิ่ม -->
                     <main class="main-content position-relative max-height-vh-100 h-100 ">
                         <!-- Navbar -->
-                        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-2 shadow-none border-radius-xl"
-                            id="navbarBlur" navbar-scroll="true">
+                        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-2 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
                             <div class="container-fluid py-1 px-3">
                                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                                         <div class="input-group">
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn bg-gradient-info btn-block mb-3"
-                                                data-bs-toggle="modal" data-bs-target="#ModalAddGroup">
+                                            <button type="button" class="btn bg-gradient-info btn-block mb-3" data-bs-toggle="modal" data-bs-target="#ModalAddGroup">
                                                 <i class="fas fa-plus"></i>&nbsp;&nbsp;Add Group
                                             </button>
                                         </div>
@@ -105,131 +103,179 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        for($i=0; $i<count($arr_group); $i++) {
+                                    for ($i = 0; $i < count($arr_group); $i++) {
                                     ?>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs mb-0">
-                                                    <?php echo $i+1?>
-                                                </h6>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs mb-0">
-                                                    <?php echo 'T'.$arr_group[$i]->asp_level?>
-                                                </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs mb-0">
-                                                    <?php echo $arr_group[$i]->asp_name?>
-                                                </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs mb-0">
-                                                    <?php 
-                                                        for($j=0; $j<count($arr_position); $j++){
-                                                            echo $j+1;
-                                                            echo '. '.$arr_position[$j]->Position_name;
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="text-xs mb-0">
+                                                        <?php echo $i + 1 ?>
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="text-xs mb-0">
+                                                        <?php echo 'T' . $arr_group[$i]->asp_level ?>
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="text-xs mb-0">
+                                                        <?php echo $arr_group[$i]->asp_name ?>
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="text-xs mb-0">
+                                                        <?php
+                                                        for ($j = 0; $j < count($arr_position); $j++) {
+                                                            echo $j + 1;
+                                                            echo '. ' . $arr_position[$j]->Position_name;
                                                             echo "<br/>";
                                                         }
-                                                    ?>
-                                                </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="text-xs mb-0">
-                                                    <?php echo "Type ".$arr_group[$i]->grp_position_group?>
-                                                </h6>
-                                                <h6 class="text-xs mb-0">
-                                                    <?php echo $arr_group[$i]->grp_position_group.' Round evaluation'?>
-                                                </h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">
-                                            <!-- Start button trigger modal edit -->
-                                            <a
-                                                href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/'.$arr_group[$i]->gro_ase_id; ?>">
-                                                <!-- ปุ่มดำเนินการแก้ไข -->
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                    data-bs-target="#ModalDeleteAssessor">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                            </a>
-                                            <!-- End button trigger modal edit-->
-
-                                            <?php
-                                                if($arr_group[$i]->asp_status == '-1'){
-                                            ?>
-                                            <!-- Start button trigger modal delete -->
-                                            <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#ModalDeleteGroup<?php echo $i; ?>">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                            <!-- End button trigger modal delete -->
-                                            <?php
-                                                }
-                                                else{
-                                             ?>
-                                            <!-- Start button trigger modal delete -->
-                                            <!-- ปุ่มดำเนินการลบ -->
-                                            <button type="button" class="btn btn-secondary ">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                            <!-- End button trigger modal delete -->
-                                            <?php
-                                                }
-                                            ?>
-                                        </td>
-                                    </tr>
-                                    <!-- Start modal delete group assessor -->
-                                    <div class="modal fade" id="ModalDeleteGroup<?php echo $i; ?>" tabindex="-1"
-                                        role="dialog" aria-labelledby="ModalDeleteGroupTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="col-12 text-end">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
+                                                        ?>
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="text-xs mb-0">
+                                                        <?php echo "Type " . $arr_group[$i]->grp_position_group ?>
+                                                    </h6>
+                                                    <h6 class="text-xs mb-0">
+                                                        <?php echo $arr_group[$i]->grp_position_group . ' Round evaluation' ?>
+                                                    </h6>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                <!-- Start button trigger modal edit -->
+                                                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/' . $arr_group[$i]->gro_ase_id; ?>">
+                                                    <!-- ปุ่มดำเนินการแก้ไข -->
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
+                                                        <i class="fas fa-edit"></i>
                                                     </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="py-3 text-center">
-                                                        <div>
-                                                            <i class="fas fa-exclamation-triangle fa-8x"
-                                                                style="color:#FBD418"></i>
-                                                        </div>
-                                                        <h4 class="text-gradient text-danger mt-4">
-                                                            Confirm Delete 
-                                                            <br>
-                                                            <?php echo "Assessor Group Name: ".$arr_group[$i]->asp_name.'?' ?>
-                                                        </h4>
+                                                </a>
+                                                <!-- End button trigger modal edit-->
+
+                                                <?php
+                                                if ($arr_group[$i]->asp_status == '-1') {
+                                                ?>
+                                                    <!-- Start button trigger modal delete -->
+                                                    <!-- ปุ่มดำเนินการลบ -->
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup<?php echo $i; ?>">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                    <!-- End button trigger modal delete -->
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <!-- Start button trigger modal delete -->
+                                                    <!-- ปุ่มดำเนินการลบ -->
+                                                    <button type="button" class="btn btn-secondary ">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                    <!-- End button trigger modal delete -->
+                                                <?php
+                                                }
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        <!-- Start modal add group assessor -->
+                                        <div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="ModalAddGroupLabel">Add Group</h5>&nbsp;
+                                                        <i class="fas fa-user-plus fa-1x"></i>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <!-- ปุ่มยกเลิกการลบ -->
-                                                    <a href="">
-                                                        <button type="button" class="btn bg-gradient-danger"
-                                                            data-bs-dismiss="modal">Cancel</button>
-                                                    </a>
-                                                    <!-- ปุ่มยืนยันการลบ -->
-                                                    <a
-                                                        href="<?php echo base_url() . 'Assessor_management/Assessor_management/delete_group_assessor/'.$arr_group[$i]->gro_id; ?>">
-                                                        <button type="button"
-                                                            class="btn bg-gradient-success">Confirm</button>
-                                                    </a>
+                                                    <div class="modal-body">
+                                                        <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_group_assessor' . '/' . $arr_group[$i]->gro_ase_id; ?>" method="post" enctype="multipart/form-data">
+                                                            <div class="form-group">
+                                                                <!-- Group name -->
+                                                                <label for="recipient-name" class="col-form-label">Group Name</label>
+                                                                <input type="text" class="form-control" id="recipient-name" name="group_name" placeholder="Input Group Name....">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <!-- Group level -->
+                                                                <label for="year" class="col-form-label">Level</label>
+                                                                <select class="form-select" aria-label="Default select example" id="group_position" name="year" onchange="get_position(),change_type()">
+                                                                    <option disabled selected>Choose level please...</option>
+                                                                    <option value="6">T6</option>
+                                                                    <option value="5">T5</option>
+                                                                    <option value="4">T4</option>
+                                                                    <option value="3">T3</option>
+                                                                    <option value="2">T2</option>
+                                                                </select>
+                                                                <br>
+                                                                <div>
+                                                                    <!-- Position to promote -->
+                                                                    <label for="Position" class="col-form-label">Position</label>
+                                                                    <ul class="custom-control-input" id="position_list" name="position_list">
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <!-- Type evaluation -->
+                                                                <label for="recipient-name" class="col-form-label">Type Evaluation</label><br>
+                                                                <input type="text" id="type_evaluation" name="group_type" class="form-control" disabled value="Type 1: (1 round evaluation)">
+                                                            </div>
+                                                            <br>
+                                                            <input class="form-control" type="text" id="group_status" name="group_status" value="-1" hidden>
+
+                                                            <button type="submit" class="btn btn-success float-right">Submit</button>
+                                                        <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
+
+                                                        </form>
+                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- End modal delete group assessor -->
+                                        <!-- End modal add group assessor -->
+
+
+
+                                        <!-- Start modal delete group assessor -->
+                                        <div class="modal fade" id="ModalDeleteGroup<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteGroupTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="col-12 text-end">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="py-3 text-center">
+                                                            <div>
+                                                                <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
+                                                            </div>
+                                                            <h4 class="text-gradient text-danger mt-4">
+                                                                Confirm Delete
+                                                                <br>
+                                                                <?php echo "Assessor Group Name: " . $arr_group[$i]->asp_name . '?' ?>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <!-- ปุ่มยกเลิกการลบ -->
+                                                        <a href="">
+                                                            <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
+                                                        </a>
+                                                        <!-- ปุ่มยืนยันการลบ -->
+                                                        <a href="<?php echo base_url() . 'Assessor_management/Assessor_management/delete_group_assessor/' . $arr_group[$i]->gro_id; ?>">
+                                                            <button type="button" class="btn bg-gradient-success">Confirm</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End modal delete group assessor -->
                                     <?php
                                     }
                                     ?>
@@ -249,75 +295,7 @@
 
 </html>
 
-<!-- Start modal add group assessor -->
-<div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ModalAddGroupLabel">Add Group</h5>&nbsp;
-                <i class="fas fa-user-plus fa-1x"></i>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Group Name</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Input Group Name....">
-                    </div>
-                    <div class="form-group">
-                        <!-- Group name -->
-                        <label for="recipient-name" class="col-form-label">Level</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option disabled selected>Choose level please...</option>
-                            <option value="1">T2</option>
-                            <option value="2">T3</option>
-                            <option value="3">T4</option>
-                            <option value="4">T5</option>
-                            <option value="5">T6</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <!-- Position to promote -->
-                        <label for="recipient-name" class="col-form-label">Select Position To Promote</label>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                            <label class="custom-control-label" for="defaultUnchecked">Senior Specialist</label>
-                            <br>
-                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                            <label class="custom-control-label" for="defaultUnchecked">Supervisor</label>
-                            <br>
-                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                            <label class="custom-control-label" for="defaultUnchecked">Senior staff</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <!-- Type evaluation -->
-                        <label for="recipient-name" class="col-form-label">Type Evaluation</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option disabled selected>Choose type please...</option>
-                            <option value="1">Type 1 (1 Round Evaluation)</option>
-                            <option value="2">Type 2 (2 Round Evaluation)</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <!-- ปุ่มปิด modal -->
-                <a href="">
-                    <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
-                </a>
-                <!-- ปุ่มบันทึก -->
-                <a href="">
-                    <button type="button" class="btn bg-gradient-success">Submit</button>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End modal add group assessor -->
+
 
 
 
@@ -325,9 +303,115 @@
 <!-- JavaScript -->
 <!-- Data Table -->
 <script>
-$(document).ready(function() {
-    $("#list_table").DataTable();
-});
+    $(document).ready(function() {
+        $("#list_table").DataTable();
+    });
+
+
+    /**
+     * This function is used to get the position name from the database.
+     */
+    function get_position() {
+        // $("#position_list").empty();
+        position_level_id = document.getElementById('group_position').value;
+        document.getElementById("position_list").innerHTML = "";
+        var empname = "";
+        console.log(position_level_id)
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>Employee/Get_nominee/get_position ",
+            data: {
+                "position_level_id": position_level_id,
+            },
+            dataType: "JSON",
+            success: function(data, status) {
+                console.log(data);
+                data.forEach((row, index) => {
+                    $("#position_list").append('<input type="checkbox"><a href="#">' + ' ' + row.Position_name +
+                        '</a><br></input>');
+                })
+            },
+            error: function(error) {
+                console.log('error');
+            }
+
+        });
+    }
+
+    /**
+     * *This function changes the type of evaluation based on the position level.*
+     * 
+     * *This function is called when the user changes the position level.*
+     */
+    function change_type() {
+        position_level_id = document.getElementById('group_position').value;
+        if (position_level_id <= 4) {
+            document.getElementById("type_evaluation").value = "Type 2: (2 round evaluation)";
+        } else {
+            document.getElementById("type_evaluation").value = "Type 1: (1 round evaluation)";
+        }
+    }
+
+    function setpos_id(id) {
+        document.getElementById("position_id").value = id;
+    }
 </script>
 <!-- End Data Table -->
+
+<script>
+    var count = 0;
+    var count_nominee = 0;
+    var id = "Emp_id";
+    var num = 1;
+    var index_emp = [];
+    /* The above code is adding a new row to the table. */
+    $("#add").click(function() {
+
+        empname = document.getElementById("showname_modal").value;
+        empid = document.getElementById("Emp_id_modal").value;
+        position = document.getElementById("position_nominee").value;
+        department = document.getElementById("department_nominee").value;
+        promote = document.getElementById("promote_nominee").value;
+
+        var data_row = "";
+        //pos_id = get_position_id(promote);
+        //console.log(pos_id);
+        data_row += '<tr id="emp_' + num + '">';
+        data_row += '<td id="Emp_id_' + num + '" style="text-align:center">' + empid + '</td>';
+        data_row += '<td style="text-align:center" >' + empname + '</td>';
+        data_row += '<td style="text-align:center">' + position;
+        // data_row += '<input id="pos" name="pos" value="' + pos_id + '">';
+        data_row += '</td>';
+        data_row += '<td style="text-align:center">' + department + '</td>';
+        data_row += '<td style="text-align:center" id="Promote_' + num + '">' + promote + '</td>';
+        data_row += '<td style="text-align:center"> ' +
+            '<button class="btn btn-danger" onclick = "remove_row(' + num +
+            ') " >delete</button></td>';
+        index_emp.push(num);
+        console.log(index_emp);
+        num++
+
+        $("#nominee_data").append(
+            data_row
+        );
+        count_nominee++;
+        console.log(count_nominee);
+
+    });
+
+    /**
+     * When the remove button is clicked, remove the row, remove the index from the array, and then call
+     * the function that changes the group status.
+     */
+    function remove_row(num) {
+        $("#emp_" + num).remove();
+        var index = index_emp.indexOf(num);
+        if (index > -1) {
+            index_emp.splice(index, 1);
+        }
+        count_nominee--;
+        console.log(index_emp)
+        change_group_status().call()
+    }
+</script>
 <!-- End  JavaScript -->
