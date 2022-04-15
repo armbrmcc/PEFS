@@ -95,7 +95,7 @@ class Result extends MainController
         $data['arr_per_id'] = $this->per->get_performance_by_id($nor_id, $id_assessor, $date)->result();
         $per_get =  $data['arr_per'][0]->per_id;
         // print_r($per_get);
-        $data['arr_point'] = $this->point->get_point_list($per_get)->result();
+        $data['arr_point'] = $this->point->get_point_list_round1($per_get)->result();
 
         $this->output('consent/v_result_evaluation_assessor_round1', $data);
     } //show_result_evaluation_type1
@@ -134,7 +134,7 @@ class Result extends MainController
         $data['arr_per_id'] = $this->per->get_performance_by_id($nor_id, $id_assessor, $date)->result();
         $per_get =  $data['arr_per'][0]->per_id;
         // print_r($per_get);
-        $data['arr_point_round1'] = $this->point->get_point_list($per_get)->result();
+        $data['arr_point_round1'] = $this->point->get_point_list_round1($per_get)->result();
 
         $this->output('consent/v_result_evaluation_assessor_round2_1', $data);
     } //show_result_evaluation_type2_1
