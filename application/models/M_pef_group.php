@@ -245,4 +245,22 @@ class M_pef_group extends Da_pef_group
         $query = $this->db->query($sql, array($this->grn_grp_id));
         return $query;
     } //end  get_group
+
+
+
+    function get_all_group()
+    { 
+        $sql = "SELECT *FROM pefs_database.pef_group";
+        $query = $this->db->query($sql);
+        return $query;
+    } //end  
+
+    function get_group_by_group_id($group_id)
+    { 
+        $sql = "SELECT *FROM pefs_database.pef_group as gro
+        WHERE gro.grp_id =$group_id";
+        $query = $this->db->query($sql);
+        return $query;
+    } //end  
+
 }

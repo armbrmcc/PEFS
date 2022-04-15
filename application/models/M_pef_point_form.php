@@ -133,4 +133,27 @@ class M_pef_point_form extends Da_pef_point_form
         $query = $this->db->query($sql);
         return $query;
     }
+
+            /*
+	* get_point_list_round_2_admin
+	* คืนค่าคะแนนของแต่ละฟอร์ม
+	* @input 	$per_id
+	* @output 	คืนค่าคะแนนของแต่ละฟอร์มแค่รอบ 2 
+	* @author 	Phatchara Khongthandee and Pontakon Mujit 
+	* @Create   Date 2564-08-18 
+	* @Update   Date 2564-08-19
+	*/
+    function get_point_list_round_2_admin($per_id,$nor_id,$id_assessor,$date)
+    {
+        $sql = "SELECT ptf_point
+        FROM  pefs_database.pef_point_form 
+        INNER JOIN pefs_database.pef_performance_form as performance
+         ON performance.per_id = pef_point_form.ptf_per_id 
+        WHERE performance.per_emp_id = '$nor_id' AND performance.per_ase_id = '$id_assessor' AND   pef_point_form.ptf_date ='$date'
+        and pef_point_form.ptf_per_id = '$per_id' and
+        pef_point_form.ptf_round= '2' ";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }
