@@ -1,7 +1,7 @@
 <!--
     /*
-    * v_result_evaluation_round2
-    * display for Result evaluation form 2 Round (แบบฟอร์มการประเมิน 2 รอบ)
+    * v_result_evaluation_round2 
+    * display for Result evaluation form 2 Round (แบบฟอร์มการประเมิน 2 รอบ) ซึ่งมีการประเมินแล้วทั้ง 2 รอบ
     * @author Thitima Popila and Ponprapai Atsawanurak
     * @input -
     * @output -
@@ -86,7 +86,7 @@ th {
 <script src="sweetalert2.all.min.js"></script>
 
 <!-- Evaluation form -->
-<div class="container">
+<div class="container-fluid py-4">
     <div class="card" id="border-radius">
         <div class="card-header">
             <h2>Evaluation (แบบฟอร์มการประเมิน)</h2>
@@ -101,17 +101,6 @@ th {
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
                     <h4><?php echo $obj_nominee[0]->Company_name ?></h4>
-                </div>
-            </div>
-            <!-- icon file present nominee -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <!-- <a href="" target="_blank"> -->
-                    <button type="button" class="btn bg-gradient md-0" style="background-color: #596CFF; float: right"
-                        id="set_button">
-                        <i class="far fa-file-pdf text-white"></i> &nbsp; <h7 class="text-white">Present Nominee</h7>
-                    </button>
-                    </a>
                 </div>
             </div>
             <!-- ชื่อกรรมการ และวันประเมิน -->
@@ -189,12 +178,12 @@ th {
                                     $count_itm = 1; //จำนวนหัวข้อหลัก
                                     $weight = 0;
                                     $total_round_1 = 0;
+                                    $total_round_2 = 0;
                                     $point_old = 0;
                                 ?>
                                 <input type="hidden" id="count_form" value='<?php echo count($arr_form) ?>'>
                                 <?php
-                                    
-                                for ($i = 0; $i < count($arr_form); $i++) {   //ลูปตามหัวข้อหลัก
+                                    for ($i = 0; $i < count($arr_form); $i++) {   //ลูปตามหัวข้อหลัก
                                 ?>
                                         <?php if ($i != 0) {
                                             if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
@@ -202,9 +191,11 @@ th {
                                             }
                                         }
                                         $weight =  $weight + 5;
-                                        $total_round_1 += $arr_point[$i]->ptf_point;
+                                        $total_round_1 += $arr_point_round1[$i]->ptf_point;
+                                        $total_round_2 += $arr_point_round2[$i]->ptf_point;
                                     } //นับหัวข้อหลัก
                                     ?>
+
                                     <?php for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
                                     ?>
                                         <?php $count_rowspan = 0;
@@ -245,12 +236,16 @@ th {
                                     <!-- แสดง point round 1-->
                                     <td colspan="2">
                                         <div class="form-group" align="center">
-                                            <?php echo $arr_point[$count_discription]->ptf_point;?>
+                                            <?php echo $arr_point_round1[$count_discription]->ptf_point;?>
                                         </div>
                                     </td>
                                 
                                     <!-- แสดง point round 2-->
-                                    
+                                    <td colspan="2">
+                                        <div class="form-group" align="center">
+                                            <?php echo $arr_point_round2[$count_discription]->ptf_point;?>
+                                        </div>
+                                    </td>
                                     <?php $count_discription++; ?>
                                     <?php } ?>
                                 </tr>
@@ -272,17 +267,34 @@ th {
                                         <!-- total round 1 -->
                                         <td style="text-align: center;"><?php echo $total_round_1;?></td>
                                         <td style="text-align: center;"><?php echo (int)($total_round_1 * 100/$weight);?>%</td>
-                                </tr>
-                                <tr>
-                                    <td>Judgement</td>
-                                    <td colspan="4"></td>
+                                        
+                                        <?php
+                                            if($arr_point_round2->ptf_round == 2 && $arr_point_round2->ptf_point == NULL)
+                                            {
+                                        ?>
+                                                <!-- total round 2 but null -->
+                                                <td style="text-align: center;"> - </td>
+                                                <td style="text-align: center;"> - </td>
+                                        <?php        
+                                            }
+                                            // end if check null
+                                            else
+                                            {
+                                        ?>
+                                                <!-- total round 2 -->
+                                                <td style="text-align: center;"><?php echo $total_round_2;?></td>
+                                                <td style="text-align: center;"><?php echo (int)($total_round_2 * 100/$weight);?>%</td>
+                                        <?php        
+                                            }
+                                            // end else not null
+                                        ?>
                                 </tr>
                         </table>
                         <br>
                         <!-- comment -->
                         <div class="form-group">
                             <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
-                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment" disabled>
+                            <textarea class="form-control" rows="5" id="Comment" type="text" name="Comment" disabled>
                                 <?php echo $arr_per_id[0]->per_comment; ?>
                             </textarea>
                         </div>

@@ -87,7 +87,7 @@ th {
 
 <!-- html -->
 <!-- Evaluation form -->
-<div class="container">
+<div class="container-fluid py-4">
     <div class="card" id="border-radius">
         <div class="card-header">
             <h2>Result (คะแนนการประเมิน)</h2>
