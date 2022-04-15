@@ -124,7 +124,7 @@ class Evaluation extends MainController
         $this->pos_year = date("Y");
         
         $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
-      
+    
         $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
         
 
@@ -137,7 +137,7 @@ class Evaluation extends MainController
 
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
 
-       $this->output('consent/v_evaluation_form_round_2', $data);
+        $this->output('consent/v_evaluation_form_round_2', $data);
     } //end show_evaluation_form_round_2
 
     /*
@@ -231,9 +231,11 @@ class Evaluation extends MainController
         $this->ass->asp_status = 1;
         $this->ass->update_status_assessor();
 
-        // $get_group['data']=$this->pef->get_group_nominee($emp)->result();
-        // $group= $get_group['data'][0]->grp_id;
-        // $this->per->update_status_used($group);
+        // update status done to database pef_group_nominee
+        $this->load->model('Da_pef_group_nominee', 'nomi');
+        $this->nomi->grn_emp_id = $this->input->post('emp_id');
+        $this->nomi->grn_status_done = 0;
+        $this->nomi->update_status_done();
         
         $data['message'] = 'Success';
 
@@ -291,9 +293,11 @@ class Evaluation extends MainController
         $this->ass->asp_status = 1;
         $this->ass->update_status_assessor();
 
-        // $get_group['data']=$this->pef->get_group_nominee($emp)->result();
-        // $group= $get_group['data'][0]->grp_id;
-        // $this->per->update_status_used($group);
+        // update status done to database pef_group_nominee
+        $this->load->model('Da_pef_group_nominee', 'nomi');
+        $this->nomi->grn_emp_id = $this->input->post('emp_id');
+        $this->nomi->grn_status_done = 1;
+        $this->nomi->update_status_done();
         
         $data['message'] = 'Success';
 
