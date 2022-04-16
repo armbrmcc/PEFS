@@ -157,7 +157,7 @@ class Assessor_management extends MainController
             print_r($pos);
             $pos_id = $this->emp->get_position_id()->row();
             print_r($pos_id);
-            $this->dass->insert();
+            // $this->dass->insert();
             // echo $pos_id->Position_ID;
             // $this->ped->insert_nominee();
         }
