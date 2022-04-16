@@ -94,167 +94,15 @@ th
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.all.min.js"></script>
-<script>
-    /*
-    * alart_evaluation
-    * alert การยืนยันการประเมิน
-    * @input -
-    * @output alert ยืนยันการประเมิน
-    * @author Phatchara Khongthandee
-    * @Create Date 2565-03-07
-    */
-    function alart_evaluation() {
-    var score = [];
-    var comment = $('#comment').val();
-    var qa = $('#QnA').val();
-    var check_error;
-    var count_score = $('#count_score').val();
-    var ase_id = $('#ase_id').val();
-    var emp_id = $('#emp_id').val();
-    var group_id = $('#group_id').val();
-    var asp_id = $('#asp_id').val();
-    
-    for (i = 0; i < count_score; i++) {
-        score[i] = $('#form_' + i).val();
-    }
-    
-    var count_form = $('#count_form').val();
-    var form = [];
-    for (i = 0; i < count_score; i++) {
-        form[i] = $('#formid_' + i).val();
-    }
-
-    var row = [];
-    for (i = 0; i < count_form; i++) {
-        row[i] = $('#dis_row_' + i).val();
-    } 
-
-    for (i = 0; i < count_score; i++) {
-        if (score[i] == 0) {
-            check_error = 1;
-        }
-    }
-
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-    })
-
-    if (comment == '') {
-        check_error = 1;
-    }
-    if (qa == '') {
-        check_error = 1;
-    }
-        if (check_error == 1) {
-            swalWithBootstrapButtons.fire({
-                title: 'no value',
-                text: '',
-                icon: 'warning',
-                confirmButtonText: 'OK',
-            });
-        } else {
-
-            swalWithBootstrapButtons.fire({
-                title: 'Evaluation Confirm?',
-                text: '',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Confirm',
-                cancelButtonText: 'Cancel',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: 'post',
-                        url: "<?php echo site_url().'Evaluation/Evaluation/insert_evaluation_form'; ?>",
-                        data: {
-                            'QnA': qa,
-                            'comment': comment,
-                            'point': score,
-                            'ase_id': ase_id,
-                            'emp_id': emp_id,
-                            'asp_id': asp_id,
-                            'group_id': group_id,
-                            'form': form,
-                            'row': row,
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            /* Start Alert บันทึกข้อมูลสำเร็จ */
-                            if (data['message'] == 'Success') {
-                                swalWithBootstrapButtons.fire({
-                                    icon: 'success',
-                                    title: 'Success',
-                                    confirmButtonColor: '#3CBF34',
-                                    confirmButtonText: 'OK',
-                                }).then((result) => {
-                                    window.location.href =
-                                        href =
-                                        "<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_list'; ?>";
-                                })
-                            } else {
-                                console.log("Error");
-                            }
-
-                        }
-                    });
-
-                }
-            })
-        }
-    }//end alart_evaluation
-
-    
-
-   
-$( document ).ready(function() {
- 
-    $("select").change(function(){
-         
-        var toplem=0;
-        $("select[name=form]").each(function(){
-            
-            toplem = toplem + parseInt($(this).val());
-             
-        })
-        $("input[name=total]").val(toplem);
-    });  //คืนค่าคะแนนรวม
-    
-    $("select").change(function(){
-        var toplem=0;
-        var weight = $("#weight").val();
-        $("select[name=form]").each(function(){
-            toplem = toplem + parseInt($(this).val());
-
-        }) 
-        
-            toplem = Math.round(toplem / weight*100);
-            var a = '%'
-        $("input[name=total_weight]").val(toplem + a);
-
-    }); //คืนค่าคะแนนรวมแบบเปอเซ็น
-
-
-    //คืนค่าคะแนนรวมแบบรายการ
-    
-})
-        
-       
- 
-
-</script>
 <!-- End Javascript -->
 
 <!-- Evaluation form -->
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2> 
+            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2>
         </div>
+        
         <div class="card-body">
             <!-- Logo บริษัท -->
             <div class="row">
@@ -264,7 +112,7 @@ $( document ).ready(function() {
                 </div>
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
-                    <h4><?php echo $obj_nominee[0]->Company_name ?></h4>
+                    <h4><?php echo $arr_nominee[0]->Company_name ?></h4>
                 </div>
             </div>
             <!-- icon file present nominee -->
@@ -284,14 +132,14 @@ $( document ).ready(function() {
                     <h6>Assessor Name : <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6>
                 </div>
                 <div class="col-sm-6">
-                    <?php $newDate = date("d/m/Y", strtotime($arr_nominee[0]->grp_date)); ?>
-                    <h6>Date : <?php echo $newDate ?></h6>
+                     
+                <h6>Date : <?php echo $obj_group[0]->grp_date ?></h6>
                 </div>
             </div>
 
             <div class="table-responsive">
                 <!-- Start form evaluation -->
-                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post"
+                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form_2" method="post"
                     enctype="multipart/form-data" name="evaluation">
                     <!-- Start table data Nominee -->
                     <table class="table table-bordered table-sm">
@@ -304,12 +152,12 @@ $( document ).ready(function() {
                                 <!-- ชื่อ-นามสกุล Nominee -->
                                 <th width="50px" id="gray">Name - Surname</th>
                                 <td colspan="2">
-                                    <?php echo $obj_nominee[0]->Empname_eng. ' ' . $obj_nominee[0]->Empsurname_eng?> 
+                                    <?php echo $arr_nominee[0]->Empname_eng. ' ' . $arr_nominee[0]->Empsurname_eng?> 
                                 </td>
                                 <!-- ตำแหน่ง Nominee -->
                                 <th width="40px" id="gray">Position</th>
                                 <td>
-                                    <?php echo $obj_nominee[0]->Position_name?>
+                                    <?php echo $arr_nominee[0]->Position_name?>
                                 </td>
                             </tr>
 
@@ -322,7 +170,7 @@ $( document ).ready(function() {
                                 <!-- แผนก Nominee -->
                                 <th width="40px" id="gray">Department/Section</th>
                                 <td>
-                                    <?php echo $obj_nominee[0]->Department?>
+                                    <?php echo $arr_nominee[0]->Department?>
                                 </td>
                             </tr>
                         </tbody>
@@ -345,20 +193,30 @@ $( document ).ready(function() {
                                     </tr>
                                     <!--เริ่ม ตารางหัวข้อลงคะแนน-->
                                     <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
-                                    
-                                    $weight = 5*count($arr_des); //กำหนด weight แบบง่ายๆ
+                                    $count_itm = 1; //จำนวนหัวข้อหลัก
+                                    $weight = 0;
+                                    $total_round_1 = 0;
+                                    $total_round_2 = 0;
                                     $point_old = 0;
-                                    
-                                    
+                                    for ($i = 0; $i < count($arr_form); $i++) {
+                                        if ($i != 0) {
+                                            if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
+                                                $count_itm++;
+                                            }
+                                        }
+                                        $weight =  $weight + 5;
+                                        $total_round_1 += $arr_point[$i]->ptf_point;
+                                        $total_round_2 += $arr_point_2[$i]->ptf_point;
+                                    } //นับหัวข้อหลัก
                                     ?>
-                                    <input type="hidden" id="count_form" value='<?php echo count($arr_item) ?>'>
+                                    <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
                                     <?php
                                     
-                                    for ($i = 0; $i < count($arr_item); $i++) {   //ลูปตามหัวข้อหลัก
+                                    for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
                                     ?>
                                         <?php $count_rowspan = 0;
-                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_des); $loop_rowspan++) {
-                                            if ($arr_des[$loop_rowspan]->des_item_id == $arr_item[$i]->itm_id) {
+                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
+                                            if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
                                                 $count_rowspan++;
                                             }
                                         } //นับdiscriptionเพื่อกำหนด rowspan 
@@ -372,36 +230,30 @@ $( document ).ready(function() {
                                                 <!-- แสดงห้อข้อหลัก -->
                                                 <?php if ($loop_dis === 1) { ?>
                                                     <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col"> <b>
-                                                            <?php echo $arr_item[$count_discription]->itm_name; ?>
-                                                            <br><?php echo $arr_item[$count_discription]->itm_item_detail; ?></b>
+                                                            <?php echo $arr_form[$count_discription]->itm_name; ?>
+                                                            <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
                                                     </td>
                                                 <?php } ?>
-                                                
+                                                <!-- แสดง Disription    -->
                                                 <td id="width_col">
-                                                     <!-- แสดง Disription    -->
-                                                    <b> <?php echo $arr_des[$count_discription]->des_description_th; ?></b>
+                                                    <b> <?php echo $arr_form[$count_discription]->des_description_th; ?></b>
                                                     <br>
-                                                   
-                                                    <?php $pos = strrpos($arr_des[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
-                                                    echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                                    <!-- แสดง Disription    -->
+                                                    <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
-                                                    <?php echo substr($arr_des[$count_discription]->des_description_eng, $pos + 1, strlen($arr_des[$count_discription]->des_description_eng)) ?>
-                                                    <?php echo $arr_des[$count_discription]->des_description_th ?>
+                                                    <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
+                                                    <?php echo $arr_form[$count_discription]->des_description_th ?>
                                                 </td>
-
+                                                <!-- score 1st round -->
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
-                                                        <select style="vertical-align:middle;text-align: center;" class="form-control" name="form" id="form_<?php echo $count_discription; ?>" required>
-                                                            <option value="0">score</option>
-                                                            <option value=1>1</option>
-                                                            <option value=2>2</option>
-                                                            <option value=3>3</option>
-                                                            <option value=4>4</option>
-                                                            <option value=5>5</option>
-                                                        </select>
-                                                        
+                                                    <?php echo $arr_point[$count_discription]->ptf_point; ?>
+                                                </td>
+                                                <!-- score 2st round -->
+                                                <td colspan="2" style="vertical-align:middle;text-align: center;">
+                                                <?php echo $arr_point_2[$count_discription]->ptf_point; ?>
                                                     </td>
-                                                    
-                                                    <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]" id="formid_<?php echo $count_discription; ?>">
+                                                    <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>" name="for_id[]" id="formid_<?php echo $count_discription; ?>">
                                             <?php $count_discription++; ?>
                                         <?php } ?>
                                         </tr>
@@ -413,42 +265,50 @@ $( document ).ready(function() {
                                         <td rowspan="2">
                                             5 ： Exceed expected level for Next level
                                             <br>4 ： Absolutely satisfies expected level for Next level
-                                            <br> 3 ： Meet expected level for Manager level
+                                            <br>3 ： Meet expected level for Manager level
                                             <br>2 ： Partially lower that expected level for Next level
                                             <br>1 ： Do Not satisfy expected level for Next level
                                         </td>
                                         <!-- total -->
                                         <td>Total</td>
-                                        <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'> </td>
-                                                <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
-                                                <td><input type="text" name="total" size='1' disabled hidden></td>
-                                                <td><input type="text" name="total" size='1' disabled hidden></td>
+                                            <!-- total round 1 -->
+                                            <td style="text-align: center;"><?php echo $total_round_1;?></td>
+                                            <td style="text-align: center;"><?php echo (int)($total_round_1 * 100/$weight);?>%</td>
+                                            <!-- total round 2 -->
+                                            <td style="text-align: center;"><?php echo $total_round_2;?></td>
+                                            <td style="text-align: center;"><?php echo (int)($total_round_2 * 100/$weight);?>%</td>
+                                                
                                     </tr>
                                     <tr>
                                         <td>Judgement</td>
                                         <td colspan="4"></td>
                                     </tr>
                             </table>
+
+                            
                             <br>
-                            <!-- comment -->
-                            <div class="form-group">
-                                <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
-                                <textarea class="form-control" rows="5" id="Comment" type="text" name="Comment"
-                                    required></textarea>
-                            </div>
-                            <br>
-                            <!-- Q/A -->
-                            <div class="form-group">
-                                <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
-                                <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
-                                    required></textarea>
-                            </div>
+                           <!-- Comment -->
+                        <div class="form-group">
+                            <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
+                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
+                                disabled> <?php echo $arr_per[0]->per_comment ; ?> </textarea>
+                        </div>
+                        <br>
+                        <!-- Q/A -->
+                        <div class="form-group">
+                            <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
+                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
+                            disabled><?php echo $arr_per[0]->per_q_and_a  ?> </textarea>
+                        </div>
+                        <br>
                             <!-- Confirm -->
-                            <div class="col-6 text-end">
-                                <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
-                                    data-bs-target="#Modal_confirm" onclick="alart_evaluation()">Confirm
-                                </button>
-                            </div>
+                            <a class="nav-link" href="<?php echo site_url() . 'Result_admin/Result_admin/show_result_admin'; ?>">
+                        <div class="col-6 text-end">
+                            <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
+                                data-bs-target="#Modal_confirm">Back
+                            </button>
+                        </div>
+                                            </a>
                     </div>
                     <!-- End table Evaluation form -->
                 </form>

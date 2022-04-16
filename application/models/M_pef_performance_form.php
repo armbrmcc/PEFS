@@ -50,4 +50,13 @@ class M_pef_performance_form extends Da_pef_performance_form
         $query = $this->db->query($sql);
         return $query;
     }
+
+    function get_performance_result($nor_id, $id_assessor, $date)
+    {
+        $sql = "SELECT *
+        FROM  pefs_database.pef_performance_form as performance
+        WHERE performance.per_emp_id = '$nor_id' AND performance.per_ase_id = '$id_assessor' AND performance.per_date ='$date'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }

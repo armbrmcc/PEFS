@@ -97,26 +97,73 @@
                                 </h6>
                             </td>
                             <td>
-                                <?php 
-                                    if($arr_nominee[$i]->asp_type == 1){
+                                <?php
+                                    if($arr_nominee[$i]->grn_status == -1 || $arr_nominee[$i]->grn_status == NULL){
                                 ?>
-                                    <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
-                                        <button type="button" class="btn btn-xs button_size"
-                                            style="background-color: #596CFF;">
-                                            <i class="fas fa-search text-white"></i>
-                                        </button>
-                                    </a>        
-                                <?php 
-                                }else if($arr_nominee[$i]->asp_type == 2){
+                                <a>
+                                    <button type="button" class="btn btn-xs button_size"
+                                        style="background-color: #83848C;" disabled>
+                                        <i class="fas fa-search text-white"></i>
+                                    </button>
+                                </a>
+                                <?php
+                                    }
+                                    // if check nominee status of evaluated  
+                                    else
+                                    {
+                                        // check round evalution form
+                                        if($arr_nominee[$i]->asp_type == 1)
+                                        {
+                                        // round 1
                                 ?>
-                                    <a href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2'.'/'.$arr_nominee[$i]->grn_grp_id.'/'.$arr_nominee[$i]->grn_emp_id.'/'.$arr_nominee[$i]->asp_level; ?>">
-                                        <button type="button" class="btn btn-xs button_size"
-                                            style="background-color: #596CFF;">
-                                            <i class="fas fa-search text-white"></i>
-                                        </button>
-                                    </a>
+                                            <a
+                                                href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
+                                                <button type="button" class="btn btn-xs button_size"
+                                                    style="background-color: #596CFF;">
+                                                    <i class="fas fa-search text-white"></i>
+                                                </button>
+                                            </a>
+                                <?php 
+                                        }
+                                        // end if round 1 
+                                        else if($arr_nominee[$i]->asp_type == 2)
+                                        {
+                                            // check round 2 but evaluation 1 round
+                                            if($arr_nominee[$i]->grn_status == 0)
+                                            {
+                                ?>
+                                                <!-- round 2/1 -->
+                                                <a
+                                                    href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2_1'.'/'.$arr_nominee[$i]->grn_grp_id.'/'.$arr_nominee[$i]->grn_emp_id.'/'.$arr_nominee[$i]->asp_level; ?>">
+                                                    <button type="button" class="btn btn-xs button_size"
+                                                        style="background-color: #596CFF;">
+                                                        <i class="fas fa-search text-white"></i>
+                                                    </button>
+                                                </a>
+                                <?php       
+                                            } //end if = 0
+                                            // check round 2 evaluation 2 round
+                                            else if($arr_nominee[$i]->grn_status == 1)
+                                            {
+                                ?>
+                                                <!-- round 2/2 -->
+                                                <a
+                                                    href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2_2'.'/'.$arr_nominee[$i]->grn_grp_id.'/'.$arr_nominee[$i]->grn_emp_id.'/'.$arr_nominee[$i]->asp_level; ?>">
+                                                    <button type="button" class="btn btn-xs button_size"
+                                                        style="background-color: #596CFF;">
+                                                        <i class="fas fa-search text-white"></i>
+                                                    </button>
+                                                </a>
+                                        <?php
+                                            }
+                                        // end else if = 1
+                                ?>
+                                    
                                 <?php           
-                                }
+                                        }
+                                        // end else round 2
+                                    }
+                                    // end else check nominee status of yet evaluate
                                 ?>
                             </td>
                         </tr>

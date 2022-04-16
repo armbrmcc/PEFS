@@ -90,4 +90,28 @@ class M_pef_group_assessor extends Da_pef_group_assessor
         $query = $this->db->query($sql);
         return $query;
     }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
+
+
+
+    /*
+	* get_group_all_assessor_by_id
+	* get 
+	* @input  -
+	* @output -
+	* @author 
+	* @Create Date 2565-03-03
+    */
+    public function get_group_all_assessor_by_id($group_id)
+    {
+        $sql = "SELECT * FROM pefs_database.pef_group_assessor AS grass
+        INNER JOIN pefs_database.pef_group AS gr
+        ON grass.gro_grp_id=  gr.grp_id
+        INNER JOIN pefs_database.pef_assessor AS ass
+        ON grass.gro_ase_id = ass.ase_id
+           INNER JOIN dbmc.employee AS employee
+        ON ass.ase_emp_id = employee.Emp_ID
+    WHERE grass.gro_grp_id =  $group_id ";
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่าข้อมูลรายละเอียดของ assessor ของกลุ่มการประเมิน
 }

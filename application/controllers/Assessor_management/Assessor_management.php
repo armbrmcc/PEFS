@@ -127,4 +127,42 @@ class Assessor_management extends MainController
     }
 
 
+
+            /*
+	* add_group_assessor
+	* add_group_assessor data into model
+	* @input Emp_ID,plant_name,plant_No,plant_ID 
+	* @output -
+	* @author ApinyaPhadungkit
+	* @Create Date 2565-04-15
+	*/
+    function add_group_assessor($ase_gro_id)
+    {//insert
+        $this->load->model('Da_pef_group_assessor', 'dass');
+        $this->dass->asp_name = $this->input->post('group_name');
+        $this->dass->asp_level = $this->input->post('year');
+        // $this->dass->asp_type = $this->input->post('group_type');
+        $this->dass->asp_status = $this->input->post('group_status');
+
+        if ($this->input->post('year') <= 4) {
+            $this->dass->asp_type = '2';
+            // $this->ped->insert_group_schedule();
+        } else {
+            $this->dass->asp_type = '1';
+            // $this->ped->insert_group_schedule();
+        }
+
+
+
+
+        // $this->dass->insert();
+
+        print_r($this->input->post('group_name'));
+        print_r($this->input->post('year'));
+        print_r($this->dass->asp_type);
+        print_r($this->input->post('group_status'));
+        // redirect('Assessor_management/Assessor_management/show_assessor_management_detail/'.$ase_gro_id);
+    }//end insert
+
+
 }

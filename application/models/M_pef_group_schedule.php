@@ -36,4 +36,12 @@ class M_pef_group_schedule extends Da_pef_group_schedule
         return $query;
     } //คืนค่าข้อมูลวันที่ต้องทำการประเมินแต่ละรอบ ของกลุ่มประเมิน 
 
+    public function get_date_rourd_2($group_id)
+    {
+        $sql = "SELECT * FROM pefs_database.pef_group_schedule AS schedule
+            WHERE  schedule.grd_grp_id = '$group_id' AND schedule.grd_round='2' ";
+        $query = $this->db->query($sql);
+        return $query;
+    } //คืนค่าข้อมูลวันที่ต้องทำการประเมินรอบที่ 2  ของกลุ่มประเมิน 
+
 }
