@@ -46,11 +46,11 @@ class Da_pef_group extends pefs_model
     }
     public function insert_nominee()
     {
-        $sql = "INSERT INTO pefs_database.pef_group_nominee(grn_promote_to,grn_emp_id,grn_grp_id) 
-                VALUES (?,?,?)";
+        $sql = "INSERT INTO pefs_database.pef_group_nominee(grn_promote_to,grn_emp_id,grn_grp_id,grn_status_done,grn_status_result) 
+                VALUES (?,?,?,-1,-1)";
         $this->db->query(
             $sql,
-            array($this->grn_promote_to, $this->grn_emp_id, $this->grn_grp_id)
+            array($this->grn_promote_to, $this->grn_emp_id, $this->grn_grp_id, $this->grn_status_done, $this->grn_status_result)
         );
     }
     /*
