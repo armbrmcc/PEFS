@@ -139,3 +139,27 @@
         </div>
     </div>
 </div>
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
+
+<script>
+    /*
+     * ExcelReport
+     * Export data to Excel
+     * @input    -
+     * @output   -
+     * @author   Chakrit
+     * @Create Date 2564-08-16
+     */
+    function ExcelReport() //function สำหรับสร้าง ไฟล์ excel จากตาราง
+    {
+        var sheet_name = "Report"; /* กำหหนดชื่อ sheet ให้กับ excel โดยต้องไม่เกิน 31 ตัวอักษร */
+        var elt = document.getElementById('myTable'); /*กำหนดสร้างไฟล์ excel จาก table element ที่มี id ชื่อว่า myTable*/
+
+        /*------สร้างไฟล์ excel------*/
+        var wb = XLSX.utils.table_to_book(elt, {
+            sheet: sheet_name
+        });
+        XLSX.writeFile(wb, 'Performance Evaluation Factor Report Person.xlsx'); //Download ไฟล์ excel จากตาราง html โดยใช้ชื่อว่า Performance Evaluation Factor Report.xlsx
+    }
+</script>
