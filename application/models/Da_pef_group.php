@@ -124,8 +124,8 @@ class Da_pef_group extends pefs_model
     * @input  grp_status, grp_id
     * @output -
     * @Author Phatchara Khongthandee and Pontakon Mujit 
-    * @Create Date 2564-08-21
-    * @Update Date 2564-08-22
+    * @Create Date 2565-04-11
+    * @Update Date 2565-04-12
     */
     function update_status_group()
     {

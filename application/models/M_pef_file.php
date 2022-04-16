@@ -1,7 +1,7 @@
 <?php
     /* 
     * M_pef_file
-    * Model for 
+    * Model for pef_file
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @Create Date 2565-03-12
     */
@@ -15,7 +15,7 @@ class M_pef_file extends Da_pef_file
 
     /*
 	* get_file
-	* get 
+	* get data file Nominee from database
 	* @input  -
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak

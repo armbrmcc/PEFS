@@ -1,7 +1,7 @@
 <?php
 /* 
     * M_pef_assessor
-    * Model for 
+    * Model for pef_assessor
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @Create Date 2565-03-04
     */
@@ -14,8 +14,8 @@ class M_pef_group extends Da_pef_group
 {
     /*
 	* get_group_evaluation
-	* get 
-	* @input  -
+	* get data group evaluation from database
+	* @input  ass_id
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03
@@ -41,9 +41,9 @@ class M_pef_group extends Da_pef_group
     } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมิน
 
     /*
-	* get_group_evaluation
-	* get 
-	* @input  -
+	* get_group_date_round
+	* get date evaluation 
+	* @input  group_id
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03
@@ -57,7 +57,7 @@ class M_pef_group extends Da_pef_group
                     WHERE  gr.grp_id = '$group_id'";
         $query = $this->db->query($sql);
         return $query;
-    } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมิน
+    } //คืนค่าข้อมูลวันประเมินของแต่กลุ่มการประเมิน
 
     function get_group_id()
     { //check User_login and Pass_login in database

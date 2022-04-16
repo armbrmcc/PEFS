@@ -1,7 +1,7 @@
 <?php
 /* 
     * M_pef_group_nominee
-    * Model for 
+    * Model for pef_group_nominee
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @Create Date 2565-03-04
     */
@@ -14,8 +14,8 @@ class M_pef_group_nominee extends Da_pef_group_nominee
 {
     /*
 	* get_nominee_detail
-	* get 
-	* @input  -
+	* get data Nominee detail from database
+	* @input  group_id
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03
@@ -44,8 +44,8 @@ class M_pef_group_nominee extends Da_pef_group_nominee
 
     /*
 	* get_nominee_by_id
-	* get 
-	* @input  -
+	* get data Nominee from database
+	* @input  id_nominee
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03

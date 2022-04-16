@@ -35,7 +35,7 @@ class M_pef_description_form extends Da_pef_description_form
 
 
     /*
-	* get_description_form_by_id
+	* get_description_evaluation_by_id
 	* get 
 	* @input  -
 	* @output -

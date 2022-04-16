@@ -1,9 +1,9 @@
 <?php
     /* 
     * M_pef_group_assessor
-    * Model for 
-    * @author Phatchara Khongthandee and 
-    * @Create Date 2564-08-14  
+    * Model for pef_group_assessor
+    * @author Phatchara Khongthandee 
+    * @Create Date 2565-03-03
     */
 ?>
 

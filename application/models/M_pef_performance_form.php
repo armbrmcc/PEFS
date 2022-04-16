@@ -1,9 +1,9 @@
 <?php
     /* 
     * M_pef_group_assessor
-    * Model for 
-    * @author Phatchara Khongthandee and 
-    * @Create Date 2564-08-14  
+    * Model for pef_group_assessor
+    * @author Phatchara Khongthandee
+    * @Create Date 2565-03-14  
     */
 ?>
 
@@ -12,6 +12,14 @@ include_once("Da_pef_performance_form.php");
 
 class M_pef_performance_form extends Da_pef_performance_form
 {
+    /*
+	* get_performance
+	* get performance Nominee
+	* @input  nor_id, id_assessor, date
+	* @output -
+	* @author Phatchara Khongthandee
+	* @Create Date 2565-04-10 
+    */
     function get_performance($nor_id, $id_assessor, $date)
     {
         $sql = "SELECT performance.per_id

@@ -1,7 +1,7 @@
 <?php
     /* 
-    * M_pef_assessor
-    * Model for 
+    * Da_pef_group_nominee
+    * Model for pef_group_nominee
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @Create Date 2565-03-04
     */
@@ -20,13 +20,13 @@ class Da_pef_group_nominee extends pefs_model
 
     
     /*
-    * update_status_group
-    * อัพเดตข้อมูล grp_status ใน database ตาราง pef_group
-    * @input  grp_status, grp_id
+    * update_status_done
+    * update status done to database
+    * @input  grn_status_done, grn_emp_id
     * @output -
     * @Author Phatchara Khongthandee and Pontakon Mujit 
-    * @Create Date 2564-08-21
-    * @Update Date 2564-08-22
+    * @Create Date 2565-04-11
+    * @Update Date 2565-04-12   
     */
     function update_status_done()
     {

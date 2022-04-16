@@ -1,7 +1,7 @@
 <?php
     /* 
     * M_pef_assessor
-    * Model for 
+    * Model for pef_assessor
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @Create Date 2565-03-04
     */
@@ -15,7 +15,7 @@ class M_pef_group_schedule extends Da_pef_group_schedule
     /*
 	* get_date_evaluation
 	* get date evaluation 
-	* @input  -
+	* @input  ass_id
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-10

@@ -46,7 +46,7 @@ class Evaluation extends MainController
     /*
 	* show_evaluation_detail
 	* display view evaluation detail
-	* @input  -
+	* @input  $ass_id, $group_id
 	* @output Evaluation detail
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-01-25
@@ -75,7 +75,7 @@ class Evaluation extends MainController
     /*
 	* show_evaluation_form_round_1
 	* display view evaluation form 1 round
-	* @input  -
+	* @input  $group_id, $id_assessor, $id_nominee, $promote
 	* @output Evaluation form 1 round
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-01-26
@@ -99,7 +99,7 @@ class Evaluation extends MainController
     /*
 	* show_evaluation_form_round_2
 	* display view evaluation form 2 round
-	* @input  -
+	* @input  $group_id, $id_assessor, $id_nominee, $promote
 	* @output Evaluation form 2 round
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-01-26
@@ -143,7 +143,7 @@ class Evaluation extends MainController
     /*
 	* show_evaluation_form_round_2_2
 	* display view evaluation form 2 round 2
-	* @input  -
+	* @input  $group_id, $id_assessor, $id_nominee, $promote, $nor_id
 	* @output Evaluation form 2 round
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-01-26
@@ -186,11 +186,14 @@ class Evaluation extends MainController
 	* insert data form go to database
 	* @input  per, QnA, comment, ase_id, emp_id, point, form
 	* @output -
-	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @author Phatchara Khongthandee and Pontakon Mujit
 	* @Create Date 2565-03-03
     * @Update Date 2565-03-05
     * @Update Date 2565-03-08
     * @Update Date 2565-03-10
+    * @Update Date 2565-04-11
+    * @Update Date 2565-04-12
+    * @Update Date 2565-04-13
     */
     function insert_evaluation_form()
     {
@@ -248,11 +251,14 @@ class Evaluation extends MainController
 	* insert data form go to database
 	* @input  per, QnA, comment, ase_id, emp_id, point, form
 	* @output -
-	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @author Phatchara Khongthandee and Pontakon Mujit
 	* @Create Date 2565-03-03
     * @Update Date 2565-03-05
     * @Update Date 2565-03-08
     * @Update Date 2565-03-10
+    * @Update Date 2565-04-11
+    * @Update Date 2565-04-12
+    * @Update Date 2565-04-13
     */
     function insert_evaluation_form_2()
     {
@@ -287,7 +293,7 @@ class Evaluation extends MainController
         $this->group->grp_status = 1;
         $this->group->update_status_group();
 
-         // update status assessor to database pef_assessor_promote
+        // update status assessor to database pef_assessor_promote
         $this->load->model('Da_pef_assessor_promote', 'ass');
         $this->ass->asp_id = $this->input->post('asp_id');
         $this->ass->asp_status = 1;
