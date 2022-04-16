@@ -32,8 +32,8 @@ class Da_pef_assessor_promote extends pefs_model
     }
 
     // *insert
-    // *insert assessor in database
-    // *@input ase_year,ase_emp_id,ase_gro_id
+    // *insert assessor_promote in database
+    // *@input asp_name,asp_level,asp_type
     // *@output -
     // *@author Apinya Phadungkit
     // *@Create Date 30/03/2022

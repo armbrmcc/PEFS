@@ -35,4 +35,17 @@ class Da_pef_group_assessor extends pefs_model
         $this->db->query($sql, array($this->gro_id));
     }
 
+    // *insert
+    // *insert group_assessor in database
+    // *@input gro_grp_id,gro_ase_id,gro_asp_id
+    // *@output -
+    // *@author Apinya Phadungkit
+    // *@Create Date 30/03/2022
+    public function insert()
+    {
+        $sql = "INSERT INTO pefs_database.pef_group_assessor(gro_grp_id,gro_ase_id,gro_asp_id) 
+                VALUES (?,?,?)";
+        $this->db->query($sql, array($this->gro_grp_id, $this->gro_ase_id, $this->gro_asp_id));
+    }
+
 }

@@ -140,6 +140,7 @@ class Assessor_management extends MainController
     {//insert
         $this->load->model('Da_pef_group_assessor', 'dass');
         $this->load->model('Da_pef_assessor_promote', 'dpro');
+        $this->load->model('Da_pef_assessor_position', 'dpos');
 
         $group_name = $this->input->post('group_name');
         $group_level = $this->input->post('group_level');

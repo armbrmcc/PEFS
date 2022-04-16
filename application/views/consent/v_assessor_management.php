@@ -4,6 +4,7 @@
     * @input  Group name, Level, Position to promote, Type evaluation
     * @output Group assessor list
     * @author Thitima Popila
+    * @author Apinya Phadungkit
     * Create date 2565-01-25   
     * Update date 2565-02-01
     * Update date 2565-03-08
