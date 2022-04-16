@@ -266,7 +266,7 @@ div.tr {
                     var data_row = '';
                     data.forEach((row, index) => {
                         const date = new Date(row.grp_date)
-                        const result = date.toLocaleDateString('th-TH', {
+                        const result = date.toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',
