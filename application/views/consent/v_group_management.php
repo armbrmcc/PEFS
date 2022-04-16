@@ -218,8 +218,6 @@ div.tr {
             let years = d.getFullYear();
             years = years - 2
             console.log(years);
-
-
             // var x = document.getElementById("year");
             // var option = document.createElement("option");
             for (i = 0; i < 5; i++) {

@@ -23,9 +23,7 @@ class Group_management extends MainController
         //print_r($data);
         $this->output('consent/v_group_management', $data);
     }
-    /**
-     * This function is used to add a new group
-     */
+  
     public function add_group()
     {
         $this->load->model('M_pef_employee', 'emp');
@@ -36,6 +34,7 @@ class Group_management extends MainController
         $this->output('consent/v_group_management_add_group', $data);
         //$this->output('consent/v_group_management_add_group');
     }
+    /* A function that is used to get the group detail. */
     public function edit_group($id)
     {
         $data['id'] = $id;
