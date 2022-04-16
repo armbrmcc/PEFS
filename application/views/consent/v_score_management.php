@@ -140,7 +140,7 @@
                                                 <?php $cot = 1 ;?>
                                                 <?php for ($j=0; $j < count($data_all[$i]["date"]); $j++) { ?>
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                <?php echo "Round ".$cot++." ".date("d/m/Y", strtotime($data_all[$i]["date"][$j]->grp_date));?>
+                                                <?php echo "Round ".$cot++." ".date("d/m/Y", strtotime($data_all[$i]["date"][$j]->grd_date));?>
                                                 </h6>
                                                 <?php } ?>
                                                 
@@ -180,3 +180,4 @@
 </body>
 
 </html>
+

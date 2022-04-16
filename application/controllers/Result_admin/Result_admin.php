@@ -32,7 +32,7 @@ class Result_admin extends MainController
     {
          
         $this->load->model('M_pef_group', 'as_group');
-        $data['arr_group'] = $this->as_group->get_all_group()->result();
+        $data['arr_group'] = $this->as_group->get_all_group_and_position()->result();
         
         $this->output('consent/v_result_admin_list', $data);
     }

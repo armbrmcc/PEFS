@@ -62,8 +62,10 @@
     <div class="card" id="card_radius">
         <div class="card-header">
             <h2>Result (ผลคะแนนการประเมิน)</h2>
+            <h2>Promote to T<?php  echo $arr_nominee[0]->grp_position_group ?></h2>
         </div> 
-        <h2>Promote to T<?php  echo $arr_nominee[0]->grp_position_group ?></h2>
+
+        <?php $check_data = 0 ?>
         <!-- End cara header -->
         <div class="card-body">
             <!-- Start Table Result List -->
@@ -79,6 +81,8 @@
                     </thead>
                     <tbody>
                         <?php for ($i = 0; $i < count($arr_nominee); $i++) { ?>
+                            <?php  if($arr_nominee[$i]->grn_status_done == 0){  ?>
+                                <?php  $check_data=1; ?>
                         <tr>
                             <!-- # -->
                             <td>
@@ -106,8 +110,11 @@
                                     </button>
                                 </a>
                             </td>
-                        </tr>
+                        </tr> <?php  }?>
                         <?php } ?>
+                        <?php  if($check_data !=1){
+                            echo "<tr><td> - </td> <td> - </td><td> - </td><td> - </td></tr>";
+                        } ?>
                     </tbody>
                 </table>
             </div>

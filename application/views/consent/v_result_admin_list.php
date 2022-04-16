@@ -72,13 +72,15 @@
                         <tr>
                             <th>#</th>
                             <th>Group</th>
-                          
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php for ($i = 0; $i < count($arr_group); $i++) { ?>
+                  
+
+                             
                         <tr>
                             <!-- # -->
                             <td>
@@ -88,7 +90,7 @@
                             </td>
                             <!-- Group Level -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->grp_position_group ?></h6>
+                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->sec_level ?></h6>
                             </td>
                      
                             <td>
@@ -106,7 +108,7 @@
                                     </button>
                                 </a>
                             </td>
-                        </tr>
+                        </tr>  
                         <?php } ?>
                     </tbody>
                 </table>

@@ -173,6 +173,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         ,asp_type
         ,grp_position_group
         ,grp_id
+        ,grn_status_done
                             FROM pefs_database.pef_group_nominee AS groupno
                             INNER JOIN pefs_database.pef_group AS gr
                             ON groupno.grn_grp_id = gr.grp_id

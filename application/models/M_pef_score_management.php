@@ -30,8 +30,11 @@ class M_pef_score_management extends Da_pef_score_management
     }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
     public function get_score_management_list_date()
     {
-        $sql = "SELECT grp_date,grp_id FROM pefs_database.pef_group";
-                
+        $sql = "SELECT *
+        FROM pefs_database.pef_group AS grp 
+        INNER JOIN pefs_database.pef_group_schedule AS sec
+        ON grp.grp_id = sec.grd_grp_id
+        ";
         $query = $this->db->query($sql);
         return $query;
     }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
@@ -87,15 +90,21 @@ class M_pef_score_management extends Da_pef_score_management
     {
         $sql = "SELECT *
 			FROM pefs_database.pef_group AS grp INNER JOIN pefs_database.pef_assessor_promote AS promote
-            ON grp.grp_id=promote.asp_id
+            ON grp.grp_position_group=promote.asp_id
             INNER JOIN pefs_database.pef_assessor_position AS position
             ON promote.asp_id = position.gap_asp_id
             INNER JOIN dbmc.position AS pos
             ON position.gap_promote = pos.Position_ID
 			WHERE grp_id=$id
 			";
-        $query = $this->db->query($sql);
-        return $query;
+     
+        // $sql = "SELECT *
+        // FROM pefs_database.pef_group AS grp INNER JOIN pefs_database.pef_section AS sec
+        // ON grp.grp_position_group=sec.sec_id
+        // WHERE grp_id=$id
+        // ";
+    $query = $this->db->query($sql);
+    return $query;
     }
 
     /*

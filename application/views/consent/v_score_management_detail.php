@@ -162,17 +162,17 @@
                         <td>
                             <?php
                                 if ($count[$i] == count($assessor)) {
-                                    if ($nominee[$i]->grn_status == 0) { ?>
+                                    if ($nominee[$i]->grn_status_result == 0) { ?>
                             <span class="name mb-0 text-sm">
                                 <i class="bg-success"></i>
                                 <span class="status"><?php echo 'Assessed' ?></span>
                             </span>
-                            <?php } else if ($nominee[$i]->grn_status == 1) { ?>
+                            <?php } else if ($nominee[$i]->grn_status_result == 1) { ?>
                               <span class="name mb-0 text-sm">
                                 <i class="bg-success"></i>
                                 <span class="status"><?php echo 'Pass' ?></span>
                             </span>
-                            <?php } else if ($nominee[$i]->grn_status == 2) { ?>
+                            <?php } else if ($nominee[$i]->grn_status_result == 2) { ?>
                               <span class="name mb-0 text-sm">
                                 <i class="bg-danger"></i>
                                 <span class="status"><?php echo 'Not pass' ?></span>
@@ -196,7 +196,7 @@
 
                             <?php
                                 if ($count[$i] == count($assessor)) {
-                                    if ($nominee[$i]->grn_status == 0 || $nominee[$i]->grn_status == 1 || $nominee[$i]->grn_status == 2) { ?>
+                                    if ($nominee[$i]->grn_status_result == 0 || $nominee[$i]->grn_status_result == 1 || $nominee[$i]->grn_status_result == 2) { ?>
                             <?php
                                         $index_point = 0;
                                         ?>
@@ -239,37 +239,21 @@
                         <td>
                             <?php
                                 if ($count[$i] == count($assessor)) {
-                                    if ($nominee[$i]->grn_status == 0 || $nominee[$i]->grn_status == 1 || $nominee[$i]->grn_status == 2) { ?>
+                                    if ($nominee[$i]->grn_status_result == 0 || $nominee[$i]->grn_status_result == 1 || $nominee[$i]->grn_status_result == 2) { ?>
                             <div class="dropdown">
-                                <a  href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <button type="button" class="btn btn-warning button_size" data-toggle="modal">
-                                    <i class="fa fa-refresh" style="font-size:15px;"></i>
+                                  
+                                    <button type="button" class="btn btn-warning button_size"
+                                        data-bs-toggle="modal" data-bs-target="#ModalAddGroup">
+                                        <i class="fa fa-refresh" style="font-size:15px;"></i>
                                     </button>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item"
-                                        href="<?php echo site_url() . 'Score_management/Score_management/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Pass</a>
-                                    <a class="dropdown-item"
-                                        href="<?php echo site_url() . 'Score_management/Score_managementy/update_fail/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Not
-                                        Pass</a>
-                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModal_<?php echo $i ?>">Review</a>
-                                    <?php if ($group[0]->grp_position_group > 2) { ?>
-                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#Modal_<?php echo $i ?>">Next Evaluation</a>
-                                    <?php } ?>
-                                </div>
                             </div>
                             <?php }
                                 } else { ?>
                             <div class="dropdown">
-                                <a  href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <button type="button" class="btn btn-warning button_size" data-toggle="modal" disabled>
-                                    <i class="fa fa-refresh" style="font-size:15px;"></i>
+                                    <button type="button" class="btn btn-warning button_size"
+                                        data-bs-toggle="modal" disabled>
+                                        <i class="fa fa-refresh" style="font-size:15px;"></i>
                                     </button>
-                                </a>
                             </div>
                             <?php } ?>
                         </td>
@@ -392,7 +376,36 @@
             class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
 </div>
 <!-- Button trigger modal -->
+<div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="ModalAddGroupLabel">Manage Group review</h2>&nbsp;
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label"style="font-size:20px;">Date : </label>
+                        <input type="date" id="date" style="font-size:20px;" value="<?php echo date('Y-m-d') ?>" min="<?php echo date('Y-m-d') ?>"><br>
+                    </div>
 
+            <div class="modal-footer"style="margin-right : 29.5%">
+                <!-- ปุ่มปิด modal -->
+                <a href="">
+                    <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
+                </a>
+                <!-- ปุ่มบันทึก -->
+                <a href="">
+                    <button type="button" class="btn bg-gradient-success">Submit</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
 $(document).ready(function() {
     $('#Score').DataTable();

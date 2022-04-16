@@ -248,9 +248,11 @@ class M_pef_group extends Da_pef_group
 
 
 
-    function get_all_group()
+    function get_all_group_and_position()
     { 
-        $sql = "SELECT *FROM pefs_database.pef_group";
+        $sql = "SELECT *FROM pefs_database.pef_group as gro
+        INNER JOIN pefs_database.pef_section as sec
+        on gro.grp_position_group = sec.sec_id";
         $query = $this->db->query($sql);
         return $query;
     } //end  

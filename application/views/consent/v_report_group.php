@@ -87,7 +87,7 @@
     foreach ($sec_data as $index_emp => $row_emp) {
         foreach ($ass_data as $index_ass => $row_ass) {
             foreach ($point_data as $index => $row) {
-                if ($row_ass->ase_id == $row->ptf_ase_id && $row_emp->grn_id == $row->ptf_emp_id) {
+                if ($row_ass->ase_id == $row->per_ase_id && $row_emp->grn_id == $row->per_emp_id) {
                     $sum_point += intval($row->ptf_point);
                 }
                 //if 
