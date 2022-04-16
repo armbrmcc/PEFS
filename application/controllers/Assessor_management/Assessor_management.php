@@ -139,6 +139,7 @@ class Assessor_management extends MainController
     function add_group_assessor()
     {//insert
         $this->load->model('Da_pef_group_assessor', 'dass');
+        $this->load->model('Da_pef_assessor_promote', 'dpro');
 
         $group_name = $this->input->post('group_name');
         $group_level = $this->input->post('group_level');
@@ -151,6 +152,18 @@ class Assessor_management extends MainController
         echo $group_type;
         print_r($pos);
         echo $count_pos;
+
+        if($group_type == "Type 2: (2 round evaluation)"){
+            $type = '2';
+        }else {
+            $type = '1';
+        }
+
+        $this->dpro->asp_name = $group_name;
+        $this->dpro->asp_level = $group_level;
+        $this->dpro->asp_type = $type;
+        $this->dpro->insert();
+
 
         for ($i = 0; $i < sizeof($count_pos); $i++) {
             $this->emp->Position_name = $pos[$i];
