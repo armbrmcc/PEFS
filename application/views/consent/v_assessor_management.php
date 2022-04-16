@@ -195,7 +195,8 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_group_assessor' . '/' . $arr_group[$i]->gro_ase_id; ?>" method="post" enctype="multipart/form-data">
+                                                        <!-- <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_group_assessor' . '/' . $arr_group[$i]->gro_ase_id; ?>" method="post" enctype="multipart/form-data"> -->
+                                                        <form>
                                                             <div class="form-group">
                                                                 <!-- Group name -->
                                                                 <label for="recipient-name" class="col-form-label">Group Name</label>
@@ -218,6 +219,7 @@
                                                                     <label for="Position" class="col-form-label">Position</label>
                                                                     <ul class="custom-control-input" id="position_list" name="position_list">
                                                                     </ul>
+                                                                    <input type="text" id="count_pos" hidden>
                                                                 </div>
                                                             </div>
                                                             <div>
@@ -226,14 +228,13 @@
                                                                 <input type="text" id="type_evaluation" name="group_type" class="form-control" disabled value="Type 1: (1 round evaluation)">
                                                             </div>
                                                             <br>
-                                                            <input class="form-control" type="text" id="group_status" name="group_status" value="-1" hidden>
 
-                                                            <button type="submit" class="btn btn-success float-right">Submit</button>
-                                                        <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="button" class="btn btn-success float-right" onclick="add_sec()">Submit</button>
+                                                            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
 
                                                         </form>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -307,12 +308,12 @@
         $("#list_table").DataTable();
     });
 
-
     /**
      * This function is used to get the position name from the database.
      */
     function get_position() {
         // $("#position_list").empty();
+        var count_pos = 0;
         position_level_id = document.getElementById('group_position').value;
         document.getElementById("position_list").innerHTML = "";
         var empname = "";
@@ -325,14 +326,21 @@
             },
             dataType: "JSON",
             success: function(data, status) {
+                var i=0;
                 console.log(data);
                 data.forEach((row, index) => {
-                    $("#position_list").append('<input type="checkbox"><a href="#">' + ' ' + row.Position_name +
+                    $("#position_list").append('<input type="checkbox" id="pos'+i+++'" value="' + row.Position_ID +
+                        '"><a href="#">' + ' ' + row.Position_name +
                         '</a><br></input>');
+
+                    count_pos++;
+                    console.log(count_pos);
+                    document.getElementById('count_pos').value=count_pos;
                 })
             },
             error: function(error) {
                 console.log('error');
+            
             }
 
         });
@@ -351,67 +359,68 @@
             document.getElementById("type_evaluation").value = "Type 1: (1 round evaluation)";
         }
     }
-
-    function setpos_id(id) {
-        document.getElementById("position_id").value = id;
-    }
 </script>
-<!-- End Data Table -->
+
 
 <script>
-    var count = 0;
-    var count_nominee = 0;
-    var id = "Emp_id";
-    var num = 1;
-    var index_emp = [];
-    /* The above code is adding a new row to the table. */
-    $("#add").click(function() {
+    function add_sec() {
+        // console.log("1111");
+        var group_name = document.getElementById('recipient-name').value;
+        var group_level = document.getElementById('group_position').value;
+        var group_type = document.getElementById('type_evaluation').value;
 
-        empname = document.getElementById("showname_modal").value;
-        empid = document.getElementById("Emp_id_modal").value;
-        position = document.getElementById("position_nominee").value;
-        department = document.getElementById("department_nominee").value;
-        promote = document.getElementById("promote_nominee").value;
+        console.log(group_name);
+        console.log(group_level);
+        console.log(group_type);
 
-        var data_row = "";
-        //pos_id = get_position_id(promote);
-        //console.log(pos_id);
-        data_row += '<tr id="emp_' + num + '">';
-        data_row += '<td id="Emp_id_' + num + '" style="text-align:center">' + empid + '</td>';
-        data_row += '<td style="text-align:center" >' + empname + '</td>';
-        data_row += '<td style="text-align:center">' + position;
-        // data_row += '<input id="pos" name="pos" value="' + pos_id + '">';
-        data_row += '</td>';
-        data_row += '<td style="text-align:center">' + department + '</td>';
-        data_row += '<td style="text-align:center" id="Promote_' + num + '">' + promote + '</td>';
-        data_row += '<td style="text-align:center"> ' +
-            '<button class="btn btn-danger" onclick = "remove_row(' + num +
-            ') " >delete</button></td>';
-        index_emp.push(num);
-        console.log(index_emp);
-        num++
 
-        $("#nominee_data").append(
-            data_row
-        );
-        count_nominee++;
-        console.log(count_nominee);
+        count_pos = document.getElementById('count_pos').value;
+        pos = [];
 
-    });
-
-    /**
-     * When the remove button is clicked, remove the row, remove the index from the array, and then call
-     * the function that changes the group status.
-     */
-    function remove_row(num) {
-        $("#emp_" + num).remove();
-        var index = index_emp.indexOf(num);
-        if (index > -1) {
-            index_emp.splice(index, 1);
+        if (count_pos != 0) {
+            for (i = 0; i < count_pos; i++) {
+                if (document.getElementById("pos" + i).checked) {
+                    pos.push(document.getElementById("pos" + i).value)
+                } //if
+            }
+            //for
         }
-        count_nominee--;
-        console.log(index_emp)
-        change_group_status().call()
+        // if
+
+        if (group_name != "" && group_level != 0 && group_type != 0 && pos.length != 0) {
+            $.ajax({
+                type: "post",
+                // dataType: "json",
+                url: "<?php echo base_url(); ?>Assessor_management/Assessor_management/add_group_assessor",
+                data: {
+                    "group_name": group_name,
+                    "group_level": group_level,
+                    "group_type": group_type,
+                    "pos": pos
+                },
+                success: function(data) {
+                    console.log("1111");
+                    console.log(data);
+                    // Main_promote();
+                    window.location.href =
+                                "<?php echo base_url(); ?>Assessor_management/Assessor_management/show_assessor_management";
+
+                },
+                // success
+                error: function(data) {
+                    console.log("9999 : error");
+                }
+                // error
+            });
+            // ajax
+        }
+        // if
+        else {
+            $("#txt_warning_add").show();
+        }
+        // else 
+
     }
+    // add_sec
 </script>
 <!-- End  JavaScript -->
