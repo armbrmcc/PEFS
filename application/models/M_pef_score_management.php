@@ -204,7 +204,7 @@ class M_pef_score_management extends Da_pef_score_management
         $sql = "SELECT * 
                 FROM pefs_database.pef_assessor AS ass
                 INNER JOIN pefs_database.pef_group_assessor AS gro
-                ON ass.ase_emp_id = gro.gro_ase_id 
+                ON ass.ase_id = gro.gro_ase_id 
                 INNER JOIN pefs_database.pef_group AS grp
                 ON grp.grp_id = gro.gro_grp_id
                 WHERE grp.grp_id = $id";

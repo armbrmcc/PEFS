@@ -175,6 +175,12 @@ class Score_management extends MainController
         $data = $this->pef->get_group()->result();
         echo json_encode($data);
     }
+    public function get_section()
+    {
+        $this->load->model('M_pef_report', 'pef');
+        $data = $this->pef->get_all_section()->result();
+        echo json_encode($data);
+    }
     /*
 	* get_evaluation
 	* display  get_evaluation
