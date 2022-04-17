@@ -104,4 +104,32 @@ class M_pef_assessor_promote extends Da_pef_assessor_promote
         return $query;
     }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
 
+
+
+    /*
+	* get_assessor_list
+	* get data form ase_emp_id, Empname_eng, Empsurname_eng, Pos_shortName, Position_name
+	* @input  -
+	* @output  all 
+	* @author  Apinya Phadungkit
+	* @Create  Date 2565-03-04
+    * @Update  Date 2565-03-04
+    */
+    public function get_assessor_list($id) //$มาจาก asp_id ที่ถูกส่งมาจากใน Controller
+    {
+        $sql = "SELECT * FROM pefs_database.pef_assessor AS ass
+                    INNER JOIN dbmc.employee AS emp
+                    ON ass.ase_emp_id = emp.Emp_ID
+                    INNER JOIN dbmc.position AS pos
+                    ON emp.Position_ID = pos.Position_ID
+                    INNER JOIN pefs_database.pef_assessor_promote AS promote
+                    ON ass.ase_gro_id =  promote.asp_id
+                    INNER JOIN pefs_database.pef_section AS sec
+                    ON promote.asp_level = sec.sec_level
+                    WHERE promote.asp_id = $id";
+                
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
+
 }
