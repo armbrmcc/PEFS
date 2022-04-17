@@ -57,7 +57,7 @@
                 $get = [];
                 foreach ($ass_data as $index_ass => $row_ass) {
                     foreach ($point_data as $index => $row) {
-                        if ($row_ass->ase_id == $row->ptf_ase_id) {
+                        if ($row_ass->ase_id == $row->per_ase_id) {
                             $sum_point += intval($row->ptf_point);
                         }
                         //if 
@@ -92,6 +92,8 @@
                                             <th scope="col">Employee ID</th>
                                             <th scope="col">Assessors Name</th>
                                             <th scope="col">Score</th>
+                                            <th scope="col">Comment</th>
+                                            <th scope="col">Q & A</th>
                                         </tr>
                                     </thead>
                                     <tbody id="data_table">
@@ -105,6 +107,8 @@
                                                 <td><?php echo $ass_data[$i]->ase_emp_id; ?></td>
                                                 <td><?php echo $ass_data[$i]->Empname_eng . ' ' . $ass_data[$i]->Empsurname_eng; ?></td>
                                                 <td><?php echo $point_ass[$index_point][$i]; ?> points</td>
+                                                <td><?php echo $point_data[$i]->per_comment; ?></td>
+                                                <td><?php echo $point_data[$i]->per_q_and_a; ?></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

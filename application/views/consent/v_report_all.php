@@ -407,7 +407,7 @@
                         check = row.sec_level;
                     }
 
-                    if (row.grn_status_done == '-1') {
+                    if (row.grn_status_done == '-1' || row.grn_status_result == '-1') {
                         have_not++;
                     } else if (row.grn_status_done == '0' || row.grn_status_done == '1') {
                         have++;
@@ -531,7 +531,7 @@
                     data_charts.forEach((row, index) => {
                         if (row_sec == row.sec_id) {
                             group = row.sec_id;
-                            if (row.grn_status_done == '-1') {
+                            if (row.grn_status_done == '-1' || row.grn_status_result == '-1') {
                                 have_not++;
                             } else if (row.grn_status_done == '0' || row.grn_status_done == '1') {
                                 have++;
