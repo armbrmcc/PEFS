@@ -184,18 +184,16 @@ div.tr {
                                 </div>
                             </td>
                             <td style="text-align:center">
-
                                 <a
                                     href="<?php echo site_url() . 'Group_management/Group_management/delete_group/' . $group[$i]->grp_id; ?>">
                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </a>
-
+                    
                                 <a
                                     href="<?php echo site_url() . 'Group_management/Group_management/edit_group/' . $group[$i]->grp_id ?>"><button
                                         type="button" class="btn btn-warning"><i class="fa fa-pencil"
-                                            aria-hidden="true"></i></button></a>
-
-
+                                            aria-hidden="true"></i></button>
+                                </a>
                             </td>
 
                         </tr>
