@@ -68,18 +68,18 @@
         }
 </script> 
   
-<h1>
+<h2>
     Score Management Group (การจัดการคะแนนกลุ่ม)
-</h1>
+</h2>
 <div class="card-header" id="card_radius">
     <div class="row">
         <div class="col">
-            <h2>Detail Group <label for="cars" style="font-size : 24px;margin-left : 63%">Group stutas:</label>
+            <h3>Detail Group <label for="cars" style="font-size : 20px;margin-left : 69%">Group stutas:</label>
             <button type="button" class="float-right on" style="text-align: center;" 
             id="btn" value="button" onclick="toggleState(this)">
             open   
             <!-- <i class="fas fa-circle" style="font-size:30px; "></i> -->
-            </button></h2>
+            </button></h3>
             <hr class="my-4" color="gray">
             <h5 class="mb-0">Group : <?php echo 'T' . $group[0]->asp_level ?>
             <label for="cars" style="font-size : 20px;margin-left : 72%">Select Round :</label>
@@ -89,7 +89,7 @@
             </select></h5>
             <h5 class="mb-0">Group Name : <?php echo $group[0]->asp_name ?></h5>
             <h5 class="mb-0">Promote : <?php echo $group[0]->Position_name ?></h5>
-            <h5 class="mb-0">Date : <?php echo date("d/m/Y", strtotime($group[0]->grp_date)) ?></h3>
+            <h5 class="mb-0">Date : <?php echo date("d/m/Y", strtotime($group[0]->grp_date)) ?></h5>
             <hr class="my-4" color="gray">
         </div>
 
