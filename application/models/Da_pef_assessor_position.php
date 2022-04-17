@@ -26,9 +26,22 @@ class Da_pef_assessor_position extends pefs_model
     // *@Create Date 16/04/2022
     public function insert()
     {
-        $sql = "INSERT INTO pefs_database.pef_assessor_position(gap_asp_id,gap_pomote) 
+        $sql = "INSERT INTO pefs_database.pef_assessor_position(gap_asp_id,gap_promote) 
                 VALUES (?,?)";
-        $this->db->query($sql, array($this->gro_grp_id, $this->gap_asp_id, $this->gap_pomote));
+        $this->db->query($sql, array($this->gap_asp_id, $this->gap_promote));
     }
+
+    //   // *insert
+    // // *insert group_assessor in database
+    // // *@input gap_asp_id,gap_pomote
+    // // *@output -
+    // // *@author Apinya Phadungkit
+    // // *@Create Date 16/04/2022
+    // public function insert()
+    // {
+    //     $sql = "INSERT INTO pefs_database.pef_assessor_position(gap_promote) 
+    //             VALUES (?)";
+    //     $this->db->query($sql, array($this->gap_promote));
+    // }
 
 }

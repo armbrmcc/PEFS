@@ -115,8 +115,8 @@ table,  td{
             
                         <td class="text-center">
                         <!-- เลือกหัวข้อ -->
-                            <select name="select_item<?php echo $loop_form  ;?>" id="select_item<?php echo $loop_form  ;?>"  value="<?php echo $arr_form[$loop_form]->for_item_id  ;?>" onchange="show_selectvalue(this)" >
-                            <option  value="0">please selected</option>
+                            <select name="select_item<?php echo $loop_form  ;?>" id="select_item<?php echo $loop_form  ;?>"  value="<?php echo $arr_form[$loop_form]->for_item_id  ;?>" onchange="show_selectvalue(this)" required>
+                            <option  value="">please selected</option>
                             <?php for($i=0;$i < count($arr_item) ;$i++){ ?>
                                 <option value="<?php echo $arr_item[$i]->itm_id ;?>" <?php if($arr_item[$i]->itm_id==$arr_form[$loop_form]->for_item_id){echo ' selected="selected"';}?> ><?php echo $arr_item[$i]->itm_name; ?></option>
                             <?php }?>
@@ -189,8 +189,8 @@ table,  td{
                                 <p>${rowIdx}</p>    
                             </td>
                             <td class="text-center">
-                                <select name="select_item${i}" id="select_item${i}" onchange="show_selectvalue(this)">
-                                    <option  value="0">please selected</option>
+                                <select name="select_item${i}" id="select_item${i}" onchange="show_selectvalue(this)"required>
+                                    <option  value="">please selected</option>
                                     <?php for($i=0;$i < count($arr_item) ;$i++){ ?>
                                         <option value="<?php echo $arr_item[$i]->itm_id ;?>"><?php echo $arr_item[$i]->itm_name; ?></option>
                                     <?php } ?>
