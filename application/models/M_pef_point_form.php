@@ -139,9 +139,9 @@ class M_pef_point_form extends Da_pef_point_form
 	* คืนค่าคะแนนของแต่ละฟอร์ม
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์มแค่รอบ 2 
-	* @author 	Phatchara Khongthandee and Pontakon Mujit 
-	* @Create   Date 2564-08-18 
-	* @Update   Date 2564-08-19
+	* @author 	Pontakon Mujit 
+	* @Create   Date 2564-04-15
+	* @Update   Date 2564-04-15
 	*/
     function get_point_list_round_2_admin($per_id,$nor_id,$id_assessor,$date)
     {

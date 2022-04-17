@@ -1,11 +1,12 @@
 <!--
-    v_result_group_assessor
-    display for review list
+    v_result_admin_list
+    display for result_admin_list
     @input -
     @output -
-    @author Ponprapai Atsawanurak and Phatchara Khongthandee
-    Create date 2565-01-25
-    Update date 2565-01-28
+    @author Pontakon M.
+    Create date 2565-04-13
+    Update date 2565-04-14
+    Update date 2565-04-15
 -->
 <!-- CSS -->
 <style>

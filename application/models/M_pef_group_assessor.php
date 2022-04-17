@@ -95,11 +95,11 @@ class M_pef_group_assessor extends Da_pef_group_assessor
 
     /*
 	* get_group_all_assessor_by_id
-	* get 
+	* get_group_all_assessor_by_id
 	* @input  -
-	* @output -
-	* @author 
-	* @Create Date 2565-03-03
+	* @output assessor ของกลุ่มการประเมิน
+	* @author Pontakon M.
+	* @Create date 2565-04-15
     */
     public function get_group_all_assessor_by_id($group_id)
     {

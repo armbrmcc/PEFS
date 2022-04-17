@@ -1,8 +1,8 @@
 <!-- /*
-    * v_form_management_detail
+    * v_form_management_detail_update
     * @input  -
     * @output -
-    * @author Pontakon & Natthanit
+    * @author Pontakon 
     * @Update Date 2565-01-25
 */ -->
 <!-- CSS -->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
