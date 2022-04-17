@@ -23,7 +23,7 @@ class M_pef_group extends Da_pef_group
     public function get_group_evaluation($ass_id)
     {
         $sql = "SELECT gr_schedule.grd_date, gr_schedule.grd_round, gr_schedule.grd_grp_id, promote.asp_name, 
-        promote.asp_level, promote.asp_type,gr.grp_id, gr.grp_status,  position.gap_promote, ass.ase_emp_id, gr.grp_id
+        promote.asp_level, promote.asp_type,gr.grp_id, gr.grp_status,  position.gap_promote, ass.ase_emp_id, gr.grp_id, gr.grp_date
                     FROM pefs_database.pef_group AS gr
                     INNER JOIN pefs_database.pef_group_schedule AS gr_schedule
                     ON gr.grp_id = gr_schedule.grd_grp_id
