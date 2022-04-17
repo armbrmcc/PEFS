@@ -132,9 +132,9 @@
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="text-xs mb-0">
                                                         <?php
-                                                        for ($j = 0; $j < count($arr_position); $j++) {
+                                                        for ($j = 0; $j < count($arr_group); $j++) {
                                                             echo $j + 1;
-                                                            echo '. ' . $arr_position[$j]->Position_name;
+                                                            echo '. ' . $arr_group[$j]->Position_name;
                                                             echo "<br/>";
                                                         }
                                                         ?>
@@ -144,16 +144,16 @@
                                             <td class="align-middle text-center">
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="text-xs mb-0">
-                                                        <?php echo "Type " . $arr_group[$i]->grp_position_group ?>
+                                                        <?php echo "Type " . $arr_group[$i]->asp_type ?>
                                                     </h6>
                                                     <h6 class="text-xs mb-0">
-                                                        <?php echo $arr_group[$i]->grp_position_group . ' Round evaluation' ?>
+                                                        <?php echo $arr_group[$i]->asp_type . ' Round evaluation' ?>
                                                     </h6>
                                                 </div>
                                             </td>
                                             <td class="align-middle">
                                                 <!-- Start button trigger modal edit -->
-                                                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/' . $arr_group[$i]->gro_ase_id; ?>">
+                                                <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/' . $arr_group[$i]->asp_id; ?>">
                                                     <!-- ปุ่มดำเนินการแก้ไข -->
                                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor">
                                                         <i class="fas fa-edit"></i>
@@ -397,6 +397,7 @@
                     "group_name": group_name,
                     "group_level": group_level,
                     "group_type": group_type,
+                    "count_pos": count_pos,
                     "pos": pos
                 },
                 success: function(data) {
@@ -407,7 +408,7 @@
                                 "<?php echo base_url(); ?>Assessor_management/Assessor_management/show_assessor_management";
 
                 },
-                // success
+                //success
                 error: function(data) {
                     console.log("9999 : error");
                 }

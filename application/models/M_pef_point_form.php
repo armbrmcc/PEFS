@@ -104,7 +104,7 @@ class M_pef_point_form extends Da_pef_point_form
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
 	* @author 	Thitima Popila 
-	* @Create   Date 2564-04-15 
+	* @Create   Date 2565-04-15 
 	*/
     function get_point_list_round1($per_id)
     {
@@ -122,7 +122,7 @@ class M_pef_point_form extends Da_pef_point_form
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
 	* @author 	Thitima Popila 
-	* @Create   Date 2564-04-15 
+	* @Create   Date 2565-04-15 
 	*/
     function get_point_list_round2($per_id)
     {
@@ -140,8 +140,8 @@ class M_pef_point_form extends Da_pef_point_form
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์มแค่รอบ 2 
 	* @author 	Pontakon Mujit 
-	* @Create   Date 2564-04-15
-	* @Update   Date 2564-04-15
+	* @Create   Date 2565-04-15
+	* @Update   Date 2565-04-15
 	*/
     function get_point_list_round_2_admin($per_id,$nor_id,$id_assessor,$date)
     {
