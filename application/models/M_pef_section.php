@@ -1,10 +1,10 @@
 <?php
-/* 
+/*
     * M_pef_section
-    * Model for 
-    * @author  
-    * @Create Date  
-    */
+    * Model for pef_section
+    * @author Pontakon M.
+    * @Create Date 2565-04-08
+*/
 ?>
 
 <?php
@@ -12,21 +12,29 @@ include_once("Da_pef_section.php");
 
 class M_pef_section extends Da_pef_section
 {
-    /*
+        /*
+	* get_all_section 
 	* get_all_section
-	* get 
 	* @input  -
-	* @output -
-	* @author  
-	* @Create Date  
+	* @output section detail
+	* @author Pontakon M.
+	* @Create date 2565-04-08
     */
     public function get_all_section()
     {
         $sql = "SELECT * FROM pefs_database.pef_section ";
         $query = $this->db->query($sql);
         return $query;
-    } //คืนค่าข้อมูลรายละเอียดของหัวข้อ
+    }  
 
+    /*
+	* get_position_by_section 
+	* get_position_with_find_in_section
+	* @input  -
+	* @output position detail
+	* @author Pontakon M.
+	* @Create date 2565-04-08
+    */
     public function get_position_by_section()
     {
         $sql = "SELECT * 

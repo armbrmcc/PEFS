@@ -1,17 +1,13 @@
 <!--
-    /*
-    * v_evaluation_form_round_1
-    * display for Evaluation Form 1 Round (แบบฟอร์มการประเมิน 1 รอบ)
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
-    * @input  -
-    * @output -
-    * @Create date : 2565-01-26 
-    * @Update date : 2565-01-27
-    * @Update date : 2565-03-07
-    * @Update date : 2565-03-08
-    */
+    v_result_admin_detail_from_1
+    display for result_admin_to_show_nominee_of_from_with_type_from_1
+    @input -
+    @output -
+    @author Pontakon M.
+    Create date 2565-04-13
+    Update date 2565-04-14
+    Update date 2565-04-15
 -->
-
 <!-- CSS -->
 <style>
 table {
@@ -319,7 +315,7 @@ th
                         <br>
                        
 
-                        <!-- Confirm -->
+                        <!-- Back button -->
                         <a class="nav-link" href="<?php echo site_url() . 'Result_admin/Result_admin/show_result_admin'; ?>">
                         <div class="col-6 text-end">
                             <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"

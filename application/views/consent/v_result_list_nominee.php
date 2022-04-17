@@ -1,11 +1,11 @@
 <!--
-    v_result_group_assessor
-    display for review list
+    v_result_list_nominee
+    display for result_admin_to_show_nominee_in_this_group
     @input -
     @output -
-    @author Ponprapai Atsawanurak and Phatchara Khongthandee
-    Create date 2565-01-25
-    Update date 2565-01-28
+    @author Pontakon M.
+    Create date 2565-04-13
+    Update date 2565-04-15
 -->
 <!-- CSS -->
 <style>
@@ -90,11 +90,12 @@
                                     <?php echo $i+1 ?>
                                 </h6>
                             </td>
-                            <!-- Group Level -->
+                            <!--Employee id -->
                             <td>
                                 <h6 class="text-xs text-secondary mb-0"><?php echo $arr_nominee[$i]->Emp_ID ?></h6>
                             </td>
                      
+                            <!--Employee name -->
                             <td>
 
                                 <?php echo $arr_nominee[$i]->Empname_engTitle." ".$arr_nominee[$i]->Empname_eng." ".$arr_nominee[$i]->Empsurname_eng ; ?>
@@ -130,8 +131,9 @@
 <!-- JavaScript -->
 <!-- Data Table -->
 <script>
+   
 $(document).ready(function() {
-    $("#list_table").DataTable();
+    $("#list_table").DataTable();  // use_ list_table
 });
 </script>
 <!-- End Data Table -->

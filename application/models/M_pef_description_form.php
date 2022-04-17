@@ -1,9 +1,9 @@
 <?php
     /* 
     * M_pef_description_form
-    * Model for 
-    * @author  
-    * @Create Date  
+    * Model for description_form
+    * @author  Pontakon M.
+    * @Create date 2565-04-08
     */
 ?>
 
@@ -14,11 +14,11 @@ class M_pef_description_form extends Da_pef_description_form
 {
     /*
 	* get_description_form_by_id
-	* get 
-	* @input  -
-	* @output -
-	* @author  
-	* @Create Date  
+	* get get_description_form
+	* @input  id_position
+	* @output get_description_form
+	* @author Pontakon M.
+	* @Create date 2565-04-08
     */
     public function get_description_form_by_id()
     {
@@ -35,12 +35,12 @@ class M_pef_description_form extends Da_pef_description_form
 
 
     /*
-	* get_description_evaluation_by_id
-	* get 
-	* @input  -
-	* @output -
-	* @author  
-	* @Create Date  
+	* get_description_form_by_id
+	* get get_description_form
+	* @input  id_position
+	* @output get_description_form
+	* @author Pontakon M.
+	* @Create date 2565-04-12
     */
     public function get_description_evaluation_by_id()
     {

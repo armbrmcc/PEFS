@@ -247,7 +247,14 @@ class M_pef_group extends Da_pef_group
     } //end  get_group
 
 
-
+    /*
+	* get_all_group_and_position
+	* get all_group_and_position
+	* @input  -
+	* @output get_all_group_and_position
+	* @author Pontakon M.
+	* @Create date 2565-04-14
+    */
     function get_all_group_and_position()
     { 
         $sql = "SELECT *FROM pefs_database.pef_group as gro
@@ -257,6 +264,14 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end  
 
+        /*
+	* get_group_by_group_id
+	* get_group
+	* @input  group_id
+	* @output get_group
+	* @author Pontakon M.
+	* @Create date 2565-04-14
+    */
     function get_group_by_group_id($group_id)
     { 
         $sql = "SELECT *FROM pefs_database.pef_group as gro

@@ -1,13 +1,12 @@
 <!--
-    /*
-    * v_evaluation_form_round_2
-    * display for Evaluation Form 2 Round (แบบฟอร์มการประเมิน 2 รอบ)
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
-    * @input -
-    * @output -
-    * @Create date : 2565-01-26   
-    * @Update date : 2565-01-27
-    */
+    v_result_admin_detail_from_2
+    display for result_admin_to_show_nominee_of_from_with_type_from_2
+    @input -
+    @output -
+    @author Pontakon M.
+    Create date 2565-04-13
+    Update date 2565-04-14
+    Update date 2565-04-15
 -->
 
 <!-- CSS -->
