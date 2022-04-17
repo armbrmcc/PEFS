@@ -94,6 +94,7 @@ class Score_management extends MainController
         $data['group'] = $this->pef->get_group_by_id($id)->result();
         $data['ass_data'] = $this->pef->get_ass_by_grp_id($id)->result();
         $data['point_data'] = $this->pef->get_data_point_by_grp_id($id)->result();
+        // $data['sec_data'] = $this->pef->get_data_by_id($id)->result();
 
         for ($i = 0; $i < count($data['nominee']); $i++) {
             $data['per'] = $this->pef->get_evaluation($data['nominee'][$i]->Emp_ID)->result();
@@ -130,6 +131,7 @@ class Score_management extends MainController
         $this->load->model('M_pef_score_management', 'pefs');
         $this->pefd->grp_date = $date;
         $this->pefd->grp_position_group = $group;
+        $this->ped->grp_year = $this->input->post('year');
         $this->pefd->insert_group();
         $group_id = $this->pef->get_group_id()->result();
         $data['assessor'] = $this->pefs->get_assessor($grp_id)->result();
@@ -172,40 +174,6 @@ class Score_management extends MainController
         $this->pef->grp_date = $date;
         $data = $this->pef->get_group()->result();
         echo json_encode($data);
-    }
-    /*
-	* update_pass
-	* display  update_pass
-	* @input  -
-	* @output  update_pass
-	* @author  Niphat Kuhoksiw
-	* @Create  Date 2565-04-10
-    */
-    public function update_pass($grp_id, $emp_id)
-    {
-        $this->load->model('Da_pef_score_management', 'pef');
-        $this->pef->grn_grp_id = $grp_id;
-        $this->pef->grn_emp_id = $emp_id;
-        $this->pef->grn_grp_id = 1;
-        $this->pef->update_pass();
-        Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
-    }
-    /*
-	* update_fail
-	* display  update_fail
-	* @input  -
-	* @output  update_fail
-	* @author  Niphat Kuhoksiw
-	* @Create  Date 2565-04-10
-    */
-    public function update_fail($grp_id, $emp_id)
-    {
-        $this->load->model('Da_pef_score_management', 'pef');
-        $this->pef->grn_grp_id = $grp_id;
-        $this->pef->grn_emp_id = $emp_id;
-        $this->pef->grn_status = 2;
-        $this->pef->update_pass();
-        Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
     }
     /*
 	* get_evaluation

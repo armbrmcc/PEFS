@@ -225,14 +225,37 @@ class M_pef_score_management extends Da_pef_score_management
     {
         $sql = "SELECT * 
                 FROM pefs_database.pef_point_form AS poi
-                INNER JOIN pefs_database.pef_performance_form AS pff
-                ON poi.ptf_per_id = pff.per_id
+                INNER JOIN pefs_database.pef_performance_form AS pfm
+                ON poi.ptf_per_id = pfm.per_id
                 INNER JOIN pefs_database.pef_group_nominee AS grn
-                ON grn.grn_emp_id = pff.per_emp_id
+                ON pfm.per_emp_id = grn.grn_emp_id
                 INNER JOIN pefs_database.pef_group AS grp
                 ON grp.grp_id = grn.grn_grp_id
-                WHERE grp.grp_id = $id";
+                INNER JOIN pefs_database.pef_section AS sec
+                ON sec.sec_id = grp.grp_position_group
+                WHERE sec.sec_id = $id";
         $query = $this->db->query($sql);
         return $query;
     }
+    public function get_data_by_id($id)
+    {
+        $sql = "SELECT * 
+                FROM pefs_database.pef_group AS grp
+                INNER JOIN pefs_database.pef_group_nominee AS grn
+                ON grp.grp_id = grn.grn_grp_id
+                INNER JOIN pefs_database.pef_section AS sec
+                ON sec.sec_id = grp.grp_position_group
+                INNER JOIN dbmc.employee AS emp
+                ON emp.Emp_ID = grn.grn_emp_id
+                INNER JOIN dbmc.position AS pos
+                ON pos.Position_ID = emp.Position_ID
+                INNER JOIN dbmc.sectioncode AS scode
+                ON emp.Sectioncode_ID = scode.Sectioncode
+                INNER JOIN dbmc.company AS com
+                ON emp.Company_ID = com.Company_ID
+                WHERE sec.sec_id = $id";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
 }

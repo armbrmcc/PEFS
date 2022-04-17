@@ -74,22 +74,22 @@
 <div class="card-header" id="card_radius">
     <div class="row">
         <div class="col">
-            <h2>Detail Group <label for="cars" style="font-size : 24px;margin-left : 70%">Group stutas:</label>
+            <h2>Detail Group <label for="cars" style="font-size : 24px;margin-left : 63%">Group stutas:</label>
             <button type="button" class="float-right on" style="text-align: center;" 
             id="btn" value="button" onclick="toggleState(this)">
             open   
             <!-- <i class="fas fa-circle" style="font-size:30px; "></i> -->
             </button></h2>
             <hr class="my-4" color="gray">
-            <h3 class="mb-0">Group : <?php echo 'T' . $group[0]->asp_level ?>
-            <label for="cars" style="font-size : 24.5px;margin-left : 70.5%">Select Round :</label>
+            <h5 class="mb-0">Group : <?php echo 'T' . $group[0]->asp_level ?>
+            <label for="cars" style="font-size : 20px;margin-left : 72%">Select Round :</label>
             <select name="cars" id="cars">
                 <option value="volvo">Round 1 </option>
                 <option value="saab">Round 2 </option>
-            </select></h3>
-            <h3 class="mb-0">Group Name : <?php echo $group[0]->asp_name ?></h3>
-            <h3 class="mb-0">Promote : <?php echo $group[0]->Position_name ?></h3>
-            <h3 class="mb-0">Date : <?php echo date("d/m/Y", strtotime($group[0]->grp_date)) ?></h3>
+            </select></h5>
+            <h5 class="mb-0">Group Name : <?php echo $group[0]->asp_name ?></h5>
+            <h5 class="mb-0">Promote : <?php echo $group[0]->Position_name ?></h5>
+            <h5 class="mb-0">Date : <?php echo date("d/m/Y", strtotime($group[0]->grp_date)) ?></h3>
             <hr class="my-4" color="gray">
         </div>
 
@@ -102,7 +102,7 @@
         $get = [];
         foreach ($ass_data as $index_ass => $row_ass) {
             foreach ($point_data as $index => $row) {
-                if ($row_ass->ase_id == $row->ptf_ase_id) {
+              if ($row_ass->ase_id == $row->per_ase_id && $row_emp->grn_emp_id == $row->per_emp_id) {
                     $sum_point += intval($row->ptf_point);
                 }
                 //if 
@@ -117,11 +117,11 @@
         }
         //for each ass_data
         array_push($point_ass, $point_total);
-        array_push($total, (sizeof($point_data) * 5));
+        array_push($total, (sizeof($point_data) * 1));
         array_push($get, array_sum($point_total));
         $point_total = [];
         ?>
-
+        
         <!-- Light table -->
         <div class="table-responsive">
             <table class="table" id="Score">
@@ -399,7 +399,7 @@
                     <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
                 </a>
                 <!-- ปุ่มบันทึก -->
-                <a href="">
+                <a href="<?php echo site_url() . 'Score_management/Score_management/review/'?>">
                     <button type="button" class="btn bg-gradient-success">Submit</button>
                 </a>
             </div>
