@@ -100,7 +100,7 @@ class Get_nominee extends MainController
         echo json_encode($data);
     }
     /*
-	* get_position
+	* get_position_id
 	* search nominee detail by group
 	* @input group id
 	* @output nominee detail
