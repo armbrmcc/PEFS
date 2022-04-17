@@ -142,6 +142,71 @@
             </div>
         </div>
     </div>
+    <div class="card-header" id="card_radius">
+        <h3>
+            Excel Report
+        </h3>
+    </div>
+
+    <div class="row" id="count_table">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="table-responsive" table id='myTable'>
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">EmpNo.Nominee</th>
+                                <th scope="col">Name-Surname Nominee</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Promote to</th>
+                                <th scope="col">EmpNo.Assessor</th>
+                                <th scope="col">Name-Surname Assessor</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Total score pass ≥ 60%</th>
+                                <th scope="col">Result</th>
+                                <th scope="col">Comment</th>
+                                <th scope="col">Q & A</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data_table">
+                            <?php
+                            $num = 1;
+                            for ($i = 0; $i < count($ass_data); $i++) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $num++; ?></td>
+
+                                    <td><?php echo $emp_data->grn_emp_id; ?></td>
+                                    <td><?php echo $emp_data->Empname_eng . ' ' . $emp_data->Empsurname_eng; ?></td>
+                                    <td><?php echo $emp_data->Department; ?></td>
+                                    <td><?php echo $emp_data->sec_name; ?></td>
+
+                                    <td><?php echo $ass_data[$i]->ase_emp_id; ?></td>
+                                    <td><?php echo $ass_data[$i]->Empname_eng . ' ' . $ass_data[$i]->Empsurname_eng; ?></td>
+                                    <td><?php echo $ass_data[$i]->sec_name; ?></td>
+
+                                    <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
+                                    <td><?php echo number_format($percent, 2, '.', ''); ?> %</td>
+                                    <?php
+                                    if ($percent >= 60) {
+                                        $Judgement = 'PASS'; ?>
+                                        <td><span style="color:green;"><?php echo $Judgement; ?></span></td>
+                                    <?php } else {
+                                        $Judgement = 'NOT PASS'; ?>
+                                        <td><span style="color:red;"><?php echo $Judgement; ?></span></td>
+                                    <?php } ?>
+                                    <td><?php echo $point_data[$i]->per_comment; ?></td>
+                                    <td><?php echo $point_data[$i]->per_q_and_a; ?></td>
+                                </tr>
+                            <?php
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 <script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
