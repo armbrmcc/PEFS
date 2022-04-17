@@ -132,11 +132,9 @@
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="text-xs mb-0">
                                                         <?php
-                                                        for ($j = 0; $j < count($arr_group); $j++) {
-                                                            echo $j + 1;
-                                                            echo '. ' . $arr_group[$j]->Position_name;
+                                                            echo '-';
+                                                            echo ' ' . $arr_group[$i]->Position_name;
                                                             echo "<br/>";
-                                                        }
                                                         ?>
                                                     </h6>
                                                 </div>
