@@ -713,7 +713,7 @@ date_default_timezone_set("Asia/Bangkok");
          */
         function change_type() {
             position_level_id = document.getElementById('group_position').value;
-            if (position_level_id > 4) {
+            if (position_level_id < 5) {
                 document.getElementById("type_evaluation").value = "Type 2: (2 round evaluation)";
             } else {
                 document.getElementById("type_evaluation").value = "Type 1: (1 round evaluation)";

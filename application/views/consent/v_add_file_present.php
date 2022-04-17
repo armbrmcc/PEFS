@@ -116,11 +116,11 @@ div.a {
                                 data-bs-target="#modalAddfile<?php echo $i ?>"> <i
                                     class="fas fa-file-upload"></i></button>
                             <?php  }
-                            // if
+                            // i
                             //เคยมีไฟล์แล้วจะอัปเดต
-                            else { ?><button type="button" class=" btn btn-success">
-                                <i class="fas fa-file-upload" data-bs-toggle="modal"
-                                    data-bs-target="#edit_modal_file<?php echo $i ?>"></i></button>
+                            else { ?><button type="button" class=" btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#edit_modal_file<?php echo $i ?>">
+                                <i class=" fas fa-file-upload"></i></button>
                             <?php  } ?>
                             <!-- else -->
 

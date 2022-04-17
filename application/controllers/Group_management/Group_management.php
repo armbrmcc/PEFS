@@ -69,7 +69,7 @@ class Group_management extends MainController
         $assessor = $this->input->post('emp_assessor');
         $nominee = $this->input->post('emp_nominee');
         $pos = $this->input->post('promote');
-        echo  $this->input->post('promote');
+        //echo  $this->input->post('promote');
         $this->ped->grp_date = $date[0];
         $this->ped->grp_date = $date[0];
         echo $this->input->post('year');
@@ -100,6 +100,8 @@ class Group_management extends MainController
         for ($i = 0; $i < sizeof($nominee); $i++) {
             $this->ped->grn_grp_id = $group_id[0]->grp_id;
             $this->ped->grn_emp_id = $nominee[$i];
+            $this->ped->grn_status_done = -1;
+            $this->ped->grn_status_result = -1;
             $this->emp->Position_name = $pos[$i];
             print_r($pos);
             $pos_id = $this->emp->get_position_id()->row();
