@@ -2,7 +2,7 @@
     /*
     * Da_pef_evaluation
     * add evaluation form to database 
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
+    * @author Phatchara Khongthandee and Pontakon Mujit
     * @Create Date 2565-03-09
     */
 ?>
@@ -23,9 +23,9 @@ class Da_pef_point_form extends pefs_model
     * เพิ่มข้อมูลลงใน database ตาราง pef_point_form
     * @input  ptf_point, ptf_date, ptf_row, ptf_ase_id, ptf_for_id, ptf_emp_id, ptf_per_id
     * @output -
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
-    * @Create Date 2565-03-09
-    * @Update Date 2565-03-10
+    * @author Phatchara Khongthandee and PPontakon Mujit
+    * @Create Date 2565-03-10
+    * @Update Date 2565-03-11
     */
     function insert_point()
     {
@@ -39,22 +39,21 @@ class Da_pef_point_form extends pefs_model
 
                 VALUES (?,?,?,?,?)";
 
-                $run_for = 0;
+                
                 for ($i = 0; $i < count($this->row);$i++){
                     for ($j = 0; $j < $this->row[$i]; $j++){
                         $this->ptf_round = 1 ;
-                        $this->db->query($sql, array($this->ptf_point[$j], $this->ptf_date, $this->ptf_round, $this->ptf_for_id[$run_for], $this->ptf_per_id));
-                        $run_for++;
+                        $this->db->query($sql, array($this->ptf_point[$j], $this->ptf_date, $this->ptf_round, $this->ptf_for_id[$i], $this->ptf_per_id));
                     }  
                 }
     }
 
     /*
-    * insert_point
+    * insert_point_round_2
     * เพิ่มข้อมูลลงใน database ตาราง pef_point_form
     * @input  ptf_point, ptf_date, ptf_row, ptf_ase_id, ptf_for_id, ptf_emp_id, ptf_per_id
     * @output -
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
+    * @author Phatchara Khongthandee and Pontakon Mujit
     * @Create Date 2565-03-09
     * @Update Date 2565-03-10
     */

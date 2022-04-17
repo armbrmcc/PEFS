@@ -98,7 +98,7 @@
                             </td>
                             <td>
                                 <?php
-                                    if($arr_nominee[$i]->grn_status == -1 || $arr_nominee[$i]->grn_status == NULL){
+                                    if($arr_nominee[$i]->grn_status_done == -1 || $arr_nominee[$i]->grn_status_done == NULL){
                                 ?>
                                 <a>
                                     <button type="button" class="btn btn-xs button_size"
@@ -129,7 +129,7 @@
                                         else if($arr_nominee[$i]->asp_type == 2)
                                         {
                                             // check round 2 but evaluation 1 round
-                                            if($arr_nominee[$i]->grn_status == 0)
+                                            if($arr_nominee[$i]->grn_status_done == 0)
                                             {
                                 ?>
                                                 <!-- round 2/1 -->
@@ -143,7 +143,7 @@
                                 <?php       
                                             } //end if = 0
                                             // check round 2 evaluation 2 round
-                                            else if($arr_nominee[$i]->grn_status == 1)
+                                            else if($arr_nominee[$i]->grn_status_done == 1)
                                             {
                                 ?>
                                                 <!-- round 2/2 -->

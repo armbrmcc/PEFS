@@ -68,7 +68,7 @@
                                 </h5>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <div class="icon icon-shape bg-gradient-warning shadow text-center border-radius-md">
                                     <i class="ni ni-single-copy-04" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                 </span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
                                     <i class="fas fa-user-alt"></i>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                                 </span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <div class="icon icon-shape bg-gradient-secondary shadow text-center border-radius-md">
                                     <i class="fas fa-user-alt-slash"></i>
                                 </div>
                             </div>
@@ -145,7 +145,7 @@
                                 </span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
                                     <i class="ni ni-check-bold"></i>
                                 </div>
                             </div>
@@ -171,7 +171,7 @@
                                 </span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <div class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
                                     <i class="fas fa-times"></i>
                                 </div>
                             </div>
@@ -407,13 +407,15 @@
                         check = row.sec_level;
                     }
 
-                    if (row.grn_status == '-1') {
+                    if (row.grn_status_done == '-1' || row.grn_status_result == '-1') {
                         have_not++;
-                    } else if (row.grn_status == '0') {
+                    } else if (row.grn_status_done == '0' || row.grn_status_done == '1') {
                         have++;
-                    } else if (row.grn_status == '1') {
+                    }
+
+                    if (row.grn_status_result == '1') {
                         pass++;
-                    } else if (row.grn_status == '2') {
+                    } else if (row.grn_status_result == '2') {
                         fail++;
                     }
                 });
@@ -421,9 +423,9 @@
                 label_sec.forEach((row_label, index) => {
                     data_charts.forEach((row, index) => {
                         if (row_label == row.sec_id) {
-                            if (row.grn_status == '1') {
+                            if (row.grn_status_result == '1') {
                                 count_pass++;
-                            } else if (row.grn_status == '2') {
+                            } else if (row.grn_status_result == '2') {
                                 count_fail++;
                             }
                         }
@@ -477,7 +479,7 @@
                 data_row += '<td text-align: center id="pass_' + index + '"></td>';
                 data_row += '<td text-align: center id="fail_' + index + '"></td>';
                 data_row += '<td><a href="<?php echo site_url() ?>Report/Report/show_report_detail/' + row.sec_id + ' ">'
-                data_row += '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
+                data_row += '<button type="button" class="btn bg-gradient-info btn-block mb-3">'
                 data_row += '<i class="fas fa-search"></i></button></a></td>'
                 data_row += '</tr>';
                 section.push(row.sec_id);
@@ -529,13 +531,15 @@
                     data_charts.forEach((row, index) => {
                         if (row_sec == row.sec_id) {
                             group = row.sec_id;
-                            if (row.grn_status == '-1') {
+                            if (row.grn_status_done == '-1' || row.grn_status_result == '-1') {
                                 have_not++;
-                            } else if (row.grn_status == '0') {
+                            } else if (row.grn_status_done == '0' || row.grn_status_done == '1') {
                                 have++;
-                            } else if (row.grn_status == '1') {
+                            }
+
+                            if (row.grn_status_result == '1') {
                                 pass_check++;
-                            } else if (row.grn_status == '2') {
+                            } else if (row.grn_status_result == '2') {
                                 fail_check++;
                             }
                             total++;

@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 include_once('pefs_model.php');
 
 class Da_pef_user_login extends pefs_model 
-{//class Da_pef_login
+{//class Da_pef_user_login
     
 
 	public function __construct()
@@ -19,4 +19,4 @@ class Da_pef_user_login extends pefs_model
 	}//end construct
 
 
-}//end class Da_pef_login
+}//end class Da_pef_user_login

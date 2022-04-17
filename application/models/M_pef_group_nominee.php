@@ -1,7 +1,7 @@
 <?php
 /* 
     * M_pef_group_nominee
-    * Model for 
+    * Model for pef_group_nominee
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @Create Date 2565-03-04
     */
@@ -14,8 +14,8 @@ class M_pef_group_nominee extends Da_pef_group_nominee
 {
     /*
 	* get_nominee_detail
-	* get 
-	* @input  -
+	* get data Nominee detail from database
+	* @input  group_id
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03
@@ -44,8 +44,8 @@ class M_pef_group_nominee extends Da_pef_group_nominee
 
     /*
 	* get_nominee_by_id
-	* get 
-	* @input  -
+	* get data Nominee from database
+	* @input  id_nominee
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03
@@ -155,12 +155,12 @@ class M_pef_group_nominee extends Da_pef_group_nominee
     
 
         /*
-	* get_nominee_detail_admin
-	* get 
-	* @input  -
-	* @output -
-	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
-	* @Create Date 2565-03-03
+	* get_nominee_detail_admin 
+	* get nominee_detail of use in result admin 
+	* @input  group_id 
+	* @output nominee_detail
+	* @author Pontakon M.
+	* @Create date 2565-04-15
     */
     public function get_nominee_detail_admin($group_id)
     {
@@ -173,6 +173,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         ,asp_type
         ,grp_position_group
         ,grp_id
+        ,grn_status_done
                             FROM pefs_database.pef_group_nominee AS groupno
                             INNER JOIN pefs_database.pef_group AS gr
                             ON groupno.grn_grp_id = gr.grp_id
@@ -195,11 +196,11 @@ class M_pef_group_nominee extends Da_pef_group_nominee
     
     /*
 	* get_nominee_by_employee_id
-	* get 
-	* @input  -
-	* @output -
-	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
-	* @Create Date 2565-03-03
+	* get nominee_detail of use in result admin but find with id_employee
+	* @input  id_employee
+	* @output nominee_detail
+	* @author Pontakon M.
+	* @Create date 2565-04-15
     */
     public function get_nominee_by_employee_id($id_employee)
     {
@@ -218,16 +219,16 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         WHERE employee.Emp_ID = $id_employee";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่าข้อมูลรายละเอียดของ Nominee
 
 
-        /*
+    /*
 	* get_promote_to_by_nominee_and_group_id
-	* get 
-	* @input  -
-	* @output -
-	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
-	* @Create Date 2565-03-03
+	* get nominee_promote of use in result admin  
+	* @input  id_nominee,id_group
+	* @output get nominee_promote
+	* @author Pontakon M.
+	* @Create date 2565-04-15
     */
     public function get_promote_to_by_nominee_and_group_id($id_nominee,$id_group)
     {
@@ -236,6 +237,6 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         WHERE gro.grn_emp_id = $id_nominee and gro.grn_grp_id=$id_group";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่าข้อมูลรายละเอียดของตำแหน่งที่ต้องการประเมิน
 
 }

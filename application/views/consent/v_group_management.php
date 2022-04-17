@@ -184,18 +184,16 @@ div.tr {
                                 </div>
                             </td>
                             <td style="text-align:center">
-
                                 <a
                                     href="<?php echo site_url() . 'Group_management/Group_management/delete_group/' . $group[$i]->grp_id; ?>">
                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </a>
-
+                    
                                 <a
                                     href="<?php echo site_url() . 'Group_management/Group_management/edit_group/' . $group[$i]->grp_id ?>"><button
                                         type="button" class="btn btn-warning"><i class="fa fa-pencil"
-                                            aria-hidden="true"></i></button></a>
-
-
+                                            aria-hidden="true"></i></button>
+                                </a>
                             </td>
 
                         </tr>
@@ -218,8 +216,6 @@ div.tr {
             let years = d.getFullYear();
             years = years - 2
             console.log(years);
-
-
             // var x = document.getElementById("year");
             // var option = document.createElement("option");
             for (i = 0; i < 5; i++) {
@@ -266,7 +262,7 @@ div.tr {
                     var data_row = '';
                     data.forEach((row, index) => {
                         const date = new Date(row.grp_date)
-                        const result = date.toLocaleDateString('th-TH', {
+                        const result = date.toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',
@@ -306,9 +302,9 @@ div.tr {
                         count_index++
                         index++
                     })
-                    for (var i = 0; i < data.d.length; i++) {
+                    // for (var i = 0; i < data.d.length; i++) {
 
-                    }
+                    // }
                     i++
 
                     count = count_index;

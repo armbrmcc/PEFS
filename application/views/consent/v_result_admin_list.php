@@ -1,11 +1,12 @@
 <!--
-    v_result_group_assessor
-    display for review list
+    v_result_admin_list
+    display for result_admin_list
     @input -
     @output -
-    @author Ponprapai Atsawanurak and Phatchara Khongthandee
-    Create date 2565-01-25
-    Update date 2565-01-28
+    @author Pontakon M.
+    Create date 2565-04-13
+    Update date 2565-04-14
+    Update date 2565-04-15
 -->
 <!-- CSS -->
 <style>
@@ -72,13 +73,15 @@
                         <tr>
                             <th>#</th>
                             <th>Group</th>
-                          
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php for ($i = 0; $i < count($arr_group); $i++) { ?>
+                  
+
+                             
                         <tr>
                             <!-- # -->
                             <td>
@@ -88,7 +91,7 @@
                             </td>
                             <!-- Group Level -->
                             <td>
-                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->grp_position_group ?></h6>
+                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->sec_level ?></h6>
                             </td>
                      
                             <td>
@@ -106,7 +109,7 @@
                                     </button>
                                 </a>
                             </td>
-                        </tr>
+                        </tr>  
                         <?php } ?>
                     </tbody>
                 </table>

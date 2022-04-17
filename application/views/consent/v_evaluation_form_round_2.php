@@ -433,7 +433,7 @@ $( document ).ready(function() {
                             <!-- comment -->
                             <div class="form-group">
                                 <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
-                                <textarea class="form-control" rows="5" id="Comment" type="text" name="Comment"
+                                <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
                                     required></textarea>
                             </div>
                             <br>
@@ -443,6 +443,15 @@ $( document ).ready(function() {
                                 <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
                                     required></textarea>
                             </div>
+                            <!-- input -->
+                            <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
+                            <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id" id="ase_id">
+                            <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id" id="emp_id">
+                            <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
+                            <input type="hidden" value="<?php echo $arr_nominee[0]->grp_id; ?>" name="group_id" id="group_id">
+                            <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id">
+                            <!-- end input -->
+
                             <!-- Confirm -->
                             <div class="col-6 text-end">
                                 <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"

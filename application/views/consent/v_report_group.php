@@ -43,7 +43,7 @@
                         for ($i = 0; $i < count($sec_data); $i++) {
                         ?>
                             <?php
-                            if ($sec_data[$i]->grn_status == '1' || $sec_data[$i]->grn_status == '2') {
+                            if ($sec_data[$i]->grn_status_result == '1' || $sec_data[$i]->grn_status_result == '2') {
                             ?>
                                 <tr>
                                     <td><?php echo $num++; ?></td>
@@ -52,15 +52,15 @@
                                     <td><?php echo $sec_data[$i]->grp_id; ?></td>
                                     <td><?php echo $sec_data[$i]->Position_name; ?></td>
                                     <?php
-                                    if ($sec_data[$i]->grn_status == '1') {
+                                    if ($sec_data[$i]->grn_status_result == '1') {
                                         $Status = 'Pass'; ?>
                                         <td><span style="color:green;"><?php echo $Status; ?></span></td>
-                                    <?php } else if ($sec_data[$i]->grn_status == '2') {
+                                    <?php } else if ($sec_data[$i]->grn_status_result == '2') {
                                         $Status = 'Fail'; ?>
                                         <td><span style="color:red;"><?php echo $Status; ?></span></td>
                                     <?php } ?>
                                     <td><a href="<?php echo site_url() . 'Report/Report/show_report_detail_assessor/' . $sec_data[$i]->grn_id; ?>">
-                                            <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                            <button type="button" class="btn bg-gradient-info btn-block mb-3">
                                                 <i class="fas fa-search"></i>
                                             </button>
                                         </a>
@@ -73,9 +73,11 @@
             </div>
         </div>
     </div>
-    <h2>
-        Excel Report
-    </h2>
+    <div class="card-header" id="card_radius">
+        <h3>
+            Excel Report
+        </h3>
+    </div>
 
     <?php
     $sum_point = 0;
@@ -87,7 +89,7 @@
     foreach ($sec_data as $index_emp => $row_emp) {
         foreach ($ass_data as $index_ass => $row_ass) {
             foreach ($point_data as $index => $row) {
-                if ($row_ass->ase_id == $row->ptf_ase_id && $row_emp->grn_id == $row->ptf_emp_id) {
+                if ($row_ass->ase_id == $row->per_ase_id && $row_emp->grn_emp_id == $row->per_emp_id) {
                     $sum_point += intval($row->ptf_point);
                 }
                 //if 
@@ -101,7 +103,7 @@
             $sum_point = 0;
         }
         //for each ass_data
-        if ($row_emp->grn_status > 0) {
+        if ($row_emp->grn_status_result > 0) {
             array_push($point_emp, $point_total);
             array_push($total, (sizeof($point_data) * 5));
             array_push($get, array_sum($point_total));
@@ -141,7 +143,7 @@
                             $num = 1;
                             $index_point = 0;
                             for ($i = 0; $i < count($sec_data); $i++) {
-                                if ($sec_data[$i]->grn_status == '1' || $sec_data[$i]->grn_status == '2') {
+                                if ($sec_data[$i]->grn_status_result == '1' || $sec_data[$i]->grn_status_result == '2') {
                             ?>
                                     <tr>
                                         <td><?php echo $num++; ?></td>
@@ -211,6 +213,6 @@
         var wb = XLSX.utils.table_to_book(elt, {
             sheet: sheet_name
         });
-        XLSX.writeFile(wb, 'Performance Evaluation Factor Report.xlsx'); //Download ไฟล์ excel จากตาราง html โดยใช้ชื่อว่า Performance Evaluation Factor Report.xlsx
+        XLSX.writeFile(wb, 'Performance Evaluation Factor Report Group.xlsx'); //Download ไฟล์ excel จากตาราง html โดยใช้ชื่อว่า Performance Evaluation Factor Report.xlsx
     }
 </script>

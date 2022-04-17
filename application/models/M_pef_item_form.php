@@ -1,10 +1,10 @@
 <?php
-    /* 
+/*
     * M_pef_item_form
-    * Model for 
-    * @author  
-    * @Create Date  
-    */
+    * Model for item form
+    * @author Pontakon M.
+    * @Create Date 2565-04-08
+*/
 ?>
 
 <?php
@@ -14,11 +14,11 @@ class M_pef_item_form extends Da_pef_item_form
 {
     /*
 	* get_item_form_by_id
-	* get 
-	* @input  -
-	* @output -
-	* @author  
-	* @Create Date  
+	* get item detail
+	* @input  id_position,item_yaer
+	* @output get item detail
+	* @author Pontakon M.
+	* @Create date 2565-04-08
     */
     public function get_item_form_by_id()
     {
@@ -32,13 +32,13 @@ class M_pef_item_form extends Da_pef_item_form
     } //คืนค่าข้อมูลรายละเอียดของหัวข้อ
     
 
-        /*
-	* get_item_form_by_id
-	* get 
-	* @input  -
-	* @output -
-	* @author  
-	* @Create Date  
+    /*
+	* get_item_evaluation_by_id
+	* get item detail but use in evaluation
+	* @input  id_position,item_yaer
+	* @output get item detail
+	* @author Pontakon M.
+	* @Create date 2565-04-12
     */
     public function get_item_evaluation_by_id()
     {

@@ -44,8 +44,8 @@ class M_pef_assessor_promote extends Da_pef_assessor_promote
 	* get position to promote list
 	* @input  -
 	* @output  position to promote all 
-	* @author  Thitima Popila
-	* @Create  Date 2565-03-09
+	* @author Pontakon M.
+	* @Create date 2565-04-15
     */
     public function get_promote_by_id_group($id_group)
     {

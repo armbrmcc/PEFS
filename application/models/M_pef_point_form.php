@@ -1,9 +1,9 @@
 <?php
 /* 
-    * M_pef_group_assessor
-    * Model for 
+    * M_pef_point_form
+    * Model for pef_point_form
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak 
-    * @Create Date 2564-08-14  
+    * @Create Date 2565-03-14  
     */
 ?>
 
@@ -19,7 +19,7 @@ class M_pef_point_form extends Da_pef_point_form
 	* @input  -
 	* @output point form
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak 
-	* @Create Date 2565-03-10 
+	* @Create Date 2565-04-10 
 	*/
     function get_point()
     {
@@ -86,8 +86,8 @@ class M_pef_point_form extends Da_pef_point_form
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
 	* @author 	Phatchara Khongthandee and Pontakon Mujit 
-	* @Create   Date 2564-08-18 
-	* @Update   Date 2564-08-19
+	* @Create   Date 2565-04-10
+	* @Update   Date 2565-04-11
 	*/
     function get_point_list($per_id)
     {
@@ -104,7 +104,7 @@ class M_pef_point_form extends Da_pef_point_form
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
 	* @author 	Thitima Popila 
-	* @Create   Date 2564-04-15 
+	* @Create   Date 2565-04-15 
 	*/
     function get_point_list_round1($per_id)
     {
@@ -122,7 +122,7 @@ class M_pef_point_form extends Da_pef_point_form
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
 	* @author 	Thitima Popila 
-	* @Create   Date 2564-04-15 
+	* @Create   Date 2565-04-15 
 	*/
     function get_point_list_round2($per_id)
     {
@@ -139,9 +139,9 @@ class M_pef_point_form extends Da_pef_point_form
 	* คืนค่าคะแนนของแต่ละฟอร์ม
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์มแค่รอบ 2 
-	* @author 	Phatchara Khongthandee and Pontakon Mujit 
-	* @Create   Date 2564-08-18 
-	* @Update   Date 2564-08-19
+	* @author 	Pontakon Mujit 
+	* @Create   Date 2565-04-15
+	* @Update   Date 2565-04-15
 	*/
     function get_point_list_round_2_admin($per_id,$nor_id,$id_assessor,$date)
     {

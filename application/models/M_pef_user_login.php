@@ -42,8 +42,8 @@ class M_pef_user_login extends Da_pef_user_login
     * get Emp_ID in database
     * @input  -
     * @output - 
-    * @author Niphat Kuhokciw
-    * @Create Date 2564-07-28
+    * @author Chakrit Boonprasert
+    * @Create Date 2565-04-10
     */
     public function get_emp()
     { //get Emp_ID

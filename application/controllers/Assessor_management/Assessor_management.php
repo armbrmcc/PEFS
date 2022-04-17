@@ -136,32 +136,49 @@ class Assessor_management extends MainController
 	* @author ApinyaPhadungkit
 	* @Create Date 2565-04-15
 	*/
-    function add_group_assessor($ase_gro_id)
+    function add_group_assessor()
     {//insert
         $this->load->model('Da_pef_group_assessor', 'dass');
-        $this->dass->asp_name = $this->input->post('group_name');
-        $this->dass->asp_level = $this->input->post('year');
-        // $this->dass->asp_type = $this->input->post('group_type');
-        $this->dass->asp_status = $this->input->post('group_status');
+        $this->load->model('Da_pef_assessor_promote', 'dpro');
+        $this->load->model('Da_pef_assessor_position', 'dpos');
 
-        if ($this->input->post('year') <= 4) {
-            $this->dass->asp_type = '2';
-            // $this->ped->insert_group_schedule();
-        } else {
-            $this->dass->asp_type = '1';
-            // $this->ped->insert_group_schedule();
+        $group_name = $this->input->post('group_name');
+        $group_level = $this->input->post('group_level');
+        $group_type = $this->input->post('group_type');
+        $pos = $this->input->post('pos');
+        $count_pos = $this->input->post('count_pos');
+
+        echo $group_name;
+        echo $group_level;
+        echo $group_type;
+        print_r($pos);
+        echo $count_pos;
+
+        if($group_type == "Type 2: (2 round evaluation)"){
+            $type = '2';
+        }else {
+            $type = '1';
+        }
+
+        $this->dpro->asp_name = $group_name;
+        $this->dpro->asp_level = $group_level;
+        $this->dpro->asp_type = $type;
+        $this->dpro->insert();
+
+
+        for ($i = 0; $i < sizeof($count_pos); $i++) {
+            $this->emp->Position_name = $pos[$i];
+            print_r($pos);
+            $pos_id = $this->emp->get_position_id()->row();
+            print_r($pos_id);
+            // $this->dass->insert();
+            // echo $pos_id->Position_ID;
+            // $this->ped->insert_nominee();
         }
 
 
-
-
-        // $this->dass->insert();
-
-        print_r($this->input->post('group_name'));
-        print_r($this->input->post('year'));
-        print_r($this->dass->asp_type);
-        print_r($this->input->post('group_status'));
-        // redirect('Assessor_management/Assessor_management/show_assessor_management_detail/'.$ase_gro_id);
+        $data = "insert_success";
+        echo json_encode($data);
     }//end insert
 
 

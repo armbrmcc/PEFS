@@ -1,7 +1,7 @@
 <?php
     /* 
     * M_pef_assessor
-    * Model for 
+    * Model for pef_assessor
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @Create Date 2565-03-04
     */
@@ -15,7 +15,7 @@ class M_pef_group_schedule extends Da_pef_group_schedule
     /*
 	* get_date_evaluation
 	* get date evaluation 
-	* @input  -
+	* @input  ass_id
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-10
@@ -36,6 +36,14 @@ class M_pef_group_schedule extends Da_pef_group_schedule
         return $query;
     } //คืนค่าข้อมูลวันที่ต้องทำการประเมินแต่ละรอบ ของกลุ่มประเมิน 
 
+    /*
+	* get_date_rourd_2
+	* get date evaluation of rourd_2
+	* @input  group_id
+	* @output -
+	* @author Pontakon M.
+	* @Create Date 2565-04-14
+    */
     public function get_date_rourd_2($group_id)
     {
         $sql = "SELECT * FROM pefs_database.pef_group_schedule AS schedule

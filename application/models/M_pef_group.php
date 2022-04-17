@@ -1,7 +1,7 @@
 <?php
 /* 
     * M_pef_assessor
-    * Model for 
+    * Model for pef_assessor
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
     * @Create Date 2565-03-04
     */
@@ -14,8 +14,8 @@ class M_pef_group extends Da_pef_group
 {
     /*
 	* get_group_evaluation
-	* get 
-	* @input  -
+	* get data group evaluation from database
+	* @input  ass_id
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03
@@ -41,9 +41,9 @@ class M_pef_group extends Da_pef_group
     } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมิน
 
     /*
-	* get_group_evaluation
-	* get 
-	* @input  -
+	* get_group_date_round
+	* get date evaluation 
+	* @input  group_id
 	* @output -
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03
@@ -57,7 +57,7 @@ class M_pef_group extends Da_pef_group
                     WHERE  gr.grp_id = '$group_id'";
         $query = $this->db->query($sql);
         return $query;
-    } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมิน
+    } //คืนค่าข้อมูลวันประเมินของแต่กลุ่มการประเมิน
 
     function get_group_id()
     { //check User_login and Pass_login in database
@@ -247,14 +247,31 @@ class M_pef_group extends Da_pef_group
     } //end  get_group
 
 
-
-    function get_all_group()
+    /*
+	* get_all_group_and_position
+	* get all_group_and_position
+	* @input  -
+	* @output get_all_group_and_position
+	* @author Pontakon M.
+	* @Create date 2565-04-14
+    */
+    function get_all_group_and_position()
     { 
-        $sql = "SELECT *FROM pefs_database.pef_group";
+        $sql = "SELECT *FROM pefs_database.pef_group as gro
+        INNER JOIN pefs_database.pef_section as sec
+        on gro.grp_position_group = sec.sec_id";
         $query = $this->db->query($sql);
         return $query;
     } //end  
 
+        /*
+	* get_group_by_group_id
+	* get_group
+	* @input  group_id
+	* @output get_group
+	* @author Pontakon M.
+	* @Create date 2565-04-14
+    */
     function get_group_by_group_id($group_id)
     { 
         $sql = "SELECT *FROM pefs_database.pef_group as gro
