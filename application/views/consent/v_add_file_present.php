@@ -52,12 +52,7 @@ div.a {
     <div class="card-header">
         <h2>Add File Nominee (เพิ่มไฟล์นำเสนอผลงาน)</h2>
     </div>
-    <div>
-        <label for="year" style="position: absolute; right: 0;font-size:20px;">Select Year:
-            <select id="year" name="year" onchange="get_group()">
-            </select>
-        </label><br><br>
-    </div>
+
     <!-- Table group Nominee list -->
     <div class="card-body" id="card_radius">
         <div class="table-responsive">
@@ -118,13 +113,13 @@ div.a {
                             // ยังไม่มีไฟล์จะเพิ่มไฟล์
                             if ($check == 0) { ?>
                             <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#modalAddfile<?php echo $i ?>"> <i class="fas fa-file-upload"
-                                    style=" font-size:2vw;"></i></button>
+                                data-bs-target="#modalAddfile<?php echo $i ?>"> <i
+                                    class="fas fa-file-upload"></i></button>
                             <?php  }
                             // if
                             //เคยมีไฟล์แล้วจะอัปเดต
                             else { ?><button type="button" class=" btn btn-success">
-                                <i class="fas fa-file-upload" style=" font-size:2vw;" data-bs-toggle="modal"
+                                <i class="fas fa-file-upload" data-bs-toggle="modal"
                                     data-bs-target="#edit_modal_file<?php echo $i ?>"></i></button>
                             <?php  } ?>
                             <!-- else -->
