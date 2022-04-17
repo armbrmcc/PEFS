@@ -1,8 +1,8 @@
 <?php
     /* 
-    * M_pef_group
-    * Model for 
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * Da_pef_assessor_promote
+    * Model for assessor promote
+    * @author Phatchara Khongthandee and Ponprapai Atsawanurak and Apinya Phadungkit
     * @Create Date 2565-03-04
     */
 ?>
@@ -32,11 +32,12 @@ class Da_pef_assessor_promote extends pefs_model
     }
 
     // *insert
-    // *insert assessor_promote in database
+    // *insert assessor promote in database
     // *@input asp_name,asp_level,asp_type
     // *@output -
     // *@author Apinya Phadungkit
-    // *@Create Date 30/03/2022
+    // *@Create Date 2565-03-30
+    // *@Update Date 2565-04-18
     public function insert()
     {
         $sql = "INSERT INTO pefs_database.pef_assessor_promote(asp_name,asp_level,asp_type) 
@@ -44,14 +45,14 @@ class Da_pef_assessor_promote extends pefs_model
         $this->db->query($sql, array($this->asp_name, $this->asp_level, $this->asp_type));
     }
 
-        /*
+    /*
 	* delete
-	* delete group_assessor
-	* @input   gro_id
+	* delete assessor promote in database
+	* @input   asp_id
 	* @output  - 
-	* @author  Thitima Popila
+	* @author  Apinya Phadungkit
 	* @Create  Date 2565-03-08
-    * @Update  Date 2565-03-08
+    * @Update  Date 2565-04-18
     */
     public function delete()
     {

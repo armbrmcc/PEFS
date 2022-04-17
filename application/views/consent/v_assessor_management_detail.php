@@ -1,11 +1,11 @@
 <!--
     * v_assessor_management_detail
     * display for assessor management by add or delete information
-    * @input  -
-    * @output -
+    * @input  id
+    * @output Assessor list
     * @author Apinya Phadungkit
     * Create date 2565-01-25   
-    * Update date 
+    * Update date 2565-04-18
 -->
 
 <!DOCTYPE html>
@@ -16,12 +16,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
-
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
-
-
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -64,47 +58,43 @@
 
     <!-- JavaScript -->
     <script>
-        // $(document).ready(function() {
-        //     $("#btn_success").click(function() {
-        //         // $("#ModalConfirmAssessor").hide();
-        //         $("#ModalConfirmAssessor").hide();
-        //     });
-
-        // });
-
-        // $(document).ready(function() {
-        //     $("#btn_success").click(function() {
-        //         $('#ModalConfirmAssessor').modal('hide');
-        //         // $("#ModalConfirmAssessor").hide();
-        //         $('#ModalConfirmAssessor').on('hide.bs.modal', function(e) {
-        //             e.stopPropagation();
-        //         })
-
-        //     });
-        // });
-
-
-        // $('#btn_success').on("click", function (e) {
-        //     $('#ModalConfirmAssessorSuccess').modal('show');
-        // });
-
-
-        // $('#btn_success').click(function() {
-        //     $('#ModalConfirmAssessorSuccess').modal('show');
-        // });
-
-
         //Data Table
         $(document).ready(function() {
             $("#list_table").DataTable();
         });
-    </script>
 
+        //input employee id to get employee name to add assessor
+        function get_Emp() {
+            ase_emp_id = document.getElementById('ase_emp_id_modal').value;
+            var empname = "";
+            console.log(ase_emp_id)
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>Assessor_Management/Assessor_Management/search_by_employee_id",
+                data: {
+                    "ase_emp_id": ase_emp_id
+                },
+                dataType: "JSON",
+                success: function(data, status) {
+                    console.log(data);
+                    if (data.length == 0) {
+                        document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
+                    } else {
+                        empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
+                        document.getElementById("showname_modal").value = empname;
+                        console.log(999)
+                        console.log(empname)
+                    }
+                }
+            });
+        }
+    </script>
     <!-- End JavaScript -->
 
-
+    <!-- Start Content Assessor Management Detail -->
     <div class="container-fluid py-4">
         <div class="card-header">
+            <!-- Title page -->
             <h2>Assessor Management (จัดการกรรมการ)</h2>
         </div>
         <div class="row">
@@ -114,7 +104,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6 d-flex align-items-center">
-                                <!-- <h4>Promote to T2 : General Manager</h4> -->
+                                <!-- Title -->
                                 <h4>Promote to T<?php echo $arr_ass[0]->asp_level ?> : <?php echo $arr_ass[0]->sec_name ?></h4>
 
                             </div>
@@ -142,9 +132,8 @@
                         </div>
                     </div>
 
-
+                    <!-- Start content in table -->
                     <div class="card-body px-0 pt-0 pb-2">
-                        <!-- <div class="table-responsive p-0"> -->
                         <table class="table align-items-center" id="list_table">
                             <thead>
                                 <tr>
@@ -163,26 +152,31 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
+                                                <!-- ลำดับของกรรมการ -->
                                                 <h6 class="text-xs text-secondary mb-0"><?php echo $i + 1 ?></h6>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
+                                                <!-- รหัสของกรรมการ -->
                                                 <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->ase_emp_id ?></h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="d-flex flex-column justify-content-center">
+                                                <!-- ชื่อและนามสกุลของกรรมการ -->
                                                 <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Empname_eng . '  ' . $arr_ass[$i]->Empsurname_eng ?></h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
+                                                <!-- ชื่อย่อตำแหน่งของกรรมการ -->
                                                 <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Pos_shortName ?></h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
+                                                <!-- ตำแหน่งของกรรมการ -->
                                                 <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Position_name ?></h6>
                                             </div>
                                         </td>
@@ -210,29 +204,21 @@
                                                                     <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
                                                                 </div>
                                                                 <h4 class="text-gradient text-danger mt-4">Confirm Delete Assessor?</h4>
-                                                                <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
+                                                            <!-- ปุ่มดำเนินการลบ -->
                                                             <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/delete_assessor' . '/' . $arr_ass[$i]->ase_emp_id . '/' . $arr_ass[$i]->ase_gro_id; ?>">
-                                                            <!-- <input class="form-control" type="text" id="group_id" name="group_id" value="<?php echo $arr_ass[$i]->ase_gro_id ?>" hidden> -->
                                                                 <button type="button" class="btn bg-gradient-success">Confirm</button>
                                                             </a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-
-
-
-
-
-
-
                                         </td>
                                     </tr>
+
                                     <!-- Modal Add Assessor-->
                                     <div class="modal fade" id="ModalAddAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalAddAssessorTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -258,28 +244,22 @@
                                                         <input class="form-control" type="text" id="group_id" name="group_id" value="<?php echo $arr_ass[$i]->ase_gro_id ?>" hidden>
                                                         <input class="form-control" type="text" id="sec_id" name="sec_id" value="<?php echo $arr_ass[$i]->ase_sec_id ?>" hidden>
 
+                                                        <!-- ปุ่มดำเนินการเพิ่มกรรมการ -->
                                                         <button type="submit" class="btn btn-success float-right">Submit</button>
+
+                                                        <!-- ปุ่มดำเนินการยกเลิกการเพิ่มกรรมการ -->
                                                         <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
-
-
-
-
                                 <?php
                                 }
                                 ?>
                             </tbody>
                         </table>
-
-                        <!-- </div> -->
+                        <!-- End content in table -->
                     </div>
                 </div>
                 <div class="col-12 text-end">
@@ -290,20 +270,10 @@
             </div>
         </div>
     </div>
-
-
-
-
-
+    <!-- End Content Assessor Management Detail -->
 </body>
 
 </html>
-
-
-
-
-
-
 
 <!-- Modal Confirm Create Group Assessor -->
 <div class="modal fade" id="ModalConfirmAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalConfirmAssessorTitle" aria-hidden="true">
@@ -322,17 +292,16 @@
                     </div>
                     <br>
                     <h4>Confirm Create Group Assessor</h4>
-                    <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
                 </div>
             </div>
             <div class="modal-footer">
+                <!-- ปุ่มดำเนินการยกเลิกการยืนยันการเพิ่มกรรมการ -->
                 <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
+
                 <!-- Button trigger modal -->
+                <!-- ปุ่มดำเนินการยืนยันการยืนยันการเพิ่มกรรมการ -->
                 <button type="button" class="btn bg-gradient-success" data-bs-toggle="modal" data-bs-target="#ModalConfirmAssessorSuccess" id="btn_success">Confirm
                 </button>
-
-                <!-- <button type="button" class="btn bg-gradient-success" data-bs-dismiss="modal" id="btn_success">Confirm
-                </button> -->
             </div>
         </div>
     </div>
@@ -355,41 +324,14 @@
                     </div>
                     <br>
                     <h4>Success</h4>
-                    <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
                 </div>
             </div>
             <div class="modal-footer">
                 <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
+                <!-- ปุ่มดำเนินการรับทราบการเพิ่มกรรมการ -->
                     <button type="button" class="btn bg-gradient-success" data-bs-dismiss="modal">OK</button>
                 </a>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    function get_Emp() {
-        ase_emp_id = document.getElementById('ase_emp_id_modal').value;
-        var empname = "";
-        console.log(ase_emp_id)
-        $.ajax({
-            type: "POST",
-            url: "<?php echo base_url(); ?>Assessor_Management/Assessor_Management/search_by_employee_id",
-            data: {
-                "ase_emp_id": ase_emp_id
-            },
-            dataType: "JSON",
-            success: function(data, status) {
-                console.log(data);
-                if (data.length == 0) {
-                    document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
-                } else {
-                    empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
-                    document.getElementById("showname_modal").value = empname;
-                    console.log(999)
-                    console.log(empname)
-                }
-            }
-        });
-    }
-</script>

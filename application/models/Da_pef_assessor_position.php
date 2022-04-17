@@ -1,7 +1,7 @@
 <?php
     /* 
     * Da_pef_assessor_position
-    * Model for 
+    * Model for assessor_position
     * @author Apinya Phadungkit
     * @Create Date 2565-04-16
     */
@@ -19,11 +19,11 @@ class Da_pef_assessor_position extends pefs_model
     }
 
     // *insert
-    // *insert group_assessor in database
-    // *@input gap_asp_id,gap_pomote
+    // *insert assessor position in database
+    // *@input gap_asp_id,gap_promote
     // *@output -
     // *@author Apinya Phadungkit
-    // *@Create Date 16/04/2022
+    // *@Create Date 2565-04-16
     public function insert()
     {
         $sql = "INSERT INTO pefs_database.pef_assessor_position(gap_asp_id,gap_promote) 
@@ -33,12 +33,12 @@ class Da_pef_assessor_position extends pefs_model
 
         /*
 	* delete
-	* delete group_assessor
-	* @input   gro_id
+	* delete assessor position
+	* @input   gap_asp_id
 	* @output  - 
-	* @author  Thitima Popila
+	* @author  Apinya Phadungkit
 	* @Create  Date 2565-03-08
-    * @Update  Date 2565-03-08
+    * @Update  Date 2565-04-18
     */
     public function delete()
     {

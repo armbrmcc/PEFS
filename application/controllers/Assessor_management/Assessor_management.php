@@ -5,6 +5,7 @@
 * @author Thitima Popila and Apinya Phadungkit
 * @Create Date 2565-01-25
 * @Update Date 2565-03-04
+* @Update Date 2565-04-18
 */
 ?>
 <?php
@@ -23,13 +24,13 @@ class Assessor_management extends MainController
 	* display view assessor group management
 	* @input  -
 	* @output  Assessor group list
-	* @author  Thitima Popila
+	* @author  Thitima Popila and Apinya Phadungkit
 	* @Create  Date 2565-01-25
     * @Update  Date 2565-03-09
+    * @Update  Date 2565-04-18
     */
     public function show_assessor_management()
     {
-        // $this->load->model('M_pef_group_assessor', 'mpef');
         $this->load->model('M_pef_assessor_promote', 'mpo');
 
         $this->load->model('M_pef_assessor_position', 'map');
@@ -39,46 +40,59 @@ class Assessor_management extends MainController
         // print_r($data);
         $this->output('consent/v_assessor_management', $data);
         
-    }
+    }//แสดงหน้า v_assessor_management แสดงรายการของกลุ่มของกรรมการทั้งหมด
 
-    public function show_assessor_management_detail($id) // มาจาก asp_id
+    
+    /*
+	* show_assessor_management_detail
+	* display view assessor group management detail
+	* @input  id
+	* @output  Assessor list in group
+	* @author  Apinya Phadungkit
+	* @Create  Date 2565-01-25
+    * @Update  Date 2565-03-09
+    * @Update  Date 2565-04-18
+    */
+    public function show_assessor_management_detail($id) // id มาจาก asp_id
     {
         // echo $id; 
         $this->load->model('M_pef_assessor_promote', 'gass');
         $data['arr_ass'] = $this->gass->get_assessor_list($id)->result();
         $this->output('consent/v_assessor_management_detail', $data);
-    }
+    }//แสดงหน้า v_assessor_management_detail ที่แสดงรายชื่อกรรมการที่อยู่ในกลุ่มกรรมการนั้นๆ
 
     /*
-	* delete_group_assesso
-	* delete group_assessor
+	* delete_group_assessor
+	* delete group_assessor in database
 	* @input   id
 	* @output  All group assessor list 
-	* @author  Thitima Popila
+	* @author  Thitima Popila and Apinya Phadungkit
 	* @Create  Date 2565-03-08
     * @Update  Date 2565-03-08
+    * @Update  Date 2565-04-18
     */
     public function delete_group_assessor($id)
     {
+        //delete assessor promote in database
         $this->load->model('Da_pef_assessor_promote', 'dpef');
         $this->dpef->asp_id = $id;
         $this->dpef->delete();
 
-
+        //delete assessor position in database
         $this->load->model('Da_pef_assessor_position', 'dpo');
         $this->dpo->gap_asp_id = $id;
         $this->dpo->delete();
 
         // echo $id;
         redirect('Assessor_management/Assessor_management/show_assessor_management');
-    }
+    }//ลบกลุ่มของกรรมการ
 
 
-        /*
+    /*
 	* search_by_employee_id
 	* search employee detail by ase_emp_id
 	* @input ase_emp_id
-	* @output employee detail
+	* @output employee name
 	* @author Apinya Phadungkit
 	* @Create Date 2566-02-30
 	*/
@@ -91,19 +105,21 @@ class Assessor_management extends MainController
         $data = $this->emp->get_name_emp()->result();
 
         echo json_encode($data);
-    }
+    }//ส่ง ase_emp_id เข้ามา เพื่อส่งชื่อของพนักงานกลับไป (ค้นหาพนักงานเพื่อเพิ่มในกลุ่มกรรมการ)
 
 
-        /*
+    /*
 	* add_assessor
 	* add_assessor data into model
-	* @input Emp_ID,plant_name,plant_No,plant_ID 
+	* @input ase_year,ase_emp_id,ase_gro_id,ase_sec_id 
 	* @output -
 	* @author ApinyaPhadungkit
 	* @Create Date 2565-03-30
+    * @Update  Date 2565-04-18
 	*/
     function add_assessor($ase_gro_id)
-    {//insert
+    {
+        //insert 
         $this->load->model('Da_pef_assessor', 'dass');
         $this->dass->ase_year = $this->input->post('ase_year');
         $this->dass->ase_emp_id = $this->input->post('ase_emp_id');
@@ -113,16 +129,16 @@ class Assessor_management extends MainController
 
         // print_r($this->input->post('sec_id'));
         redirect('Assessor_management/Assessor_management/show_assessor_management_detail/'.$ase_gro_id);
-    }//end insert
+    }//เพิ่มรายการของกรรมการในกลุ่มกรรมการ
     
     /*
 	* delete_assessor
 	* delete_assessor
-	* @input   emp_id
+	* @input   ase_emp_id
 	* @output  assessor list 
 	* @author  Apinya Phadungkit
 	* @Create  Date 2565-04-11
-    * @Update  Date 2565-04-11
+    * @Update  Date 2565-04-18
     */
     public function delete_assessor($emp_id,$ase_gro_id)
     {
@@ -132,21 +148,21 @@ class Assessor_management extends MainController
         $this->dpef->delete();
         // echo $emp_id;
         redirect('Assessor_management/Assessor_management/show_assessor_management_detail/'.$ase_gro_id);
-    }
+    }//ลบรายการของกรรมการออกจากกลุ่มกรรมการ
 
 
 
-            /*
+    /*
 	* add_group_assessor
 	* add_group_assessor data into model
-	* @input Emp_ID,plant_name,plant_No,plant_ID 
+	* @input asp_name,asp_level,asp_type,pos,gap_asp_id,gap_promote
 	* @output -
 	* @author ApinyaPhadungkit
 	* @Create Date 2565-04-15
+    * @Update  Date 2565-04-18
 	*/
     function add_group_assessor()
-    {//insert
-        $this->load->model('Da_pef_group_assessor', 'dass');
+    {
         $this->load->model('Da_pef_assessor_promote', 'dpro');
         $this->load->model('Da_pef_assessor_position', 'dpos');
 
@@ -154,13 +170,7 @@ class Assessor_management extends MainController
         $group_level = $this->input->post('group_level');
         $group_type = $this->input->post('group_type');
         $pos = $this->input->post('pos');
-        $count_pos = $this->input->post('count_pos');
-
-        // echo $group_name;
-        // echo $group_level;
-        // echo $group_type;
-        // print_r($pos);
-        // echo $count_pos;
+        // $count_pos = $this->input->post('count_pos');
 
         if($group_type == "Type 2: (2 round evaluation)"){
             $type = '2';
@@ -168,6 +178,7 @@ class Assessor_management extends MainController
             $type = '1';
         }
 
+        //insert asp_name,asp_level,asp_type in pef_assessor_promote database
         $this->dpro->asp_name = $group_name;
         $this->dpro->asp_level = $group_level;
         $this->dpro->asp_type = $type;
@@ -176,28 +187,22 @@ class Assessor_management extends MainController
         $this->load->model('M_pef_assessor_promote', 'pas');
         $max = $this->pas->get_id_max()->row();
 
-        // $this->dpos->gap_asp_id = $max->asp_id;
-
         echo $group_name;
         echo $group_level;
         echo $type;
     
         for ($i = 0; $i < sizeof($pos); $i++) {
-            
+
+            //insert gap_asp_id,gap_promote in pef_assessor_position database 
             $this->dpos->gap_asp_id = $max->asp_id;
             $this->dpos->gap_promote = $pos[$i];
-
-            // print_r(sizeof($pos));
-
-            // print_r($pos[$i]);
-
             $this->dpos->insert();
         }
 
         $data = "insert_success";
         echo json_encode($data);
 
-    }//end insert
+    }//เพิ่มกลุ่มของกรรมการ
 
 
 }

@@ -9,6 +9,7 @@
     * Update date 2565-02-01
     * Update date 2565-03-08
     * Update date 2565-03-09
+    * Update date 2565-04-18
 -->
 
 <!DOCTYPE html>
@@ -59,7 +60,7 @@
     </style>
     <!-- End CSS -->
 
-    <!-- Start Conten Assessor Management -->
+    <!-- Start Content Assessor Management -->
     <div class="container-fluid py-4">
         <div class="card-header">
             <!-- Title page -->
@@ -69,7 +70,7 @@
             <div class="col-12">
                 <div class="card mb-4">
 
-                    <!-- ปุ่มดำเนินการเพิ่ม -->
+                    <!-- ปุ่มดำเนินการเพิ่มกลุ่มกรรมการ -->
                     <main class="main-content position-relative max-height-vh-100 h-100 ">
                         <!-- Navbar -->
                         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-2 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -81,13 +82,14 @@
                                             <button type="button" class="btn bg-gradient-info btn-block mb-3" data-bs-toggle="modal" data-bs-target="#ModalAddGroup">
                                                 <i class="fas fa-plus"></i>&nbsp;&nbsp;Add Group
                                             </button>
+                                            <!-- End Button trigger modal -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </nav>
                         <!-- End Navbar -->
-                        <!-- ปุ่มดำเนินการเพิ่ม  -->
+                        <!-- ปุ่มดำเนินการเพิ่มกลุ่มกรรมการ  -->
 
                         <!-- Start content in table -->
                         <div class="card-body px-0 pt-0 pb-2">
@@ -109,6 +111,7 @@
                                         <tr>
                                             <td>
                                                 <div class="d-flex flex-column justify-content-center">
+                                                    <!-- ลำดับของกลุ่มกรรมการ -->
                                                     <h6 class="text-xs mb-0">
                                                         <?php echo $i + 1 ?>
                                                     </h6>
@@ -116,6 +119,7 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column justify-content-center">
+                                                    <!-- T ของกลุ่มกรรมการ -->
                                                     <h6 class="text-xs mb-0">
                                                         <?php echo 'T' . $arr_group[$i]->asp_level ?>
                                                     </h6>
@@ -123,6 +127,7 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <div class="d-flex flex-column justify-content-center">
+                                                    <!-- ชื่อของกลุ่มกรรมการ -->
                                                     <h6 class="text-xs mb-0">
                                                         <?php echo $arr_group[$i]->asp_name ?>
                                                     </h6>
@@ -130,6 +135,7 @@
                                             </td>
                                             <td class="align-middle text-center">
                                                 <div class="d-flex flex-column justify-content-center">
+                                                    <!-- ตำแหน่งของกลุ่มกรรมการ -->
                                                     <h6 class="text-xs mb-0">
                                                         <?php
                                                             echo '-';
@@ -141,6 +147,7 @@
                                             </td>
                                             <td class="align-middle text-center">
                                                 <div class="d-flex flex-column justify-content-center">
+                                                    <!-- Type evaluation ของกลุ่มกรรมการ -->
                                                     <h6 class="text-xs mb-0">
                                                         <?php echo "Type " . $arr_group[$i]->asp_type ?>
                                                     </h6>
@@ -149,6 +156,7 @@
                                                     </h6>
                                                 </div>
                                             </td>
+
                                             <td class="align-middle">
                                                 <!-- Start button trigger modal edit -->
                                                 <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/' . $arr_group[$i]->asp_id; ?>">
@@ -163,7 +171,7 @@
                                                 if ($arr_group[$i]->asp_status == '-1') {
                                                 ?>
                                                     <!-- Start button trigger modal delete -->
-                                                    <!-- ปุ่มดำเนินการลบ -->
+                                                    <!-- ปุ่มดำเนินการลบ แบบลบได้ -->
                                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalDeleteGroup<?php echo $i; ?>">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
@@ -172,7 +180,7 @@
                                                 } else {
                                                 ?>
                                                     <!-- Start button trigger modal delete -->
-                                                    <!-- ปุ่มดำเนินการลบ -->
+                                                    <!-- ปุ่มดำเนินการลบ แบบลบไม่ได้ -->
                                                     <button type="button" class="btn btn-secondary " disabled>
                                                         <i class="fa fa-trash"></i>
                                                     </button>
@@ -182,6 +190,7 @@
                                                 ?>
                                             </td>
                                         </tr>
+
                                         <!-- Start modal add group assessor -->
                                         <div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -194,15 +203,14 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <!-- <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_group_assessor' . '/' . $arr_group[$i]->gro_ase_id; ?>" method="post" enctype="multipart/form-data"> -->
                                                         <form>
                                                             <div class="form-group">
-                                                                <!-- Group name -->
+                                                                <!-- Input Group name -->
                                                                 <label for="recipient-name" class="col-form-label">Group Name</label>
                                                                 <input type="text" class="form-control" id="recipient-name" name="group_name" placeholder="Input Group Name....">
                                                             </div>
                                                             <div class="form-group">
-                                                                <!-- Group level -->
+                                                                <!-- Select Group level -->
                                                                 <label for="year" class="col-form-label">Level</label>
                                                                 <select class="form-select" aria-label="Default select example" id="group_position" name="year" onchange="get_position(),change_type()">
                                                                     <option disabled selected>Choose level please...</option>
@@ -214,7 +222,7 @@
                                                                 </select>
                                                                 <br>
                                                                 <div>
-                                                                    <!-- Position to promote -->
+                                                                    <!-- Choose Position to promote -->
                                                                     <label for="Position" class="col-form-label">Position</label>
                                                                     <ul class="custom-control-input" id="position_list" name="position_list">
                                                                     </ul>
@@ -228,18 +236,19 @@
                                                             </div>
                                                             <br>
 
+                                                            <!-- Button Submit ยืนยันการสร้างกลุ่มกรรมการ -->
                                                             <button type="button" class="btn btn-success float-right" onclick="add_sec()">Submit</button>
-                                                            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
+                                                            <!-- End Button Submit -->
 
+                                                            <!-- Button Cancel ยกเลิกการสร้างกลุ่มกรรมการ -->
+                                                            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
+                                                            <!-- End Button Cancel -->
                                                         </form>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- End modal add group assessor -->
-
-
 
                                         <!-- Start modal delete group assessor -->
                                         <div class="modal fade" id="ModalDeleteGroup<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteGroupTitle" aria-hidden="true">
@@ -295,14 +304,11 @@
 
 </html>
 
-
-
-
-
-
 <!-- JavaScript -->
-<!-- Data Table -->
 <script>
+    /**
+     * This function is Data Table
+     */
     $(document).ready(function() {
         $("#list_table").DataTable();
     });
@@ -362,6 +368,9 @@
 
 
 <script>
+    /**
+     * This function is used to add group assessor in database.
+     */
     function add_sec() {
         // console.log("1111");
         var group_name = document.getElementById('recipient-name').value;
@@ -413,13 +422,10 @@
                 // error
             });
             // ajax
-        }
-        // if
+        }// if
         else {
             $("#txt_warning_add").show();
-        }
-        // else 
-
+        }// else 
     }
     // add_sec
 </script>
