@@ -25,7 +25,11 @@ class M_pef_assessor_position extends Da_pef_group_assessor
 
         $sql = "SELECT * FROM pefs_database.pef_assessor_position  AS aspos
                 INNER JOIN dbmc.position AS pos
-                ON aspos.gap_promote = pos.Position_ID";    
+                ON aspos.gap_promote = pos.Position_ID
+                INNER JOIN pefs_database.pef_assessor_promote AS pro
+                ON aspos.gap_asp_id = pro.asp_id
+                GROUP BY aspos.gap_id
+                ";    
         $query = $this->db->query($sql);
         return $query;
     }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ

@@ -29,9 +29,11 @@ class Assessor_management extends MainController
     */
     public function show_assessor_management()
     {
-        $this->load->model('M_pef_group_assessor', 'mpef');
+        // $this->load->model('M_pef_group_assessor', 'mpef');
+        $this->load->model('M_pef_assessor_promote', 'mpo');
+
         $this->load->model('M_pef_assessor_position', 'map');
-        $data['arr_group'] = $this->mpef->get_group_assessor_all()->result();
+        $data['arr_group'] = $this->mpo->get_group_assessor_all()->result();
         $data['arr_position'] = $this->map->get_position_all()->result();
         // print_r($data['arr_position']);
         // print_r($data);
@@ -148,11 +150,11 @@ class Assessor_management extends MainController
         $pos = $this->input->post('pos');
         $count_pos = $this->input->post('count_pos');
 
-        echo $group_name;
-        echo $group_level;
-        echo $group_type;
-        print_r($pos);
-        echo $count_pos;
+        // echo $group_name;
+        // echo $group_level;
+        // echo $group_type;
+        // print_r($pos);
+        // echo $count_pos;
 
         if($group_type == "Type 2: (2 round evaluation)"){
             $type = '2';
@@ -165,20 +167,30 @@ class Assessor_management extends MainController
         $this->dpro->asp_type = $type;
         $this->dpro->insert();
 
+        $this->load->model('M_pef_assessor_promote', 'pas');
+        $max = $this->pas->get_id_max()->row();
 
-        for ($i = 0; $i < sizeof($count_pos); $i++) {
-            $this->emp->Position_name = $pos[$i];
-            print_r($pos);
-            $pos_id = $this->emp->get_position_id()->row();
-            print_r($pos_id);
-            // $this->dass->insert();
-            // echo $pos_id->Position_ID;
-            // $this->ped->insert_nominee();
+        // $this->dpos->gap_asp_id = $max->asp_id;
+
+        echo $group_name;
+        echo $group_level;
+        echo $type;
+    
+        for ($i = 0; $i < sizeof($pos); $i++) {
+            
+            $this->dpos->gap_asp_id = $max->asp_id;
+            $this->dpos->gap_promote = $pos[$i];
+
+            // print_r(sizeof($pos));
+
+            // print_r($pos[$i]);
+
+            $this->dpos->insert();
         }
-
 
         $data = "insert_success";
         echo json_encode($data);
+
     }//end insert
 
 

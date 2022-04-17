@@ -57,4 +57,51 @@ class M_pef_assessor_promote extends Da_pef_assessor_promote
         $query = $this->db->query($sql);
         return $query;
     }
+
+    
+        /*
+	* get_id_max
+	* get asp_id assessor promote
+	* @input  -
+	* @output asp_id
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak and Apinya Phadungkit
+	* @Create Date 2565-03-10 
+	*/
+    function get_id_max()
+    {
+        $sql = "SELECT MAX(asp_id) AS asp_id
+        FROM pefs_database.pef_assessor_promote";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+
+
+        /*
+	* get_group_assessor_all
+	* get data form pef_group_assessor, pef_group, pef_assessor_promote, pef_section
+	* @input  -
+	* @output  all 
+	* @author  Thitima Popila
+	* @Create  Date 2565-03-04
+    * @Update  Date 2565-03-04
+    */
+    public function get_group_assessor_all()
+    {
+
+        $sql = "SELECT * FROM pefs_database.pef_assessor_promote AS asp 
+                    INNER JOIN pefs_database.pef_assessor_position AS pos
+                    ON asp.asp_id = pos.gap_asp_id
+                    INNER JOIN pefs_database.pef_section AS section
+                    ON asp.asp_level =  section.sec_level
+                    INNER JOIN dbmc.position AS dpos
+                    ON pos.gap_promote = dpos.Position_ID
+                    WHERE asp.asp_id = pos.gap_asp_id
+                    GROUP BY pos.gap_asp_id";
+                
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
+
 }
