@@ -533,7 +533,7 @@ date_default_timezone_set("Asia/Bangkok");
                             console.log(row.ase_emp_id)
                             console.log(row_as)
                             console.log(Object.is(Number(row_as), Number(row.ase_emp_id)))
-                            if (Object.is(Number(row_as), Number(row.ase_emp_id)) == true) {
+                            if (Object.is(Number(row_as), Number(row.ase_id)) == true) {
                                 check++;
                                 console.log("row_as")
                             }

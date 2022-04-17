@@ -103,10 +103,10 @@ class Group_management extends MainController
             $this->ped->grn_status_done = -1;
             $this->ped->grn_status_result = -1;
             $this->emp->Position_name = $pos[$i];
-            print_r($pos);
+            // print_r($pos);
             $pos_id = $this->emp->get_position_id()->row();
-            print_r($pos_id);
-            echo $pos_id->Position_ID;
+            // print_r($pos_id);
+            // echo $pos_id->Position_ID;
             $this->ped->grn_promote_to = $pos_id->Position_ID;
             $this->ped->insert_nominee();
         }
