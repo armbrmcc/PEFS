@@ -60,7 +60,7 @@ div.a {
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">ID Employee</th>
+                        <th scope="col">Nominee ID</th>
                         <th scope="col">Nominee Name</th>
                         <th scope="col">Position</th>
                         <th scope="col">Department</th>
