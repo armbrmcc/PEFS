@@ -145,7 +145,6 @@
                             <th scope="row">
                                 <div class="media align-items-center">
                                     <div class="media-body">
-                                        <?php echo $sum_point; ?>
                                         <span class="name mb-0 text-sm"><?php echo $i + 1 ?></span>
                                     </div>
                                 </div>
@@ -163,12 +162,9 @@
                             <td>
                                 <?php
                                 if ($count[$i] == count($assessor)) {
-                                    if ($nominee[$i]->grn_status_done == 0 || $nominee[$i]->grn_status_done == 1) { ?>
-                                        <span class="name mb-0 text-sm">
-                                            <i class="bg-success"></i>
-                                            <span class="status"><?php echo 'Assessed' ?></span>
-                                        </span>
-                                    <?php } else if ($nominee[$i]->grn_status_result == 1) { ?>
+                                ?>
+
+                                    <?php if ($nominee[$i]->grn_status_result == 1) { ?>
                                         <span class="name mb-0 text-sm">
                                             <i class="bg-success"></i>
                                             <span class="status"><?php echo 'Pass' ?></span>
@@ -178,13 +174,12 @@
                                             <i class="bg-danger"></i>
                                             <span class="status"><?php echo 'Not pass' ?></span>
                                         </span>
-                                    <?php  }
-                                } else { ?>
-                                    <span class="name mb-0 text-sm">
-                                        <i class="bg-warning"></i>
-                                        <span class="status"><?php echo 'Pending Assess' ?></span>
-                                    </span>
-                                <?php } ?>
+                                    <?php  } else { ?>
+                                        <span class="name mb-0 text-sm">
+                                            <span class="status"><?php echo 'Pending Assess' ?></span>
+                                        </span>
+                                <?php }
+                                } ?>
                             </td>
                             <td>
                                 <div class="avatar-group">
