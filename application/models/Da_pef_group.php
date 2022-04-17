@@ -1,5 +1,5 @@
 <?php
-    /* 
+/* 
     * M_pef_group
     * Model for 
     * @author Phatchara Khongthandee and Ponprapai Atsawanurak
@@ -54,13 +54,13 @@ class Da_pef_group extends pefs_model
         );
     }
     /*
-* delete_group
-* delete group from database
-* @input grp_id
-* @output 
-* @author Jirayut Saifah
-* @Create Date 2564-08-13
-*/
+    * delete_group
+    * delete group from database
+    * @input grp_id
+    * @output 
+    * @author Jirayut Saifah
+    * @Create Date 2564-08-13
+    */
     public function delete_group()
     {
         $sql = "DELETE FROM pefs_database.pef_group WHERE grp_id=?";
@@ -70,13 +70,13 @@ class Da_pef_group extends pefs_model
         );
     }
     /*
-* delete_group_assessor
-* delete assessor from database
-* @input gro_grp_id
-* @output 
-* @author Jirayut Saifah
-* @Create Date 2564-08-13
-*/
+    * delete_group_assessor
+    * delete assessor from database
+    * @input gro_grp_id
+    * @output 
+    * @author Jirayut Saifah
+    * @Create Date 2564-08-13
+    */
     public function delete_group_assessor()
     {
         $sql = "DELETE FROM pefs_database.pef_group_assessor WHERE gro_grp_id=?";
@@ -86,13 +86,13 @@ class Da_pef_group extends pefs_model
         );
     }
     /*
-* delete_group_nominee
-* delete nominee from database
-* @input grn_grp_id
-* @output 
-* @author Jirayut Saifah
-* @Create Date 2564-08-13
-*/
+    * delete_group_nominee
+    * delete nominee from database
+    * @input grn_grp_id
+    * @output 
+    * @author Jirayut Saifah
+    * @Create Date 2564-08-13
+    */
     public function delete_group_nominee()
     {
         $sql = "DELETE FROM pefs_database.pef_group_nominee WHERE grn_grp_id=?";
@@ -102,13 +102,13 @@ class Da_pef_group extends pefs_model
         );
     }
     /*
-* delete_group_nominee
-* delete nominee from database
-* @input grn_grp_id
-* @output 
-* @author Jirayut Saifah
-* @Create Date 2564-08-13
-*/
+    * delete_group_nominee
+    * delete nominee from database
+    * @input grn_grp_id
+    * @output 
+    * @author Jirayut Saifah
+    * @Create Date 2564-08-13
+    */
     public function delete_group_schedule()
     {
         $sql = "DELETE FROM pefs_database.pef_group_schedule WHERE grd_grp_id=?";
@@ -135,7 +135,7 @@ class Da_pef_group extends pefs_model
 
         $this->db->query($sql, array($this->grp_status, $this->grp_id));
     }
-    
+
     public function group_update()
     {
         $sql = " UPDATE pefs_database.pef_group as up
@@ -146,5 +146,4 @@ class Da_pef_group extends pefs_model
             array($this->grp_date, $this->grp_year, $this->grp_id)
         );
     }
-
 }
