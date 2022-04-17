@@ -73,9 +73,11 @@
             </div>
         </div>
     </div>
-    <h2>
-        Excel Report
-    </h2>
+    <div class="card-header" id="card_radius">
+        <h3>
+            Excel Report
+        </h3>
+    </div>
 
     <?php
     $sum_point = 0;
@@ -87,7 +89,7 @@
     foreach ($sec_data as $index_emp => $row_emp) {
         foreach ($ass_data as $index_ass => $row_ass) {
             foreach ($point_data as $index => $row) {
-                if ($row_ass->ase_id == $row->per_ase_id && $row_emp->grn_id == $row->per_emp_id) {
+                if ($row_ass->ase_id == $row->per_ase_id && $row_emp->grn_emp_id == $row->per_emp_id) {
                     $sum_point += intval($row->ptf_point);
                 }
                 //if 

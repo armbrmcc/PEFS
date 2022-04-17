@@ -52,6 +52,7 @@ div.a {
     <div class="card-header">
         <h2>Add File Nominee (เพิ่มไฟล์นำเสนอผลงาน)</h2>
     </div>
+
     <!-- Table group Nominee list -->
     <div class="card-body" id="card_radius">
         <div class="table-responsive">
@@ -111,14 +112,15 @@ div.a {
                             // foreach 
                             // ยังไม่มีไฟล์จะเพิ่มไฟล์
                             if ($check == 0) { ?>
-                            <i class="fas fa-file-upload" style="color: grey; font-size:2vw;" data-bs-toggle="modal"
-                                data-bs-target="#modalAddfile<?php echo $i ?>"></i>
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                data-bs-target="#modalAddfile<?php echo $i ?>"> <i
+                                    class="fas fa-file-upload"></i></button>
                             <?php  }
-                            // if
+                            // i
                             //เคยมีไฟล์แล้วจะอัปเดต
-                            else { ?>
-                            <i class="fas fa-file-upload" style="color:#00FF40; font-size:2vw;" data-bs-toggle="modal"
-                                data-bs-target="#edit_modal_file<?php echo $i ?>"></i></button>
+                            else { ?><button type="button" class=" btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#edit_modal_file<?php echo $i ?>">
+                                <i class=" fas fa-file-upload"></i></button>
                             <?php  } ?>
                             <!-- else -->
 
@@ -133,9 +135,12 @@ div.a {
 
                                         <!-- Modal content-->
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close"
-                                                    data-dismiss="modal">&times;</button>
+                                            <div class="modal-header"> <?php { ?>
+                                                <a href='<?php echo site_url() . 'File_present_management/File_present_management/show_list_nominee'
+                                                                ?>'>
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal">&times;</button>
+                                                </a><?php } ?>
                                             </div>
                                             <div class="b">
                                                 <h4 class="modal-title">&emsp;Attachment :</h4>
@@ -165,8 +170,12 @@ div.a {
                                         <!-- Modal content-->
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close"
-                                                    data-dismiss="modal">&times;</button>
+                                                <?php { ?>
+                                                <a href='<?php echo site_url() . 'File_present_management/File_present_management/show_list_nominee'
+                                                                ?>'>
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal">&times;</button>
+                                                </a><?php } ?>
                                             </div>
                                             <div class="b">
                                                 <h4 class="modal-title">&emsp;Attachment :</h4>
@@ -194,3 +203,115 @@ div.a {
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    console.log("years");
+    //$("#myTable").DataTable();
+    const d = new Date();
+    let years = d.getFullYear();
+    years = years - 2
+    console.log(years);
+
+
+    // var x = document.getElementById("year");
+    // var option = document.createElement("option");
+    for (i = 0; i < 5; i++) {
+        if (years == d.getFullYear()) {
+            var x = document.getElementById("year");
+            var option = document.createElement("option");
+            option.text = years;
+            option.value = years;
+            option.selected = true;
+            years++
+            x.add(option);
+            console.log(i)
+        } else {
+            var x = document.getElementById("year");
+            var option = document.createElement("option");
+            option.text = years;
+            option.value = years;
+            years++
+            x.add(option);
+            console.log(i)
+        }
+
+    }
+    get_group();
+});
+</script>
+<script>
+function get_group() {
+    var group_year = document.getElementById("year").value;
+    console.log(group_year)
+    //$("#select_data").remove();
+    document.getElementById("group_data").innerHTML = "";
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>Employee/Get_assessor/get_group_by_year ",
+        data: {
+            "years": group_year,
+        },
+        dataType: "JSON",
+        success: function(data, status) {
+            console.log(data);
+            var count_index = 0;
+            var i = 0;
+            var data_row = '';
+            data.forEach((row, index) => {
+                const date = new Date(row.grp_date)
+                const result = date.toLocaleDateString('th-TH', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    weekday: 'long',
+                })
+                console.log(i);
+                console.log(row.grp_id);
+                data_row += '<tr id="ase_' + i + '">'
+                data_row += '<td style="text-align:center">'
+                data_row += i + 1;
+                data_row += '</td>'
+                data_row += '<td style="text-align:center">'
+                data_row += "T" + row.grp_position_group
+                data_row += '</td>'
+                data_row += '<td id="ase_id_' + i++ +
+                    '" style="text-align:center"> '
+                data_row += result
+                data_row += '</td>'
+                data_row += '<td style="text-align:center">'
+                data_row += row.sec_name
+                data_row += '</td>'
+
+                data_row += '<td style="text-align:center">'
+                data_row +=
+                    "<button type='button' onclick='edit_group(" + row.grp_id +
+                    ")' class='btn btn-warning'>"
+                data_row += " <i class = 'fa fa-pencil '> </i>"
+                data_row += "</button>"
+                data_row +=
+                    "<button type='button' onclick='delete_group(" + row.grp_id +
+                    ")' class='btn btn-danger'>"
+                data_row += " <i class = 'fa fa-trash '> </i>"
+                data_row += "</button>"
+                data_row += '</td>'
+                data_row += '</tr>'
+                $("#group_data").append(data_row);
+                count_index++
+                index++
+            })
+            for (var i = 0; i < data.d.length; i++) {
+
+            }
+            i++
+
+            count = count_index;
+            $("#myTable").DataTable();
+        },
+        error: function(error) {
+            console.log('error');
+        }
+
+    });
+
+}
+</script>

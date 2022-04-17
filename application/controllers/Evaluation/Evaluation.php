@@ -132,6 +132,7 @@ class Evaluation extends MainController
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
+        // print_r( $data['obj_group_ass']);
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
 

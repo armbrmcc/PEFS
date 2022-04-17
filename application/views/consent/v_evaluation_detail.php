@@ -186,7 +186,7 @@ $(document).ready(function() {
                                         <?php } ?>
                                         <!-- round 2/2 -->
                                         <?php if($obj_date[1]->grd_date == date("Y-m-d")) {?>
-                                            <?php if($check_per == 0) { ?>
+                                            <?php if($check_per == 1) { ?>
                                                 <a
                                                     href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_2_2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id.'/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id;?>">
                                                     <button type="button" class="btn btn-xs button_size"
