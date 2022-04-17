@@ -60,9 +60,15 @@ class Assessor_management extends MainController
     */
     public function delete_group_assessor($id)
     {
-        $this->load->model('Da_pef_group_assessor', 'dpef');
-        $this->dpef->gro_id = $id;
+        $this->load->model('Da_pef_assessor_promote', 'dpef');
+        $this->dpef->asp_id = $id;
         $this->dpef->delete();
+
+
+        $this->load->model('Da_pef_assessor_position', 'dpo');
+        $this->dpo->gap_asp_id = $id;
+        $this->dpo->delete();
+
         // echo $id;
         redirect('Assessor_management/Assessor_management/show_assessor_management');
     }

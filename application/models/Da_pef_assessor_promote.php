@@ -44,4 +44,21 @@ class Da_pef_assessor_promote extends pefs_model
         $this->db->query($sql, array($this->asp_name, $this->asp_level, $this->asp_type));
     }
 
+        /*
+	* delete
+	* delete group_assessor
+	* @input   gro_id
+	* @output  - 
+	* @author  Thitima Popila
+	* @Create  Date 2565-03-08
+    * @Update  Date 2565-03-08
+    */
+    public function delete()
+    {
+        $sql =
+            "DELETE FROM pefs_database.pef_assessor_promote
+            WHERE asp_id=?";
+        $this->db->query($sql, array($this->asp_id));
+    }
+
 }

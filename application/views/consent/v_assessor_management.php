@@ -268,7 +268,7 @@
                                                             <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
                                                         </a>
                                                         <!-- ปุ่มยืนยันการลบ -->
-                                                        <a href="<?php echo base_url() . 'Assessor_management/Assessor_management/delete_group_assessor/' . $arr_group[$i]->gro_id; ?>">
+                                                        <a href="<?php echo base_url() . 'Assessor_management/Assessor_management/delete_group_assessor/' . $arr_group[$i]->asp_id; ?>">
                                                             <button type="button" class="btn bg-gradient-success">Confirm</button>
                                                         </a>
                                                     </div>

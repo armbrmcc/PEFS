@@ -18,22 +18,6 @@ class Da_pef_group_assessor extends pefs_model
         parent::__construct();
     }
 
-    /*
-	* delete
-	* delete group_assessor
-	* @input   gro_id
-	* @output  - 
-	* @author  Thitima Popila
-	* @Create  Date 2565-03-08
-    * @Update  Date 2565-03-08
-    */
-    public function delete()
-    {
-        $sql =
-            "DELETE FROM pefs_database.pef_group_assessor
-            WHERE gro_id=?";
-        $this->db->query($sql, array($this->gro_id));
-    }
 
     // *insert
     // *insert group_assessor in database
