@@ -210,7 +210,7 @@
                                                             <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
                                                             <!-- ปุ่มดำเนินการลบ -->
                                                             <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/delete_assessor' . '/' . $arr_ass[$i]->ase_emp_id . '/' . $arr_ass[$i]->ase_gro_id; ?>">
-                                                                <button type="button" class="btn bg-gradient-success">Confirm</button>
+                                                                <button type="button" class="btn bg-gradient-success">Submit</button>
                                                             </a>
                                                         </div>
                                                     </div>
