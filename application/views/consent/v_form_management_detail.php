@@ -265,7 +265,7 @@ function show_selectvalue (select){
                 
                 var mylist = document.getElementById(id);  //รับ select
                 var item = mylist.options[mylist.selectedIndex].value; //รับผล select
-                if(item == "0"){
+                if(item == ""){
                     $("#p_th"+num+"").hide();
                     $("#p_eng"+num+"").hide();
                     $("input[id='weight"+num+"']").hide();

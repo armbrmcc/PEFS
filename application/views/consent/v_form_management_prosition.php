@@ -97,7 +97,7 @@ $(document).ready(function() {
                     <thead>
                         <tr>
                             <th>#</th> 
-                            <th>Level</th>
+                            <th>Position</th>
                             <th>Action</th>
                         </tr>
                     </thead>
