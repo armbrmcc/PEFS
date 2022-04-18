@@ -48,6 +48,7 @@
         color: #FFFFFF;
         text-align: center;
         border: none;
+
     }
 
     .on {
@@ -56,18 +57,26 @@
         color: #FFFFFF;
         text-align: center;
         border: none;
+        
     }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript">
-    function toggleState(item) {
-        if (item.className == "off") {
-            item.className = "on";
-            item.innerHTML = "open"
-        } else {
-            item.className = "off";
-            item.innerHTML = "close"
-        }
-    }
+    $(document).ready(function() {
+            $('#on').on('click', function() {
+                if (this.value == 'on') {
+                    document.getElementById("info").disabled = true;
+                    document.getElementById("on").value = "off";
+                    document.getElementById("on").innerHTML = "close";
+                    document.getElementById("on").style.background = "#D90437";
+                } else {
+                    document.getElementById("info").disabled = false;
+                    document.getElementById("on").value = "on";
+                    document.getElementById("on").innerHTML = "open";
+                    document.getElementById("on").style.background = "#0DD739";
+                }
+            });
+        });
 </script>
 
 <h2>
@@ -77,7 +86,7 @@
     <div class="row">
         <div class="col">
             <h3>Detail Group <label for="cars" style="font-size : 20px;margin-left : 69%">Group Status:</label>
-                <button type="button" class="float-right on" style="text-align: center;" id="btn" value="button" onclick="toggleState(this)">
+                <button type="button" class="float-right on" style="text-align: center;" id="on" value="on">
                     open
                     <!-- <i class="fas fa-circle" style="font-size:30px; "></i> -->
                 </button>
@@ -233,16 +242,18 @@
                                     if ($nominee[$i]->grn_status_result == 0 || $nominee[$i]->grn_status_result == 1 || $nominee[$i]->grn_status_result == 2) { ?>
                                         <div class="dropdown">
 
-                                            <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" data-bs-target="#ModalAddGroup">
+                                            <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" data-bs-target="#ModalAddGroup" id="info">
                                                 <i class="fa fa-refresh" style="font-size:15px;"></i>
                                             </button>
+                                           <?php echo $count[$i]?>
                                         </div>
                                     <?php }
                                 } else { ?>
                                     <div class="dropdown">
-                                        <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" disabled>
+                                        <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal"  disabled>
                                             <i class="fa fa-refresh" style="font-size:15px;"></i>
                                         </button>
+                                        <?php echo $count[$i]?>
                                     </div>
                                 <?php } ?>
                             </td>
@@ -364,7 +375,7 @@
                             <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
                         </a>
                         <!-- ปุ่มบันทึก -->
-                        <a href="<?php echo site_url() . 'Score_management/Score_management/review/' ?>">
+                        <a href="">
                             <button type="button" class="btn bg-gradient-success">Submit</button>
                         </a>
                     </div>

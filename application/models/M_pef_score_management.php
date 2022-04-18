@@ -1,9 +1,10 @@
 <?php
     /* 
     * M_pef_score_management
-    * Model for 
+    * Model for pef_score_management
     * @author Jaraspon Seallo and Nipat Kuhoksiw
     * @Create Date 2565-03-04
+    * @Update Date 2565-04-17
     */
 ?>
 
@@ -11,7 +12,17 @@
 include_once("Da_pef_score_management.php");
 
 class M_pef_score_management extends Da_pef_score_management
-{
+{//class M_pef_score_management
+
+    /*
+    * get_score_management_list
+    * get score_management list
+    * @input    -
+    * @output   -
+    * @author Jaraspon Seallo
+    * @Create Date 2565-04-10
+    * @Update Date 2565-04-14
+    */
     public function get_score_management_list()
     {
         $sql = "SELECT * FROM pefs_database.pef_group_assessor AS gss
@@ -28,6 +39,16 @@ class M_pef_score_management extends Da_pef_score_management
         $query = $this->db->query($sql);
         return $query;
     }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
+
+    /*
+    * get_score_management_list_date
+    * get score management list_date
+    * @input    -
+    * @output   -
+    * @author Jaraspon Seallo
+    * @Create Date 2565-04-10
+    * @Update Date 2565-04-14
+    */
     public function get_score_management_list_date()
     {
         $sql = "SELECT *
@@ -37,7 +58,8 @@ class M_pef_score_management extends Da_pef_score_management
         ";
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
+    }//คืนค่าข้อมูลวันที่กลุ่มการประเมินของกรรมการ
+
     /*
     * get_evaluation
     * get data for summary in performance form
@@ -55,7 +77,7 @@ class M_pef_score_management extends Da_pef_score_management
 			";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่าการประเมิน
 
     /*
     * get_group
@@ -75,7 +97,7 @@ class M_pef_score_management extends Da_pef_score_management
 			WHERE grp_date = ?";
         $query = $this->db->query($sql, array($this->grp_date));
         return $query;
-    }
+    }//คืนค่ากลุ่มการประเมิน
 
     /*
     * get_group_by_id
@@ -97,15 +119,9 @@ class M_pef_score_management extends Da_pef_score_management
             ON position.gap_promote = pos.Position_ID
 			WHERE grp_id=$id
 			";
-     
-        // $sql = "SELECT *
-        // FROM pefs_database.pef_group AS grp INNER JOIN pefs_database.pef_section AS sec
-        // ON grp.grp_position_group=sec.sec_id
-        // WHERE grp_id=$id
-        // ";
     $query = $this->db->query($sql);
     return $query;
-    }
+    }//คืนค่ากลุ่มโดยไอดี
 
     /*
     * get_assessor
@@ -124,7 +140,7 @@ class M_pef_score_management extends Da_pef_score_management
 			";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่ากรรมการ
 
     /*
     * get_nominee
@@ -145,7 +161,7 @@ class M_pef_score_management extends Da_pef_score_management
 			";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่าผู้ถูกประเมิน
 
     /*
     * get_nominee_by_id
@@ -167,7 +183,7 @@ class M_pef_score_management extends Da_pef_score_management
 			";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่าผู้ถูกประเมินโดยไอดี
 
     /*
     * get_form
@@ -188,10 +204,10 @@ class M_pef_score_management extends Da_pef_score_management
 			";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่าแบบฟอร์ม
 
     /*
-    * get_ass_by_nor_id
+    * get_ass_by_grp_id
     * get data assessor, group, nominee
     * @input    id
     * @output   get data assessor, group, nominee
@@ -210,7 +226,7 @@ class M_pef_score_management extends Da_pef_score_management
                 WHERE grp.grp_id = $id";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่ากลุ่มการประเมินของกรรมการโดยไอดี
 
     /*
     * get_data_point_by_nor_id
@@ -236,7 +252,17 @@ class M_pef_score_management extends Da_pef_score_management
                 WHERE sec.sec_id = $id";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่าคะแนนโดยกลุ่มไอดี
+
+    /*
+    * get_data_by_id
+    * get data by id
+    * @input    id
+    * @output   get data point_form, nominee, group
+    * @author   Niphat Kuhoksiw
+    * @Create Date 2565-04-10
+    * @Update Date 2565-04-14
+    */
     public function get_data_by_id($id)
     {
         $sql = "SELECT * 
@@ -256,6 +282,6 @@ class M_pef_score_management extends Da_pef_score_management
                 WHERE sec.sec_id = $id";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//คืนค่าข้อมูลโดยไอดี
 
-}
+}//end class M_pef_score_management

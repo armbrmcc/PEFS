@@ -4,6 +4,7 @@
     * Controller for Score Management module
     * @author Jaraspon Seallo and Nipat 
     * @Create Date 2565-01-26
+    * @Update Date 2565-04-17
     */
 ?>
 
@@ -16,9 +17,9 @@ class Score_management extends MainController
 {
 
     public function __construct()
-    {
+    {//__construct
         parent::__construct();
-    }
+    }//end __construct
 
     /*
 	* show_score_management_list
@@ -29,7 +30,7 @@ class Score_management extends MainController
 	* @Create  Date 2565-01-23
     */
     public function show_score_management_list()
-    {
+    {//show_score_management_list
         $this->load->model('M_pef_score_management', 'psm');
         $data['as_group'] = $this->psm->get_score_management_list()->result();
         $data['as_group_date'] = $this->psm->get_score_management_list_date()->result();
@@ -37,15 +38,8 @@ class Score_management extends MainController
     for ($i=0; $i < count($data["as_group"]) ; $i++) { 
         $a=array();
         for ($j=0; $j < count($data["as_group_date"]) ; $j++) {
-        //   $date_sql =  $data['as_group'][$i]
-        // var_dump($data["as_group_date"][$j]->grp_date);
-        // echo "<pre/>";
-       
-    
-     
+
             if($data["as_group_date"][$j]->grp_id == $data["as_group"][$i]->gap_id){
-                // var_dump($data['as_group_date'][$j] );
-           
                 array_push($a,$data['as_group_date'][$j]);
             
                 $data_all[$i] = [
@@ -57,20 +51,6 @@ class Score_management extends MainController
     }
     
     $data['data_all'] = $data_all;
-
-//  echo "<pre>";
- 
-//  var_dump($data["data_all"]);
-//  echo "</pre>";
-//  echo "<br/>";
-//  echo "<pre>";
- 
-//  var_dump($data_all);
-//  echo "</pre>";
-//  echo "<br/>";
-// var_dump($data["as_group"][0]);
-// var_export($data);
-
         $this->output('consent/v_score_management', $data);
     } //show_score_management_list
 
@@ -85,7 +65,6 @@ class Score_management extends MainController
     public function show_score_management_detail($id)
     {
         $this->load->model('M_pef_score_management', 'pef');
-        // echo $id;
         $data['count'] = '';
         $num_ass = $this->pef->get_assessor($id)->result();
         $data['assessor'] = $this->pef->get_assessor($id)->result();
@@ -108,7 +87,8 @@ class Score_management extends MainController
             $data['count'][$i] = $num;
         }
         $this->output('consent/v_score_management_detail', $data);
-    }
+    }//end show_score_management_detail
+
     /*
 	* review
 	* display review
@@ -118,7 +98,7 @@ class Score_management extends MainController
 	* @Create  Date 2565-04-10
     */
     public function review()
-    {
+    {//review
         $date = $this->input->post('date');
         $emp  = $this->input->post('emp');
         $emp_id  = $this->input->post('emp_id');
@@ -158,7 +138,8 @@ class Score_management extends MainController
         // $this->load->model('M_pef_summary', 'pef');
 
         Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
-    }
+    }//end review
+
     /*
 	*  get_group
 	* display  get_group
@@ -168,19 +149,29 @@ class Score_management extends MainController
 	* @Create  Date 2565-04-10
     */
     public function get_group()
-    {
+    {//get_group
         $date = $this->input->post('date');
         $this->load->model('M_pef_score_management', 'pef');
         $this->pef->grp_date = $date;
         $data = $this->pef->get_group()->result();
         echo json_encode($data);
-    }
+    }//end get_group
+
+    /*
+	* get_section
+	* display  get_section
+	* @input  -
+	* @output  get_section
+	* @author  Niphat Kuhoksiw
+	* @Create  Date 2565-04-16
+    */
     public function get_section()
-    {
+    {//get_section
         $this->load->model('M_pef_report', 'pef');
         $data = $this->pef->get_all_section()->result();
         echo json_encode($data);
-    }
+    }//end get_section
+
     /*
 	* get_evaluation
 	* display  get_evaluation
@@ -190,11 +181,11 @@ class Score_management extends MainController
 	* @Create  Date 2565-04-10
     */
     public function get_evaluation()
-    {
+    {//get_evaluation
         $id = $this->input->post('emp');
         $this->load->model('M_pef_score_management', 'pef');
         $data = $this->pef->get_evaluation($id)->result();
         echo json_encode($data);
-    }
+    }//end get_evaluation
 
 }//End class Score_management
