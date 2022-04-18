@@ -245,7 +245,6 @@
                                             <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" data-bs-target="#ModalAddGroup" id="info">
                                                 <i class="fa fa-refresh" style="font-size:15px;"></i>
                                             </button>
-                                           <?php echo $count[$i]?>
                                         </div>
                                     <?php }
                                 } else { ?>
@@ -253,7 +252,6 @@
                                         <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal"  disabled>
                                             <i class="fa fa-refresh" style="font-size:15px;"></i>
                                         </button>
-                                        <?php echo $count[$i]?>
                                     </div>
                                 <?php } ?>
                             </td>
