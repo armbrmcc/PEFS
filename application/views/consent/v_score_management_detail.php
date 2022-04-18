@@ -174,12 +174,12 @@
                                             <i class="bg-danger"></i>
                                             <span class="status"><?php echo 'Not pass' ?></span>
                                         </span>
-                                    <?php  } else { ?>
-                                        <span class="name mb-0 text-sm">
-                                            <span class="status"><?php echo 'Pending Assess' ?></span>
-                                        </span>
-                                <?php }
-                                } ?>
+                                    <?php  }
+                                } else { ?>
+                                    <span class="name mb-0 text-sm">
+                                        <span class="status"><?php echo 'Pending Assess' ?></span>
+                                    </span>
+                                <?php } ?>
                             </td>
                             <td>
                                 <div class="avatar-group">
