@@ -135,13 +135,7 @@ div.a {
 
                                         <!-- Modal content-->
                                         <div class="modal-content">
-                                            <div class="modal-header"> <?php { ?>
-                                                <a href='<?php echo site_url() . 'File_present_management/File_present_management/show_list_nominee'
-                                                                ?>'>
-                                                    <button type="button" class="close"
-                                                        data-dismiss="modal">&times;</button>
-                                                </a><?php } ?>
-                                            </div>
+
                                             <div class="b">
                                                 <h4 class="modal-title">&emsp;Attachment :</h4>
                                             </div>
@@ -169,14 +163,7 @@ div.a {
 
                                         <!-- Modal content-->
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <?php { ?>
-                                                <a href='<?php echo site_url() . 'File_present_management/File_present_management/show_list_nominee'
-                                                                ?>'>
-                                                    <button type="button" class="close"
-                                                        data-dismiss="modal">&times;</button>
-                                                </a><?php } ?>
-                                            </div>
+
                                             <div class="b">
                                                 <h4 class="modal-title">&emsp;Attachment :</h4>
                                             </div>
