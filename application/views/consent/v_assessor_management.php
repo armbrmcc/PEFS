@@ -237,13 +237,13 @@
                                                             <br>
                                 
                                                             <div class="modal-footer">
+                                                            <!-- Button Cancel ยกเลิกการสร้างกลุ่มกรรมการ -->
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                                            <!-- End Button Cancel --> 
+
                                                             <!-- Button Submit ยืนยันการสร้างกลุ่มกรรมการ -->
                                                             <button type="button" class="btn btn-success" onclick="add_sec()">Submit</button>
                                                             <!-- End Button Submit -->
-
-                                                            <!-- Button Cancel ยกเลิกการสร้างกลุ่มกรรมการ -->
-                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                                                            <!-- End Button Cancel -->
                                                             </div>
                                                         </form>
                                                     </div>
@@ -415,7 +415,6 @@
                     // Main_promote();
                     window.location.href =
                         "<?php echo base_url(); ?>Assessor_management/Assessor_management/show_assessor_management";
-
                 },
                 //success
                 error: function(data) {
@@ -427,6 +426,7 @@
         } // if
         else {
             $("#txt_warning_add").show();
+            alert("Please fill out the information completely.");
         } // else 
     }
     // add_sec
