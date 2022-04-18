@@ -158,21 +158,6 @@ class Score_management extends MainController
     }//end get_group
 
     /*
-	* get_section
-	* display  get_section
-	* @input  -
-	* @output  get_section
-	* @author  Niphat Kuhoksiw
-	* @Create  Date 2565-04-16
-    */
-    public function get_section()
-    {//get_section
-        $this->load->model('M_pef_report', 'pef');
-        $data = $this->pef->get_all_section()->result();
-        echo json_encode($data);
-    }//end get_section
-
-    /*
 	* get_evaluation
 	* display  get_evaluation
 	* @input  -
