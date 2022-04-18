@@ -244,11 +244,13 @@
                                                         <input class="form-control" type="text" id="group_id" name="group_id" value="<?php echo $arr_ass[$i]->ase_gro_id ?>" hidden>
                                                         <input class="form-control" type="text" id="sec_id" name="sec_id" value="<?php echo $arr_ass[$i]->ase_sec_id ?>" hidden>
 
-                                                        <!-- ปุ่มดำเนินการเพิ่มกรรมการ -->
-                                                        <button type="submit" class="btn btn-success float-right">Submit</button>
+                                                        <div class="modal-footer">
+                                                            <!-- ปุ่มดำเนินการยกเลิกการเพิ่มกรรมการ -->
+                                                            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
 
-                                                        <!-- ปุ่มดำเนินการยกเลิกการเพิ่มกรรมการ -->
-                                                        <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
+                                                            <!-- ปุ่มดำเนินการเพิ่มกรรมการ -->
+                                                            <button type="submit" class="btn btn-success float-right">Submit</button>
+                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>
@@ -328,7 +330,7 @@
             </div>
             <div class="modal-footer">
                 <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management'; ?>">
-                <!-- ปุ่มดำเนินการรับทราบการเพิ่มกรรมการ -->
+                    <!-- ปุ่มดำเนินการรับทราบการเพิ่มกรรมการ -->
                     <button type="button" class="btn bg-gradient-success" data-bs-dismiss="modal">OK</button>
                 </a>
             </div>
