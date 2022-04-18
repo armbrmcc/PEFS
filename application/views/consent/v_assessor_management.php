@@ -138,9 +138,9 @@
                                                     <!-- ตำแหน่งของกลุ่มกรรมการ -->
                                                     <h6 class="text-xs mb-0">
                                                         <?php
-                                                            echo '-';
-                                                            echo ' ' . $arr_group[$i]->Position_name;
-                                                            echo "<br/>";
+                                                        echo '-';
+                                                        echo ' ' . $arr_group[$i]->Position_name;
+                                                        echo "<br/>";
                                                         ?>
                                                     </h6>
                                                 </div>
@@ -235,14 +235,16 @@
                                                                 <input type="text" id="type_evaluation" name="group_type" class="form-control" disabled value="Type 1: (1 round evaluation)">
                                                             </div>
                                                             <br>
-
+                                
+                                                            <div class="modal-footer">
                                                             <!-- Button Submit ยืนยันการสร้างกลุ่มกรรมการ -->
-                                                            <button type="button" class="btn btn-success float-right" onclick="add_sec()">Submit</button>
+                                                            <button type="button" class="btn btn-success" onclick="add_sec()">Submit</button>
                                                             <!-- End Button Submit -->
 
                                                             <!-- Button Cancel ยกเลิกการสร้างกลุ่มกรรมการ -->
-                                                            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                                                             <!-- End Button Cancel -->
+                                                            </div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -331,21 +333,21 @@
             },
             dataType: "JSON",
             success: function(data, status) {
-                var i=0;
+                var i = 0;
                 console.log(data);
                 data.forEach((row, index) => {
-                    $("#position_list").append('<input type="checkbox" id="pos'+i+++'" value="' + row.Position_ID +
+                    $("#position_list").append('<input type="checkbox" id="pos' + i++ + '" value="' + row.Position_ID +
                         '"><a href="#">' + ' ' + row.Position_name +
                         '</a><br></input>');
 
                     count_pos++;
                     console.log(count_pos);
-                    document.getElementById('count_pos').value=count_pos;
+                    document.getElementById('count_pos').value = count_pos;
                 })
             },
             error: function(error) {
                 console.log('error');
-            
+
             }
 
         });
@@ -412,7 +414,7 @@
                     console.log(data);
                     // Main_promote();
                     window.location.href =
-                                "<?php echo base_url(); ?>Assessor_management/Assessor_management/show_assessor_management";
+                        "<?php echo base_url(); ?>Assessor_management/Assessor_management/show_assessor_management";
 
                 },
                 //success
@@ -422,10 +424,10 @@
                 // error
             });
             // ajax
-        }// if
+        } // if
         else {
             $("#txt_warning_add").show();
-        }// else 
+        } // else 
     }
     // add_sec
 </script>
