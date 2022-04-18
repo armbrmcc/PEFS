@@ -61,7 +61,6 @@ class Evaluation extends MainController
         $this->load->model('M_pef_performance_form', 'per');
         $date = date("Y-m-d");
         $data['arr_group'] = $this->pef->get_group_evaluation($ass_id)->result();
-        $data['arr_group'] = $this->pef->get_group_evaluation($ass_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         // print_r($data['obj_date']);
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
@@ -87,9 +86,11 @@ class Evaluation extends MainController
         $this->load->model('M_pef_assessor', 'assessor');
         $this->load->model('M_pef_group_nominee', 'nominee');
         $this->load->model('M_pef_format_form', 'form');
+        $this->load->model('M_pef_file', 'file');
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
+        $data['obj_file'] = $this->file->get_file_present_nominee($id_nominee)->result();
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
@@ -112,12 +113,10 @@ class Evaluation extends MainController
         $this->load->model('M_pef_assessor', 'assessor');
         $this->load->model('M_pef_group', 'pef');
         $this->load->model('M_pef_group_nominee', 'nominee');
-
-
         $this->load->model('M_pef_format_form', 'form');
-
         $this->load->model('M_pef_item_form', 'item');
         $this->load->model('M_pef_description_form', 'des');
+        $this->load->model('M_pef_file', 'file');
 
         
         $this->pos_id =$promote;
@@ -132,7 +131,7 @@ class Evaluation extends MainController
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
-        // print_r( $data['obj_group_ass']);
+        $data['obj_file'] = $this->file->get_file_present_nominee($id_nominee)->result();
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
 
@@ -160,11 +159,13 @@ class Evaluation extends MainController
         $this->load->model('M_pef_format_form', 'form');
         $this->load->model('M_pef_performance_form', 'per');
         $this->load->model('M_pef_point_form', 'point');
+        $this->load->model('M_pef_file', 'file');
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
+        $data['obj_file'] = $this->file->get_file_present_nominee($id_nominee)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
         $data['arr_date'] = $this->nominee->get_nominee_date($group_id)->result();

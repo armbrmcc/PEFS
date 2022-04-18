@@ -270,7 +270,7 @@ $( document ).ready(function() {
             <!-- icon file present nominee -->
             <div class="row">
                 <div class="col-sm-12">
-                    <!-- <a href="" target="_blank"> -->
+                    <a href="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main' ?>/assets/upload/<?php echo $obj_file[0]->fil_location ?>" target="_blank">
                     <button type="button" class="btn bg-gradient md-0" style="background-color: #596CFF; float: right"
                         id="set_button">
                         <i class="far fa-file-pdf text-white"></i> &nbsp; <h7 class="text-white">Present Nominee</h7>
