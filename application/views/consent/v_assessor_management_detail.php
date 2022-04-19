@@ -104,9 +104,14 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-6 d-flex align-items-center">
+                            <?php
+                                for ($i = 0; $i < count($arr_ass); $i++) {
+                                ?>
                                 <!-- Title -->
                                 <h4>Promote to T<?php echo $arr_ass[0]->asp_level ?> : <?php echo $arr_ass[0]->sec_name ?></h4>
-
+                                <?php
+                                }
+                                ?>
                             </div>
                             <div class="col-6 text-end">
                                 <!-- Select Year -->
