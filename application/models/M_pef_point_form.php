@@ -99,7 +99,7 @@ class M_pef_point_form extends Da_pef_point_form
         return $query;
     }
     /*
-	* get_point_list_round1
+	* get_point_list_round_1_assessor
 	* คืนค่าคะแนนของแต่ละฟอร์ม
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
@@ -108,7 +108,7 @@ class M_pef_point_form extends Da_pef_point_form
 	*/
     function get_point_list_round1($per_id)
     {
-        $sql = "SELECT *
+        $sql = "SELECT ptf_point
             FROM  pefs_database.pef_point_form
             WHERE pef_point_form.ptf_per_id = '$per_id' AND pef_point_form.ptf_round = 1";
 
@@ -117,7 +117,7 @@ class M_pef_point_form extends Da_pef_point_form
     }
 
     /*
-	* get_point_list_round2
+	* get_point_list_round_2_assessor
 	* คืนค่าคะแนนของแต่ละฟอร์ม
 	* @input 	$per_id
 	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
@@ -126,7 +126,7 @@ class M_pef_point_form extends Da_pef_point_form
 	*/
     function get_point_list_round2($per_id)
     {
-        $sql = "SELECT *
+        $sql = "SELECT ptf_point
             FROM  pefs_database.pef_point_form
             WHERE pef_point_form.ptf_per_id = '$per_id' AND pef_point_form.ptf_round = 2";
 

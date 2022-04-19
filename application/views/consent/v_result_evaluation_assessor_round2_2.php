@@ -174,18 +174,19 @@ th {
                                     <td colspan="2" style="vertical-align:middle;text-align: center;">Final round</td>
                                 </tr>
                                 <!--เริ่ม ตารางหัวข้อลงคะแนน-->
-                                    <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
+                                <?php 
+                                    $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
                                     $count_itm = 1; //จำนวนหัวข้อหลัก
-                                    $weight = 0;
-                                    $total_round_1 = 0;
+                                    $weight = 0; //ค่าน้ำหนักหัวข้อการประเมิน
+                                    $total_round_1 = 0; 
                                     $total_round_2 = 0;
                                     $point_old = 0;
                                 ?>
-                                <input type="hidden" id="count_form" value='<?php echo count($arr_form) ?>'>
+
                                 <?php
                                     for ($i = 0; $i < count($arr_form); $i++) {   //ลูปตามหัวข้อหลัก
                                 ?>
-                                        <?php if ($i != 0) {
+                                <?php if ($i != 0) {
                                             if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
                                                 $count_itm++;
                                             }
@@ -196,28 +197,32 @@ th {
                                     } //นับหัวข้อหลัก
                                     ?>
 
-                                    <?php for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
+                                <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
+
+                                <?php 
+                                        for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
                                     ?>
-                                        <?php $count_rowspan = 0;
+                                <?php 
+                                    $count_rowspan = 0;
                                         for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
                                             if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
                                                 $count_rowspan++;
                                             }
                                         } //นับdiscriptionเพื่อกำหนด rowspan 
-                                        
                                     ?>
+
                                 <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
                                     id="dis_row_<?php echo  $i ; ?>">
                                 <?php
                                         for ($loop_dis = 1; $loop_dis <= $count_rowspan; $loop_dis++) { ?>
                                 <tr>
-                                    <!-- แสดงห้อข้อหลัก -->
+                                    <!-- แสดง Item -->
                                     <?php if ($loop_dis === 1) { ?>
                                     <td rowspan="<?php echo $count_rowspan; ?>"
                                         style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
                                         <b>
-                                            <?php echo $arr_form[$count_discription]->itm_name; ?>
-                                            <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
+                                            <?php echo $arr_form[$loop_dis]->itm_name; ?>
+                                            <br><?php echo $arr_form[$loop_dis]->itm_item_detail; ?></b>
                                     </td>
                                     <?php } ?>
 
@@ -233,19 +238,16 @@ th {
                                         <?php echo $arr_form[$count_discription]->des_description_th ?>
                                     </td>
 
-                                    <!-- แสดง point round 1-->
-                                    <td colspan="2">
-                                        <div class="form-group" align="center">
-                                            <?php echo $arr_point_round1[$count_discription]->ptf_point;?>
-                                        </div>
+                                    <!-- score 1st round -->
+                                    <td colspan="2" style="vertical-align:middle;text-align: center;">
+                                        <?php echo $arr_point_round1[$count_discription]->ptf_point; ?>
                                     </td>
-                                
-                                    <!-- แสดง point round 2-->
-                                    <td colspan="2">
-                                        <div class="form-group" align="center">
-                                            <?php echo $arr_point_round2[$count_discription]->ptf_point;?>
-                                        </div>
+
+                                    <!-- score Final round -->
+                                    <td colspan="2" style="vertical-align:middle;text-align: center;">
+                                        <?php echo $arr_point_round2[$count_discription]->ptf_point; ?>
                                     </td>
+
                                     <?php $count_discription++; ?>
                                     <?php } ?>
                                 </tr>
@@ -261,30 +263,28 @@ th {
                                         <br>2 ： Partially lower that expected level for Next level
                                         <br>1 ： Do Not satisfy expected level for Next level
                                     </td>
-                                
+
                                     <!-- total -->
                                     <td>Total</td>
-                                        <!-- total round 1 -->
-                                        <td style="text-align: center;"><?php echo $total_round_1;?></td>
-                                        <td style="text-align: center;"><?php echo (int)($total_round_1 * 100/$weight);?>%</td>
-                                        
-                                        <?php
-                                            if($arr_point_round2->ptf_round == 2 && $arr_point_round2->ptf_point == NULL)
-                                            {
-                                        ?>
-                                                <!-- total round 2 but null -->
-                                                <td style="text-align: center;"> - </td>
-                                                <td style="text-align: center;"> - </td>
-                                        <?php        
-                                            }
-                                            // end if check null
-                                            else
-                                            {
-                                        ?>
-                                                <!-- total round 2 -->
-                                                <td style="text-align: center;"><?php echo $total_round_2;?></td>
-                                                <td style="text-align: center;"><?php echo (int)($total_round_2 * 100/$weight);?>%</td>
-                                        <?php        
+                                    <!-- total round 1 -->
+                                    <td style="text-align: center;"><?php echo $total_round_1;?></td>
+                                    <td style="text-align: center;"><?php echo (int)(($total_round_1 * 100)/$weight);?>%
+                                    </td>
+
+                                    <?php
+                                        if ($arr_point_round2== NULL) {
+                                    ?>
+                                    <td style="text-align: center;"> - </td>
+                                    <td style="text-align: center;"> - </td>
+                                    <?php        
+                                        } // end if yet evaluate final round or point null
+                                        else {
+                                    ?>
+                                    <!-- total round 2 -->
+                                    <td style="text-align: center;"><?php echo $total_round_2;?></td>
+                                    <td style="text-align: center;"><?php echo (int)(($total_round_1 * 100)/$weight);?>%
+                                    </td>
+                                    <?php        
                                             }
                                             // end else not null
                                         ?>

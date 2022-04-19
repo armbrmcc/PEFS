@@ -132,9 +132,9 @@
                                             if($arr_nominee[$i]->grn_status_done == 0)
                                             {
                                 ?>
-                                                <!-- round 2/1 -->
+                                                <!-- round 2 ประเมินรอบที่ 1 อย่างเดียว -->
                                                 <a
-                                                    href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2_1'.'/'.$arr_nominee[$i]->grn_grp_id.'/'.$arr_nominee[$i]->grn_emp_id.'/'.$arr_nominee[$i]->asp_level; ?>">
+                                                    href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2_1'.'/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id.'/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
                                                     <button type="button" class="btn btn-xs button_size"
                                                         style="background-color: #596CFF;">
                                                         <i class="fas fa-search text-white"></i>
@@ -146,9 +146,9 @@
                                             else if($arr_nominee[$i]->grn_status_done == 1)
                                             {
                                 ?>
-                                                <!-- round 2/2 -->
+                                                <!-- round 2 ประเมินครบ 2 รอบแล้ว -->
                                                 <a
-                                                    href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2_2'.'/'.$arr_nominee[$i]->grn_grp_id.'/'.$arr_nominee[$i]->grn_emp_id.'/'.$arr_nominee[$i]->asp_level; ?>">
+                                                    href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2_2'.'/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id.'/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
                                                     <button type="button" class="btn btn-xs button_size"
                                                         style="background-color: #596CFF;">
                                                         <i class="fas fa-search text-white"></i>
