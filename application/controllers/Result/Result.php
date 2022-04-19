@@ -33,7 +33,7 @@ class Result extends MainController
         $ass_id = $_SESSION['UsEmp_ID'];
         $this->load->model('M_pef_group', 'pef');
         $this->load->model('M_pef_group_schedule', 'date');
-        $data['arr_group'] = $this->pef->get_group_evaluation($ass_id)->result();
+        $data['arr_group'] = $this->pef->get_group_evaluation_by_id($ass_id)->result();
         $data['obj_date'] = $this->date->get_date_evaluation($ass_id)->result();
         // echo "<pre>";
         //     print_r($data['arr_group']);

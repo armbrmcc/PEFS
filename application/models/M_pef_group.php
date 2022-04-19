@@ -281,4 +281,32 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end  
 
+    /*
+	* get_group_evaluation
+	* get data group evaluation from database
+	* @input  ass_id
+	* @output -
+	* @author Thitima Popila
+	* @Create Date 2565-04-20
+    */
+    public function get_group_evaluation_by_id($ass_id)
+    {
+        $sql = "SELECT gr_schedule.grd_date, gr_schedule.grd_round, gr_schedule.grd_grp_id, promote.asp_name, 
+        promote.asp_level, promote.asp_type,gr.grp_id, gr.grp_status,  position.gap_promote, ass.ase_emp_id, gr.grp_id, gr.grp_date
+                    FROM pefs_database.pef_group AS gr
+                    INNER JOIN pefs_database.pef_group_schedule AS gr_schedule
+                    ON gr.grp_id = gr_schedule.grd_grp_id
+                    INNER JOIN pefs_database.pef_group_assessor AS grass
+                    ON gr.grp_id = grass.gro_grp_id
+                    INNER JOIN pefs_database.pef_assessor AS ass
+                    ON grass.gro_ase_id = ass.ase_id
+                    INNER JOIN pefs_database.pef_assessor_promote AS promote
+                    ON grass.gro_asp_id = promote.asp_id
+                    INNER JOIN pefs_database.pef_assessor_position AS position
+                    ON promote.asp_id = position.gap_asp_id
+                    WHERE  ass.ase_emp_id = '$ass_id'
+                    GROUP BY gr.grp_id";
+        $query = $this->db->query($sql);
+        return $query;
+    } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมิน
 }
