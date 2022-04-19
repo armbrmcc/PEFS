@@ -8,6 +8,14 @@
     * Create date 2565-01-27   
     * Update date 
 -->
+<style>
+    select {
+        width: 100% !important;
+    }
+    input {
+        width: 30% !important;
+    }
+</style>
 <!-- bootstrap -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -85,10 +93,10 @@ date_default_timezone_set("Asia/Bangkok");
                             <h6 style="font-size:20px;">Group</h6>
                             <div class="row">
                                 <div class="col">
-                                    <label for="year" style="font-size:20px;">Level:
-                                        <select id="group_position" name="year"
+                                    <label for="year" style="font-size:20px;">Level :
+                                        <select id="group_position" name="year" class="form-control"
                                             onchange="get_position(),change_type(),change_button_status(),get_position_to_promote(),change_date()">
-                                            <option value="-1">please select</option>
+                                            <option value="-1">Please select level</option>
                                             <option value="6">T6</option>
                                             <option value="5">T5</option>
                                             <option value="4">T4</option>
@@ -99,8 +107,8 @@ date_default_timezone_set("Asia/Bangkok");
                                     </label>
                                 </div>
                                 <div class="col">
-                                    <label for="year" style="font-size:20px;">Year:
-                                        <select id="year" name="year" onchange="get_assessor()">
+                                    <label for="year" style="font-size:20px;">Year :
+                                        <select id="year" class="form-control" name="year" onchange="get_assessor()">
 
                                         </select>
                                     </label>
@@ -115,14 +123,14 @@ date_default_timezone_set("Asia/Bangkok");
                             </div>
                             <div>
                                 <label for="year" style="font-size:20px;">Type Evaluation</label><br>
-                                <input type="text" id="type_evaluation" style="font-size:20px;" disabled
+                                <input type="text" class="form-control" id="type_evaluation" style="font-size:20px;" disabled
                                     value="Type 1: (1 round evaluation)">
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div>
                                         <label for="year" style="font-size:20px;">Date Round 1 :</label><br>
-                                        <input type="date" id="date" style="font-size:20px;"
+                                        <input type="date" class="form-control" id="date" style="font-size:20px;"
                                             value="<?php echo date('Y-m-d') ?>" min="<?php echo date('Y-m-d') ?>"><br>
 
                                     </div><br><br>
@@ -131,7 +139,7 @@ date_default_timezone_set("Asia/Bangkok");
                                 <div class="col" id="date2">
                                     <div>
                                         <label for="year" style="font-size:20px;">Date Round 2 :</label><br>
-                                        <input type="date" id="date_2" style="font-size:20px;"
+                                        <input type="date" class="form-control" id="date_2" style="font-size:20px;"
                                             value="<?php echo date('Y-m-d') ?>" min="<?php echo date('Y-m-d') ?>"><br>
 
                                     </div><br><br>
@@ -197,15 +205,15 @@ date_default_timezone_set("Asia/Bangkok");
                                         </div>
                                         <div class="modal-body">
                                             <label for="emp_id" style="font-size:20px;">Employee ID</label><br>
-                                            <input type="number" id="Emp_id_modal" style="font-size:20px;"
+                                            <input type="number" id="Emp_id_modal" class="form-control" style="font-size:20px;"
                                                 onkeyup="get_Emp()"><br>
                                             <label for="emp_id" style="font-size:20px;">Name</label><br>
-                                            <input type="text" id="showname_modal" style="font-size:20px;" disabled><br>
+                                            <input type="text" class="form-control" id="showname_modal" class="form-control" style="font-size:20px;width:100% !important" disabled><br>
                                             <input type="text" id="position_nominee" hidden>
                                             <input type="text" id="department_nominee" hidden>
-                                            <label for="year" style="font-size:20px;">Promote to
-                                                <br> <select id="promote_nominee" name="year">
-                                                    <option>please select</option>
+                                            <label for="year"  style="font-size:20px;">Promote to
+                                                <br> <select id="promote_nominee" class="form-control" name="year">
+                                                    <option>Please select promote</option>
 
                                                 </select>
 
@@ -237,16 +245,7 @@ date_default_timezone_set("Asia/Bangkok");
                                         </tr>
                                     </thead>
                                     <tbody id="nominee_data">
-                                        <!-- <tr id="emp_id_1">
-                                        <td style="text-align:center">1</td>
-                                        <td style="text-align:center">00030</td>
-                                        <td style="text-align:center">Jirayut Saifah</td>
-                                        <td style="text-align:center">Officer Level</td>
-                                        <td style="text-align:center">Accountant</td>
-                                        <td style="text-align:center">Senior Manager</td>
-                                        <td style="text-align:center"> <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-                                    </tr> -->
-
+                                     
                                     </tbody>
                                 </table>
                             </div>
@@ -362,7 +361,7 @@ date_default_timezone_set("Asia/Bangkok");
                         console.log(index_emp);
                         num++
 
-                        $("#nominee_data").append(data_row);
+                        $("#nominee_data").html(data_row);
                         count_nominee++;
                         console.log(count_nominee);
                     })
@@ -566,7 +565,7 @@ date_default_timezone_set("Asia/Bangkok");
                         data_row += '</tr>'
                         count_index++
                         index++
-                        $("#select_data").append(data_row);
+                        $("#select_data").html(data_row);
                     })
 
                     count = count_index;

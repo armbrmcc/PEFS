@@ -110,10 +110,12 @@ class Group_management extends MainController
             $this->ped->grn_promote_to = $pos_id->Position_ID;
             $this->ped->insert_nominee();
         }
+
         // $data['obj_sec'] = $this->pef->get_section()->result();
         // $this->output('consent/v_group_list', $data);
         $data = "insert_success";
         echo json_encode($data);
+
         //redirect('consent/v_group_management');
     }
     function delete_group($id)
@@ -195,9 +197,11 @@ class Group_management extends MainController
             $this->ped->grn_promote_to = $pos_id->Position_ID;
             $this->ped->insert_nominee();
         }
+
         // $data['obj_sec'] = $this->pef->get_section()->result();
         // $this->output('consent/v_group_list', $data);
         $data = "insert_success";
         echo json_encode($data);
+
     }
 }
