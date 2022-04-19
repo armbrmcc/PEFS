@@ -87,6 +87,18 @@ class Evaluation extends MainController
         $this->load->model('M_pef_group_nominee', 'nominee');
         $this->load->model('M_pef_format_form', 'form');
         $this->load->model('M_pef_file', 'file');
+
+        $this->load->model('M_pef_description_form', 'des');
+        $this->load->model('M_pef_item_form', 'item');
+
+        
+        $this->pos_id =$promote;
+        $this->pos_year = date("Y");
+        
+        $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
+    
+        $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
+        
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
@@ -160,6 +172,16 @@ class Evaluation extends MainController
         $this->load->model('M_pef_performance_form', 'per');
         $this->load->model('M_pef_point_form', 'point');
         $this->load->model('M_pef_file', 'file');
+        $this->load->model('M_pef_description_form', 'des');
+        $this->load->model('M_pef_item_form', 'item');
+
+        
+        $this->pos_id =$promote;
+        $this->pos_year = date("Y");
+        
+        $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
+    
+        $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();

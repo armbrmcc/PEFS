@@ -50,7 +50,7 @@ class M_pef_description_form extends Da_pef_description_form
         ON form.for_item_id = item.itm_id
         INNER JOIN pefs_database.pef_description_form AS des
         ON  item.itm_id = des.des_item_id
-        WHERE form.for_pos_id = ?";
+        WHERE form.for_pos_id = ?   GROUP by des.des_id";
         $query = $this->db->query($sql, array($this->pos_id));
         return $query;
     } //คืนค่าข้อมูลรายละเอียดของหัวข้อ

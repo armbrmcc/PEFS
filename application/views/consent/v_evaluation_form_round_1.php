@@ -313,7 +313,7 @@ function calculate_weight() {
                 </div>
             </div>
             <!-- icon file present nominee -->
-            <div class="row">
+           <div class="row">
                 <div class="col-sm-12">
                     <a href="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main' ?>/assets/upload/<?php echo $obj_file[0]->fil_location ?>" target="_blank">
                     <button type="button" class="btn bg-gradient md-0" style="background-color: #596CFF; float: right"
@@ -399,22 +399,17 @@ function calculate_weight() {
                                 <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
                                 $count_itm = 1; //จำนวนหัวข้อหลัก
                                 $weight = 0;
-                                for ($i = 0; $i < count($arr_form); $i++) {
-                                    if ($i != 0) {
-                                        if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
-                                            $count_itm++;
-                                        }
-                                    }
-                                    $weight =  $weight + $arr_form[$i]->des_weight;
-                                } //นับหัวข้อหลัก
+                                for ($i = 0; $i < count($arr_des); $i++) {
+                                    $weight =  $weight + $arr_des[$i]->des_weight;
+                                } //นับคะแนนเต็ม
                                 // print_r($count_itm);
                                 ?>
-                                <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
+                                <input type="hidden" id="count_form" value='<?php echo count($arr_item) ?>'>
                                 <?php 
-                                for ($i = 0; $i < $count_itm; $i++) { //ลูปตามหัวข้อหลัก?>
+                                for ($i = 0; $i < count($arr_item); $i++) { //ลูปตามหัวข้อหลัก?>
                                 <?php $count_rowspan = 0;
-                                    for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
-                                        if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
+                                    for ($loop_rowspan = 0; $loop_rowspan < count($arr_des); $loop_rowspan++) {
+                                        if ($arr_des[$loop_rowspan]->des_item_id == $arr_item[$i]->itm_id) {
                                             $count_rowspan++;
                                         }
                                     } //นับ discription เพื่อกำหนด rowspan ?>
@@ -428,23 +423,23 @@ function calculate_weight() {
                                             <?php if ($loop_dis === 1) { ?>
                                                 <td rowspan="<?php echo $count_rowspan; ?>"
                                                     style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
-                                                    <?php echo $arr_form[$count_discription]->itm_name; ?>
-                                                    <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
+                                                    <?php echo $arr_item[$i]->itm_name; ?>
+                                                    <br><?php echo $arr_item[$i]->itm_item_detail; ?></b>
                                                 </td>
                                             <?php } ?>
 
                                             <!-- แสดง Disription -->
                                             <td id="width_col">
-                                                <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
-                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                                <?php $pos = strrpos($arr_des[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
-                                                <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
-                                                <?php echo $arr_form[$count_discription]->des_description_th ?>
+                                                <?php echo substr($arr_des[$count_discription]->des_description_eng, $pos + 1, strlen($arr_des[$count_discription]->des_description_eng)) ?>
+                                                <?php echo $arr_des[$count_discription]->des_description_th ?>
                                             </td>
 
                                             <!-- แสดง % Weight -->
                                             <td style="vertical-align:middle;text-align: center;">
-                                                <?php echo $arr_form[$count_discription]->des_weight; ?>
+                                                <?php echo $arr_des[$count_discription]->des_weight; ?>
                                             </td>
                                         
                                             <!-- แสดง point -->
@@ -469,7 +464,7 @@ function calculate_weight() {
                                             <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"
                                                 style="vertical-align:middle; text-align: center;"></td>
                                                 <input type="text" name="point_list[]" id="point_list_<?php echo  $count_discription; ?>" value="0" hidden>
-                                                <input type="text" id="weight_list_<?php echo $count_discription; ?>" value=<?php echo $arr_form[$i]->des_weight; ?> hidden>
+                                                <input type="text" id="weight_list_<?php echo $count_discription; ?>" value=<?php echo $arr_des[$i]->des_weight; ?> hidden>
                                         <?php $count_discription++;
                                         $loop_dis++; ?>
                                     <?php } ?>

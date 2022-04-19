@@ -47,7 +47,7 @@ class M_pef_item_form extends Da_pef_item_form
         INNER JOIN pefs_database.pef_item_form AS itm
         ON form.for_item_id = itm.itm_id 
         WHERE  form.for_pos_id = ?
-        AND  itm.itm_year =?";
+        AND  itm.itm_year =? GROUP by  itm.itm_id";
 
         $query = $this->db->query($sql, array($this->pos_id, $this->pos_year));
         return $query;

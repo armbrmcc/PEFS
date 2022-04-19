@@ -253,7 +253,7 @@ $( document ).ready(function() {
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2> 
+            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2>  
         </div>
         <div class="card-body">
             <!-- Logo บริษัท -->
@@ -372,8 +372,8 @@ $( document ).ready(function() {
                                                 <!-- แสดงห้อข้อหลัก -->
                                                 <?php if ($loop_dis === 1) { ?>
                                                     <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col"> <b>
-                                                            <?php echo $arr_item[$count_discription]->itm_name; ?>
-                                                            <br><?php echo $arr_item[$count_discription]->itm_item_detail; ?></b>
+                                                            <?php echo $arr_item[$loop_dis]->itm_name; ?>
+                                                            <br><?php echo $arr_item[$loop_dis]->itm_item_detail; ?></b>
                                                     </td>
                                                 <?php } ?>
                                                 
