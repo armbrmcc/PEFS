@@ -49,7 +49,13 @@ p,select,input {
 }
 table,  td{
     white-space : inherit !important;
+    
+}
 
+
+select{
+    
+    width: 50%!important;
 }
 </style>
 
@@ -83,7 +89,7 @@ table,  td{
 
 
 <!-- start Form -->
-<form  action="<?php echo site_url() ?>Form_Management/Form_Management/form_management_update" method="post" enctype="multipart/form-data" name="event" onsubmit="return checkform()">
+<form class="form-control" action="<?php echo site_url() ?>Form_Management/Form_Management/form_management_update" method="post" enctype="multipart/form-data" name="event" onsubmit="return checkform()">
 
 
 
@@ -113,15 +119,15 @@ table,  td{
                         </td>
                        
             
-                        <td class="text-center">
+                        <td class="text-center"style='text-align: center;'> <center>
                         <!-- เลือกหัวข้อ -->
-                            <select name="select_item<?php echo $loop_form  ;?>" id="select_item<?php echo $loop_form  ;?>"  value="<?php echo $arr_form[$loop_form]->for_item_id  ;?>" onchange="show_selectvalue(this)" required>
+                            <select name="select_item<?php echo $loop_form  ;?>" id="select_item<?php echo $loop_form  ;?>"  class="form-control" value="<?php echo $arr_form[$loop_form]->for_item_id  ;?>" onchange="show_selectvalue(this)" required>
                             <option  value="">please selected</option>
                             <?php for($i=0;$i < count($arr_item) ;$i++){ ?>
                                 <option value="<?php echo $arr_item[$i]->itm_id ;?>" <?php if($arr_item[$i]->itm_id==$arr_form[$loop_form]->for_item_id){echo ' selected="selected"';}?> ><?php echo $arr_item[$i]->itm_name; ?></option>
                             <?php }?>
                             </select>
-                             
+                            </center>
                         </td>
                        
                         <td style='text-align: left;' id="discrip<?php echo $loop_form  ;?>">
@@ -188,13 +194,13 @@ table,  td{
                             <td >
                                 <p>${rowIdx}</p>    
                             </td>
-                            <td class="text-center">
-                                <select name="select_item${i}" id="select_item${i}" onchange="show_selectvalue(this)"required>
+                            <td class="text-center"><center>
+                                <select name="select_item${i}" id="select_item${i}" onchange="show_selectvalue(this)" class="form-control" required>
                                     <option  value="">please selected</option>
                                     <?php for($i=0;$i < count($arr_item) ;$i++){ ?>
                                         <option value="<?php echo $arr_item[$i]->itm_id ;?>"><?php echo $arr_item[$i]->itm_name; ?></option>
                                     <?php } ?>
-                                </select>
+                                </select></center>
                             </td>
                             <td style='text-align: left;' id="discrip${i}">
 
