@@ -486,7 +486,7 @@ function calculate_weight() {
                                         value=<?php echo $weight * 5; ?> hidden>
                                     <td colspan="2" align='right'><b>Total</b></td>
                                     <!-- แสดง total 100 -->
-                                    <td align='center'>100</td>
+                                    <td align='center'><?php echo $weight * 5; ?></td>
                                     <!-- แสดง point รวม -->
                                     <td align='center'>
                                         <input type="text" name="total" size='1' disabled style='border: none'>
