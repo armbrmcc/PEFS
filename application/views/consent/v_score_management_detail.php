@@ -59,6 +59,10 @@
         border: none;
         
     }
+    select {
+        width: 10% !important;
+        margin-left: 78%;
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript">
@@ -94,7 +98,7 @@
             <hr class="my-4" color="gray">
             <h5 class="mb-0">Group : <?php echo 'T' . $group[0]->asp_level ?>
                 <label for="cars" style="font-size : 20px;margin-left : 72%">Select Round :</label>
-                <select name="cars" id="cars">
+                <select name="cars" class="form-control" id="cars">
                     <option value="volvo">Round 1 </option>
                     <option value="saab">Round 2 </option>
                 </select>
@@ -364,7 +368,7 @@
                 <form>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label" style="font-size:20px;">Date : </label>
-                        <input type="date" id="date" style="font-size:20px;" value="<?php echo date('Y-m-d') ?>" min="<?php echo date('Y-m-d') ?>"><br>
+                        <input type="date" id="date" style="font-size:20px;" class="form-control" value="<?php echo date('Y-m-d') ?>" min="<?php echo date('Y-m-d') ?>"><br>
                     </div>
 
                     <div class="modal-footer" style="margin-right : 29.5%">
