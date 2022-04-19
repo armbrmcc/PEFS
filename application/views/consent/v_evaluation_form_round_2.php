@@ -210,16 +210,23 @@ th
 
     
 
-   
+/*
+* total_calculate_weight
+* คืนค่าคะแนนรวมแบบเปอเซ็น
+* @input   form
+* @output  -
+* @author  Phatchara Khongthandee and Pontakon Mujit
+* @Create  Date 2565-04-10
+*/
 $( document ).ready(function() {
- 
+
     $("select").change(function(){
-         
+        
         var toplem=0;
         $("select[name=form]").each(function(){
             
             toplem = toplem + parseInt($(this).val());
-             
+            
         })
         $("input[name=total]").val(toplem);
     });  //คืนค่าคะแนนรวม
@@ -230,7 +237,8 @@ $( document ).ready(function() {
         $("select[name=form]").each(function(){
             toplem = toplem + parseInt($(this).val());
 
-        }) 
+        })//คืนค่าคะแนนรวมแบบรายการ
+
         
             toplem = Math.round(toplem / weight*100);
             var a = '%'
@@ -238,13 +246,8 @@ $( document ).ready(function() {
 
     }); //คืนค่าคะแนนรวมแบบเปอเซ็น
 
-
-    //คืนค่าคะแนนรวมแบบรายการ
-    
 })
         
-       
- 
 
 </script>
 <!-- End Javascript -->

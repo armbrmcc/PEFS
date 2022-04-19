@@ -208,45 +208,33 @@ th
         }
     }//end alart_evaluation
 
-    $( document ).ready(function() {
-    /*
-    * total_calculete
-    * คืนค่าคะแนนรวม
-    * @input   form
-    * @output  -
-    * @author  Phatchara Khongthandee and Pontakon Mujit
-    * @Create  Date 2564-08-18
-    */
-    $("select").change(function() {
-        var toplem = 0;
-            $("select[name='form']").each(function() {
+$( document ).ready(function() {
 
-                toplem = toplem + parseInt($(this).val());
-            })
+    $("select").change(function(){
+    
+        var toplem=0;
+        $("select[name=form]").each(function(){
+        
+            toplem = toplem + parseInt($(this).val());
+        
+        })
         $("input[name=total]").val(toplem);
-    });
-            
-    /*
-    * total_calculate_weight
-    * คืนค่าคะแนนรวมแบบเปอเซ็น
-    * @input   form
-    * @output  -
-    * @author  Phatchara Khongthandee and Pontakon Mujit
-    * @Create  Date 2564-08-18
-    */
-    $("select").change(function() {
-        var toplem = 0;
-        var weight = $("#weight").val();
-            $("select[name='form']").each(function() {
-                toplem = toplem + parseInt($(this).val());
-                
-            })
-        //คืนค่าคะแนนรวมแบบรายการ
-        toplem = Math.round(toplem / weight * 100);
-        var a = '%'
-            $("input[name=total_weight]").val(toplem + a);
+    });  //คืนค่าคะแนนรวม
 
-    });
+    $("select").change(function(){
+        var toplem=0;
+        var weight = $("#weight").val();
+        $("select[name=form]").each(function(){
+            toplem = toplem + parseInt($(this).val());
+
+        })//คืนค่าคะแนนรวมแบบรายการ
+
+            toplem = Math.round(toplem / weight*100);
+            var a = '%'
+        $("input[name=total_weight]").val(toplem + a);
+
+    }); //คืนค่าคะแนนรวมแบบเปอเซ็น
+
 })
 </script>
 <!-- End Javascript -->
@@ -349,7 +337,7 @@ th
                                     <!--เริ่ม ตารางหัวข้อลงคะแนน-->
                                     <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
                                     $count_itm = 1; //จำนวนหัวข้อหลัก
-                                    $weight = 0;
+                                    $weight = 5*count($arr_des);
                                     $total_round_1 = 0;
                                     $point_old = 0;
                                     for ($i = 0; $i < count($arr_form); $i++) {
@@ -389,10 +377,10 @@ th
                                                 <?php } ?>
                                                 
                                                 <td id="width_col">
-                                                     <!-- แสดง Disription    -->
+                                                    <!-- แสดง Disription    -->
                                                     <b> <?php echo $arr_des[$count_discription]->des_description_th; ?></b>
                                                     <br>
-                                                   
+
                                                     <?php $pos = strrpos($arr_des[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
                                                     echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
@@ -415,7 +403,7 @@ th
                                                         </select>
                                                         
                                                     </td>
-                                                    <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>" name="for_id[]" id="formid_<?php echo $count_discription; ?>">
+                                                    <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]" id="formid_<?php echo $i; ?>">
                                             <?php $count_discription++; ?>
                                         <?php } ?>
                                         </tr>
@@ -435,7 +423,7 @@ th
                                         <td>Total</td>
                                             <!-- total round 1 -->
                                             <td style="text-align: center;"><?php echo $total_round_1;?></td>
-                                            <td style="text-align: center;"><?php echo (int)($total_round_1 * 100/$weight);?>%</td>
+                                            <td style="text-align: center;"><?php echo (int)(($total_round_1 * 100)/$weight);?>%</td>
                                             <!-- total round 2 -->
                                             <input type="text" name="total" size='1' disabled hidden>
                                             <input type="text" name="total" size='1' disabled hidden>
