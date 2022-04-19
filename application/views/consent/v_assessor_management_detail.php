@@ -183,8 +183,8 @@
                                         <td class="align-middle">
 
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0" data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor<?php echo $i; ?>">
-                                                <i class="far fa-trash-alt me-2"></i>Delete</button>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalDeleteAssessor<?php echo $i; ?>">
+                                                <i class="fa fa-trash"></i></button>
 
 
                                             <!-- Modal Delete Assessor-->
