@@ -96,7 +96,7 @@
                 </button>
             </h3>
             <hr class="my-4" color="gray">
-            <h5 class="mb-0">Group : <?php echo 'T' . $group[0]->asp_level ?>
+            <h5 class="mb-0">Group : <?php echo 'T' . $group[0]->asp_id ?>
                 <label for="cars" style="font-size : 20px;margin-left : 72%">Select Round :</label>
                 <select name="cars" class="form-control" id="cars">
                     <option value="volvo">Round 1 </option>

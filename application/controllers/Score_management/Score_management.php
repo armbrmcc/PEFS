@@ -34,23 +34,6 @@ class Score_management extends MainController
         $this->load->model('M_pef_score_management', 'psm');
         $data['as_group'] = $this->psm->get_score_management_list()->result();
         $data['as_group_date'] = $this->psm->get_score_management_list_date()->result();
-     
-    for ($i=0; $i < count($data["as_group"]) ; $i++) { 
-        $a=array();
-        for ($j=0; $j < count($data["as_group_date"]) ; $j++) {
-
-            if($data["as_group_date"][$j]->grp_id == $data["as_group"][$i]->gap_id){
-                array_push($a,$data['as_group_date'][$j]);
-            
-                $data_all[$i] = [
-                    'data' =>$data['as_group'][$i],
-                    'date' =>  $a 
-                ];
-            }
-        }
-    }
-    
-    $data['data_all'] = $data_all;
         $this->output('consent/v_score_management', $data);
     } //show_score_management_list
 

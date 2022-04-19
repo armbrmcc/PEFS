@@ -104,7 +104,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        for($i=0; $i<count($data_all); $i++) {
+                                        for($i=0; $i<count($as_group); $i++) {
                                     ?>
                                     <tr>
                                         <td>
@@ -117,32 +117,30 @@
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo 'T'.$data_all[$i]["data"]->asp_level?>
+                                                    <?php echo 'T'.$as_group[$i]->asp_id?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo $data_all[$i]["data"]->asp_name?>
+                                                    <?php echo $as_group[$i]->asp_name?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo '1. '.$data_all[$i]["data"]->Position_name?>
+                                                    <?php echo '1. '.$as_group[$i]->Position_name?>
                                                 </h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
                                                 <?php $cot = 1 ;?>
-                                                <?php for ($j=0; $j < count($data_all[$i]["date"]); $j++) { ?>
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                <?php echo "Round ".$cot++." ".date("d/m/Y", strtotime($data_all[$i]["date"][$j]->grd_date));?>
+                                                <?php echo "Round ".$cot." : ".date("d/m/Y", strtotime($as_group_date[$i]->grd_date));?>
                                                 </h6>
-                                                <?php } ?>
                                                 
                                             </div>
                                         </td>

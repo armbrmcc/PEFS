@@ -34,7 +34,7 @@ class M_pef_score_management extends Da_pef_score_management
                     ON promote.asp_id = position.gap_asp_id
                     INNER JOIN dbmc.position AS pos
                     ON position.gap_promote = pos.Position_ID
-                    GROUP by promote.asp_level";
+                ";
                 
         $query = $this->db->query($sql);
         return $query;
