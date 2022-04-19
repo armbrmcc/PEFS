@@ -340,17 +340,12 @@ $( document ).ready(function() {
                                     $weight = 5*count($arr_des);
                                     $total_round_1 = 0;
                                     $point_old = 0;
-                                    for ($i = 0; $i < count($arr_form); $i++) {
-                                        if ($i != 0) {
-                                            if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
-                                                $count_itm++;
-                                            }
-                                        }
-                                        $weight =  $weight + 5;
+
+                                    for ($i = 0; $i < count($arr_des); $i++) {
+                                        
                                         $total_round_1 += $arr_point[$i]->ptf_point;
-                                    } //นับหัวข้อหลัก
-                                    ?>
-                                    <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
+                                    } ?>
+                                    <input type="hidden" id="count_form" value='<?php echo count($arr_item) ?>'>
                                     <?php
                                     
                                     for ($i = 0; $i < count($arr_item); $i++) {   //ลูปตามหัวข้อหลัก
@@ -421,6 +416,7 @@ $( document ).ready(function() {
                                         </td>
                                         <!-- total -->
                                         <td>Total</td>
+                                        <!-- <?php echo $weight; ?> -->
                                             <!-- total round 1 -->
                                             <td style="text-align: center;"><?php echo $total_round_1;?></td>
                                             <td style="text-align: center;"><?php echo (int)(($total_round_1 * 100)/$weight);?>%</td>
