@@ -60,7 +60,7 @@ class Evaluation extends MainController
         $this->load->model('M_pef_file', 'file');
         $this->load->model('M_pef_performance_form', 'per');
         $date = date("Y-m-d");
-        $data['arr_group'] = $this->pef->get_group_evaluation($ass_id)->result();
+        $data['arr_group'] = $this->pef->get_group_by_group_id($group_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         // print_r($data['obj_date']);
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();

@@ -107,7 +107,7 @@ $(document).ready(function() {
                                             </td>
                                             <!-- Group Level -->
                                             <td>
-                                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->asp_level?></h6>
+                                                <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->grp_position_group?></h6>
                                             </td>
                                             <!-- Group Name -->
                                             <td>

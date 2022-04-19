@@ -84,7 +84,7 @@ $(document).ready(function() {
         </div>
         <!-- End cara header-->
         <div class="card-body">
-            <h3>Promote to T<?php echo $arr_group[0]->asp_level?></h3>
+            <h3>Promote to T<?php echo $arr_group[0]->grp_position_group?></h3>
             <!-- Start Table Evaluation List -->
             <div class="table-responsive">
                 <table class="table align-items-center mb-0" id="list_table">
