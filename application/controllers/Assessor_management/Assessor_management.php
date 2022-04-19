@@ -58,6 +58,7 @@ class Assessor_management extends MainController
         // echo $id; 
         $this->load->model('M_pef_assessor_promote', 'gass');
         $data['arr_ass'] = $this->gass->get_assessor_list($id)->result();
+        $data['arr_t'] = $this->gass->get_level($id)->result();
         $this->output('consent/v_assessor_management_detail', $data);
     }//แสดงหน้า v_assessor_management_detail ที่แสดงรายชื่อกรรมการที่อยู่ในกลุ่มกรรมการนั้นๆ
 
