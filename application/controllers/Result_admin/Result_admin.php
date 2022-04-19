@@ -103,7 +103,9 @@ class Result_admin extends MainController
         $this->load->model('M_pef_assessor', 'assessor');
         $this->load->model('M_pef_performance_form', 'per');
         $this->load->model('M_pef_point_form', 'point');
-
+        $this->load->model('M_pef_file', 'file');
+        
+        $data['arr_file'] = $this->file->get_file_by_id($Emp_ID)->result();
         $data['arr_nominee'] = $this->nominee->get_nominee_by_employee_id($Emp_ID)->result();
         $data['arr_promote'] = $this->nominee->get_promote_to_by_nominee_and_group_id($Emp_ID,$group_id)->result();
         
@@ -144,7 +146,9 @@ class Result_admin extends MainController
         $this->load->model('M_pef_performance_form', 'per');
         $this->load->model('M_pef_point_form', 'point');
         $this->load->model('M_pef_group_schedule', 'schedule');
-
+        $this->load->model('M_pef_file', 'file');
+        
+        $data['arr_file'] = $this->file->get_file_by_id($Emp_ID)->result();
         $data['arr_nominee'] = $this->nominee->get_nominee_by_employee_id($Emp_ID)->result();
         $data['arr_promote'] = $this->nominee->get_promote_to_by_nominee_and_group_id($Emp_ID,$group_id)->result();
         

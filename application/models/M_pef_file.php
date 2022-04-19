@@ -29,6 +29,22 @@ class M_pef_file extends Da_pef_file
         return $query;
     }
 
+
+    /*
+	* get_file_by_id
+	* get data file Nominee from database
+	* @input  -
+	* @output -
+	* @author pontakon
+	* @Create Date 2565-04-18
+    */
+    public function get_file_by_id($Emp_ID)
+    {
+        $sql = "SELECT * FROM pefs_database.pef_file WHERE fil_emp_id = '$Emp_ID'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
     /*
     * get_file_present_nominee
     * คืนค่าไฟล์นำเสนอ Nominee
@@ -49,5 +65,6 @@ class M_pef_file extends Da_pef_file
         $query = $this->db->query($sql);
         return $query;
     }
+    
 
 }

@@ -118,7 +118,8 @@ th
             <!-- icon file present nominee -->
             <div class="row">
                 <div class="col-sm-12">
-                    <!-- <a href="" target="_blank"> -->
+                <a
+                            href="<?php echo base_url()?>assests/template/soft-ui-dashboard-main/assets/upload/<?php echo $arr_file[0]->fil_location ?>" target="_blank">
                     <button type="button" class="btn bg-gradient md-0" style="background-color: #596CFF; float: right"
                         id="set_button">
                         <i class="far fa-file-pdf text-white"></i> &nbsp; <h7 class="text-white">Present Nominee</h7>
@@ -250,13 +251,13 @@ th
                                             <!-- แสดง % Weight -->
                                             <td style="vertical-align:middle;text-align: center;">
                                                 <?php echo $arr_form[$count_discription]->des_weight;
-                                                 $total +=$arr_form[$count_discription]->des_weight; ?>
+                                                 $total +=$arr_form[$count_discription]->des_weight*$arr_point[$count_discription]->ptf_point; ?>
                                             </td>
                                         
                                             <!-- แสดง point -->
                                             <td style="vertical-align:middle;text-align: center;">
                                                <?php echo $arr_point[$i]->ptf_point;
-                                               $total_weight +=$arr_point[$count_discription]->ptf_point;?>
+                                               $total_weight +=$arr_point[$count_discription]->ptf_point*$arr_form[$count_discription]->des_weight;?>
                                             </td>
                                                 
 
@@ -291,7 +292,7 @@ th
                                     </td>
                                     <!-- แสดงเปอร์เซ็นคะแนนรวมทั้งหมด -->
                                     <td align='center'>
-                                   <?php echo   $total_percent ; ?>
+                                   <?php echo   $total_weight/$total*100 ; ?>%
                                     </td>
                                 </tr>
                             </tbody>
@@ -318,7 +319,7 @@ th
                         <!-- Back button -->
                         <a class="nav-link" href="<?php echo site_url() . 'Result_admin/Result_admin/show_result_admin'; ?>">
                         <div class="col-6 text-end">
-                            <button type="button" class="btn bg-gradient-secondary mb-0" data-bs-toggle="modal"
+                            <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
                                 data-bs-target="#Modal_confirm">Back
                             </button>
                         </div>
