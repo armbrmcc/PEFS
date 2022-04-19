@@ -274,6 +274,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
+                                                        
                                                         <!-- ปุ่มยกเลิกการลบ -->
                                                         <a href="">
                                                             <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>

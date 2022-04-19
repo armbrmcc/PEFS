@@ -145,8 +145,9 @@ div.a {
                                                 <input type="text" name="Emp_ID"
                                                     value="<?php echo $emp_nominee[$i]->Emp_ID ?>" hidden>
                                                 <br>
-                                                <button type="submit" class="btn btn-success"
-                                                    onclick="show_message_success()">Upload This File</button>
+                                                <button type="submit" class="btn btn-success" 
+                                                    onclick="show_message_success()">Upload This File
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
