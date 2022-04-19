@@ -69,6 +69,10 @@ class Result_admin extends MainController
         $this->load->model('M_pef_group_assessor', 'assessor');
         $this->load->model('M_pef_employee', 'emp');
         $this->load->model('M_pef_assessor_promote', 'pro');
+
+
+
+
         
         $data['arr_assessor'] = $this->assessor->get_group_all_assessor_by_id($grp_id)->result();
         $data['arr_emp'] = $this->emp->get_emp_detail($Emp_ID)->result();
@@ -104,14 +108,23 @@ class Result_admin extends MainController
         $this->load->model('M_pef_performance_form', 'per');
         $this->load->model('M_pef_point_form', 'point');
         $this->load->model('M_pef_file', 'file');
+         $this->load->model('M_pef_description_form', 'des');
+        $this->load->model('M_pef_item_form', 'item');
+
         
+       
         $data['arr_file'] = $this->file->get_file_by_id($Emp_ID)->result();
         $data['arr_nominee'] = $this->nominee->get_nominee_by_employee_id($Emp_ID)->result();
         $data['arr_promote'] = $this->nominee->get_promote_to_by_nominee_and_group_id($Emp_ID,$group_id)->result();
         
         $promote = $data['arr_promote'][0]->grn_promote_to;
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
-
+        $this->pos_id =$promote;
+        $this->pos_year = date("Y");
+        
+        $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
+    
+        $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
         $id_nominee = $data['arr_nominee'][0]->grn_id;
         //get data assessor
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($ase_id)->result();
@@ -147,6 +160,8 @@ class Result_admin extends MainController
         $this->load->model('M_pef_point_form', 'point');
         $this->load->model('M_pef_group_schedule', 'schedule');
         $this->load->model('M_pef_file', 'file');
+        $this->load->model('M_pef_description_form', 'des');
+        $this->load->model('M_pef_item_form', 'item');
         
         $data['arr_file'] = $this->file->get_file_by_id($Emp_ID)->result();
         $data['arr_nominee'] = $this->nominee->get_nominee_by_employee_id($Emp_ID)->result();
@@ -154,7 +169,12 @@ class Result_admin extends MainController
         
         $promote = $data['arr_promote'][0]->grn_promote_to;
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
-
+        $this->pos_id =$promote;
+        $this->pos_year = date("Y");
+        
+        $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
+    
+        $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
         //find group id
         $id_nominee = $data['arr_nominee'][0]->grn_id;
         //get data assessor
