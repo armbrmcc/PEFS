@@ -206,44 +206,44 @@ th
                                         }
                                         $weight =  $weight + 5;
                                         $total_round_1 += $arr_point[$i]->ptf_point;
-                                        $total_round_2 += $arr_point_2[$i]->ptf_point;
                                     } //นับหัวข้อหลัก
                                     ?>
                                     <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
                                     <?php
                                     
-                                    for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
-                                    ?>
-                                        <?php $count_rowspan = 0;
-                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
-                                            if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
-                                                $count_rowspan++;
-                                            }
-                                        } //นับdiscriptionเพื่อกำหนด rowspan 
-                                        
+                                    for ($i = 0; $i < count($arr_item); $i++) {   //ลูปตามหัวข้อหลัก
                                         ?>
-                                        <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
-                                        id="dis_row_<?php echo  $i ; ?>">
-                                        <?php
-                                        for ($loop_dis = 1; $loop_dis <= $count_rowspan; $loop_dis++) { ?>
-                                            <tr>
+                                            <?php $count_rowspan = 0;
+                                            for ($loop_rowspan = 0; $loop_rowspan < count($arr_des); $loop_rowspan++) {
+                                                if ($arr_des[$loop_rowspan]->des_item_id == $arr_item[$i]->itm_id) {
+                                                    $count_rowspan++;
+                                                }
+                                            } //นับdiscriptionเพื่อกำหนด rowspan 
+                                            
+                                            ?>
+                                            <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
+                                            id="dis_row_<?php echo  $i ; ?>">
+                                            <?php
+                                            for ($loop_dis = 1; $loop_dis <= $count_rowspan; $loop_dis++) { ?>
+                                                <tr>
                                                 <!-- แสดงห้อข้อหลัก -->
                                                 <?php if ($loop_dis === 1) { ?>
                                                     <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col"> <b>
-                                                            <?php echo $arr_form[$count_discription]->itm_name; ?>
-                                                            <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
+                                                            <?php echo $arr_item[$loop_dis]->itm_name; ?>
+                                                            <br><?php echo $arr_item[$loop_dis]->itm_item_detail; ?></b>
                                                     </td>
                                                 <?php } ?>
-                                                <!-- แสดง Disription    -->
+                                                
                                                 <td id="width_col">
-                                                    <b> <?php echo $arr_form[$count_discription]->des_description_th; ?></b>
+                                                     <!-- แสดง Disription    -->
+                                                    <b> <?php echo $arr_des[$count_discription]->des_description_th; ?></b>
                                                     <br>
-                                                    <!-- แสดง Disription    -->
-                                                    <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
-                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                                   
+                                                    <?php $pos = strrpos($arr_des[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
-                                                    <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
-                                                    <?php echo $arr_form[$count_discription]->des_description_th ?>
+                                                    <?php echo substr($arr_des[$count_discription]->des_description_eng, $pos + 1, strlen($arr_des[$count_discription]->des_description_eng)) ?>
+                                                    <?php echo $arr_des[$count_discription]->des_description_th ?>
                                                 </td>
                                                 <!-- score 1st round -->
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
@@ -253,7 +253,7 @@ th
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
                                                 <?php echo $arr_point_2[$count_discription]->ptf_point; ?>
                                                     </td>
-                                                    <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>" name="for_id[]" id="formid_<?php echo $count_discription; ?>">
+                                                    
                                             <?php $count_discription++; ?>
                                         <?php } ?>
                                         </tr>

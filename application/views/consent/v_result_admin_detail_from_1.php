@@ -206,27 +206,23 @@ th
                                 $total=0;
                                 $total_weight=0;
                                 $total_percent=0;
-                                for ($i = 0; $i < count($arr_form); $i++) {
-                                    if ($i != 0) {
-                                        if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
-                                            $count_itm++;
-                                        }
-                                    }
-                                    $weight =  $weight + $arr_form[$i]->des_weight;
-                                } //นับหัวข้อหลัก
+                                for ($i = 0; $i < count($arr_des); $i++) {
+                                    $weight =  $weight + $arr_des[$i]->des_weight;
+                                } //นับคะแนนเต็ม
                                 // print_r($count_itm);
                                 ?>
-                               
+                                <input type="hidden" id="count_form" value='<?php echo count($arr_item) ?>'>
                                 <?php 
-                                for ($i = 0; $i < $count_itm; $i++) { //ลูปตามหัวข้อหลัก?>
+                                for ($i = 0; $i < count($arr_item); $i++) { //ลูปตามหัวข้อหลัก?>
                                 <?php $count_rowspan = 0;
-                                    for ($loop_rowspan = 0; $loop_rowspan < count($arr_form); $loop_rowspan++) {
-                                        if ($arr_form[$loop_rowspan]->des_item_id == $arr_form[$i]->itm_id) {
+                                    for ($loop_rowspan = 0; $loop_rowspan < count($arr_des); $loop_rowspan++) {
+                                        if ($arr_des[$loop_rowspan]->des_item_id == $arr_item[$i]->itm_id) {
                                             $count_rowspan++;
                                         }
                                     } //นับ discription เพื่อกำหนด rowspan ?>
                                     
-                                  
+                                    <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
+                                        id="dis_row_<?php echo  $i ; ?>">
                                     <?php $loop_dis = 1;
                                     while ($loop_dis <= $count_rowspan) { ?>
                                         <tr>
@@ -234,37 +230,37 @@ th
                                             <?php if ($loop_dis === 1) { ?>
                                                 <td rowspan="<?php echo $count_rowspan; ?>"
                                                     style="vertical-align:middle;text-align: center; width: 50px;" id="width_col">
-                                                    <?php echo $arr_form[$count_discription]->itm_name; ?>
-                                                    <br><?php echo $arr_form[$count_discription]->itm_item_detail; ?></b>
+                                                    <?php echo $arr_item[$i]->itm_name; ?>
+                                                    <br><?php echo $arr_item[$i]->itm_item_detail; ?></b>
                                                 </td>
                                             <?php } ?>
 
                                             <!-- แสดง Disription -->
                                             <td id="width_col">
-                                                <?php $pos = strrpos($arr_form[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
-                                                    echo substr($arr_form[$count_discription]->des_description_eng, 0, $pos + 1); ?>
+                                                <?php $pos = strrpos($arr_des[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                                    echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
-                                                <?php echo substr($arr_form[$count_discription]->des_description_eng, $pos + 1, strlen($arr_form[$count_discription]->des_description_eng)) ?>
-                                                <?php echo $arr_form[$count_discription]->des_description_th ?>
+                                                <?php echo substr($arr_des[$count_discription]->des_description_eng, $pos + 1, strlen($arr_des[$count_discription]->des_description_eng)) ?>
+                                                <?php echo $arr_des[$count_discription]->des_description_th ?>
                                             </td>
 
                                             <!-- แสดง % Weight -->
                                             <td style="vertical-align:middle;text-align: center;">
-                                                <?php echo $arr_form[$count_discription]->des_weight;
-                                                 $total +=$arr_form[$count_discription]->des_weight*$arr_point[$count_discription]->ptf_point; ?>
+                                                <?php echo $arr_des[$count_discription]->des_weight;
+                                                 $total +=$arr_des[$count_discription]->des_weight*$arr_point[$count_discription]->ptf_point; ?>
                                             </td>
                                         
                                             <!-- แสดง point -->
                                             <td style="vertical-align:middle;text-align: center;">
                                                <?php echo $arr_point[$i]->ptf_point;
-                                               $total_weight +=$arr_point[$count_discription]->ptf_point*$arr_form[$count_discription]->des_weight;?>
+                                               $total_weight +=$arr_point[$count_discription]->ptf_point*$arr_des[$count_discription]->des_weight;?>
                                             </td>
                                                 
 
                                             <!-- แสดง Score -->
                                             <td colspan="2" style="vertical-align:middle;text-align: center;">
-                                                <?php echo $arr_point[$i]->ptf_point*$arr_form[$count_discription]->des_weight;
-                                                $total_percent +=$arr_point[$i]->ptf_point*$arr_form[$count_discription]->des_weight;?>
+                                                <?php echo $arr_point[$i]->ptf_point*$arr_des[$count_discription]->des_weight;
+                                                $total_percent +=$arr_point[$i]->ptf_point*$arr_des[$count_discription]->des_weight;?>
                                             </td>
                                                
                                         <?php $count_discription++;
