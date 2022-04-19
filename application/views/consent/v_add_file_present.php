@@ -135,7 +135,7 @@ div.a {
 
                                         <!-- Modal content-->
                                         <div class="modal-content">
-
+<br>
                                             <div class="b">
                                                 <h4 class="modal-title">&emsp;Attachment :</h4>
                                             </div>
