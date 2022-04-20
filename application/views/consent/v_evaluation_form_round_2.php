@@ -372,16 +372,16 @@ $( document ).ready(function() {
                                                 <!-- แสดงห้อข้อหลัก -->
                                                 <?php if ($loop_dis === 1) { ?>
                                                     <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col"> <b>
-                                                            <?php echo $arr_item[$loop_dis]->itm_name; ?>
-                                                            <br><?php echo $arr_item[$loop_dis]->itm_item_detail; ?></b>
+                                                            <?php echo $arr_item[$i]->itm_name; ?>
+                                                            <br><?php echo $arr_item[$i]->itm_item_detail; ?></b>
                                                     </td>
                                                 <?php } ?>
                                                 
                                                 <td id="width_col">
-                                                     <!-- แสดง Disription    -->
+                                                    <!-- แสดง Disription    -->
                                                     <b> <?php echo $arr_des[$count_discription]->des_description_th; ?></b>
                                                     <br>
-                                                   
+                                                
                                                     <?php $pos = strrpos($arr_des[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
                                                     echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
