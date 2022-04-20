@@ -206,6 +206,7 @@ th
                                         }
                                         $weight =  $weight + 5;
                                         $total_round_1 += $arr_point[$i]->ptf_point;
+                                        $total_round_2 += $arr_point_2[$i]->ptf_point;
                                     } //นับหัวข้อหลัก
                                     ?>
                                     <input type="hidden" id="count_form" value='<?php echo $count_itm ?>'>
