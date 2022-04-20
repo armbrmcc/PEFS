@@ -62,7 +62,7 @@
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
         <div class="card-header">
-            <h2>Result (ผลคะแนนการประเมิน)</h2>
+            <h2>Result (ผลคะแนนการประเมิน)</h2>  
         </div>
         <!-- End cara header-->
         <div class="card-body">
@@ -117,7 +117,7 @@
                                         // round 1
                                 ?>
                                             <a
-                                                href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
+                                                href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type1/' .$arr_nominee[$i]->grn_emp_id. '/', $arr_nominee[$i]->ase_id.  '/', $arr_nominee[$i]->grp_date. '/'.$arr_nominee[0]->grp_id; ?>">
                                                 <button type="button" class="btn btn-xs button_size"
                                                     style="background-color: #596CFF;">
                                                     <i class="fas fa-search text-white"></i>
@@ -148,7 +148,7 @@
                                 ?>
                                                 <!-- round 2 ประเมินครบ 2 รอบแล้ว -->
                                                 <a
-                                                    href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2_2'.'/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id.'/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id; ?>">
+                                                    href="<?php echo site_url() . 'Result/Result/show_result_evaluation_type2_2'.'/' .$arr_nominee[$i]->grn_emp_id. '/', $arr_nominee[$i]->ase_id.  '/', $arr_nominee[$i]->grp_date. '/'.$arr_nominee[0]->grp_id; ?>">
                                                     <button type="button" class="btn btn-xs button_size"
                                                         style="background-color: #596CFF;">
                                                         <i class="fas fa-search text-white"></i>
