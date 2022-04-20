@@ -174,6 +174,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         ,grp_position_group
         ,grp_id
         ,grn_status_done
+        ,sec.sec_level
                             FROM pefs_database.pef_group_nominee AS groupno
                             INNER JOIN pefs_database.pef_group AS gr
                             ON groupno.grn_grp_id = gr.grp_id
@@ -187,7 +188,10 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                             ON groupno.grn_emp_id = employee.Emp_ID
                             INNER JOIN dbmc.position AS position
                             ON groupno.grn_promote_to = position.Position_ID 
-                        WHERE gr.grp_id = $group_id
+                             INNER JOIN pefs_database.pef_section AS sec
+                            ON sec.sec_id = gr.grp_position_group 
+                            WHERE gr.grp_id = $group_id
+                        
                 GROUP BY groupno.grn_emp_id";
         $query = $this->db->query($sql);
         return $query;
