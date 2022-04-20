@@ -246,19 +246,19 @@ class Evaluation extends MainController
         $this->point->ptf_round = 1;
         $this->point->insert_point();
 
-        // update status to database pef_group
+        //update status to database pef_group
         $this->load->model('Da_pef_group', 'group');
         $this->group->grp_id = $this->input->post('group_id');
         $this->group->grp_status = 1;
         $this->group->update_status_group();
 
-         // update status assessor to database pef_assessor_promote
+        // update status assessor to database pef_assessor_promote
         $this->load->model('Da_pef_assessor_promote', 'ass');
         $this->ass->asp_id = $this->input->post('asp_id');
         $this->ass->asp_status = 1;
         $this->ass->update_status_assessor();
 
-        // update status done to database pef_group_nominee
+        //update status done to database pef_group_nominee
         $this->load->model('Da_pef_group_nominee', 'nomi');
         $this->nomi->grn_emp_id = $this->input->post('emp_id');
         $this->nomi->grn_status_done = 0;
