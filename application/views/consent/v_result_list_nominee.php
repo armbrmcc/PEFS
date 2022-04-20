@@ -81,7 +81,7 @@
                     </thead>
                     <tbody>
                         <?php for ($i = 0; $i < count($arr_nominee); $i++) { ?>
-                            <?php  if($arr_nominee[$i]->grn_status_done == 0){  ?>
+                            <?php  if($arr_nominee[$i]->grn_status_done != -1){  ?>
                                 <?php  $check_data=1; ?>
                         <tr>
                             <!-- # -->
