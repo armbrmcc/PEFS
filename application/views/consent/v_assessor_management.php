@@ -191,8 +191,48 @@
                                             </td>
                                         </tr>
 
-                                        <!-- Start modal add group assessor -->
-                                        <div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle" aria-hidden="true">
+                                  
+                                        <!-- Start modal delete group assessor -->
+                                        <div class="modal fade" id="ModalDeleteGroup<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteGroupTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="col-12 text-end">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="py-3 text-center">
+                                                            <div>
+                                                                <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
+                                                            </div>
+                                                            <h4 class="text-gradient text-danger mt-4">
+                                                                Confirm Delete
+                                                                <br>
+                                                                <?php echo "Assessor Group Name: " . $arr_group[$i]->asp_name . '?' ?>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        
+                                                        <!-- ปุ่มยกเลิกการลบ -->
+                                                        <a href="">
+                                                            <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
+                                                        </a>
+                                                        <!-- ปุ่มยืนยันการลบ -->
+                                                        <a href="<?php echo base_url() . 'Assessor_management/Assessor_management/delete_group_assessor/' . $arr_group[$i]->asp_id; ?>">
+                                                            <button type="button" class="btn bg-gradient-success">Confirm</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End modal delete group assessor -->
+                                    <?php
+                                    }
+                                    ?>
+                                          <!-- Start modal add group assessor -->
+                                          <div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -252,45 +292,6 @@
                                         </div>
                                         <!-- End modal add group assessor -->
 
-                                        <!-- Start modal delete group assessor -->
-                                        <div class="modal fade" id="ModalDeleteGroup<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalDeleteGroupTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="col-12 text-end">
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">×</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="py-3 text-center">
-                                                            <div>
-                                                                <i class="fas fa-exclamation-triangle fa-8x" style="color:#FBD418"></i>
-                                                            </div>
-                                                            <h4 class="text-gradient text-danger mt-4">
-                                                                Confirm Delete
-                                                                <br>
-                                                                <?php echo "Assessor Group Name: " . $arr_group[$i]->asp_name . '?' ?>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        
-                                                        <!-- ปุ่มยกเลิกการลบ -->
-                                                        <a href="">
-                                                            <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
-                                                        </a>
-                                                        <!-- ปุ่มยืนยันการลบ -->
-                                                        <a href="<?php echo base_url() . 'Assessor_management/Assessor_management/delete_group_assessor/' . $arr_group[$i]->asp_id; ?>">
-                                                            <button type="button" class="btn bg-gradient-success">Confirm</button>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End modal delete group assessor -->
-                                    <?php
-                                    }
-                                    ?>
                                 </tbody>
                             </table>
                         </div>
