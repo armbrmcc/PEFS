@@ -315,7 +315,7 @@ th
                         <!-- Back button -->
                         <a class="nav-link" href="<?php echo site_url() . 'Result_admin/Result_admin/show_result_admin'; ?>">
                         <div class="col-6 text-end">
-                            <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
+                            <button type="button" class="btn bg-gradient-secondary mb-0" data-bs-toggle="modal"
                                 data-bs-target="#Modal_confirm">Back
                             </button>
                         </div>

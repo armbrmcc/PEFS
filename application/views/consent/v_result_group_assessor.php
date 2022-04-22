@@ -112,7 +112,7 @@
                                 <!-- Action -->
                                 <td>
                                     <a
-                                        href="<?php echo site_url() . 'Result/Result/show_result_list/' . $arr_group[$i]->grp_id; ?>">
+                                        href="<?php echo site_url() . 'Result/Result/show_result_list/' .$arr_group[$i]->ase_emp_id. '/'.  $arr_group[$i]->grp_id; ?>">
                                         <button type="button" class="btn btn-xs button_size"
                                             style="background-color: #596CFF;">
                                             <i class="fas fa-search text-white"></i>
