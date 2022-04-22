@@ -62,7 +62,7 @@
     <div class="card" id="card_radius">
         <div class="card-header">
             <h2>Result (ผลคะแนนการประเมิน)</h2>
-            <h2>Promote to T<?php  echo $arr_nominee[0]->sec_level ?></h2>
+            <h2>Promote to T<?php  echo $arr_nominee[0]->grp_position_group ?></h2>
         </div> 
 
         <?php $check_data = 0 ?>

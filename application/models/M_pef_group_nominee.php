@@ -200,27 +200,20 @@ class M_pef_group_nominee extends Da_pef_group_nominee
         ,Empname_engTitle
         ,Empname_eng
         ,Empsurname_eng
-        ,asp_type
+ 
         ,grp_position_group
         ,grp_id
         ,grn_status_done
-        ,sec.sec_level
+ 
                             FROM pefs_database.pef_group_nominee AS groupno
                             INNER JOIN pefs_database.pef_group AS gr
                             ON groupno.grn_grp_id = gr.grp_id
-                            INNER JOIN pefs_database.pef_group_assessor AS grass
-                            ON gr.grp_id = grass.gro_grp_id
-                            INNER JOIN pefs_database.pef_assessor AS ass
-                            ON grass.gro_ase_id = ass.ase_id
-                            INNER JOIN pefs_database.pef_assessor_promote AS promote
-                            ON grass.gro_asp_id = promote.asp_id
+ 
                             INNER JOIN dbmc.employee
                             ON groupno.grn_emp_id = employee.Emp_ID
                             INNER JOIN dbmc.position AS position
                             ON groupno.grn_promote_to = position.Position_ID 
-                             INNER JOIN pefs_database.pef_section AS sec
-                            ON sec.sec_id = gr.grp_position_group 
-                            WHERE gr.grp_id = $group_id
+                            WHERE gr.grp_id =  18
                         
                 GROUP BY groupno.grn_emp_id";
         $query = $this->db->query($sql);
