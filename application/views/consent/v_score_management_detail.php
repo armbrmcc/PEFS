@@ -182,13 +182,13 @@
                                             <i class="bg-success"></i>
                                             <span class="status"><?php echo 'Pass' ?></span>
                                         </span>
-                                    <?php } else if ($nominee[$i]->grn_status_result == 2) { ?>
+                                    <?php } if ($nominee[$i]->grn_status_result == 2) { ?>
                                         <span class="name mb-0 text-sm">
                                             <i class="bg-danger"></i>
                                             <span class="status"><?php echo 'Not pass' ?></span>
                                         </span>
                                     <?php  }
-                                } else { ?>
+                                } if ($nominee[$i]->grn_status_result != 1 && $nominee[$i]->grn_status_result != 2  ) { ?>
                                     <span class="name mb-0 text-sm">
                                         <span class="status"><?php echo 'Pending Assess' ?></span>
                                     </span>
@@ -243,7 +243,7 @@
                             <td>
                                 <?php
                                 if ($count[$i] == count($assessor)) {
-                                    if ($nominee[$i]->grn_status_result == 0 || $nominee[$i]->grn_status_result == 1 || $nominee[$i]->grn_status_result == 2) { ?>
+                                    if ($nominee[$i]->grn_status_done == 0 || $nominee[$i]->grn_status_done == 1 || $nominee[$i]->grn_status_done == 2) { ?>
                                         <div class="dropdown">
 
                                             <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" data-bs-target="#ModalAddGroup" id="info">
