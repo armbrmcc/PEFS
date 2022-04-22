@@ -123,7 +123,7 @@ class M_pef_assessor_promote extends Da_pef_assessor_promote
                     INNER JOIN dbmc.position AS pos
                     ON emp.Position_ID = pos.Position_ID
                     INNER JOIN pefs_database.pef_assessor_promote AS promote
-                    ON ass.ase_gro_id =  promote.asp_id
+                    ON ass.ase_asp_id =  promote.asp_id
                     INNER JOIN pefs_database.pef_section AS sec
                     ON promote.asp_level = sec.sec_level
                     WHERE promote.asp_id = $id";
