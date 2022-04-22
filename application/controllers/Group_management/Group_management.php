@@ -23,7 +23,7 @@ class Group_management extends MainController
         //print_r($data);
         $this->output('consent/v_group_management', $data);
     }
-  
+
     public function add_group()
     {
         $this->load->model('M_pef_employee', 'emp');
@@ -104,10 +104,10 @@ class Group_management extends MainController
             $this->ped->grn_status_result = -1;
             $this->emp->Position_name = $pos[$i];
             // print_r($pos);
-            $pos_id = $this->emp->get_position_id()->row();
+            // $pos_id = $this->emp->get_position_id()->row();
             // print_r($pos_id);
             // echo $pos_id->Position_ID;
-            $this->ped->grn_promote_to = $pos_id->Position_ID;
+            $this->ped->grn_promote_to = $pos[$i];
             $this->ped->insert_nominee();
         }
 
@@ -202,6 +202,5 @@ class Group_management extends MainController
         // $this->output('consent/v_group_list', $data);
         $data = "insert_success";
         echo json_encode($data);
-
     }
 }
