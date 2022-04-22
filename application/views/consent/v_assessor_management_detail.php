@@ -245,6 +245,7 @@
                                                 
                                                     <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_assessor' . '/' . $id; ?>" method="post">
                                                         <div class="mb-3">
+                                                        
                                                             <label for="focusedinput" class="col-form-label">Employee ID</label>
                                                             <input type="text" class="form-control" name="ase_emp_id" id="ase_emp_id_modal" placeholder="Employee ID.." onkeyup="get_Emp()" required>
                                                         </div>
@@ -252,6 +253,9 @@
                                                             <label for="focusedinput" class="col-form-label">Name</label>
                                                             <input type="text" class="form-control" id="showname_modal" disabled name="assessor_name">
                                                         </div>
+
+                                                        <input type="text" class="form-control" name="sec" id="sec" value="<?php echo $sec[0]->asp_level ?>" hidden>
+                                                        
                         
                                                         <div class="modal-footer">
                                                             <!-- ปุ่มดำเนินการยกเลิกการเพิ่มกรรมการ -->

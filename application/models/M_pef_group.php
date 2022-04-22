@@ -32,9 +32,8 @@ class M_pef_group extends Da_pef_group
                     INNER JOIN pefs_database.pef_assessor AS ass
                     ON grass.gro_ase_id = ass.ase_id
                     INNER JOIN pefs_database.pef_assessor_promote AS promote
-                    ON grass.gro_asp_id = promote.asp_id
-                    WHERE  ass.ase_emp_id = '$ass_id'
-                    ";
+                    ON grass.gro_asp_id = promote.asp_level
+                    WHERE ass.ase_emp_id = '$ass_id'";
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลรายละเอียดของกลุ่มการประเมิน

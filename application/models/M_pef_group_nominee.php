@@ -31,7 +31,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                     INNER JOIN pefs_database.pef_assessor AS ass
                     ON grass.gro_ase_id = ass.ase_id
                     INNER JOIN pefs_database.pef_assessor_promote AS promote
-                    ON grass.gro_asp_id = promote.asp_id
+                    ON grass.gro_asp_id = promote.asp_level
                     INNER JOIN dbmc.employee
                     ON groupno.grn_emp_id = employee.Emp_ID
                     INNER JOIN dbmc.position AS position
@@ -61,7 +61,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                     INNER JOIN pefs_database.pef_assessor AS ass
                     ON grass.gro_ase_id = ass.ase_id
                     INNER JOIN pefs_database.pef_assessor_promote AS promote
-                    ON grass.gro_asp_id = promote.asp_id
+                    ON grass.gro_asp_id = promote.asp_level
                     INNER JOIN dbmc.employee
                     ON groupno.grn_emp_id = employee.Emp_ID
                     INNER JOIN dbmc.position AS position

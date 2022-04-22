@@ -152,4 +152,21 @@ class M_pef_assessor_promote extends Da_pef_assessor_promote
         return $query;
     }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
 
+    /*
+	* get_sec
+	* @input  id
+	* @output  all 
+	* @author  Apinya Phadungkit
+	* @Create  Date 2565-03-04
+    * @Update  Date 2565-03-04
+    */
+    public function get_sec($id) //$มาจาก asp_id ที่ถูกส่งมาจากใน Controller
+    {
+        $sql = "SELECT asp_level FROM pefs_database.pef_assessor_promote AS pro
+                    WHERE pro.asp_id = $id";
+                
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่าข้อมูลกลุ่มการประเมินของกรรมการ
+
 }

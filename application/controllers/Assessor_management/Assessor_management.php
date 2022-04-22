@@ -59,6 +59,7 @@ class Assessor_management extends MainController
         $this->load->model('M_pef_assessor_promote', 'gass');
         $data['arr_ass'] = $this->gass->get_assessor_list($id)->result();
         $data['arr_t'] = $this->gass->get_level($id)->result();
+        $data['sec'] = $this->gass->get_sec($id)->result();
         $data['id'] = $id;
         // $this->add_assessor($id);
     
@@ -128,11 +129,10 @@ class Assessor_management extends MainController
         $this->dass->ase_year = '2022';
         $this->dass->ase_emp_id = $this->input->post('ase_emp_id');
         $this->dass->ase_asp_id = $ase_gro_id;
-        $this->dass->ase_sec_id = '1';
+        $this->dass->ase_sec_id = $this->input->post('sec');;
         // echo $ase_gro_id;
         $this->dass->insert();
 
-        // print_r($this->input->post('sec_id'));
         redirect('Assessor_management/Assessor_management/show_assessor_management_detail/'.$ase_gro_id);
     }//เพิ่มรายการของกรรมการในกลุ่มกรรมการ
     
