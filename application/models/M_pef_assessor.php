@@ -101,7 +101,7 @@ class M_pef_assessor extends Da_pef_assessor
                     -- INNER JOIN pefs_database.pef_group_schedule AS schedu
                     -- ON gr.grp_id = schedu.grd_grp_id
                     INNER JOIN pefs_database.pef_assessor_promote AS promote
-                    ON grass.gro_asp_id =  promote.asp_id
+                    ON grass.gro_asp_id =  promote.asp_level
                     -- INNER JOIN pefs_database.pef_assessor_position AS position
                     -- ON promote.asp_id = position.gap_asp_id
                     WHERE  gr.grp_id = '$group_id'";
