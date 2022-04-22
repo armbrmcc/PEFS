@@ -52,10 +52,10 @@ class Result extends MainController
 	* @Create  Date 2565-01-25
     * @Update  Date 2565-04-12
     */
-    public function show_result_list($group_id)
+    public function show_result_list($ass_id, $group_id)
     {
         $this->load->model('M_pef_group_nominee', 'nominee');
-        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail($ass_id, $group_id)->result();
         // echo "<pre>";
         //     print_r($data['arr_nominee']);
         // echo "</pre>";
@@ -147,7 +147,7 @@ class Result extends MainController
         $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
     
         $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
-        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail_by_id($id_assessor, $group_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();

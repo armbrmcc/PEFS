@@ -297,7 +297,7 @@ th
                         <!-- Back button -->
                         <a class="nav-link" href="<?php echo site_url() . 'Result/Result/show_result_group'; ?>">
                         <div class="col-6 text-end">
-                            <button type="button" class="btn bg-gradient-second mb-0" data-bs-toggle="modal"
+                            <button type="button" class="btn bg-gradient-secondary mb-0" data-bs-toggle="modal"
                                 data-bs-target="#Modal_confirm">Back
                             </button>
                         </div>
