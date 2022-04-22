@@ -103,7 +103,7 @@ date_default_timezone_set("Asia/Bangkok");
                                 <div class="col">
                                     <label for="year" style="font-size:20px;">Level :
                                         <select id="group_position" name="year" class="form-control"
-                                            onchange="get_position(),change_type(),change_button_status(),get_position_to_promote(),change_date()">
+                                            onchange="get_assessor(),get_group_name(),get_position(),change_type(),change_button_status(),get_position_to_promote(),change_date()">
                                             <option value="-1">Please select level</option>
                                             <option value="6">T6</option>
                                             <option value="5">T5</option>
@@ -118,6 +118,12 @@ date_default_timezone_set("Asia/Bangkok");
                                     <label for="year" style="font-size:20px;">Year :
                                         <select id="year" name="year" class="form-control" onchange="get_assessor()">
 
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="col">
+                                    <label for="year" style="font-size:20px;">Group Name :
+                                        <select id="group_name" name="year" class="form-control">
                                         </select>
                                     </label>
                                 </div>
@@ -308,6 +314,7 @@ date_default_timezone_set("Asia/Bangkok");
 
             }
             get_assessor().call()
+            get_group_name().call()
 
 
 
@@ -435,9 +442,32 @@ date_default_timezone_set("Asia/Bangkok");
          * It gets the value of the year from the dropdown and then uses that value to query the database
          * and return the results.
          */
+        function get_group_name() {
+
+            document.getElementById("group_name").innerHTML = "";
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>Employee/Get_assessor/get_group_name ",
+                data: {
+
+                },
+                dataType: "JSON",
+                success: function(data, status) {
+                    console.log(data);
+                    data.forEach((row, index) => {
+                        $("#group_name").append('<option value=' + row.asp_id +
+                            '">' + row.asp_name + '</option>');
+                    })
+
+                }
+            });
+        }
+
         function get_assessor() {
             var ass_year = document.getElementById("year").value;
+            var ass_pos = document.getElementById("group_position").value;
             console.log(ass_year)
+            console.log(ass_pos)
             //$("#select_data").remove();
             document.getElementById("select_data").innerHTML = "";
             $.ajax({
@@ -445,6 +475,7 @@ date_default_timezone_set("Asia/Bangkok");
                 url: "<?php echo base_url(); ?>Employee/Get_assessor/get_assessor_by_year ",
                 data: {
                     "years": ass_year,
+                    "pos": ass_pos
                 },
                 dataType: "JSON",
                 success: function(data, status) {
@@ -548,7 +579,8 @@ date_default_timezone_set("Asia/Bangkok");
                     console.log(data);
                     data.forEach((row, index) => {
                         $("#promote_nominee").append('<option value=' + row.Position_ID +
-                            ' onclick="setpos_id(' + row.Position_ID + ')">' + row.Position_ID + ' : ' + row
+                            ' onclick="setpos_id(' + row.Position_ID + ')">' + row.Position_ID +
+                            ' : ' + row
                             .Position_name +
                             '</option>');
                     })
@@ -556,6 +588,8 @@ date_default_timezone_set("Asia/Bangkok");
                 }
             });
         }
+
+
 
         function get_position_id(pos) {
             var pos_name = pos
@@ -647,6 +681,7 @@ date_default_timezone_set("Asia/Bangkok");
             //var pos_id = []
             var sum;
             var T = document.getElementById('group_position').value;
+            var asp_id = document.getElementById('group_name').value;
             //element = document.getElementsByName("pos");
             count_ase = []
             count_nom = []
@@ -696,6 +731,7 @@ date_default_timezone_set("Asia/Bangkok");
                         "date2": date2,
                         "position_group": T,
                         "year": year,
+                        "asp_id": asp_id
                     },
                     success: function(data) {
                         console.log(data);

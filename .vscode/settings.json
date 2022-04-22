@@ -3,5 +3,6 @@
     "cSpell.ignoreWords": [
         "Exaple",
         "Phatchara"
-    ]
+    ],
+    "nuxt.isNuxtApp": false
 }

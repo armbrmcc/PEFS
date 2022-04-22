@@ -42,8 +42,19 @@ class Get_assessor extends MainController
 
         $this->load->model('M_pef_assessor', 'ass');
         $this->ass->ase_year = $this->input->post('years');
+        $this->ass->ase_sec_id = $this->input->post('pos');
         $data = $this->ass->get_assessor_by_year()->result();
         // echo $data['assessor'];
+        //print_r($data);
+        echo json_encode($data);
+    }
+    function get_group_name()
+    {
+
+        $this->load->model('M_pef_assessor', 'ass');
+        $data = $this->ass->get_group_name()->result();
+        // echo $data['assessor'];
+        //print_r($data);
         echo json_encode($data);
     }
     function get_assessor_by_group()

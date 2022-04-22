@@ -66,6 +66,7 @@ class Group_management extends MainController
         $date[0] = $this->input->post('date');
         echo $date[0];
         $position_group = $this->input->post('position_group');
+        $asp_id = $this->input->post('asp_id');
         $assessor = $this->input->post('emp_assessor');
         $nominee = $this->input->post('emp_nominee');
         $pos = $this->input->post('promote');
@@ -93,7 +94,7 @@ class Group_management extends MainController
         }
         for ($i = 0; $i < sizeof($assessor); $i++) {
             $this->ped->gro_grp_id = $group_id[0]->grp_id;
-            $this->ped->gro_asp_id = $position_group;
+            $this->ped->gro_asp_id = $asp_id;
             $this->ped->gro_ase_id = $assessor[$i];
             $this->ped->insert_assessor();
         }
@@ -146,6 +147,7 @@ class Group_management extends MainController
         $assessor = $this->input->post('emp_assessor');
         $nominee = $this->input->post('emp_nominee');
         $pos = $this->input->post('promote');
+        $asp_id = $this->input->post('asp_id');
         print_r($pos);
         $group = $this->input->post('grp_id');
         $this->ped->grn_grp_id = $group;
@@ -184,7 +186,7 @@ class Group_management extends MainController
         }
         for ($i = 0; $i < sizeof($assessor); $i++) {
             $this->ped->gro_grp_id = $group_id[0]->grp_id;
-            $this->ped->gro_asp_id = $position_group;
+            $this->ped->gro_asp_id = $asp_id;
             $this->ped->gro_ase_id = $assessor[$i];
             $this->ped->insert_assessor();
         }

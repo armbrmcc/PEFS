@@ -9,12 +9,13 @@
     * Update date 
 -->
 <style>
-    select {
-        width: 100% !important;
-    }
-    input {
-        width: 30% !important;
-    }
+select {
+    width: 100% !important;
+}
+
+input {
+    width: 30% !important;
+}
 </style>
 <!-- bootstrap -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -95,7 +96,7 @@ date_default_timezone_set("Asia/Bangkok");
                                 <div class="col">
                                     <label for="year" style="font-size:20px;">Level :
                                         <select id="group_position" name="year" class="form-control"
-                                            onchange="get_position(),change_type(),change_button_status(),get_position_to_promote(),change_date()">
+                                            onchange="get_group_name(),get_position(),change_type(),change_button_status(),get_position_to_promote(),change_date()">
                                             <option value="-1">Please select level</option>
                                             <option value="6">T6</option>
                                             <option value="5">T5</option>
@@ -113,6 +114,12 @@ date_default_timezone_set("Asia/Bangkok");
                                         </select>
                                     </label>
                                 </div>
+                                <div class="col">
+                                    <label for="year" style="font-size:20px;">Group Name :
+                                        <select id="group_name" name="year" class="form-control">
+                                        </select>
+                                    </label>
+                                </div>
 
 
                             </div>
@@ -123,8 +130,8 @@ date_default_timezone_set("Asia/Bangkok");
                             </div>
                             <div>
                                 <label for="year" style="font-size:20px;">Type Evaluation</label><br>
-                                <input type="text" class="form-control" id="type_evaluation" style="font-size:20px;" disabled
-                                    value="Type 1: (1 round evaluation)">
+                                <input type="text" class="form-control" id="type_evaluation" style="font-size:20px;"
+                                    disabled value="Type 1: (1 round evaluation)">
                             </div>
                             <div class="row">
                                 <div class="col">
@@ -205,13 +212,15 @@ date_default_timezone_set("Asia/Bangkok");
                                         </div>
                                         <div class="modal-body">
                                             <label for="emp_id" style="font-size:20px;">Employee ID</label><br>
-                                            <input type="number" id="Emp_id_modal" class="form-control" style="font-size:20px;"
-                                                onkeyup="get_Emp()"><br>
+                                            <input type="number" id="Emp_id_modal" class="form-control"
+                                                style="font-size:20px;" onkeyup="get_Emp()"><br>
                                             <label for="emp_id" style="font-size:20px;">Name</label><br>
-                                            <input type="text" class="form-control" id="showname_modal" class="form-control" style="font-size:20px;width:100% !important" disabled><br>
+                                            <input type="text" class="form-control" id="showname_modal"
+                                                class="form-control" style="font-size:20px;width:100% !important"
+                                                disabled><br>
                                             <input type="text" id="position_nominee" hidden>
                                             <input type="text" id="department_nominee" hidden>
-                                            <label for="year"  style="font-size:20px;">Promote to
+                                            <label for="year" style="font-size:20px;">Promote to
                                                 <br> <select id="promote_nominee" class="form-control" name="year">
                                                     <option>Please select promote</option>
 
@@ -245,7 +254,7 @@ date_default_timezone_set("Asia/Bangkok");
                                         </tr>
                                     </thead>
                                     <tbody id="nominee_data">
-                                     
+
                                     </tbody>
                                 </table>
                             </div>
@@ -273,6 +282,7 @@ date_default_timezone_set("Asia/Bangkok");
             var grp_id = document.getElementById("old_id").value;
             var group_id = document.getElementById("old_id").value;
             var ase_id = id;
+            get_group_name()
             get_group_detail()
             get_position()
             get_position_to_promote()
@@ -320,7 +330,7 @@ date_default_timezone_set("Asia/Bangkok");
                     data.forEach((row, index) => {
                         emp_as.push(row.gro_ase_id)
                     });
-                    get_assessor();
+                    get_assessor()
                 }
 
             });
@@ -353,7 +363,7 @@ date_default_timezone_set("Asia/Bangkok");
                         data_row += '<td style="text-align:center">' + row.Department +
                             '</td>';
                         data_row += '<td style="text-align:center" id="Promote_' + num +
-                            '">' + row.Position_name + '</td>';
+                            '">' + row.grn_promote_to + '</td>';
                         data_row += '<td style="text-align:center"> ' +
                             '<button class="btn btn-danger" onclick = "remove_row(' + num +
                             ') " >delete</button></td>';
@@ -373,6 +383,8 @@ date_default_timezone_set("Asia/Bangkok");
             change_button_status()
             change_type()
             change_date()
+            get_assessor()
+
 
 
         });
@@ -498,9 +510,30 @@ date_default_timezone_set("Asia/Bangkok");
          * and return the results.
          */
 
+        function get_group_name() {
+
+            document.getElementById("group_name").innerHTML = "";
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>Employee/Get_assessor/get_group_name ",
+                data: {
+
+                },
+                dataType: "JSON",
+                success: function(data, status) {
+                    console.log(data);
+                    data.forEach((row, index) => {
+                        $("#group_name").append('<option value=' + row.asp_id +
+                            '">' + row.asp_name + '</option>');
+                    })
+
+                }
+            });
+        }
 
         function get_assessor() {
             var ass_year = document.getElementById("year").value;
+            var ass_pos = document.getElementById("group_position").value;
             //var section = document.getElementById("group_position").value;
             console.log(ass_year)
 
@@ -511,11 +544,12 @@ date_default_timezone_set("Asia/Bangkok");
                 url: "<?php echo base_url(); ?>Employee/Get_assessor/get_assessor_by_year ",
                 data: {
                     "years": ass_year,
-                    //"sec": section
+                    "pos": ass_pos
                 },
                 dataType: "JSON",
                 success: function(data, status) {
-                    console.log(data);
+                    document.getElementById("group_name").value = data[0].ase_asp_id
+                    console.log(data[0].ase_asp_id);
                     var count_index = 0;
                     var i = 0;
                     var data_row = '';
@@ -566,6 +600,8 @@ date_default_timezone_set("Asia/Bangkok");
                         count_index++
                         index++
                         $("#select_data").html(data_row);
+
+                        console.log(row.ase_asp_id)
                     })
 
                     count = count_index;
@@ -779,6 +815,7 @@ date_default_timezone_set("Asia/Bangkok");
             console.log(9999)
             console.log(document.getElementById("select_data").rows.length)
             console.log(document.getElementById("nominee_data").rows.length)
+            var asp_id = document.getElementById('group_name').value;
             var date = '';
             var date = document.getElementById('date').value;
             var year = document.getElementById('year').value;
@@ -823,7 +860,8 @@ date_default_timezone_set("Asia/Bangkok");
                         "date2": date2,
                         "position_group": T,
                         "year": year,
-                        "grp_id": group_id
+                        "grp_id": group_id,
+                        'asp_id': asp_id
                     },
                     success: function(data) {
                         console.log(data);
