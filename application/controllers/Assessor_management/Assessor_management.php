@@ -127,7 +127,7 @@ class Assessor_management extends MainController
         $this->load->model('Da_pef_assessor', 'dass');
         $this->dass->ase_year = '2022';
         $this->dass->ase_emp_id = $this->input->post('ase_emp_id');
-        $this->dass->ase_gro_id = $ase_gro_id;
+        $this->dass->ase_asp_id = $ase_gro_id;
         $this->dass->ase_sec_id = '1';
         // echo $ase_gro_id;
         $this->dass->insert();

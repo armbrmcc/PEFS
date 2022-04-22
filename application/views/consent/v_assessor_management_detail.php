@@ -216,7 +216,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Cancel</button>
                                                             <!-- ปุ่มดำเนินการลบ -->
-                                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/delete_assessor' . '/' . $arr_ass[$i]->ase_emp_id . '/' . $arr_ass[$i]->ase_gro_id; ?>">
+                                                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/delete_assessor' . '/' . $arr_ass[$i]->ase_emp_id . '/' . $arr_ass[$i]->ase_asp_id; ?>">
                                                                 <button type="button" class="btn bg-gradient-success">Submit</button>
                                                             </a>
                                                         </div>
