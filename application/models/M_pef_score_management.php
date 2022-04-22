@@ -25,8 +25,8 @@ class M_pef_score_management extends Da_pef_score_management
     */
     public function get_score_management_list()
     {
-        $sql = "SELECT * FROM pefs_database.pef_group_assessor AS gss
-                    INNER JOIN pefs_database.pef_group AS gro
+        $sql = "SELECT * FROM pefs_database.pef_group AS gro
+                    INNER JOIN pefs_database.pef_group_assessor AS gss
                     ON gss.gro_grp_id = gro.grp_id
                     INNER JOIN pefs_database.pef_assessor_promote AS promote
                     ON gss.gro_asp_id =  promote.asp_id
@@ -34,6 +34,7 @@ class M_pef_score_management extends Da_pef_score_management
                     ON promote.asp_id = position.gap_asp_id
                     INNER JOIN dbmc.position AS pos
                     ON position.gap_promote = pos.Position_ID
+                    GROUP BY gro.grp_id
                 ";
                 
         $query = $this->db->query($sql);

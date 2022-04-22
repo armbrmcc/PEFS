@@ -104,7 +104,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        for($i=0; $i<count($as_group); $i++) {
+                                        for($i=1; $i<count($as_group); $i++) {
                                     ?>
                                     <tr>
                                         <td>
@@ -117,7 +117,7 @@
                                         <td>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                    <?php echo 'T'.$as_group[$i]->asp_id?>
+                                                    <?php echo 'T'.$as_group[$i]->grp_position_group?>
                                                 </h6>
                                             </div>
                                         </td>
@@ -139,7 +139,7 @@
                                             <div class="d-flex flex-column justify-content-center">
                                                 <?php $cot = 1 ;?>
                                                 <h6 class="text-xs text-secondary mb-0">
-                                                <?php echo "Round ".$cot." : ".date("d/m/Y", strtotime($as_group_date[$i]->grd_date));?>
+                                                <?php echo "Round ".$cot." : ".date("d/m/Y", strtotime($as_group[$i]->grp_date));?>
                                                 </h6>
                                                 
                                             </div>
