@@ -479,12 +479,9 @@ date_default_timezone_set("Asia/Bangkok");
                 ') " >delete</button></td>';
             index_emp.push(num);
             console.log(index_emp);
-            num++
-
-            $("#nominee_data").html(
-                data_row
-            );
             count_nominee++;
+            num++
+            $("#nominee_data").html(data_row);
             console.log(count_nominee);
 
         });
