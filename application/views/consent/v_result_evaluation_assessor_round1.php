@@ -98,7 +98,7 @@ th
 
 <!-- html -->
 <!-- Evaluation form -->
-<div class="container">
+<div class="container-fluid py-4">
     <div class="card" id="border-radius">
         <div class="card-header">
             <h2>Result (ผลคะแนนการประเมิน) </h2> 
@@ -113,18 +113,6 @@ th
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
                     <h4><?php echo $arr_nominee[0]->Company_name ?></h4>
-                </div>
-            </div>
-            <!-- icon file present nominee -->
-            <div class="row">
-                <div class="col-sm-12">
-                <a
-                            href="<?php echo base_url()?>assests/template/soft-ui-dashboard-main/assets/upload/<?php echo $arr_file[0]->fil_location ?>" target="_blank">
-                    <button type="button" class="btn bg-gradient md-0" style="background-color: #596CFF; float: right"
-                        id="set_button">
-                        <i class="far fa-file-pdf text-white"></i> &nbsp; <h7 class="text-white">Present Nominee</h7>
-                    </button>
-                    </a>
                 </div>
             </div>
             <!-- ชื่อกรรมการ และวันประเมิน -->
@@ -272,13 +260,7 @@ th
                                 <?php } ?>
                                  
                                 <tr>
-
-
-                                   
-
-
                                     <!-- แสดง total -->
-                                  
                                     <td colspan="2" align='right'><b>Total</b></td>
                                     <!-- แสดง total   -->
                                     <td align='center'><?php echo  $total; ?></td>
@@ -315,7 +297,7 @@ th
                         <!-- Back button -->
                         <a class="nav-link" href="<?php echo site_url() . 'Result/Result/show_result_group'; ?>">
                         <div class="col-6 text-end">
-                            <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
+                            <button type="button" class="btn bg-gradient-second mb-0" data-bs-toggle="modal"
                                 data-bs-target="#Modal_confirm">Back
                             </button>
                         </div>
