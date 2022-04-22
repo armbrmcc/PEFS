@@ -122,7 +122,7 @@ function alart_evaluation() {
     
     var count_form = $('#count_form').val();
     var form = []
-    for (i = 0; i < count_score; i++) {
+    for (i = 0; i < count_form; i++) {
         form[i] = $('#formid_' + i).val();
     }
 
@@ -458,7 +458,7 @@ function calculate_weight() {
                                                 </div>
                                             </td>
                                                 <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
-                                                id="formid_<?php echo $count_discription; ?>">
+                                                id="formid_<?php echo $i; ?>">
 
                                             <!-- แสดง Score -->
                                             <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"

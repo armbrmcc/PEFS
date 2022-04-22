@@ -108,6 +108,10 @@ class Evaluation extends MainController
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
+        // echo "<pre>";
+        // print_r($data['arr_form']);
+        // echo "</pre>";
+
         $this->output('consent/v_evaluation_form_round_1', $data);
     } //end show_evaluation_form_round_1
 
