@@ -96,6 +96,7 @@
         <div class="card-header">
             <!-- Title page -->
             <h2>Assessor Management (จัดการกรรมการ)</h2>
+
         </div>
         <div class="row">
             <div class="col-12">
@@ -225,6 +226,10 @@
                                         </td>
                                     </tr>
 
+
+                                <?php
+                                }
+                                ?>
                                     <!-- Modal Add Assessor-->
                                     <div class="modal fade" id="ModalAddAssessor" tabindex="-1" role="dialog" aria-labelledby="ModalAddAssessorTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -237,8 +242,8 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_assessor' . '/' . $arr_ass[$i]->ase_gro_id  ?>" method="post" enctype="multipart/form-data">
-                                                        <input class="form-control" type="text" id="ase_year" name="ase_year" value="<?php echo $arr_ass[$i]->ase_year ?>" hidden>
+                                                
+                                                    <form action="<?php echo site_url() . 'Assessor_Management/Assessor_Management/add_assessor' . '/' . $id; ?>" method="post">
                                                         <div class="mb-3">
                                                             <label for="focusedinput" class="col-form-label">Employee ID</label>
                                                             <input type="text" class="form-control" name="ase_emp_id" id="ase_emp_id_modal" placeholder="Employee ID.." onkeyup="get_Emp()" required>
@@ -247,9 +252,7 @@
                                                             <label for="focusedinput" class="col-form-label">Name</label>
                                                             <input type="text" class="form-control" id="showname_modal" disabled name="assessor_name">
                                                         </div>
-                                                        <input class="form-control" type="text" id="group_id" name="group_id" value="<?php echo $arr_ass[$i]->ase_gro_id ?>" hidden>
-                                                        <input class="form-control" type="text" id="sec_id" name="sec_id" value="<?php echo $arr_ass[$i]->ase_sec_id ?>" hidden>
-
+                        
                                                         <div class="modal-footer">
                                                             <!-- ปุ่มดำเนินการยกเลิกการเพิ่มกรรมการ -->
                                                             <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Cancel</button>
@@ -262,9 +265,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                <?php
-                                }
-                                ?>
                             </tbody>
                         </table>
                         <!-- End content in table -->
