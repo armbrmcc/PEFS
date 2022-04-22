@@ -397,7 +397,7 @@ date_default_timezone_set("Asia/Bangkok");
             data_row += '</td>';
             data_row += '<td style="text-align:center">' + department + '</td>';
             data_row += '<td style="text-align:center" id="Promote_' + num + '">' + promote;
-            data_row += '<input type="text" id="Pro_' + num + '" value="' + promote + '" >'
+            // data_row += '<input type="text" id="Pro_' + num + '" value="' + promote + '" >'
             data_row += '</td>'
             data_row += '<td style="text-align:center"> ' +
                 '<button class="btn btn-danger" onclick = "remove_row(' + num +
