@@ -51,7 +51,10 @@
 .btn {
     margin-bottom: 0rem;
 }
-
+select{
+    width: 10% !important;
+        margin-left: 90%;
+}
 </style>
 <!-- End CSS -->
 
@@ -80,7 +83,7 @@ $(document).ready(function() {
             <h2>Form Management (จัดการแบบฟอร์ม)</h2>
             
             <div class="col-12 text-end">year :
-                <select name="pos_year"id="year_select" onchange="set_selectvalue()">
+                <select name="pos_year" class="form-control" id="year_select" onchange="set_selectvalue()">
                     <?php 
                         for($i = date('Y') ; $i > date('Y')-5; $i--){
                             echo "<option value=$i>$i</option>";
