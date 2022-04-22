@@ -194,9 +194,9 @@ class Group_management extends MainController
             $this->ped->grn_grp_id = $group_id[0]->grp_id;
             $this->ped->grn_emp_id = $nominee[$i];
             $this->emp->Position_name = $pos[$i];
-            echo $pos[$i];
-            $pos_id = $this->emp->get_position_id()->row();
-            $this->ped->grn_promote_to = $pos_id->Position_ID;
+            // echo $pos[$i];
+            // $pos_id = $this->emp->get_position_id()->row();
+            $this->ped->grn_promote_to = $pos[$i];
             $this->ped->insert_nominee();
         }
 

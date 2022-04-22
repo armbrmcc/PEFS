@@ -707,8 +707,8 @@ date_default_timezone_set("Asia/Bangkok");
                 success: function(data, status) {
                     console.log(data);
                     data.forEach((row, index) => {
-                        $("#promote_nominee").append('<option value=' + row.Position_name +
-                            ' onclick="setpos_id(' + row.Position_ID + ')">' + row
+                        $("#promote_nominee").append('<option value=' + row.Position_ID +
+                            ' onclick="setpos_id(' + row.Position_ID + ')">' + row.Position_ID + ' : ' + row
                             .Position_name +
                             '</option>');
                     })
