@@ -481,7 +481,7 @@ date_default_timezone_set("Asia/Bangkok");
             console.log(index_emp);
             num++
 
-            $("#nominee_data").append(
+            $("#nominee_data").html(
                 data_row
             );
             count_nominee++;
