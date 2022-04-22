@@ -95,7 +95,7 @@ class M_pef_assessor extends Da_pef_assessor
     {
         $sql = "SELECT * FROM pefs_database.pef_assessor AS ass
                     INNER JOIN pefs_database.pef_group_assessor AS grass
-                    ON ass.ase_gro_id = grass.gro_id
+                    ON ass.ase_id = grass.gro_ase_id
                     INNER JOIN pefs_database.pef_group AS gr
                     ON grass.gro_grp_id=  gr.grp_id
                     -- INNER JOIN pefs_database.pef_group_schedule AS schedu

@@ -86,7 +86,7 @@ $(document).ready(function() {
                         <tr>
                             <th>#</th>
                             <th>Group</th>
-                            <th>Group Name</th>
+                            <!-- <th>Group Name</th> -->
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
@@ -110,9 +110,9 @@ $(document).ready(function() {
                                                 <h6 class="text-xs text-secondary mb-0">T<?php echo $arr_group[$i]->grp_position_group?></h6>
                                             </td>
                                             <!-- Group Name -->
-                                            <td>
+                                            <!-- <td>
                                                 <h6 class="text-xs text-secondary mb-0"><?php echo $arr_group[$i]->asp_name?></h6>
-                                            </td>
+                                            </td> -->
                                             <!-- Date -->
                                             <td>
                                                 <?php if($arr_group[$i]->asp_type == 1) { ?>

@@ -136,7 +136,7 @@ $(document).ready(function() {
                                     <!-- check per_id -->
                                     <?php $check_per = 0; ?>
                                     <?php for ($k = 0; $k < count($obj_per); $k++) { ?>
-                                        <?php if ($arr_nominee[$i]->grn_emp_id == $obj_per[$k]->per_emp_id) { 
+                                        <?php if ($arr_nominee[$i]->grn_emp_id == $obj_per[$k]->per_emp_id && $arr_nominee[$i]->ase_id == $obj_per[$k]->per_ase_id ) { 
                                                 $check_per++;   
                                             } ?>
                                     <?php } ?>

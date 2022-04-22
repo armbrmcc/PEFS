@@ -37,9 +37,7 @@ class Evaluation extends MainController
         $this->load->model('M_pef_group_schedule', 'date');
         $data['arr_group'] = $this->pef->get_group_evaluation($ass_id)->result();
         $data['obj_date'] = $this->date->get_date_evaluation($ass_id)->result();
-        // echo "<pre>";
-        //     print_r($data['arr_group']);
-        // echo "</pre>";
+        
         $this->output('consent/v_evaluation_list', $data);
     } //end show_evaluation_list
 
@@ -63,11 +61,12 @@ class Evaluation extends MainController
         $data['arr_group'] = $this->pef->get_group_by_group_id($group_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         // print_r($data['obj_date']);
-        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail($ass_id, $group_id)->result();
         $data['obj_file'] = $this->file->get_file_nominee()->result();
         $data['obj_per'] = $this->per->get_performance_detail($group_id, $date)->result();
-        // print_r($data['obj_per']);
-
+        // echo "<pre>";
+        //     print_r($data['arr_nominee']);
+        // echo "</pre>";
         $this->output('consent/v_evaluation_detail', $data);
     } //end show_evaluation_detail
 
@@ -99,7 +98,7 @@ class Evaluation extends MainController
     
         $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
         
-        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail_by_id($id_assessor, $group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
         $data['obj_file'] = $this->file->get_file_present_nominee($id_nominee)->result();
@@ -139,14 +138,14 @@ class Evaluation extends MainController
         $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
         
 
-        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail_by_id($id_assessor, $group_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
         $data['obj_file'] = $this->file->get_file_present_nominee($id_nominee)->result();
         $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
-
+        // print_r( $data['arr_nominee'] );
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
 
         $this->output('consent/v_evaluation_form_round_2', $data);
@@ -182,7 +181,7 @@ class Evaluation extends MainController
         $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
     
         $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
-        $data['arr_nominee'] = $this->nominee->get_nominee_detail($group_id)->result();
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail_by_id($id_assessor, $group_id)->result();
         $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
         $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();

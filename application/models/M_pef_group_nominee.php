@@ -20,7 +20,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
 	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
 	* @Create Date 2565-03-03
     */
-    public function get_nominee_detail($group_id)
+    public function get_nominee_detail($ass_id, $group_id)
     {
         $sql = "SELECT *
                     FROM pefs_database.pef_group_nominee AS groupno
@@ -36,7 +36,37 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                     ON groupno.grn_emp_id = employee.Emp_ID
                     INNER JOIN dbmc.position AS position
                     ON groupno.grn_promote_to = position.Position_ID 
-                WHERE gr.grp_id = $group_id
+                WHERE gr.grp_id = $group_id AND ass.ase_emp_id = $ass_id
+                GROUP BY groupno.grn_emp_id";
+        $query = $this->db->query($sql);
+        return $query;
+    } //คืนค่าข้อมูลรายละเอียดของ Nominee
+
+    /*
+	* get_nominee_detail_by_id
+	* get data Nominee detail from database
+	* @input  group_id
+	* @output -
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-03-03
+    */
+    public function get_nominee_detail_by_id($id_assessor, $group_id)
+    {
+        $sql = "SELECT *
+                    FROM pefs_database.pef_group_nominee AS groupno
+                    INNER JOIN pefs_database.pef_group AS gr
+                    ON groupno.grn_grp_id = gr.grp_id
+                    INNER JOIN pefs_database.pef_group_assessor AS grass
+                    ON gr.grp_id = grass.gro_grp_id
+                    INNER JOIN pefs_database.pef_assessor AS ass
+                    ON grass.gro_ase_id = ass.ase_id
+                    INNER JOIN pefs_database.pef_assessor_promote AS promote
+                    ON grass.gro_asp_id = promote.asp_id
+                    INNER JOIN dbmc.employee
+                    ON groupno.grn_emp_id = employee.Emp_ID
+                    INNER JOIN dbmc.position AS position
+                    ON groupno.grn_promote_to = position.Position_ID 
+                WHERE gr.grp_id = $group_id AND ass.ase_id = $id_assessor
                 GROUP BY groupno.grn_emp_id";
         $query = $this->db->query($sql);
         return $query;
