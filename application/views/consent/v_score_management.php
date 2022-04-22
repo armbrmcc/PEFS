@@ -104,7 +104,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        for($i=1; $i<count($as_group); $i++) {
+                                        for($i=0; $i<count($as_group); $i++) {
                                     ?>
                                     <tr>
                                         <td>
