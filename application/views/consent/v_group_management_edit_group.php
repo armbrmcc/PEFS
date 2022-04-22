@@ -96,7 +96,7 @@ date_default_timezone_set("Asia/Bangkok");
                                 <div class="col">
                                     <label for="year" style="font-size:20px;">Level :
                                         <select id="group_position" name="year" class="form-control"
-                                            onchange="get_group_name(),get_position(),change_type(),change_button_status(),get_position_to_promote(),change_date()">
+                                            onchange="get_position(),change_type(),change_button_status(),get_position_to_promote(),change_date()">
                                             <option value="-1">Please select level</option>
                                             <option value="6">T6</option>
                                             <option value="5">T5</option>
@@ -115,10 +115,10 @@ date_default_timezone_set("Asia/Bangkok");
                                     </label>
                                 </div>
                                 <div class="col">
-                                    <label for="year" style="font-size:20px;">Group Name :
-                                        <select id="group_name" name="year" class="form-control">
-                                        </select>
-                                    </label>
+
+                                    <select id="group_name" name="year" class="form-control" hidden>
+                                    </select>
+
                                 </div>
 
 
@@ -282,7 +282,6 @@ date_default_timezone_set("Asia/Bangkok");
             var grp_id = document.getElementById("old_id").value;
             var group_id = document.getElementById("old_id").value;
             var ase_id = id;
-            get_group_name()
             get_group_detail()
             get_position()
             get_position_to_promote()
@@ -327,6 +326,8 @@ date_default_timezone_set("Asia/Bangkok");
                 dataType: "JSON",
 
                 success: function(data, status) {
+                    console.log('dara1')
+                    console.log(data)
                     data.forEach((row, index) => {
                         emp_as.push(row.gro_ase_id)
                     });
@@ -510,26 +511,7 @@ date_default_timezone_set("Asia/Bangkok");
          * and return the results.
          */
 
-        function get_group_name() {
 
-            document.getElementById("group_name").innerHTML = "";
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url(); ?>Employee/Get_assessor/get_group_name ",
-                data: {
-
-                },
-                dataType: "JSON",
-                success: function(data, status) {
-                    console.log(data);
-                    data.forEach((row, index) => {
-                        $("#group_name").append('<option value=' + row.asp_id +
-                            '">' + row.asp_name + '</option>');
-                    })
-
-                }
-            });
-        }
 
         function get_assessor() {
             var ass_year = document.getElementById("year").value;
@@ -636,11 +618,13 @@ date_default_timezone_set("Asia/Bangkok");
                     console.log(sessionStorage.getItem('grp_id'));
                     console.log(document.getElementById("group_position").value)
                     document.getElementById("year").value = data[0].grp_year
-                    if (data[0].grp_position_group < 5) {
+                    if (data[0].grp_position_group > 5) {
                         document.getElementById("date").value = data[0].grd_date
+                        console.log(data[0].grd_date)
                     } else {
                         document.getElementById("date").value = data[0].grd_date
                         document.getElementById("date2").value = data[1].grd_date
+                        console.log(data[1].grd_date)
                     }
                 }
 
@@ -707,8 +691,8 @@ date_default_timezone_set("Asia/Bangkok");
                 success: function(data, status) {
                     console.log(data);
                     data.forEach((row, index) => {
-                        $("#promote_nominee").append('<option value=' + row.Position_ID +
-                            ' onclick="setpos_id(' + row.Position_ID + ')">' + row.Position_ID + ' : ' + row
+                        $("#promote_nominee").append('<option value=' + row.Position_name +
+                            ' onclick="setpos_id(' + row.Position_ID + ')">' + row
                             .Position_name +
                             '</option>');
                     })
@@ -815,7 +799,6 @@ date_default_timezone_set("Asia/Bangkok");
             console.log(9999)
             console.log(document.getElementById("select_data").rows.length)
             console.log(document.getElementById("nominee_data").rows.length)
-            var asp_id = document.getElementById('group_name').value;
             var date = '';
             var date = document.getElementById('date').value;
             var year = document.getElementById('year').value;
@@ -828,7 +811,7 @@ date_default_timezone_set("Asia/Bangkok");
                 console.log(15)
                 for (var i = 0; i < document.getElementById("select_data").rows.length; i++) {
                     if ($('#check_box_' + i).is(":checked")) {
-                        emp_assessor.push(document.getElementById('ase_id_' + i).innerHTML)
+                        emp_assessor.push(document.getElementById('ase_id_' + i).value)
                         console.log(emp_assessor + "55")
                     }
                 }
@@ -861,7 +844,6 @@ date_default_timezone_set("Asia/Bangkok");
                         "position_group": T,
                         "year": year,
                         "grp_id": group_id,
-                        'asp_id': asp_id
                     },
                     success: function(data) {
                         console.log(data);

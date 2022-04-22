@@ -66,7 +66,6 @@ class Group_management extends MainController
         $date[0] = $this->input->post('date');
         echo $date[0];
         $position_group = $this->input->post('position_group');
-        $asp_id = $this->input->post('asp_id');
         $assessor = $this->input->post('emp_assessor');
         $nominee = $this->input->post('emp_nominee');
         $pos = $this->input->post('promote');
@@ -94,7 +93,7 @@ class Group_management extends MainController
         }
         for ($i = 0; $i < sizeof($assessor); $i++) {
             $this->ped->gro_grp_id = $group_id[0]->grp_id;
-            $this->ped->gro_asp_id = $asp_id;
+            $this->ped->gro_asp_id = $position_group;
             $this->ped->gro_ase_id = $assessor[$i];
             $this->ped->insert_assessor();
         }
@@ -146,6 +145,7 @@ class Group_management extends MainController
         $position_group = $this->input->post('position_group');
         $assessor = $this->input->post('emp_assessor');
         $nominee = $this->input->post('emp_nominee');
+        print_r($assessor);
         $pos = $this->input->post('promote');
         $asp_id = $this->input->post('asp_id');
         print_r($pos);
@@ -186,7 +186,7 @@ class Group_management extends MainController
         }
         for ($i = 0; $i < sizeof($assessor); $i++) {
             $this->ped->gro_grp_id = $group_id[0]->grp_id;
-            $this->ped->gro_asp_id = $asp_id;
+            $this->ped->gro_asp_id = $position_group;
             $this->ped->gro_ase_id = $assessor[$i];
             $this->ped->insert_assessor();
         }
@@ -194,6 +194,8 @@ class Group_management extends MainController
             $this->ped->grn_grp_id = $group_id[0]->grp_id;
             $this->ped->grn_emp_id = $nominee[$i];
             $this->emp->Position_name = $pos[$i];
+            $this->ped->grn_status_done = -1;
+            $this->ped->grn_status_result = -1;
             // echo $pos[$i];
             // $pos_id = $this->emp->get_position_id()->row();
             $this->ped->grn_promote_to = $pos[$i];

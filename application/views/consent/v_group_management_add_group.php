@@ -103,7 +103,7 @@ date_default_timezone_set("Asia/Bangkok");
                                 <div class="col">
                                     <label for="year" style="font-size:20px;">Level :
                                         <select id="group_position" name="year" class="form-control"
-                                            onchange="get_assessor(),get_group_name(),get_position(),change_type(),change_button_status(),get_position_to_promote(),change_date()">
+                                            onchange="get_assessor(),get_position(),change_type(),change_button_status(),get_position_to_promote(),change_date()">
                                             <option value="-1">Please select level</option>
                                             <option value="6">T6</option>
                                             <option value="5">T5</option>
@@ -121,12 +121,7 @@ date_default_timezone_set("Asia/Bangkok");
                                         </select>
                                     </label>
                                 </div>
-                                <div class="col">
-                                    <label for="year" style="font-size:20px;">Group Name :
-                                        <select id="group_name" name="year" class="form-control">
-                                        </select>
-                                    </label>
-                                </div>
+
 
 
                             </div>
@@ -442,26 +437,6 @@ date_default_timezone_set("Asia/Bangkok");
          * It gets the value of the year from the dropdown and then uses that value to query the database
          * and return the results.
          */
-        function get_group_name() {
-
-            document.getElementById("group_name").innerHTML = "";
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url(); ?>Employee/Get_assessor/get_group_name ",
-                data: {
-
-                },
-                dataType: "JSON",
-                success: function(data, status) {
-                    console.log(data);
-                    data.forEach((row, index) => {
-                        $("#group_name").append('<option value=' + row.asp_id +
-                            '">' + row.asp_name + '</option>');
-                    })
-
-                }
-            });
-        }
 
         function get_assessor() {
             var ass_year = document.getElementById("year").value;
@@ -634,14 +609,12 @@ date_default_timezone_set("Asia/Bangkok");
         /* Checking if the value of the select box is 0, if it is, it disables the button. If it is not, it
         enables the button. */
         function change_button_status() {
-            console.log('status0')
+            console.log(document.getElementById('group_position').value)
             if (document.getElementById("group_position").value < 0) {
                 document.getElementById("btn_add_nominee").disabled = true;
             } else {
                 document.getElementById("btn_add_nominee").disabled = false;
             }
-
-
         }
 
         /* Checking if the table has any rows. If it does, it disables the dropdown. If it doesn't, it
@@ -681,7 +654,7 @@ date_default_timezone_set("Asia/Bangkok");
             //var pos_id = []
             var sum;
             var T = document.getElementById('group_position').value;
-            var asp_id = document.getElementById('group_name').value;
+
             //element = document.getElementsByName("pos");
             count_ase = []
             count_nom = []
@@ -731,7 +704,7 @@ date_default_timezone_set("Asia/Bangkok");
                         "date2": date2,
                         "position_group": T,
                         "year": year,
-                        "asp_id": asp_id
+
                     },
                     success: function(data) {
                         console.log(data);

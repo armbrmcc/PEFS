@@ -48,11 +48,11 @@ class Get_assessor extends MainController
         //print_r($data);
         echo json_encode($data);
     }
-    function get_group_name()
+    function  get_sec_by_ase()
     {
 
         $this->load->model('M_pef_assessor', 'ass');
-        $data = $this->ass->get_group_name()->result();
+        $data = $this->ass->get_sec_by_ase()->result();
         // echo $data['assessor'];
         //print_r($data);
         echo json_encode($data);

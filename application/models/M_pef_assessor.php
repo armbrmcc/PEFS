@@ -35,9 +35,9 @@ class M_pef_assessor extends Da_pef_assessor
         $query = $this->db->query($sql);
         return $query;
     }
-    public function get_group_name()
+    public function get_sec_by_ase()
     {
-        $sql = "SELECT * FROM pefs_database.pef_assessor_promote";
+        $sql = "SELECT * FROM pefs_database.pef_assessor_promote GROUP BY ";
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่าข้อมูลของกรรมการ
