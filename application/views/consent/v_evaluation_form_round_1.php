@@ -458,7 +458,7 @@ function calculate_weight() {
                                                 </div>
                                             </td>
                                                 <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
-                                                id="formid_<?php echo $i; ?>">
+                                                id="formid_<?php echo $count_discription; ?>">
 
                                             <!-- แสดง Score -->
                                             <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"
