@@ -127,7 +127,7 @@
                     <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
                     <b>Total score : </b><?php echo number_format($percent, 2, '.', ''); ?> %<br><br>
                     <?php
-                    if ($percent >= 55) {
+                    if ($percent >= 60) {
                         $Judgement = 'PASS'; ?>
                         <b>Judgement : </b><span style="color:green;"><?php echo $Judgement; ?></span>
                     <?php } else {

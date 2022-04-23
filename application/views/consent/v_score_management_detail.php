@@ -216,7 +216,7 @@
                                             <span class="completion"><?php echo number_format($percent, 2, '.', ''); ?>
                                                 %</span>
                                             <div>
-                                                <?php if ($percent >= 55) { ?>
+                                                <?php if ($percent >= 60) { ?>
                                                     <div class="progress">
                                                         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
                                                         </div>
