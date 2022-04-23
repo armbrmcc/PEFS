@@ -29,7 +29,7 @@ class M_pef_score_management extends Da_pef_score_management
                     INNER JOIN pefs_database.pef_group_assessor AS gss
                     ON gss.gro_grp_id = gro.grp_id
                     INNER JOIN pefs_database.pef_assessor_promote AS promote
-                    ON gss.gro_asp_id =  promote.asp_id
+                    ON gss.gro_asp_id =  promote.asp_level
                     INNER JOIN pefs_database.pef_assessor_position AS position
                     ON promote.asp_id = position.gap_asp_id
                     INNER JOIN dbmc.position AS pos
@@ -111,13 +111,15 @@ class M_pef_score_management extends Da_pef_score_management
     */
     function get_group_by_id($id)
     {
-        $sql = "SELECT *
-			FROM pefs_database.pef_group AS grp INNER JOIN pefs_database.pef_assessor_promote AS promote
-            ON grp.grp_position_group=promote.asp_id
-            INNER JOIN pefs_database.pef_assessor_position AS position
-            ON promote.asp_id = position.gap_asp_id
-            INNER JOIN dbmc.position AS pos
-            ON position.gap_promote = pos.Position_ID
+        $sql = "SELECT * FROM pefs_database.pef_group AS gro
+        INNER JOIN pefs_database.pef_group_assessor AS gss
+        ON gss.gro_grp_id = gro.grp_id
+        INNER JOIN pefs_database.pef_assessor_promote AS promote
+        ON gss.gro_asp_id =  promote.asp_level
+        INNER JOIN pefs_database.pef_assessor_position AS position
+        ON promote.asp_id = position.gap_asp_id
+        INNER JOIN dbmc.position AS pos
+        ON position.gap_promote = pos.Position_ID
 			WHERE grp_id=$id
 			";
     $query = $this->db->query($sql);
