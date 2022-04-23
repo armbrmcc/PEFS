@@ -185,8 +185,9 @@ $(document).ready(function() {
                                             </button>
                                         <?php } ?>
                                         <!-- round 2/2 -->
+                                        <!-- <?php echo $check_per?> -->
                                         <?php if($obj_date[1]->grd_date == date("Y-m-d")) {?>
-                                            <?php if($check_per <= 1) { ?>
+                                            <?php if($check_per == 0) { ?>
                                                 <a
                                                     href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_2_2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id.'/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id;?>">
                                                     <button type="button" class="btn btn-xs button_size"
@@ -194,8 +195,7 @@ $(document).ready(function() {
                                                         <i class="far fa-file-alt text-white"></i>
                                                     </button>
                                                 </a>
-    
-                                            <?php }else{ ?>
+                                            <?php }else if($check_per == 1){ ?>
                                                 <button type="button" class="btn bg-gradient-danger btn-xs button_size">
                                                     <i class="far fa-file-alt text-white"></i>
                                                 </button>
