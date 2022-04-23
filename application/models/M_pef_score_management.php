@@ -251,7 +251,7 @@ class M_pef_score_management extends Da_pef_score_management
                 INNER JOIN pefs_database.pef_group AS grp
                 ON grp.grp_id = grn.grn_grp_id
                 INNER JOIN pefs_database.pef_section AS sec
-                ON sec.sec_id = grp.grp_position_group
+                ON sec.sec_level = grp.grp_position_group
                 WHERE grp.grp_id = $id";
         $query = $this->db->query($sql);
         return $query;
