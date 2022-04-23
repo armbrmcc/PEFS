@@ -95,8 +95,8 @@
                             </td>
                      
                             <td>
-
-                                <?php echo $arr_group[$i]->grp_date; ?>
+                            
+                                <?php echo date('d/m/Y',strtotime($arr_group[$i]->grp_date)); ?>
 
                             </td>
                             <!-- Action -->

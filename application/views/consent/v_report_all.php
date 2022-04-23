@@ -59,7 +59,7 @@
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
-                    <div class="card-body">
+                    <div class="card-body shadow">
                         <div class="row">
                             <div class="col">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Must Assess</p>
@@ -80,11 +80,12 @@
                 </div>
             </div>
             <!-- Number of people all that must assess  -->
-
+            <br>
+            <br>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
-                    <div class="card-body">
+                    <div class="card-body shadow">
                         <div class="row">
                             <div class="col">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Assessed</p>
@@ -106,11 +107,12 @@
                 </div>
             </div>
             <!-- Number of people assessed -->
-
+            <br>
+            <br>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
-                    <div class="card-body">
+                    <div class="card-body shadow">
                         <div class="row">
                             <div class="col">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Not Assessed</p>
@@ -132,11 +134,12 @@
                 </div>
             </div>
             <!-- The number of people who have not been assessed  -->
-
+            <br>
+            <br>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
-                    <div class="card-body">
+                    <div class="card-body shadow">
                         <div class="row">
                             <div class="col">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Pass</p>
@@ -158,11 +161,12 @@
                 </div>
             </div>
             <!-- Number of people who passed the assessment  -->
-
+            <br>
+            <br>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
-                    <div class="card-body">
+                    <div class="card-body shadow">
                         <div class="row">
                             <div class="col">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Fail</p>
@@ -184,11 +188,12 @@
                 </div>
             </div>
             <!-- Number of people who fail in the assessment -->
-
+            <br>
+            <br>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
-                    <div class="card-body">
+                    <div class="card-body shadow">
                         <div class="row">
                             <div class="col">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Assessed / Yearly</p>
@@ -211,7 +216,7 @@
             </div>
             <!-- Number of people (assessed / yearly)  -->
         </div>
-
+        <br>
         <div class="row" id="count_graph">
             <!-- <div class="col-xl-1"></div> -->
             <div class="col-xl-12">
@@ -355,7 +360,8 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            stepSize: 1
                         }
                     }]
                 }
