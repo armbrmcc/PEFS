@@ -61,7 +61,7 @@
     }
     select {
         width: 10% !important;
-        margin-left: 78%;
+        margin-left: 89.5%;
     }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -96,8 +96,8 @@
                 </button>
             </h3>
             <hr class="my-4" color="gray">
-            <h5 class="mb-0">Group : <?php echo 'T' . $group[0]->grp_position_group ?>
-                <label for="cars" style="font-size : 20px;margin-left : 72%">Select Round :</label>
+            <h4 class="mb-0">Group : <?php echo 'T' . $group[0]->grp_position_group ?>
+                <label for="cars" style="font-size : 20px;margin-left : 80%">Select Round :</label>
                 <select name="cars" class="form-control" id="cars">
                     <option value="volvo">Round 1 </option>
                     <option value="saab">Round 2 </option>
@@ -140,7 +140,7 @@
 
         <!-- Light table -->
         <div class="table-responsive">
-            <table class="table" id="Score">
+            <table class="table align-items-center text-center" id="Score">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col" class="sort" data-sort="name">#</th>
@@ -152,16 +152,16 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <tbody class="list">
+                <tbody class="list text-center">
                     <?php for ($i = 0; $i < count($nominee); $i++) { ?>
                         <tr>
-                            <th scope="row">
+                            <td>
                                 <div class="media align-items-center">
                                     <div class="media-body">
                                         <span class="name mb-0 text-sm"><?php echo $i + 1 ?></span>
                                     </div>
                                 </div>
-                            </th>
+                            </td>
                             <td class="budget">
                                 <?php echo $nominee[$i]->Emp_ID ?>
                                 <input type="text" id="<?php echo 'emp_id_' . $i ?>" value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
@@ -212,8 +212,8 @@
                                         <b>Totally score : </b><?php echo  $total[$index_point]; ?> points<br>
                                         <b>Get score : </b><?php echo $get[$index_point]; ?> points<br>
                                         <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
-                                        <div class="d-flex align-items-center">
-                                            <span class="completion mr-2"><?php echo number_format($percent, 2, '.', ''); ?>
+                                        <div class="d-flex align-items-center"style="margin-left:18%;">
+                                            <span class="completion"><?php echo number_format($percent, 2, '.', ''); ?>
                                                 %</span>
                                             <div>
                                                 <?php if ($percent >= 55) { ?>
