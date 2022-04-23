@@ -408,7 +408,7 @@ date_default_timezone_set("Asia/Bangkok");
             console.log(index_emp);
             count_nominee++;
             num++
-            $("#nominee_data").html(data_row);
+            $("#nominee_data").append(data_row);
             console.log(count_nominee);
 
         });
