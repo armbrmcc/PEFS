@@ -51,6 +51,7 @@ div.a {
 <div class="container-fluid py-4">
     <div class="card-header">
         <h2>Add File Nominee (เพิ่มไฟล์นำเสนอผลงาน)</h2>
+        <h5>Please Input File PDF Only </h5>
     </div>
 
     <!-- Table group Nominee list -->
