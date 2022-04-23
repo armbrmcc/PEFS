@@ -220,12 +220,7 @@
                 var data_row = '';
                 data.forEach((row, index) => {
                     const date = new Date(row.grp_date)
-                    const result = date.toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        weekday: 'long',
-                    })
+                    const result = date.toLocaleDateString('en-GB')
                     console.log(i);
                     console.log(row.grp_id);
                     data_row += '<tr id="ase_' + i + '">'
@@ -242,18 +237,28 @@
                     data_row += '<td style="text-align:center">'
                     data_row += row.sec_name
                     data_row += '</td>'
-
                     data_row += '<td style="text-align:center">'
-                    data_row +=
-                        "<button type='button' onclick='edit_group(" + row.grp_id +
-                        ")' class='btn btn-warning'>"
-                    data_row += " <i class = 'fa fa-pencil '> </i>"
-                    data_row += "</button>"
-                    data_row +=
-                        "<button type='button' onclick='delete_group(" + row.grp_id +
-                        ")' class='btn btn-danger'>"
-                    data_row += " <i class = 'fa fa-trash '> </i>"
-                    data_row += "</button>"
+                    if (row.grp_status == '-1') {
+                        data_row +=
+                            "<button type='button' onclick='edit_group(" + row.grp_id +
+                            ")' class='btn btn-warning'>"
+                        data_row += " <i class = 'fa fa-pencil '> </i>"
+                        data_row += "</button>"
+                        data_row +=
+                            "<button type='button' onclick='delete_group(" + row.grp_id +
+                            ")' class='btn btn-danger'>"
+                        data_row += " <i class = 'fa fa-trash '> </i>"
+                        data_row += "</button>"
+                    } else {
+                        data_row +=
+                            "<button type='button' class='btn btn-secondary' disabled>"
+                        data_row += " <i class = 'fa fa-pencil '> </i>"
+                        data_row += "</button>"
+                        data_row +=
+                            "<button type='button' class='btn btn-secondary' disabled>"
+                        data_row += " <i class = 'fa fa-trash '> </i>"
+                        data_row += "</button>"
+                    }
                     data_row += '</td>'
                     data_row += '</tr>'
                     $("#group_data").html(data_row);
