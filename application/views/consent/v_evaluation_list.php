@@ -96,7 +96,7 @@ $(document).ready(function() {
                         <?php $s = 1; ?>
                         <?php for ($i = 0; $i < count($arr_group); $i++) { ?>
                             <?php $use_round = 0; ?>
-                            <?php if(date("Y-m-d") == $arr_group[$i]->grp_date || $arr_group[$i]->grd_date > date("Y-m-d")) {?>
+                            <?php if(date("Y-m-d") >= $arr_group[$i]->grp_date || $arr_group[$i]->grd_date < date("Y-m-d")) {?>
                                         <tr>
                                             <!-- # -->
                                             <td>
