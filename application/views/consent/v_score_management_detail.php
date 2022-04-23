@@ -173,26 +173,42 @@
                                 </span>
                             </td>
                             <td>
-                                <?php
+                            <?php
                                 if ($count[$i] == count($assessor)) {
-                                ?>
-
-                                    <?php if ($nominee[$i]->grn_status_result == 1) { ?>
-                                        <span class="name mb-0 text-sm">
+                                    if ($nominee[$i]->grn_status_done == 0 || $nominee[$i]->grn_status_done == 1 || $nominee[$i]->grn_status_result == 1 || $nominee[$i]->grn_status_result == 2) { ?>
+                                        <?php
+                                        $index_point = 0;
+                                        ?>
+                                        <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
+                                                <?php if ($percent >= 55) { ?>
+                                                    <div class="media align-items-center">
+                                                        <div class="media-body">
+                                                    <span class="name mb-0 text-sm">
                                             <i class="bg-success"></i>
                                             <span class="status"><?php echo 'Pass' ?></span>
-                                        </span>
-                                    <?php } if ($nominee[$i]->grn_status_result == 2) { ?>
-                                        <span class="name mb-0 text-sm">
-                                            <i class="bg-danger"></i>
-                                            <span class="status"><?php echo 'Not pass' ?></span>
-                                        </span>
-                                    <?php  }
-                                } if ($nominee[$i]->grn_status_result != 1 && $nominee[$i]->grn_status_result != 2  ) { ?>
-                                    <span class="name mb-0 text-sm">
-                                        <span class="status"><?php echo 'Pending Assess' ?></span>
-                                    </span>
-                                <?php } ?>
+                                                    </div>
+                                                    </div>
+                                                <?php } if ($percent < 55) { ?>
+                                                    <div class="media align-items-center">
+                                                        <div class="media-body">
+                                                    <span class="name mb-0 text-sm">
+                                            <i class="bg-success"></i>
+                                            <span class="status"><?php echo 'Not Pass' ?></span>
+                                                    </div>
+                                                        </div>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        </div>
+                                    <?php } else { ?>
+                                        <i class="bg-success"></i>
+                                        <div class="media align-items-center">
+                                                        <div class="media-body">
+                                            <span class="status"><?php echo 'Pending Assess' ?></span>
+                                            </div>
+                                                        </div>
+
+                                    <?php } ?>
                             </td>
                             <td>
                                 <div class="avatar-group">
@@ -216,7 +232,7 @@
                                             <span class="completion"><?php echo number_format($percent, 2, '.', ''); ?>
                                                 %</span>
                                             <div>
-                                                <?php if ($percent >= 60) { ?>
+                                                <?php if ($percent >= 55) { ?>
                                                     <div class="progress">
                                                         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
                                                         </div>
