@@ -372,7 +372,7 @@ date_default_timezone_set("Asia/Bangkok");
                         console.log(index_emp);
                         num++
 
-                        $("#nominee_data").html(data_row);
+                        $("#nominee_data").append(data_row);
                         count_nominee++;
                         console.log(count_nominee);
                     })
@@ -620,7 +620,8 @@ date_default_timezone_set("Asia/Bangkok");
                         console.log(data[0].grd_date)
                     } else {
                         document.getElementById("date").value = data[0].grd_date
-                        document.getElementById("date2").value = data[1].grd_date
+                        document.getElementById("date_2").value = data[1].grd_date
+                        console.log(data[0].grd_date)
                         console.log(data[1].grd_date)
                     }
                 }
@@ -689,7 +690,7 @@ date_default_timezone_set("Asia/Bangkok");
                     console.log(data);
                     data.forEach((row, index) => {
                         $("#promote_nominee").append('<option value=' + row.Position_ID +
-                            ' onclick="setpos_id(' + row.Position_ID + ')">'  + row.Position_ID +
+                            ' onclick="setpos_id(' + row.Position_ID + ')">' + row.Position_ID +
                             ' : ' + row.Position_name +
                             '</option>');
                     })
