@@ -80,8 +80,6 @@
                 </div>
             </div>
             <!-- Number of people all that must assess  -->
-            <br>
-            <br>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
@@ -107,8 +105,6 @@
                 </div>
             </div>
             <!-- Number of people assessed -->
-            <br>
-            <br>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
@@ -134,8 +130,9 @@
                 </div>
             </div>
             <!-- The number of people who have not been assessed  -->
-            <br>
-            <br>
+            <div class="row">
+                <br>
+            </div>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
@@ -161,8 +158,6 @@
                 </div>
             </div>
             <!-- Number of people who passed the assessment  -->
-            <br>
-            <br>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
@@ -188,8 +183,6 @@
                 </div>
             </div>
             <!-- Number of people who fail in the assessment -->
-            <br>
-            <br>
             <div class="col-xl-4 col-md-6">
                 <div class="card card-stats">
                     <!-- Card body -->
@@ -236,7 +229,9 @@
             </div>
         </div>
         <!-- The graph shows the results of the assessment of each position -->
-
+        <div class="row">
+                <br>
+        </div>
         <div class="row" id="count_table">
             <div class="col-xl-12">
                 <div class="card">
@@ -282,7 +277,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
