@@ -136,9 +136,7 @@
                     <?php } ?>
                 </h5>
                 <br>
-                <div class="card-footer" style="background-color: #F8F8F8">
-                    <center><a href="<?php echo site_url() . 'Report/Report/show_report_detail/'  . $emp_data->sec_id; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
-                </div>
+
             </div>
         </div>
     </div>
@@ -206,6 +204,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-footer" style="background-color: #F8F8F8">
+        <center><a href="<?php echo site_url() . 'Report/Report/show_report_detail/'  . $emp_data->sec_id; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
     </div>
 </div>
 <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>

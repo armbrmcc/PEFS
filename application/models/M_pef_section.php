@@ -57,7 +57,7 @@ class M_pef_section extends Da_pef_section
         $sql = "SELECT * 
                 FROM pefs_database.pef_section AS sec
                 INNER JOIN pefs_database.pef_assessor AS ass
-                ON ass.ase_sec_id = sec.sec_id
+                ON ass.ase_sec_id = sec.sec_level
                 INNER JOIN dbmc.employee AS emp
                 ON emp.Emp_ID = ass.ase_emp_id
                 WHERE sec.sec_id = ?";
@@ -78,11 +78,11 @@ class M_pef_section extends Da_pef_section
         $sql = "SELECT * 
                 FROM pefs_database.pef_section AS sec
                 INNER JOIN pefs_database.pef_assessor AS ass
-                ON ass.ase_sec_id = sec.sec_id
+                ON ass.ase_sec_id = sec.sec_level
                 INNER JOIN dbmc.employee AS emp
                 ON emp.Emp_ID = ass.ase_emp_id
                 INNER JOIN pefs_database.pef_group AS grp
-                ON grp.grp_position_group = sec.sec_id
+                ON grp.grp_position_group = sec.sec_level
                 INNER JOIN pefs_database.pef_group_nominee AS grn
                 ON grn.grn_grp_id = grp.grp_id
                 WHERE grn.grn_id = ?";

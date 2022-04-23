@@ -49,7 +49,7 @@ class M_pef_point_form extends Da_pef_point_form
                 INNER JOIN pefs_database.pef_group AS grp
                 ON grp.grp_id = grn.grn_grp_id
                 INNER JOIN pefs_database.pef_section AS sec
-                ON sec.sec_id = grp.grp_position_group
+                ON sec.sec_level = grp.grp_position_group
                 WHERE sec.sec_id = ?";
         $query = $this->db->query($sql, array($this->sec_id));
         return $query;
@@ -74,7 +74,7 @@ class M_pef_point_form extends Da_pef_point_form
                 INNER JOIN pefs_database.pef_group AS grp
                 ON grp.grp_id = grn.grn_grp_id
                 INNER JOIN pefs_database.pef_section AS sec
-                ON sec.sec_id = grp.grp_position_group
+                ON sec.sec_level = grp.grp_position_group
                 WHERE grn.grn_id = ?";
         $query = $this->db->query($sql, array($this->grn_id));
         return $query;

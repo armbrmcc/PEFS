@@ -133,7 +133,7 @@ class M_pef_group extends Da_pef_group
                 INNER JOIN pefs_database.pef_group_nominee AS grn
                 ON grp.grp_id = grn.grn_grp_id
                 INNER JOIN pefs_database.pef_section AS sec
-                ON sec.sec_id = grp.grp_position_group
+                ON sec.sec_level = grp.grp_position_group
                 INNER JOIN dbmc.position AS pos
                 ON pos.Position_ID = grn.grn_promote_to
                 WHERE YEAR(grp_date) = $year 
@@ -157,7 +157,7 @@ class M_pef_group extends Da_pef_group
                 INNER JOIN pefs_database.pef_group_nominee AS grn
                 ON grp.grp_id = grn.grn_grp_id
                 INNER JOIN pefs_database.pef_section AS sec
-                ON sec.sec_id = grp.grp_position_group
+                ON sec.sec_level = grp.grp_position_group
                 INNER JOIN dbmc.employee AS emp
                 ON emp.Emp_ID = grn.grn_emp_id
                 INNER JOIN dbmc.position AS pos
@@ -186,7 +186,7 @@ class M_pef_group extends Da_pef_group
                 INNER JOIN pefs_database.pef_group_nominee AS grn
                 ON grn.grn_grp_id = grp.grp_id
                 INNER JOIN pefs_database.pef_section AS sec
-                ON sec.sec_id = grp.grp_position_group
+                ON sec.sec_level = grp.grp_position_group
                 INNER JOIN dbmc.employee AS emp
                 ON emp.Emp_ID = grn.grn_emp_id
                 INNER JOIN dbmc.position AS pos
