@@ -442,7 +442,33 @@ $( document ).ready(function() {
                                 <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id">
                             <!-- end input -->
 
+
+
+
+
+
+
                             <br>
+                            <h5>  1st round </h5>
+                            
+                           <!-- Comment -->
+                        <div class="form-group">
+                            <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
+                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
+                                disabled> <?php echo $arr_per[0]->per_comment ; ?> </textarea>
+                        </div>
+                        <br>
+                        <!-- Q/A -->
+                        <div class="form-group">
+                            <label for="QnA"><b style="font-size: 15px;">Q/A  :</b></label>
+                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
+                            disabled><?php echo $arr_per[0]->per_q_and_a  ?> </textarea>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+  
+                        <h5> Final round</h5>
                             <!-- comment -->
                             <div class="form-group">
                                 <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
