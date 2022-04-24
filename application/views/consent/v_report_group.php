@@ -159,9 +159,9 @@
                                             <td><?php echo $point_emp[$index_point][$index_ass]; ?></td>
                                         <?php } ?>
 
-                                        <td><?php echo $total[$index_point] / count($sec_data); ?></td>
+                                        <td><?php echo $total[$index_point]; ?></td>
                                         <td><?php echo $get[$index_point]; ?></td>
-                                        <?php $percent = ($get[$index_point] * 100) / ($total[$index_point] / count($sec_data)); ?>
+                                        <?php $percent = ($get[$index_point] * 100) / ($total[$index_point]); ?>
                                         <td><?php echo number_format($percent, 2, '.', ''); ?> %</td>
                                         <?php
                                         if ($percent >= 60) {
