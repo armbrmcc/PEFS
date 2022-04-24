@@ -70,7 +70,11 @@ class Score_management extends MainController
             $data['count'][$i] = $num;
         }
         for($i = 0; $i < count($data['nominee']); $i++){
-            $percent = $data['point_data'][$i]->point * 100 / $data['point_data'][$i]->sum_total;
+            if(empty($data['point_data'][$i]->point)&&empty($data['point_data'][$i]->sum_total)){
+                $percent = 0;
+            }else{
+                $percent = $data['point_data'][$i]->point * 100 / $data['point_data'][$i]->sum_total;
+            }
             // echo $data['point_data'][$i]->percent;
             if($percent > 59 && $data['count'][$i] == count($data['assessor'])){
                 $this->load->model('Da_pef_group_nominee', 'grn');
