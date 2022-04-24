@@ -211,8 +211,7 @@ class M_pef_group_nominee extends Da_pef_group_nominee
  
         INNER JOIN dbmc.employee
         ON groupno.grn_emp_id = employee.Emp_ID
-        INNER JOIN dbmc.position AS position
-        ON groupno.grn_promote_to = position.Position_ID 
+ 
         WHERE gr.grp_id =  $group_id
                         
         GROUP BY groupno.grn_emp_id";

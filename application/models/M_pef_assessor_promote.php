@@ -50,10 +50,10 @@ class M_pef_assessor_promote extends Da_pef_assessor_promote
     public function get_promote_by_id_group($id_group)
     {
 
-        $sql = "SELECT asp_type FROM pefs_database.pef_group_assessor AS grass
+        $sql = " SELECT asp_type FROM pefs_database.pef_group AS grass
         JOIN pefs_database.pef_assessor_promote AS promote
-         ON grass.gro_asp_id =  promote.asp_id
-    	WHERE grass.gro_grp_id =$id_group";    
+        ON grass.grp_id =  promote.asp_id
+        WHERE grass.grp_id = $id_group";    
         $query = $this->db->query($sql);
         return $query;
     }
