@@ -50,8 +50,8 @@ class Da_pef_group_nominee extends pefs_model
     {
         $sql = "UPDATE pefs_database.pef_group_nominee
             SET grn_status_result = ?
-        WHERE grn_emp_id = ?";
+        WHERE grn_grp_id = ? AND grn_emp_id = ?";
 
-        $this->db->query($sql, array($this->grn_status_result, $this->grn_emp_id));
+        $this->db->query($sql, array($this->grn_status_result, $this->grn_grp_id, $this->grn_emp_id));
     }
 }

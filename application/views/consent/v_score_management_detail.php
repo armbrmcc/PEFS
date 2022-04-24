@@ -57,8 +57,9 @@
         color: #FFFFFF;
         text-align: center;
         border: none;
-        
+
     }
+
     select {
         width: 10% !important;
         margin-left: 89.5%;
@@ -67,20 +68,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript">
     $(document).ready(function() {
-            $('#on').on('click', function() {
-                if (this.value == 'on') {
-                    document.getElementById("info").disabled = true;
-                    document.getElementById("on").value = "off";
-                    document.getElementById("on").innerHTML = "close";
-                    document.getElementById("on").style.background = "#D90437";
-                } else {
-                    document.getElementById("info").disabled = false;
-                    document.getElementById("on").value = "on";
-                    document.getElementById("on").innerHTML = "open";
-                    document.getElementById("on").style.background = "#0DD739";
-                }
-            });
+        $('#on').on('click', function() {
+            if (this.value == 'on') {
+                document.getElementById("info").disabled = true;
+                document.getElementById("on").value = "off";
+                document.getElementById("on").innerHTML = "close";
+                document.getElementById("on").style.background = "#D90437";
+            } else {
+                document.getElementById("info").disabled = false;
+                document.getElementById("on").value = "on";
+                document.getElementById("on").innerHTML = "open";
+                document.getElementById("on").style.background = "#0DD739";
+            }
         });
+    });
 </script>
 
 <h2>
@@ -102,11 +103,11 @@
                     <option value="volvo">Round 1 </option>
                     <option value="saab">Round 2 </option>
                 </select>
-            </h5>
-            <h5 class="mb-0">Group Name : <?php echo $group[0]->asp_name ?></h5>
-            <h5 class="mb-0">Promote : <?php echo $group[0]->Position_name ?></h5>
-            <h5 class="mb-0">Date : <?php echo date("d/m/Y", strtotime($group[0]->grp_date)) ?></h5>
-            <hr class="my-4" color="gray">
+                </h5>
+                <h5 class="mb-0">Group Name : <?php echo $group[0]->asp_name ?></h5>
+                <h5 class="mb-0">Promote : <?php echo $group[0]->Position_name ?></h5>
+                <h5 class="mb-0">Date : <?php echo date("d/m/Y", strtotime($group[0]->grp_date)) ?></h5>
+                <hr class="my-4" color="gray">
         </div>
 
         <?php
@@ -149,6 +150,7 @@
                         <th scope="col" class="sort" data-sort="status">Status</th>
                         <th scope="col">Assessor</th>
                         <th scope="col" class="sort" data-sort="completion">Summary Score</th>
+                        <th scope="col">Result</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -173,42 +175,27 @@
                                 </span>
                             </td>
                             <td>
-                            <?php
+                                <?php
                                 if ($count[$i] == count($assessor)) {
-                                    if ($nominee[$i]->grn_status_done == 0 || $nominee[$i]->grn_status_done == 1 || $nominee[$i]->grn_status_result == 1 || $nominee[$i]->grn_status_result == 2) { ?>
-                                        <?php
-                                        $index_point = 0;
-                                        ?>
-                                        <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
-                                                <?php if ($percent >= 60) { ?>
-                                                    <div class="media align-items-center">
-                                                        <div class="media-body">
-                                                    <span class="name mb-0 text-sm">
+                                ?>
+                                    <?php if ($nominee[$i]->grn_status_result == 1) { ?>
+                                        <span class="name mb-0 text-sm">
                                             <i class="bg-success"></i>
                                             <span class="status"><?php echo 'Pass' ?></span>
-                                                    </div>
-                                                    </div>
-                                                <?php } if ($percent < 60) { ?>
-                                                    <div class="media align-items-center">
-                                                        <div class="media-body">
-                                                    <span class="name mb-0 text-sm">
-                                            <i class="bg-success"></i>
-                                            <span class="status"><?php echo 'Not Pass' ?></span>
-                                                    </div>
-                                                        </div>
-                                                <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                        </div>
-                                    <?php } else { ?>
-                                        <i class="bg-success"></i>
-                                        <div class="media align-items-center">
-                                                        <div class="media-body">
-                                            <span class="status"><?php echo 'Pending Assess' ?></span>
-                                            </div>
-                                                        </div>
-
-                                    <?php } ?>
+                                        </span>
+                                    <?php }
+                                    if ($nominee[$i]->grn_status_result == 2) { ?>
+                                        <span class="name mb-0 text-sm">
+                                            <i class="bg-danger"></i>
+                                            <span class="status"><?php echo 'Fail' ?></span>
+                                        </span>
+                                    <?php  }
+                                }
+                                if ($nominee[$i]->grn_status_result != 1 && $nominee[$i]->grn_status_result != 2) { ?>
+                                    <span class="name mb-0 text-sm">
+                                        <span class="status"><?php echo 'Pending Assess' ?></span>
+                                    </span>
+                                <?php } ?>
                             </td>
                             <td>
                                 <div class="avatar-group">
@@ -228,7 +215,7 @@
                                         <b>Totally score : </b><?php echo  $total[$index_point]; ?> points<br>
                                         <b>Get score : </b><?php echo $get[$index_point]; ?> points<br>
                                         <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
-                                        <div class="d-flex align-items-center"style="margin-left:18%;">
+                                        <div class="d-flex align-items-center" style="margin-left:18%;">
                                             <span class="completion"><?php echo number_format($percent, 2, '.', ''); ?>
                                                 %</span>
                                             <div>
@@ -259,6 +246,29 @@
                             <td>
                                 <?php
                                 if ($count[$i] == count($assessor)) {
+                                    if ($nominee[$i]->grn_status_done == 0 || $nominee[$i]->grn_status_done == 1) { ?>
+                                        <div class="dropdown">
+                                            <?php if ($percent >= 60) { ?>
+                                                <a href="<?php echo site_url() . 'Score_management/Score_management/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">
+                                                    <button type="button" class="btn btn-success">Pass</button>
+                                                </a>
+                                            <?php } else { ?>
+                                                <a href="<?php echo site_url() . 'Score_management/Score_management/update_fail/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">
+                                                    <button type="button" class="btn btn-danger">Fail</button>
+                                                </a>
+                                            <?php } ?>
+                                        </div>
+                                    <?php }
+                                } else { ?>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-secondary" disabled>Pass</button>
+                                        <button type="button" class="btn btn-secondary" disabled>Fail</button>
+                                    </div>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <?php
+                                if ($count[$i] == count($assessor)) {
                                     if ($nominee[$i]->grn_status_done == 0 || $nominee[$i]->grn_status_done == 1 || $nominee[$i]->grn_status_done == 2) { ?>
                                         <div class="dropdown">
 
@@ -269,7 +279,7 @@
                                     <?php }
                                 } else { ?>
                                     <div class="dropdown">
-                                        <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal"  disabled>
+                                        <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" disabled>
                                             <i class="fa fa-refresh" style="font-size:15px;"></i>
                                         </button>
                                     </div>

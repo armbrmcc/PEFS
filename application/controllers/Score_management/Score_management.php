@@ -70,42 +70,44 @@ class Score_management extends MainController
             $data['count'][$i] = $num;
         }
 
-        $sum_point = 0;
-        $point_total = [];
-        $check_emp = '';
-        $point_ass = [];
-        $total = [];
-        $get = [];
-        foreach ($data['ass_data'] as $index_ass => $row_ass) {
-            foreach ($data['point_data'] as $index => $row) {
-                if ($row_ass->ase_id == $row->per_ase_id) {
-                    $sum_point += intval($row->ptf_point);
-                }
-                //if 
-            }
-            //for each point_data
-            if ($sum_point != 0) {
-                array_push($point_total, $sum_point);
-            } else {
-                array_push($point_total, 0);
-            }
-            $sum_point = 0;
-        }
-        //for each ass_data
-        array_push($point_ass, $point_total);
-        array_push($total, (sizeof($data['point_data']) * 5));
-        array_push($get, array_sum($point_total));
-        $point_total = [];
-        $index_point = 0;
-        $percent = $get[$index_point] * 100 / $total[$index_point];
-        for ($i = 0; $i < count($data['nominee']); $i++) {
-            print_r($percent);
-            if ($data['count'][$i] == count($data['assessor']) && $percent[$i] >= 60) {
-                $this->load->model('M_pef_group_nominee', 'nor');
-            }
-        }
         $this->output('consent/v_score_management_detail', $data);
     } //end show_score_management_detail
+
+     /*
+    * update_pass
+    * update pass status
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2565-04-24
+    */
+    public function update_pass($grp_id, $emp_id)
+    {
+        $this->load->model('Da_pef_group_nominee', 'pef');
+        $this->pef->grn_grp_id = $grp_id;
+        $this->pef->grn_emp_id = $emp_id;
+        $this->pef->grn_status_result = 1;
+        $this->pef->update_status_result();
+        Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
+    }
+
+    /*
+    * update_fail
+    * update fail status
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2565-04-24
+    */
+    public function update_fail($grp_id, $emp_id)
+    {
+        $this->load->model('Da_pef_group_nominee', 'pef');
+        $this->pef->grn_grp_id = $grp_id;
+        $this->pef->grn_emp_id = $emp_id;
+        $this->pef->grn_status_result = 2;
+        $this->pef->update_status_result();
+        Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
+    }
 
     /*
 	* review
