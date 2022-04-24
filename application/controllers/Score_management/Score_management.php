@@ -138,48 +138,69 @@ class Score_management extends MainController
 	* @author  Niphat Kuhoksiw
 	* @Create  Date 2565-04-10
     */
-    public function review()
-    { //review
-        $date = $this->input->post('date');
-        $emp  = $this->input->post('emp');
-        $emp_id  = $this->input->post('emp_id');
-        $grp_id = $this->input->post('grp_id');
-        $pos = $this->input->post('pos');
-        $group = $this->input->post('group');
-        echo $group;
-        $this->load->model('Da_pef_group', 'pefd');
-        $this->load->model('M_pef_group', 'pef');
-        $this->load->model('M_pef_score_management', 'pefs');
-        $this->pefd->grp_date = $date;
-        $this->pefd->grp_position_group = $group;
-        $this->ped->grp_year = $this->input->post('year');
-        $this->pefd->insert_group();
-        $group_id = $this->pef->get_group_id()->result();
-        $data['assessor'] = $this->pefs->get_assessor($grp_id)->result();
-        // print_r($data['assessor']);
-        $this->pefd->grn_grp_id = $group_id[0]->grp_id;
-        $this->pefd->grn_emp_id = $emp;
-        $this->pefd->grn_status = -1;
-        $this->pefd->grn_promote_to = $pos;
-        $this->pefd->insert_nominee();
-        for ($i = 0; $i < count($data['assessor']); $i++) {
-            $this->pefd->gro_grp_id = $group_id[0]->grp_id;
-            $this->pefd->gro_ase_id = $data['assessor'][$i]->gro_ase_id;
-            $this->pefd->insert_assessor();
-        }
-        $this->pefd->per_date = $date;
-        $this->pefd->per_emp_id = $emp;
-        $this->pefd->delete_performance();
-        $this->pefd->ptf_date = $date;
-        $this->pefd->ptf_emp_id = $emp_id;
-        $this->pefd->delete_point();
-        $this->pefd->grn_grp_id = $grp_id;
-        $this->pefd->grn_emp_id = $emp;
-        $this->pefd->delete_nominee();
-        // $this->load->model('M_pef_summary', 'pef');
+    // public function review()
+    // { //review
+    //     $this->load->model('Da_pef_group', 'pefd');
+    //     $this->load->model('M_pef_group', 'pef');
+    //     $this->load->model('M_pef_score_management', 'pefs');
+    //     $grp_id = $this->input->post('grp_id');
+    //     $date = $this->input->post('date');
+    //     $emp  = $this->input->post('emp');
+    //     $emp_id  = $this->input->post('emp_id');
+    //     $position_group = $this->input->post('position_group');
+    //     $group = $this->input->post('group');
+    //     echo $grp_id;
+    //     echo $date;
+    //     echo $emp;
+    //     echo $emp_id;
+    //     echo $group;
+    //     // $data['assessor'] = $this->pefs->get_assessor($grp_id)->result();        
+    //     // for($i=0;$i<count($data['assessor']);$i++){ 
+    //     // $this->pefd->gro_ase_id=$data['assessor'][$i]->gro_ase_id;
+    //     // }
+    //     echo $group;
+    //     $this->pefd->grp_date = date('d/m/Y');
+    //     echo $this->input->post('year');
+    //     $this->pefd->grp_year = date('Y');
+    //     $this->pefd->grp_position_group = $position_group;
+    //     $this->pefd->insert_group();
+    //     $group_id = $this->pef->get_group_id()->result();
+    //     if ($position_group > 4) {
+    //         $this->ped->grd_grp_id = $group_id[0]->grp_id;
+    //         $this->ped->grd_date = $date[0];
+    //         $this->ped->grd_round = '1';
+    //         $this->ped->insert_group_schedule();
+    //     } else {
+    //         $date[1] = $this->input->post('date2');
+    //         for ($i = 0; $i <= 1; $i++) {
+    //             $this->ped->grd_grp_id = $group_id[0]->grp_id;
+    //             $this->ped->grd_date = $date[$i];
+    //             $this->ped->grd_round = $i + 1;
+    //             $this->ped->insert_group_schedule();
+    //         }
+    //     }
+    //         $this->pefd->grn_grp_id = $group_id[0]->grp_id;
+    //         $this->pefd->grn_emp_id = $nominee[$i];
+    //         $this->pefd->grn_status_done = -1;
+    //         $this->pefd->grn_status_result = -1;
+    //         $this->emp->Position_name = $pos[$i];
+    //         $this->pefd->grn_promote_to = $pos[$i];
+    //         $this->pefd->insert_nominee();
+    //     for ($i = 0; $i < sizeof($assessor); $i++) {
+    //         $this->pefd->gro_grp_id = $group_id[0]->grp_id;
+    //         $this->pefd->gro_asp_id = $position_group;
+    //         $this->pefd->gro_ase_id = $assessor[$i];
+    //         $this->pefd->insert_assessor();
+    //     }
+    //     $this->pefd->grn_grp_id = $id;
+    //     $this->pefd->grp_id = $id;
+    //     $this->pefd->gro_grp_id = $id;
+    //     $this->pefd->grd_grp_id = $id;
+    //     $this->pefd->delete_nominee();
+    //     // $this->load->model('M_pef_summary', 'pef');
 
-        Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
-    } //end review
+    //     Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
+    // } //end review
 
     /*
 	*  get_group

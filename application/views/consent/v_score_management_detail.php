@@ -234,102 +234,7 @@
                                 <?php } ?>
                             </td>
                         </tr>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Manage Group review</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form action="<?php echo site_url() . 'Score_management/Score_management/review'; ?>" method="post" enctype="multipart/form-data">
-                                        <div class="modal-body">
-                                            <h5 class="modal-title" id="exampleModalLabel">Date</h5>
-                                            <input type="date" id="date" name="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
-                                            <input type="text" id="Emp_id" name="emp" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
-                                            <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->grn_id ?>" hidden>
-                                            <input type="text" id="group" name="group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
-                                            <input type="text" id="pos" name="pos" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
-                                            <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-success">Save changes</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-        </div>
-        <!-- Modal -->
-        <!-- Modal -->
-        <div class="modal fade" id="review_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Manage Group review</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="<?php echo site_url() . 'Score_management/Score_management/review'; ?>" method="post" enctype="multipart/form-data">
-                        <div class="modal-body">
-                            <h5 class="modal-title" id="exampleModalLabel">Date</h5>
-                            <input type="date" id="date" name="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
-                            <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
-                            <input type="text" id="group" name="group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
-                            <input type="text" id="pos" name="pos" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
-                            <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">Save changes</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-
-        <!-- Modal -->
-        <div class="modal fade" id="Modal_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Manage Next Evaluation</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="<?php echo site_url() . 'Score_management/Score_management/next_evaluation'; ?>" method="post" enctype="multipart/form-data">
-                        <div class="modal-body">
-                            <h5 class="modal-title" id="exampleModalLabel">Date</h5>
-                            <input type="date" id="date" name="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
-                            <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
-                            <input type="text" id="group" name="group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
-                            <input type="text" id="pos" name="pos" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
-                            <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">Save changes</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-    <?php } ?>
-    </tbody>
-    </table>
-    </div>
-</div>
-<center><a href="<?php echo site_url() . 'Score_management/Score_management/show_score_management_list'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
-</div>
-<!-- Button trigger modal -->
-<div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle" aria-hidden="true">
+                        <div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -343,6 +248,10 @@
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label" style="font-size:20px;">Date : </label>
                         <input type="date" id="date" style="font-size:20px;" class="form-control" value="<?php echo date('Y-m-d') ?>" min="<?php echo date('Y-m-d') ?>"><br>
+                        <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
+                        <input type="text" id="position_group" name="position_group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
+                        <input type="text" id="group" name="group" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
+                        <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
                     </div>
 
                     <div class="modal-footer" style="margin-right : 29.5%">
@@ -352,12 +261,26 @@
                         </a>
                         <!-- ปุ่มบันทึก -->
                         <a href="">
+                        <!-- <a href="<?php echo site_url() . 'Score_management/Score_management/review/';?>"> -->
                             <button type="button" class="btn bg-gradient-success">Submit</button>
                         </a>
                     </div>
             </div>
         </div>
     </div>
+    <?php } ?>
+    </tbody>
+    </table>
+    </div>
+</div>
+<!-- <input type="date" id="date" name="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
+                            <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
+                            <input type="text" id="group" name="group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
+                            <input type="text" id="pos" name="pos" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
+                            <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
+<center><a href="<?php echo site_url() . 'Score_management/Score_management/show_score_management_list'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center> -->
+</div>
+
     <script>
         $(document).ready(function() {
             $('#Score').DataTable();
