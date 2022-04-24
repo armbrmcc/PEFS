@@ -103,7 +103,7 @@
             $sum_point = 0;
         }
         //for each ass_data
-        if ($row_emp->grn_status_result > 0) {
+        if ($row_emp->grn_status_done > -1) {
             array_push($point_emp, $point_total);
             array_push($total, (sizeof($point_data) * 5));
             array_push($get, array_sum($point_total));
@@ -159,9 +159,9 @@
                                             <td><?php echo $point_emp[$index_point][$index_ass]; ?></td>
                                         <?php } ?>
 
-                                        <td><?php echo $total[$index_point]; ?></td>
+                                        <td><?php echo $total[$index_point] / count($sec_data); ?></td>
                                         <td><?php echo $get[$index_point]; ?></td>
-                                        <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
+                                        <?php $percent = ($get[$index_point] * 100) / ($total[$index_point] / count($sec_data)); ?>
                                         <td><?php echo number_format($percent, 2, '.', ''); ?> %</td>
                                         <?php
                                         if ($percent >= 60) {
