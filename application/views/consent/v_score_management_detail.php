@@ -180,7 +180,7 @@
                                         $index_point = 0;
                                         ?>
                                         <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
-                                                <?php if ($percent >= 55) { ?>
+                                                <?php if ($percent >= 60) { ?>
                                                     <div class="media align-items-center">
                                                         <div class="media-body">
                                                     <span class="name mb-0 text-sm">
@@ -188,7 +188,7 @@
                                             <span class="status"><?php echo 'Pass' ?></span>
                                                     </div>
                                                     </div>
-                                                <?php } if ($percent < 55) { ?>
+                                                <?php } if ($percent < 60) { ?>
                                                     <div class="media align-items-center">
                                                         <div class="media-body">
                                                     <span class="name mb-0 text-sm">
@@ -232,7 +232,7 @@
                                             <span class="completion"><?php echo number_format($percent, 2, '.', ''); ?>
                                                 %</span>
                                             <div>
-                                                <?php if ($percent >= 55) { ?>
+                                                <?php if ($percent >= 60) { ?>
                                                     <div class="progress">
                                                         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
                                                         </div>
