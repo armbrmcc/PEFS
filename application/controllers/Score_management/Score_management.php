@@ -69,7 +69,24 @@ class Score_management extends MainController
             }
             $data['count'][$i] = $num;
         }
-
+        for($i = 0; $i < count($data['nominee']); $i++){
+            $percent = $data['point_data'][$i]->point * 100 / $data['point_data'][$i]->sum_total;
+            // echo $data['point_data'][$i]->percent;
+            if($percent > 59 && $data['count'][$i] == count($data['assessor'])){
+                $this->load->model('Da_pef_group_nominee', 'grn');
+                $this->grn->grn_grp_id = $id;
+                $this->grn->grn_emp_id = $data['nominee'][$i]->grn_emp_id;
+                $this->grn->grn_status_result = 1;
+                $this->grn->update_status_result();
+            }else if($percent < 60 && $data['count'][$i] == count($data['assessor'])){
+            $this->load->model('Da_pef_group_nominee', 'grn');
+            $this->grn->grn_grp_id = $id;
+            $this->grn->grn_emp_id = $data['nominee'][$i]->grn_emp_id;
+            $this->grn->grn_status_result = 2;
+            $this->grn->update_status_result();
+            }
+        }
+    
         $this->output('consent/v_score_management_detail', $data);
     } //end show_score_management_detail
 

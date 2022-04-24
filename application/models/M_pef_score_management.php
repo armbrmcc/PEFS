@@ -242,7 +242,7 @@ class M_pef_score_management extends Da_pef_score_management
     */
     public function get_data_point_by_grp_id($id)
     {
-        $sql = "SELECT * 
+        $sql = "SELECT sum(ptf_point) AS point,grn_emp_id,count(ptf_for_id)*5 AS sum_total
                 FROM pefs_database.pef_point_form AS poi
                 INNER JOIN pefs_database.pef_performance_form AS pfm
                 ON poi.ptf_per_id = pfm.per_id
@@ -252,7 +252,8 @@ class M_pef_score_management extends Da_pef_score_management
                 ON grp.grp_id = grn.grn_grp_id
                 INNER JOIN pefs_database.pef_section AS sec
                 ON sec.sec_level = grp.grp_position_group
-                WHERE grp.grp_id = $id";
+                WHERE grp.grp_id = $id
+                GROUP BY grn.grn_emp_id";
         $query = $this->db->query($sql);
         return $query;
     }//คืนค่าคะแนนโดยกลุ่มไอดี

@@ -110,34 +110,6 @@
                 <hr class="my-4" color="gray">
         </div>
 
-        <?php
-        $sum_point = 0;
-        $point_total = [];
-        $check_emp = '';
-        $point_ass = [];
-        $total = [];
-        $get = [];
-        foreach ($ass_data as $index_ass => $row_ass) {
-            foreach ($point_data as $index => $row) {
-                if ($row_ass->ase_id == $row->per_ase_id) {
-                    $sum_point += intval($row->ptf_point);
-                }
-                //if 
-            }
-            //for each point_data
-            if ($sum_point != 0) {
-                array_push($point_total, $sum_point);
-            } else {
-                array_push($point_total, 0);
-            }
-            $sum_point = 0;
-        }
-        //for each ass_data
-        array_push($point_ass, $point_total);
-        array_push($total, (sizeof($point_data) * 5));
-        array_push($get, array_sum($point_total));
-        $point_total = [];
-        ?>
 
         <!-- Light table -->
         <div class="table-responsive">
@@ -150,7 +122,6 @@
                         <th scope="col" class="sort" data-sort="status">Status</th>
                         <th scope="col">Assessor</th>
                         <th scope="col" class="sort" data-sort="completion">Summary Score</th>
-                        <th scope="col">Result</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -212,9 +183,9 @@
                                         $index_point = 0;
                                         ?>
 
-                                        <b>Totally score : </b><?php echo  $total[$index_point]; ?> points<br>
-                                        <b>Get score : </b><?php echo $get[$index_point]; ?> points<br>
-                                        <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
+                                        <b>Totally score : </b><?php echo $point_data[$i]->sum_total ; ?> points<br>
+                                        <b>Get score : </b><?php echo $point_data[$i]->point; ?> points<br>
+                                        <?php $percent = $point_data[$i]->point * 100 / $point_data[$i]->sum_total; ?> 
                                         <div class="d-flex align-items-center" style="margin-left:18%;">
                                             <span class="completion"><?php echo number_format($percent, 2, '.', ''); ?>
                                                 %</span>
@@ -242,29 +213,6 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                            </td>
-                            <td>
-                                <?php
-                                if ($count[$i] == count($assessor)) {
-                                    if ($nominee[$i]->grn_status_done == 0 || $nominee[$i]->grn_status_done == 1) { ?>
-                                        <div class="dropdown">
-                                            <?php if ($percent >= 60) { ?>
-                                                <a href="<?php echo site_url() . 'Score_management/Score_management/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">
-                                                    <button type="button" class="btn btn-success">Pass</button>
-                                                </a>
-                                            <?php } else { ?>
-                                                <a href="<?php echo site_url() . 'Score_management/Score_management/update_fail/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">
-                                                    <button type="button" class="btn btn-danger">Fail</button>
-                                                </a>
-                                            <?php } ?>
-                                        </div>
-                                    <?php }
-                                } else { ?>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-secondary" disabled>Pass</button>
-                                        <button type="button" class="btn btn-secondary" disabled>Fail</button>
-                                    </div>
-                                <?php } ?>
                             </td>
                             <td>
                                 <?php
