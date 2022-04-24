@@ -70,41 +70,40 @@ class Score_management extends MainController
             $data['count'][$i] = $num;
         }
 
-        // $sum_point = 0;
-        // $point_total = [];
-        // $check_emp = '';
-        // $point_ass = [];
-        // $total = [];
-        // $get = [];
-        // foreach ($ass_data as $index_ass => $row_ass) {
-        //     foreach ($point_data as $index => $row) {
-        //         if ($row_ass->ase_id == $row->per_ase_id) {
-        //             $sum_point += intval($row->ptf_point);
-        //         }
-        //         //if 
-        //     }
-        //     //for each point_data
-        //     if ($sum_point != 0) {
-        //         array_push($point_total, $sum_point);
-        //     } else {
-        //         array_push($point_total, 0);
-        //     }
-        //     $sum_point = 0;
-        // }
-        // //for each ass_data
-        // array_push($point_ass, $point_total);
-        // array_push($total, (sizeof($point_data) * 5));
-        // array_push($get, array_sum($point_total));
-        // $point_total = [];
-        // $percent = $get[$index_point] * 100 / $total[$index_point];
-
-        // for ($i = 0; $i < count($data['nominee']); $i++) {
-
-        //     if ($data['count'][$i] == count($data['assessor']) && $percent[$i] >= 60) {
-        //         $this->load->model('M_pef_group_nominee', 'nor');
-                
-        //     }
-        // }
+        $sum_point = 0;
+        $point_total = [];
+        $check_emp = '';
+        $point_ass = [];
+        $total = [];
+        $get = [];
+        foreach ($data['ass_data'] as $index_ass => $row_ass) {
+            foreach ($data['point_data'] as $index => $row) {
+                if ($row_ass->ase_id == $row->per_ase_id) {
+                    $sum_point += intval($row->ptf_point);
+                }
+                //if 
+            }
+            //for each point_data
+            if ($sum_point != 0) {
+                array_push($point_total, $sum_point);
+            } else {
+                array_push($point_total, 0);
+            }
+            $sum_point = 0;
+        }
+        //for each ass_data
+        array_push($point_ass, $point_total);
+        array_push($total, (sizeof($data['point_data']) * 5));
+        array_push($get, array_sum($point_total));
+        $point_total = [];
+        $index_point = 0;
+        $percent = $get[$index_point] * 100 / $total[$index_point];
+        for ($i = 0; $i < count($data['nominee']); $i++) {
+            print_r($percent);
+            if ($data['count'][$i] == count($data['assessor']) && $percent[$i] >= 60) {
+                $this->load->model('M_pef_group_nominee', 'nor');
+            }
+        }
         $this->output('consent/v_score_management_detail', $data);
     } //end show_score_management_detail
 
