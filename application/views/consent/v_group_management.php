@@ -96,6 +96,10 @@
         font-size: 12px;
         text-align: center;
     }
+
+    .btn {
+        margin-left: 0.5rem;
+    }
 </style>
 <!-- End CSS -->
 
