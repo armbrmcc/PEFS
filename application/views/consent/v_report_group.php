@@ -133,7 +133,7 @@
                                 <?php } ?>
                                 <th scope="col">Totally score</th>
                                 <th scope="col">Get score</th>
-                                <th scope="col">Total score pass ≥ 55%</th>
+                                <th scope="col">Total score pass ≥ 60%</th>
                                 <th scope="col">Judgement</th>
                                 <th scope="col">Assessors</th>
                             </tr>
