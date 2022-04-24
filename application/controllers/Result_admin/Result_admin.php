@@ -32,6 +32,8 @@ class Result_admin extends MainController
     {
          
         $this->load->model('M_pef_group', 'as_group');
+        $this->load->model('M_pef_group_schedule', 'date');
+        
         $data['arr_group'] = $this->as_group->get_all_group_and_position()->result();
         $this->output('consent/v_result_admin_list', $data);
     }
@@ -69,11 +71,11 @@ class Result_admin extends MainController
         $this->load->model('M_pef_group_assessor', 'assessor');
         $this->load->model('M_pef_employee', 'emp');
         $this->load->model('M_pef_assessor_promote', 'pro');
+        $this->load->model('M_pef_performance_form', 'per');
 
 
-
-
-        
+        $date = date("Y-m-d");
+        $data['obj_per'] = $this->per->get_performance_admin($grp_id )->result();
         $data['arr_assessor'] = $this->assessor->get_group_all_assessor_by_id($grp_id)->result();
         $data['arr_emp'] = $this->emp->get_emp_detail($Emp_ID)->result();
         $data['arr_pro'] = $this->pro->get_promote_by_id_group($grp_id)->result();

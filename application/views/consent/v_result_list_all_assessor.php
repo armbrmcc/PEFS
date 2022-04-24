@@ -101,10 +101,24 @@
                                 </h6>
                             </td>
                             <td>
-                                <?php 
-                                   
-                                ?>
-                                 <?php if ($arr_pro[0]->asp_type == 1) { ?>
+                                
+                                  <?php  $check_per=0;
+                                  for ($k = 0; $k < count($obj_per); $k++) { ?>
+                                        <?php  
+                                        if ($arr_emp[0]->Emp_ID  == $obj_per[$k]->per_emp_id &&  $arr_assessor[$i]->gro_ase_id== $obj_per[$k]->per_ase_id && $arr_assessor[$i]->grp_date== $obj_per[$k]->per_date) {
+                                               
+                                                $check_per++;   
+                                            } ?>
+                                    <?php } ?>
+                                    <?php if($check_per == 0) { ?>
+                                        <a>
+                                    <button type="button" class="btn btn-xs button_size"
+                                        style="background-color: #83848C;" disabled>
+                                        <i class="fas fa-search text-white"></i>
+                                    </button>
+                                </a>
+                                            
+                                 <?php }else if ($arr_pro[0]->asp_type == 1) { ?>
                                     <a href="<?php echo site_url() . 'Result_admin/Result_admin/show_result_evaluation_type1'.'/'.$arr_emp[0]->Emp_ID.'/'.$arr_assessor[$i]->gro_ase_id.'/'.$arr_assessor[$i]->grp_date.'/'.$arr_assessor[0]->grp_id; ?>">
                                         <button type="button" class="btn btn-xs button_size"
                                             style="background-color: #596CFF;">

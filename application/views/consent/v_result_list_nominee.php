@@ -81,8 +81,8 @@
                     </thead>
                     <tbody>
                         <?php for ($i = 0; $i < count($arr_nominee); $i++) { ?>
-                            <?php  if($arr_nominee[$i]->grn_status_done != -1){  ?>
-                                <?php  $check_data=1; ?>
+                            
+                               
                         <tr>
                             <!-- # -->
                             <td>
@@ -103,19 +103,35 @@
                             </td>
                             <!-- Action -->
                             <td>
-                                <a
-                                    href="<?php echo site_url() . 'Result_admin/Result_admin/show_result_all_assessor/' . $arr_nominee[$i]->Emp_ID."/".$arr_nominee[$i]->grp_id; ?>">
+                            
+                            <?php
+                                    if($arr_nominee[$i]->grn_status_done == -1 || $arr_nominee[$i]->grn_status_done == NULL){
+                                ?>  
+                                <a>
                                     <button type="button" class="btn btn-xs button_size"
-                                        style="background-color: #596CFF;">
+                                        style="background-color: #83848C;" disabled>
                                         <i class="fas fa-search text-white"></i>
                                     </button>
                                 </a>
+                                <?php
+                                    }
+                                    // if check nominee status of evaluated  
+                                    else
+                                    { ?>
+                                        <a
+                                        href="<?php echo site_url() . 'Result_admin/Result_admin/show_result_all_assessor/' . $arr_nominee[$i]->Emp_ID."/".$arr_nominee[$i]->grp_id; ?>">
+                                        <button type="button" class="btn btn-xs button_size"
+                                            style="background-color: #596CFF;">
+                                            <i class="fas fa-search text-white"></i>
+                                        </button>
+                                    </a> <?php
+                                    }
+                                    // end else check nominee status of yet evaluate
+                                ?>
                             </td>
-                        </tr> <?php  }?>
+                        </tr>  
                         <?php } ?>
-                        <?php  if($check_data !=1){
-                            echo "<tr><td> - </td> <td> - </td><td> - </td><td> - </td></tr>";
-                        } ?>
+                        
                     </tbody>
                 </table>
             </div>

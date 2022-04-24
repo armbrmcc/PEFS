@@ -235,7 +235,7 @@ th
                                             <!-- แสดง % Weight -->
                                             <td style="vertical-align:middle;text-align: center;">
                                                 <?php echo $arr_des[$count_discription]->des_weight;
-                                                 $total +=$arr_des[$count_discription]->des_weight*$arr_point[$count_discription]->ptf_point; ?>
+                                                 $total +=$arr_des[$count_discription]->des_weight*5; ?>
                                             </td>
                                         
                                             <!-- แสดง point -->

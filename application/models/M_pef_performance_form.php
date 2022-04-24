@@ -67,4 +67,19 @@ class M_pef_performance_form extends Da_pef_performance_form
         $query = $this->db->query($sql);
         return $query;
     }
+
+    function get_performance_admin($group_id )
+    {
+        $sql = "SELECT performance.per_date, performance.per_emp_id, performance.per_ase_id 
+        FROM  pefs_database.pef_performance_form AS performance
+        INNER JOIN pefs_database.pef_group_nominee AS group_no
+        ON performance.per_emp_id = group_no.grn_emp_id
+        INNER JOIN pefs_database.pef_group AS gr
+        ON group_no.grn_grp_id = gr.grp_id
+        WHERE gr.grp_id = '$group_id'  ";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+
 }

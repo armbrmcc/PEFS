@@ -55,6 +55,8 @@ class Result extends MainController
     public function show_result_list($ass_id, $group_id)
     {
         $this->load->model('M_pef_group_nominee', 'nominee');
+        $this->load->model('M_pef_performance_form', 'per');
+        $data['obj_per'] = $this->per->get_performance_admin($group_id )->result();
         $data['arr_nominee'] = $this->nominee->get_nominee_detail($ass_id, $group_id)->result();
         // echo "<pre>";
         //     print_r($data['arr_nominee']);

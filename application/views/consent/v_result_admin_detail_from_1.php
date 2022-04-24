@@ -101,7 +101,7 @@ th
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h2>Result (Admin)</h2> 
+            <h2>Result (ผลคะแนนการประเมิน)</h2> 
         </div>
         <div class="card-body">
             <!-- Logo บริษัท -->
@@ -247,7 +247,7 @@ th
                                             <!-- แสดง % Weight -->
                                             <td style="vertical-align:middle;text-align: center;">
                                                 <?php echo $arr_des[$count_discription]->des_weight;
-                                                 $total +=$arr_des[$count_discription]->des_weight*$arr_point[$count_discription]->ptf_point; ?>
+                                                 $total +=$arr_des[$count_discription]->des_weight*5; ?>
                                             </td>
                                         
                                             <!-- แสดง point -->

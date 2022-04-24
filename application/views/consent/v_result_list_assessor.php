@@ -62,7 +62,7 @@
 <div class="container-fluid py-4">
     <div class="card" id="card_radius">
         <div class="card-header">
-            <h2>Result (ผลคะแนนการประเมิน)</h2>  
+            <h2>Result (ผลคะแนนการประเมิน)</h2>   
         </div>
         <!-- End cara header-->
         <div class="card-body">
@@ -97,19 +97,23 @@
                                 </h6>
                             </td>
                             <td>
-                                <?php
-                                    if($arr_nominee[$i]->grn_status_done == -1 || $arr_nominee[$i]->grn_status_done == NULL){
-                                ?>
-                                <a>
+                            <?php  $check_per=0;
+                                  for ($k = 0; $k < count($obj_per); $k++) { ?>
+                                        <?php  
+                                        if ($arr_nominee[$i]->grn_emp_id  == $obj_per[$k]->per_emp_id &&  $arr_nominee[$i]->ase_id== $obj_per[$k]->per_ase_id &&  $arr_nominee[$i]->grp_date == $obj_per[$k]->per_date) {
+                                               
+                                                $check_per++;   
+                                            } ?>
+                                    <?php } ?>
+                                    <?php if($check_per == 0) { ?>
+                                        <a>
                                     <button type="button" class="btn btn-xs button_size"
                                         style="background-color: #83848C;" disabled>
                                         <i class="fas fa-search text-white"></i>
                                     </button>
                                 </a>
-                                <?php
-                                    }
-                                    // if check nominee status of evaluated  
-                                    else
+                                            
+                                 <?php }else  
                                     {
                                         // check round evalution form
                                         if($arr_nominee[$i]->asp_type == 1)

@@ -99,7 +99,7 @@ th
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2>
+            <h2>Result (ผลคะแนนการประเมิน)</h2>
         </div>
         
         <div class="card-body">
