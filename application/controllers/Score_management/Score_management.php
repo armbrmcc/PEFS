@@ -1,5 +1,5 @@
 <?php
-    /*
+/*
     * Score Management
     * Controller for Score Management module
     * @author Jaraspon Seallo and Nipat 
@@ -17,9 +17,9 @@ class Score_management extends MainController
 {
 
     public function __construct()
-    {//__construct
+    { //__construct
         parent::__construct();
-    }//end __construct
+    } //end __construct
 
     /*
 	* show_score_management_list
@@ -30,14 +30,14 @@ class Score_management extends MainController
 	* @Create  Date 2565-01-23
     */
     public function show_score_management_list()
-    {//show_score_management_list
+    { //show_score_management_list
         $this->load->model('M_pef_score_management', 'psm');
         $data['as_group'] = $this->psm->get_score_management_list()->result();
         $data['as_group_date'] = $this->psm->get_score_management_list_date()->result();
         $this->output('consent/v_score_management', $data);
     } //show_score_management_list
 
-/*
+    /*
 * show_score_management_detail
 * display view score management detail
 * @input  -
@@ -69,8 +69,44 @@ class Score_management extends MainController
             }
             $data['count'][$i] = $num;
         }
+
+        // $sum_point = 0;
+        // $point_total = [];
+        // $check_emp = '';
+        // $point_ass = [];
+        // $total = [];
+        // $get = [];
+        // foreach ($ass_data as $index_ass => $row_ass) {
+        //     foreach ($point_data as $index => $row) {
+        //         if ($row_ass->ase_id == $row->per_ase_id) {
+        //             $sum_point += intval($row->ptf_point);
+        //         }
+        //         //if 
+        //     }
+        //     //for each point_data
+        //     if ($sum_point != 0) {
+        //         array_push($point_total, $sum_point);
+        //     } else {
+        //         array_push($point_total, 0);
+        //     }
+        //     $sum_point = 0;
+        // }
+        // //for each ass_data
+        // array_push($point_ass, $point_total);
+        // array_push($total, (sizeof($point_data) * 5));
+        // array_push($get, array_sum($point_total));
+        // $point_total = [];
+        // $percent = $get[$index_point] * 100 / $total[$index_point];
+
+        // for ($i = 0; $i < count($data['nominee']); $i++) {
+
+        //     if ($data['count'][$i] == count($data['assessor']) && $percent[$i] >= 60) {
+        //         $this->load->model('M_pef_group_nominee', 'nor');
+                
+        //     }
+        // }
         $this->output('consent/v_score_management_detail', $data);
-    }//end show_score_management_detail
+    } //end show_score_management_detail
 
     /*
 	* review
@@ -81,7 +117,7 @@ class Score_management extends MainController
 	* @Create  Date 2565-04-10
     */
     public function review()
-    {//review
+    { //review
         $date = $this->input->post('date');
         $emp  = $this->input->post('emp');
         $emp_id  = $this->input->post('emp_id');
@@ -121,7 +157,7 @@ class Score_management extends MainController
         // $this->load->model('M_pef_summary', 'pef');
 
         Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
-    }//end review
+    } //end review
 
     /*
 	*  get_group
@@ -132,13 +168,13 @@ class Score_management extends MainController
 	* @Create  Date 2565-04-10
     */
     public function get_group()
-    {//get_group
+    { //get_group
         $date = $this->input->post('date');
         $this->load->model('M_pef_score_management', 'pef');
         $this->pef->grp_date = $date;
         $data = $this->pef->get_group()->result();
         echo json_encode($data);
-    }//end get_group
+    } //end get_group
 
     /*
 	* get_evaluation
@@ -149,11 +185,11 @@ class Score_management extends MainController
 	* @Create  Date 2565-04-10
     */
     public function get_evaluation()
-    {//get_evaluation
+    { //get_evaluation
         $id = $this->input->post('emp');
         $this->load->model('M_pef_score_management', 'pef');
         $data = $this->pef->get_evaluation($id)->result();
         echo json_encode($data);
-    }//end get_evaluation
+    } //end get_evaluation
 
 }//End class Score_management
