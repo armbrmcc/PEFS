@@ -424,8 +424,7 @@ $( document ).ready(function() {
                                             <input type="text" name="total" size='1' disabled hidden>
                                             <input type="text" name="total" size='1' disabled hidden>
                                             <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'> </td>
-                                            <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
-                                                
+                                            <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>    
                                     </tr>
                                     <tr>
                                         <td>Judgement</td>
@@ -442,34 +441,26 @@ $( document ).ready(function() {
                                 <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id">
                             <!-- end input -->
 
-
-
-
-
-
-
-                            <br>
-                            <h5>  1st round </h5>
-                            
-                           <!-- Comment -->
+                        <br>
+                        <h5>  1st round </h5>
+                        <!-- Comment -->
                         <div class="form-group">
                             <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
-                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
+                            <textarea class="form-control" rows="5" type="text" 
                                 disabled> <?php echo $arr_per[0]->per_comment ; ?> </textarea>
                         </div>
                         <br>
                         <!-- Q/A -->
                         <div class="form-group">
                             <label for="QnA"><b style="font-size: 15px;">Q/A  :</b></label>
-                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
+                            <textarea class="form-control" rows="5" type="text" 
                             disabled><?php echo $arr_per[0]->per_q_and_a  ?> </textarea>
                         </div>
                         <br>
                         <hr>
                         <br>
-  
                         <h5> Final round</h5>
-                            <!-- comment -->
+                            <!-- Comment -->
                             <div class="form-group">
                                 <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
                                 <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
@@ -493,6 +484,7 @@ $( document ).ready(function() {
                 </form>
                 <!-- End form evaluation -->
             </div>
+            <!-- End class table-responsive -->
         </div>
         <!-- End card body -->
     </div>
