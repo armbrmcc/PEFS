@@ -69,16 +69,25 @@
 <script language="javascript">
     $(document).ready(function() {
         $('#on').on('click', function() {
-            if (this.value == 'on') {
-                document.getElementById("info").disabled = true;
-                document.getElementById("on").value = "off";
-                document.getElementById("on").innerHTML = "close";
-                document.getElementById("on").style.background = "#D90437";
+            var button = document.getElementById("on");
+            var round = $('input#round').attr("value");
+            if (button.value == 'on') {
+                for(var i = 1; i <= round; i++) {
+                    let elems = document.querySelector("#info"+i);
+                    elems.disabled = true;
+                }
+                button.value = "off";
+                button.innerHTML = "close";
+                button.style.background = "#D90437";
+                
             } else {
-                document.getElementById("info").disabled = false;
-                document.getElementById("on").value = "on";
-                document.getElementById("on").innerHTML = "open";
-                document.getElementById("on").style.background = "#0DD739";
+                for(var i = 1; i <= round; i++) {
+                    let elems = document.querySelector("#info"+i);
+                    elems.disabled = false;
+                }
+                button.value = "on";
+                button.innerHTML = "open";
+                button.style.background = "#0DD739";
             }
         });
     });
@@ -215,23 +224,12 @@
                                     <?php } ?>
                             </td>
                             <td>
-                                <?php
-                                if ($count[$i] == count($assessor)) {
-                                    if ($nominee[$i]->grn_status_done == 0 || $nominee[$i]->grn_status_done == 1 || $nominee[$i]->grn_status_done == 2) { ?>
-                                        <div class="dropdown">
-
-                                            <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" data-bs-target="#ModalAddGroup" id="info">
-                                                <i class="fa fa-refresh" style="font-size:15px;"></i>
-                                            </button>
-                                        </div>
-                                    <?php }
-                                } else { ?>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" disabled>
-                                            <i class="fa fa-refresh" style="font-size:15px;"></i>
-                                        </button>
-                                    </div>
-                                <?php } ?>
+                                <div class="dropdown">
+                                    <input type="text" value="<?php echo count($nominee) ?>" id="round" hidden>
+                                    <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" data-bs-target="#ModalAddGroup" id="info<?php echo $i+1 ?>" >
+                                        <i class="fa fa-refresh" style="font-size:15px;"></i>
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                         <div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle" aria-hidden="true">
@@ -273,12 +271,6 @@
     </table>
     </div>
 </div>
-<!-- <input type="date" id="date" name="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
-                            <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
-                            <input type="text" id="group" name="group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
-                            <input type="text" id="pos" name="pos" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
-                            <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
-<center><a href="<?php echo site_url() . 'Score_management/Score_management/show_score_management_list'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center> -->
 </div>
 
     <script>
