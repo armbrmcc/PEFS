@@ -252,15 +252,15 @@ th
                                         
                                             <!-- แสดง point -->
                                             <td style="vertical-align:middle;text-align: center;">
-                                               <?php echo $arr_point[$i]->ptf_point;
+                                               <?php echo $arr_point[$count_discription]->ptf_point;
                                                $total_weight +=$arr_point[$count_discription]->ptf_point*$arr_des[$count_discription]->des_weight;?>
                                             </td>
                                                 
 
                                             <!-- แสดง Score -->
                                             <td colspan="2" style="vertical-align:middle;text-align: center;">
-                                                <?php echo $arr_point[$i]->ptf_point*$arr_des[$count_discription]->des_weight;
-                                                $total_percent +=$arr_point[$i]->ptf_point*$arr_des[$count_discription]->des_weight;?>
+                                                <?php echo $arr_point[$count_discription]->ptf_point*$arr_des[$count_discription]->des_weight;
+                                                $total_percent +=$arr_point[$count_discription]->ptf_point*$arr_des[$count_discription]->des_weight;?>
                                             </td>
                                                
                                         <?php $count_discription++;
