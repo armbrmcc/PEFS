@@ -129,7 +129,7 @@ class Assessor_management extends MainController
         $this->dass->ase_year = '2022';
         $this->dass->ase_emp_id = $this->input->post('ase_emp_id');
         $this->dass->ase_asp_id = $ase_gro_id;
-        $this->dass->ase_sec_id = $this->input->post('sec');;
+        $this->dass->ase_sec_id = $this->input->post('sec');
         // echo $ase_gro_id;
         $this->dass->insert();
 
