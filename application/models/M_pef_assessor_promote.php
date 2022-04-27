@@ -51,9 +51,9 @@ class M_pef_assessor_promote extends Da_pef_assessor_promote
     {
 
         $sql = " SELECT asp_type FROM pefs_database.pef_group AS grass
-        JOIN pefs_database.pef_assessor_promote AS promote
-        ON grass.grp_id =  promote.asp_id
-        WHERE grass.grp_id = $id_group";    
+        INNER JOIN pefs_database.pef_assessor_promote AS pro
+                           ON  grass.grp_position_group  = pro.asp_level
+        WHERE grass.grp_id = $id_group";   
         $query = $this->db->query($sql);
         return $query;
     }
