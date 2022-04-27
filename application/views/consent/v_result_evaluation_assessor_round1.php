@@ -103,7 +103,6 @@ th
         <div class="card-header">
             <h2>Result (ผลคะแนนการประเมิน) </h2> 
         </div>
-        <?php print_r($arr_point)?>
         <div class="card-body">
             <!-- Logo บริษัท -->
             <div class="row">
