@@ -110,8 +110,7 @@ class M_pef_group_assessor extends Da_pef_group_assessor
         ON grass.gro_ase_id = ass.ase_id
         INNER JOIN dbmc.employee AS employee
         ON ass.ase_emp_id = employee.Emp_ID
-        INNER JOIN pefs_database.pef_performance_form AS per
-        ON ass.ase_id = per.per_ase_id
+ 
    		WHERE grass.gro_grp_id=  $group_id 
            GROUP BY  ass.ase_id";
         $query = $this->db->query($sql);

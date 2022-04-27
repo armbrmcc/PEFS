@@ -193,12 +193,16 @@ class Result_admin extends MainController
 
         //get point round 2
         $data['date_2'] = $this->schedule->get_date_rourd_2($group_id)->result();
-        
         $date_2 =  $data['date_2'][0]->grd_date;
         $data['arr_per2'] = $this->per->get_performance_result($Emp_ID, $ase_id, $date_2)->result();
-        $per_get2 =  $data['arr_per2'][0]->per_id;
-        $data['arr_point_2'] = $this->point->get_point_list_round_2_admin($per_get2,$Emp_ID, $ase_id, $date_2)->result();
-        // echo $per_get2.'<br>'.$Emp_ID.'<br>'. $ase_id.'<br>'. $date_2;
-        $this->output('consent/v_result_admin_detail_from_2', $data);
+        if($data['arr_per2'] != NULL){
+            $per_get2 =  $data['arr_per2'][0]->per_id;
+            $data['arr_point_2'] = $this->point->get_point_list_round_2_admin($per_get2,$Emp_ID, $ase_id, $date_2)->result();
+            // echo $per_get2.'<br>'.$Emp_ID.'<br>'. $ase_id.'<br>'. $date_2;
+            $this->output('consent/v_result_admin_detail_from_2', $data);
+        }else{
+            $this->output('consent/v_result_admin_detail_from_2_1', $data);
+        }
+        
     } //show_result_evaluation_type2
 }//End class Result admin
