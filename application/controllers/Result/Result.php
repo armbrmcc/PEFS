@@ -114,7 +114,7 @@ class Result extends MainController
         $data['obj_group'] = $this->group->get_group_by_group_id($group_id)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
-
+        
         //get point round 1
         $data['arr_per'] = $this->per->get_performance_result($Emp_ID, $ase_id, $date)->result();
         $per_get =  $data['arr_per'][0]->per_id;
@@ -212,7 +212,7 @@ class Result extends MainController
         $data['obj_group'] = $this->group->get_group_by_group_id($group_id)->result();
         $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
-
+        
         //get point round 1
         $data['arr_per'] = $this->per->get_performance_result($Emp_ID, $ase_id, $date)->result();
         $per_get =  $data['arr_per'][0]->per_id;

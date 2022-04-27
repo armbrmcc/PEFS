@@ -113,6 +113,8 @@ th
     var emp_id = $('#emp_id').val();
     var group_id = $('#group_id').val();
     var asp_id = $('#asp_id').val();
+    var per_id = $('#per_id').val();
+    var ptf_per_id = $('#ptf_per_id').val();
     
     for (i = 0; i < count_score; i++) {
         score[i] = $('#form_' + i).val();
@@ -170,7 +172,7 @@ th
                 if (result.isConfirmed) {
                     $.ajax({
                         type: 'post',
-                        url: "<?php echo site_url().'Evaluation/Evaluation/insert_evaluation_form'; ?>",
+                        url: "<?php echo site_url().'Evaluation/Evaluation/update_evaluation_form_2'; ?>",
                         data: {
                             'QnA': qa,
                             'comment': comment,
@@ -178,6 +180,8 @@ th
                             'ase_id': ase_id,
                             'emp_id': emp_id,
                             'asp_id': asp_id,
+                            'per_id': per_id,
+                            'ptf_per_id' : ptf_per_id,
                             'group_id': group_id,
                             'form': form,
                             'row': row,
@@ -208,44 +212,34 @@ th
         }
     }//end alart_evaluation
 
-    
-
-   
 $( document ).ready(function() {
- 
+
     $("select").change(function(){
-         
+    
         var toplem=0;
         $("select[name=form]").each(function(){
-            
+        
             toplem = toplem + parseInt($(this).val());
-             
+        
         })
         $("input[name=total]").val(toplem);
     });  //คืนค่าคะแนนรวม
-    
+
     $("select").change(function(){
         var toplem=0;
         var weight = $("#weight").val();
         $("select[name=form]").each(function(){
             toplem = toplem + parseInt($(this).val());
 
-        }) 
-        
+        })//คืนค่าคะแนนรวมแบบรายการ
+
             toplem = Math.round(toplem / weight*100);
-            var a = '%'
-        $("input[name=total_weight]").val(toplem + a);
+            
+        $("input[name=total_weight]").val(toplem);
 
     }); //คืนค่าคะแนนรวมแบบเปอเซ็น
 
-
-    //คืนค่าคะแนนรวมแบบรายการ
-    
 })
-        
-       
- 
-
 </script>
 <!-- End Javascript -->
 
@@ -253,8 +247,9 @@ $( document ).ready(function() {
 <div class="container py-4">
     <div class="card" id="border-radius">
         <div class="card-header">
-            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2>  
+            <h2>Evaluation (แบบฟอร์มการประเมิน)</h2>
         </div>
+        
         <div class="card-body">
             <!-- Logo บริษัท -->
             <div class="row">
@@ -284,14 +279,14 @@ $( document ).ready(function() {
                     <h6>Assessor Name : <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6>
                 </div>
                 <div class="col-sm-6">
-                    <?php $newDate = date("d/m/Y", strtotime($arr_nominee[0]->grp_date)); ?>
+                    <?php $newDate = date("d/m/Y", strtotime($obj_date[1]->grd_date)); ?>
                     <h6>Date : <?php echo $newDate ?></h6>
                 </div>
             </div>
 
             <div class="table-responsive">
                 <!-- Start form evaluation -->
-                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post"
+                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/update_evaluation_form_2" method="post"
                     enctype="multipart/form-data" name="evaluation">
                     <!-- Start table data Nominee -->
                     <table class="table table-bordered table-sm">
@@ -345,30 +340,41 @@ $( document ).ready(function() {
                                     </tr>
                                     <!--เริ่ม ตารางหัวข้อลงคะแนน-->
                                     <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
-                                    
-                                    $weight = 5*count($arr_des); //กำหนด weight แบบง่ายๆ
+                                    $count_itm = 1; //จำนวนหัวข้อหลัก
+                                    $weight = 0;
+                                    $total_round_1 = 0;
+                                    $total_round_2 = 0;
                                     $point_old = 0;
-                                    
-                                    
+                                    for ($i = 0; $i < count($arr_form); $i++) {
+                                        if ($i != 0) {
+                                            if ($arr_form[$i]->itm_id != $arr_form[$i - 1]->itm_id) {
+                                                $count_itm++;
+                                            }
+                                        }
+                                        $weight =  $weight + 5;
+                                        $total_round_1 += $arr_point[$i]->ptf_point;
+                                        $total_round_2 += $arr_point_2[$i]->ptf_point;
+                                    } //นับหัวข้อหลัก
                                     ?>
+
                                     <input type="hidden" id="count_form" value='<?php echo count($arr_item) ?>'>
                                     <?php
                                     
                                     for ($i = 0; $i < count($arr_item); $i++) {   //ลูปตามหัวข้อหลัก
-                                    ?>
-                                        <?php $count_rowspan = 0;
-                                        for ($loop_rowspan = 0; $loop_rowspan < count($arr_des); $loop_rowspan++) {
-                                            if ($arr_des[$loop_rowspan]->des_item_id == $arr_item[$i]->itm_id) {
-                                                $count_rowspan++;
-                                            }
-                                        } //นับdiscriptionเพื่อกำหนด rowspan 
-                                        
                                         ?>
-                                        <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
-                                        id="dis_row_<?php echo  $i ; ?>">
-                                        <?php
-                                        for ($loop_dis = 1; $loop_dis <= $count_rowspan; $loop_dis++) { ?>
-                                            <tr>
+                                            <?php $count_rowspan = 0;
+                                            for ($loop_rowspan = 0; $loop_rowspan < count($arr_des); $loop_rowspan++) {
+                                                if ($arr_des[$loop_rowspan]->des_item_id == $arr_item[$i]->itm_id) {
+                                                    $count_rowspan++;
+                                                }
+                                            } //นับdiscriptionเพื่อกำหนด rowspan 
+                                            
+                                            ?>
+                                            <input type="hidden" value="<?php echo $count_rowspan; ?>" name="row[]"
+                                            id="dis_row_<?php echo  $i ; ?>">
+                                            <?php
+                                            for ($loop_dis = 1; $loop_dis <= $count_rowspan; $loop_dis++) { ?>
+                                                <tr>
                                                 <!-- แสดงห้อข้อหลัก -->
                                                 <?php if ($loop_dis === 1) { ?>
                                                     <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col"> <b>
@@ -381,27 +387,39 @@ $( document ).ready(function() {
                                                     <!-- แสดง Disription    -->
                                                     <b> <?php echo $arr_des[$count_discription]->des_description_th; ?></b>
                                                     <br>
-                                                
+
                                                     <?php $pos = strrpos($arr_des[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
                                                     echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
                                                     <?php echo substr($arr_des[$count_discription]->des_description_eng, $pos + 1, strlen($arr_des[$count_discription]->des_description_eng)) ?>
                                                     <?php echo $arr_des[$count_discription]->des_description_th ?>
                                                 </td>
-
+                                                <!-- score 1st round -->
+                                                <td colspan="2" style="vertical-align:middle;text-align: center;">
+                                                    <?php echo $arr_point[$count_discription]->ptf_point; ?>
+                                                </td>
+                                                <!-- score 2st round -->
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
                                                         <select style="vertical-align:middle;text-align: center;" class="form-control" name="form" id="form_<?php echo $count_discription; ?>" required>
-                                                            <option value="0">score</option>
-                                                            <option value=1>1</option>
-                                                            <option value=2>2</option>
-                                                            <option value=3>3</option>
-                                                            <option value=4>4</option>
-                                                            <option value=5>5</option>
+                                                            <?php for($loop_point = 0;$loop_point <= 5; $loop_point++){
+                                                                if($loop_point == 0){
+                                                                    echo ' <option value=" ';
+                                                                    echo $loop_point ;
+                                                                    echo '">score</option>';
+                                                                }else{
+                                                                    echo ' <option value=" ';
+                                                                    echo $loop_point ;
+                                                                    if($loop_point == $arr_point_2[$count_discription]->ptf_point){echo ' "selected="selected"';}  
+                                                                    echo '">';
+                                                                    echo $loop_point ;
+                                                                    echo '</option>';
+                                                                }
+                                                            } ?>
                                                         </select>
                                                         
                                                     </td>
-                                                    
-                                                    <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>" name="for_id[]" id="formid_<?php echo $count_discription; ?>">
+                                                    <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>" name="for_id[]" 
+                                                    id="formid_<?php echo $count_discription; ?>">
                                             <?php $count_discription++; ?>
                                         <?php } ?>
                                         </tr>
@@ -413,45 +431,75 @@ $( document ).ready(function() {
                                         <td rowspan="2">
                                             5 ： Exceed expected level for Next level
                                             <br>4 ： Absolutely satisfies expected level for Next level
-                                            <br> 3 ： Meet expected level for Manager level
+                                            <br>3 ： Meet expected level for Manager level
                                             <br>2 ： Partially lower that expected level for Next level
                                             <br>1 ： Do Not satisfy expected level for Next level
                                         </td>
                                         <!-- total -->
                                         <td>Total</td>
-                                        <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'> </td>
-                                                <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
-                                                <td><input type="text" name="total" size='1' disabled hidden></td>
-                                                <td><input type="text" name="total" size='1' disabled hidden></td>
+                                        <!-- <?php echo $weight; ?> -->
+                                            <!-- total round 1 -->
+                                            <td style="text-align: center;"><?php echo $total_round_1;?></td>
+                                            <td style="text-align: center;"><?php echo (int)(($total_round_1 * 100)/$weight);?>%</td>
+                                            <!-- total round 2 -->
+                                            <input type="text" name="total" size='1' disabled hidden>
+                                            <input type="text" name="total" size='1' disabled hidden>
+                                            <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'
+                                                value=<?php echo $total_round_2;?>> 
+                                            </td>
+                                            <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none'
+                                                value=<?php echo (int)($total_round_2 * 100/$weight);?>>%
+                                            </td>    
                                     </tr>
                                     <tr>
                                         <td>Judgement</td>
                                         <td colspan="4"></td>
                                     </tr>
                             </table>
-                            <br>
-                            <!-- comment -->
+
+                            <!-- input -->
+                                <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
+                                <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id" id="ase_id">
+                                <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id" id="emp_id">
+                                <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
+                                <input type="hidden" value="<?php echo $arr_nominee[0]->grp_id; ?>" name="group_id" id="group_id">
+                                <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id">
+                                <input type="hidden" value="<?php echo $arr_per2[0]->per_id ?>" name="per_id" id="per_id">
+                                <input type="hidden" value="<?php echo $arr_point_2[0]->ptf_per_id ?>" name="ptf_per_id" id="ptf_per_id">
+                            <!-- end input -->
+
+                        <br>
+                        <h5>  1st round </h5>
+                        <!-- Comment -->
+                        <div class="form-group">
+                            <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
+                            <textarea class="form-control" rows="5" type="text" 
+                                disabled> <?php echo $arr_per[0]->per_comment ; ?> </textarea>
+                        </div>
+                        <br>
+                        <!-- Q/A -->
+                        <div class="form-group">
+                            <label for="QnA"><b style="font-size: 15px;">Q/A  :</b></label>
+                            <textarea class="form-control" rows="5" type="text" 
+                            disabled><?php echo $arr_per[0]->per_q_and_a  ?> </textarea>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <h5> Final round</h5>
+                            <!-- Comment -->
                             <div class="form-group">
                                 <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
                                 <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
-                                    required></textarea>
+                                    required><?php echo $arr_per2[0]->per_comment ; ?></textarea>
                             </div>
                             <br>
                             <!-- Q/A -->
                             <div class="form-group">
                                 <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
                                 <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
-                                    required></textarea>
+                                    required><?php echo $arr_per2[0]->per_q_and_a ?></textarea>
                             </div>
-                            <!-- input -->
-                            <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
-                            <input type="hidden" value="<?php echo $obj_assessor[0]->ase_id ?>" name="ase_id" id="ase_id">
-                            <input type="hidden" value="<?php echo $obj_nominee[0]->grn_emp_id ?>" name="emp_id" id="emp_id">
-                            <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
-                            <input type="hidden" value="<?php echo $arr_nominee[0]->grp_id; ?>" name="group_id" id="group_id">
-                            <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id">
-                            <!-- end input -->
-
                             <!-- Confirm -->
                             <div class="col-6 text-end">
                                 <button type="button" class="btn bg-gradient-success mb-0" data-bs-toggle="modal"
@@ -463,6 +511,7 @@ $( document ).ready(function() {
                 </form>
                 <!-- End form evaluation -->
             </div>
+            <!-- End class table-responsive -->
         </div>
         <!-- End card body -->
     </div>

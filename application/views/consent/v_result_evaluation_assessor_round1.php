@@ -123,7 +123,13 @@ th
                 </div>
                 <div class="col-sm-6">
                     
-                    <h6>Date : <?php echo $obj_group[0]->grp_date ?></h6>
+                    <h6>Date : 
+                        <?php
+                            $newDate = date("d/m/Y", strtotime($obj_group[0]->grp_date));
+                            // echo $obj_group[0]->grp_date;
+                            echo $newDate;
+                        ?>
+                    </h6>
                 </div>
             </div>
 
@@ -240,7 +246,7 @@ th
                                         
                                             <!-- แสดง point -->
                                             <td style="vertical-align:middle;text-align: center;">
-                                               <?php echo $arr_point[$i]->ptf_point;
+                                               <?php echo $arr_point[$count_discription]->ptf_point;
                                                $total_weight +=$arr_point[$count_discription]->ptf_point*$arr_des[$count_discription]->des_weight;?>
                                             </td>
                                                 

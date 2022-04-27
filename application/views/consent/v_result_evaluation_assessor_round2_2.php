@@ -133,8 +133,13 @@ th
                 </div>
                 <div class="col-sm-6">
                      
-                <h6>Date : <?php echo $obj_group[0]->grp_date ?></h6>
-                </div>
+                <h6>Date : 
+                        <?php
+                            $newDate = date("d/m/Y", strtotime($obj_group[0]->grp_date));
+                            // echo $obj_group[0]->grp_date;
+                            echo $newDate;
+                        ?>
+                    </h6>                </div>
             </div>
 
             <div class="table-responsive">
@@ -230,8 +235,8 @@ th
                                                 <!-- แสดงห้อข้อหลัก -->
                                                 <?php if ($loop_dis === 1) { ?>
                                                     <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col"> <b>
-                                                            <?php echo $arr_item[$loop_dis]->itm_name; ?>
-                                                            <br><?php echo $arr_item[$loop_dis]->itm_item_detail; ?></b>
+                                                            <?php echo $arr_item[$i]->itm_name; ?>
+                                                            <br><?php echo $arr_item[$i]->itm_item_detail; ?></b>
                                                     </td>
                                                 <?php } ?>
                                                 

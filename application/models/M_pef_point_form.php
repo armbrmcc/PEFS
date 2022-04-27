@@ -145,7 +145,7 @@ class M_pef_point_form extends Da_pef_point_form
 	*/
     function get_point_list_round_2_admin($per_id,$nor_id,$id_assessor,$date)
     {
-        $sql = "SELECT ptf_point
+        $sql = "SELECT ptf_point,  ptf_per_id
         FROM  pefs_database.pef_point_form 
         INNER JOIN pefs_database.pef_performance_form as performance
          ON performance.per_id = pef_point_form.ptf_per_id 

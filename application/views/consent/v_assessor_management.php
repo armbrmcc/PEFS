@@ -160,16 +160,6 @@
                                         </td>
 
                                         <td class="align-middle">
-                                            <!-- Start button trigger modal edit -->
-                                            <!-- <a href="<?php echo site_url() . 'Assessor_management/Assessor_management/show_assessor_management_detail/' . $arr_group[$i]->asp_id; ?>">
-                                                    <!-- ปุ่มดำเนินการแก้ไข -->
-                                            <!-- <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                data-bs-target="#ModalDeleteAssessor">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            </a> -->
-                                            <!-- End button trigger modal edit-->
-
                                             <?php
                                                 if ($arr_group[$i]->asp_status == '-1') {
                                                 ?>

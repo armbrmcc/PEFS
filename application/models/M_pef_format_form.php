@@ -42,7 +42,8 @@ class M_pef_format_form extends Da_pef_format_form
             ON pef_format_form.for_item_id = pef_item_form.itm_id
             INNER JOIN pefs_database.pef_description_form
             ON pef_description_form.des_item_id=pef_item_form.itm_id
-            WHERE pef_format_form.for_pos_id  = '$promote'";
+            WHERE pef_format_form.for_pos_id  = '$promote'
+            ORDER BY pef_format_form.for_id";
             $query = $this->db->query($sql);
             return $query;
     }

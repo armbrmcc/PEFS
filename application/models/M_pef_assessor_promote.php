@@ -126,6 +126,8 @@ class M_pef_assessor_promote extends Da_pef_assessor_promote
                     ON ass.ase_asp_id =  promote.asp_id
                     INNER JOIN pefs_database.pef_section AS sec
                     ON promote.asp_level = sec.sec_level
+                    INNER JOIN dbmc.sectioncode AS code
+                    ON emp.Sectioncode_ID = code.Sectioncode
                     WHERE promote.asp_id = $id";
                 
         $query = $this->db->query($sql);

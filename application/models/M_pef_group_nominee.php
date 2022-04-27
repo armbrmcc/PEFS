@@ -171,12 +171,6 @@ class M_pef_group_nominee extends Da_pef_group_nominee
                     ON gr.grp_id = grass.gro_grp_id
                     INNER JOIN pefs_database.pef_assessor AS ass
                     ON grass.gro_ase_id = ass.ase_id
-                    INNER JOIN pefs_database.pef_assessor_promote AS promote
-                    ON grass.gro_asp_id = promote.asp_id
-                    INNER JOIN dbmc.employee
-                    ON groupno.grn_emp_id = employee.Emp_ID
-                    INNER JOIN dbmc.position AS position
-                    ON groupno.grn_promote_to = position.Position_ID 
                 WHERE gr.grp_id = $group_id";
         $query = $this->db->query($sql);
         return $query;
