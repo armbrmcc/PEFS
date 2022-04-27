@@ -235,8 +235,8 @@ th
                                                 <!-- แสดงห้อข้อหลัก -->
                                                 <?php if ($loop_dis === 1) { ?>
                                                     <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center; width: 50px;" id="width_col"> <b>
-                                                            <?php echo $arr_item[$loop_dis]->itm_name; ?>
-                                                            <br><?php echo $arr_item[$loop_dis]->itm_item_detail; ?></b>
+                                                            <?php echo $arr_item[$i]->itm_name; ?>
+                                                            <br><?php echo $arr_item[$i]->itm_item_detail; ?></b>
                                                     </td>
                                                 <?php } ?>
                                                 

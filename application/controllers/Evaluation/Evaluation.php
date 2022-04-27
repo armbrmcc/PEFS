@@ -277,7 +277,7 @@ class Evaluation extends MainController
     * @Update Date 2565-03-05
     * @Update Date 2565-03-10
     */
-    public function show_evaluation_form_round_2_edit($group_id, $id_assessor, $id_nominee, $promote)
+    public function show_evaluation_form_round_2_edit($group_id, $id_assessor, $id_nominee, $promote, $nor_id)
     {
         $this->load->model('M_pef_assessor', 'assessor');
         $this->load->model('M_pef_group', 'pef');
@@ -307,6 +307,13 @@ class Evaluation extends MainController
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
         // print_r( $data['arr_nominee'] );
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
+        $data['arr_date'] = $this->nominee->get_nominee_date($group_id)->result();
+        $date = $data['arr_date'][0]->grp_date;
+
+        //get point round 1
+        $data['arr_per'] = $this->per->get_performance_result($nor_id, $id_assessor, $date)->result();
+        $per_get =  $data['arr_per'][0]->per_id;
+        $data['arr_point'] = $this->point->get_point_list($per_get)->result();
 
         $this->output('consent/v_evaluation_form_round_2_edit', $data);
     } //end show_evaluation_form_round_2
@@ -333,6 +340,7 @@ class Evaluation extends MainController
         $this->load->model('M_pef_file', 'file');
         $this->load->model('M_pef_description_form', 'des');
         $this->load->model('M_pef_item_form', 'item');
+        $this->load->model('M_pef_group_schedule', 'schedule');
 
         
         $this->pos_id =$promote;
@@ -350,16 +358,21 @@ class Evaluation extends MainController
         $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
         $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
         $data['arr_date'] = $this->nominee->get_nominee_date($group_id)->result();
+        $data['arr_date'] = $this->nominee->get_nominee_date($group_id)->result();
         $date = $data['arr_date'][0]->grp_date;
-        // print_r($date);
-        // print_r($id_assessor);
-        // print_r($nor_id);
-            $data['arr_per'] = $this->per->get_performance($nor_id, $id_assessor, $date)->result();
-            // print_r($data['arr_per']);
-            $per_get =  $data['arr_per'][0]->per_id;
-            // print_r($per_get);
-            
-            
+
+        //get point round 1
+        $data['arr_per'] = $this->per->get_performance_result($nor_id, $id_assessor, $date)->result();
+        $per_get =  $data['arr_per'][0]->per_id;
+        $data['arr_point'] = $this->point->get_point_list($per_get)->result();
+        
+        //get point round 2
+        $data['date_2'] = $this->schedule->get_date_rourd_2($group_id)->result();
+        
+        $date_2 =  $data['date_2'][0]->grd_date;
+        $data['arr_per2'] = $this->per->get_performance_result($nor_id, $id_assessor, $date_2)->result();
+        $per_get2 =  $data['arr_per2'][0]->per_id;
+        $data['arr_point_2'] = $this->point->get_point_list_round_2_admin($per_get2, $nor_id, $id_assessor, $date_2)->result();
 
         $this->output('consent/v_evaluation_form_round_2_2_edit', $data);
     } //end show_evaluation_form_round_2_2
@@ -542,6 +555,59 @@ class Evaluation extends MainController
         $this->point->ptf_per_id = $max->max_id;
         $this->point->ptf_round = 1;
         $this->point->update_point();
+
+        $data['message'] = 'Success';
+
+        echo json_encode($data);
+    }
+
+    /*
+	* update_evaluation_form_2
+	* insert data form go to database
+	* @input  per, QnA, comment, ase_id, emp_id, point, form
+	* @output -
+	* @author Phatchara Khongthandee and Pontakon Mujit
+	* @Create Date 2565-03-03
+    * @Update Date 2565-03-05
+    * @Update Date 2565-03-08
+    * @Update Date 2565-03-10
+    * @Update Date 2565-04-11
+    * @Update Date 2565-04-12
+    * @Update Date 2565-04-13
+    */
+    function update_evaluation_form_2()
+    {
+        // echo "<pre>";
+        // print_r($this->input->post());
+        // echo "</pre>";
+        $date = date("Y-m-d");
+        
+        //update data to database pef_performance_form
+        $this->load->model('Da_pef_performance_form', 'per');
+        $this->per->per_id = $this->input->post('per_id');
+        $this->per->delete_performance_form();
+
+        $this->per->per_q_and_a = $this->input->post('QnA');
+        $this->per->per_comment = $this->input->post('comment');
+        $this->per->per_date = $date;
+        $this->per->per_ase_id = (int) $this->input->post('ase_id');
+        $this->per->per_emp_id = $this->input->post('emp_id');
+        $this->per->update_performance_form();
+    
+        //update data to database pef_point_form
+        $this->load->model('Da_pef_point_form', 'point');
+        $this->point->ptf_per_id = $this->input->post('ptf_per_id');
+        $this->point->delete_point();
+
+        $this->point->ptf_point = $this->input->post('point');
+        $this->point->ptf_date = $date; 
+        $this->point->ptf_for_id = $this->input->post('form');
+        $this->point->row = $this->input->post('row');
+        $this->load->model('M_pef_point_form', 'pef');
+        $max = $this->pef->get_point()->row();
+        $this->point->ptf_per_id = $max->max_id;
+        $this->point->ptf_round = 2;
+        $this->point->update_point_round_2();
 
         $data['message'] = 'Success';
 

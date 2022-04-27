@@ -130,7 +130,7 @@ class Da_pef_point_form extends pefs_model
     }
 
     /*
-    * insert_point_round_2
+    * update_point_round_2
     * เพิ่มข้อมูลลงใน database ตาราง pef_point_form
     * @input  ptf_point, ptf_date, ptf_row, ptf_ase_id, ptf_for_id, ptf_emp_id, ptf_per_id
     * @output -

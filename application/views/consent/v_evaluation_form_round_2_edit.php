@@ -1,12 +1,12 @@
 <!--
     /*
-    * v_evaluation_form_round_2
-    * display for Evaluation Form 2 Round (แบบฟอร์มการประเมิน 2 รอบ)
-    * @author Phatchara Khongthandee and Ponprapai Atsawanurak
+    * v_evaluation_form_round_2_edit
+    * display for Evaluation Form 2 Round (แบบฟอร์มแก้ไขการประเมิน 2 รอบ)
+    * @author Phatchara Khongthandee 
     * @input -
     * @output -
     * @Create date : 2565-01-26   
-    * @Update date : 2565-01-27
+    * @Update date : 2565-04-27
     */
 -->
 
@@ -113,6 +113,8 @@ th
     var emp_id = $('#emp_id').val();
     var group_id = $('#group_id').val();
     var asp_id = $('#asp_id').val();
+    var per_id = $('#per_id').val();
+    var ptf_per_id = $('#ptf_per_id').val();
     
     for (i = 0; i < count_score; i++) {
         score[i] = $('#form_' + i).val();
@@ -170,7 +172,7 @@ th
                 if (result.isConfirmed) {
                     $.ajax({
                         type: 'post',
-                        url: "<?php echo site_url().'Evaluation/Evaluation/insert_evaluation_form'; ?>",
+                        url: "<?php echo site_url().'Evaluation/Evaluation/update_evaluation_form'; ?>",
                         data: {
                             'QnA': qa,
                             'comment': comment,
@@ -178,6 +180,8 @@ th
                             'ase_id': ase_id,
                             'emp_id': emp_id,
                             'asp_id': asp_id,
+                            'per_id': per_id,
+                            'ptf_per_id' : ptf_per_id,
                             'group_id': group_id,
                             'form': form,
                             'row': row,
@@ -210,16 +214,16 @@ th
 
     
 
-   
+
 $( document ).ready(function() {
- 
+
     $("select").change(function(){
-         
+        
         var toplem=0;
         $("select[name=form]").each(function(){
             
             toplem = toplem + parseInt($(this).val());
-             
+            
         })
         $("input[name=total]").val(toplem);
     });  //คืนค่าคะแนนรวม
@@ -233,8 +237,8 @@ $( document ).ready(function() {
         }) 
         
             toplem = Math.round(toplem / weight*100);
-            var a = '%'
-        $("input[name=total_weight]").val(toplem + a);
+            
+        $("input[name=total_weight]").val(toplem);
 
     }); //คืนค่าคะแนนรวมแบบเปอเซ็น
 
@@ -242,10 +246,6 @@ $( document ).ready(function() {
     //คืนค่าคะแนนรวมแบบรายการ
     
 })
-        
-       
- 
-
 </script>
 <!-- End Javascript -->
 
@@ -291,7 +291,7 @@ $( document ).ready(function() {
 
             <div class="table-responsive">
                 <!-- Start form evaluation -->
-                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post"
+                <form action="action=<?php echo site_url() ?>Evaluation/Evaluation/update_evaluation_form" method="post"
                     enctype="multipart/form-data" name="evaluation">
                     <!-- Start table data Nominee -->
                     <table class="table table-bordered table-sm">
@@ -346,11 +346,15 @@ $( document ).ready(function() {
                                     <!--เริ่ม ตารางหัวข้อลงคะแนน-->
                                     <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
                                     
-                                    $weight = 5*count($arr_des); //กำหนด weight แบบง่ายๆ
+                                    $weight = 5*count($arr_des);
+                                    $total_round_1 = 0;
                                     $point_old = 0;
+
+                                    for ($i = 0; $i < count($arr_des); $i++) {
+                                        
+                                        $total_round_1 += $arr_point[$i]->ptf_point;
+                                    } ?>
                                     
-                                    
-                                    ?>
                                     <input type="hidden" id="count_form" value='<?php echo count($arr_item) ?>'>
                                     <?php
                                     
@@ -391,12 +395,20 @@ $( document ).ready(function() {
 
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
                                                         <select style="vertical-align:middle;text-align: center;" class="form-control" name="form" id="form_<?php echo $count_discription; ?>" required>
-                                                            <option value="0">score</option>
-                                                            <option value=1>1</option>
-                                                            <option value=2>2</option>
-                                                            <option value=3>3</option>
-                                                            <option value=4>4</option>
-                                                            <option value=5>5</option>
+                                                            <?php for($loop_point = 0;$loop_point <= 5; $loop_point++){
+                                                                if($loop_point == 0){
+                                                                    echo ' <option value=" ';
+                                                                    echo $loop_point ;
+                                                                    echo '">score</option>';
+                                                                }else{
+                                                                    echo ' <option value=" ';
+                                                                    echo $loop_point ;
+                                                                    if($loop_point == $arr_point[$count_discription]->ptf_point){echo ' "selected="selected"';}  
+                                                                    echo '">';
+                                                                    echo $loop_point ;
+                                                                    echo '</option>';
+                                                                }
+                                                            } ?>
                                                         </select>
                                                         
                                                     </td>
@@ -419,8 +431,14 @@ $( document ).ready(function() {
                                         </td>
                                         <!-- total -->
                                         <td>Total</td>
-                                        <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'> </td>
-                                                <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
+                                        <!-- แสดง point รวม -->
+                                        <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none' 
+                                            value=<?php echo $total_round_1;?>> 
+                                        </td>
+                                        <!-- แสดงเปอร์เซ็นคะแนนรวมทั้งหมด -->
+                                        <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' 
+                                            value=<?php echo (int)(($total_round_1 * 100)/$weight);?>>%
+                                        </td>
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                     </tr>
@@ -434,14 +452,14 @@ $( document ).ready(function() {
                             <div class="form-group">
                                 <label for="comment"><b style="font-size: 15px;">Comment :</b></label>
                                 <textarea class="form-control" rows="5" id="comment" type="text" name="comment"
-                                    required></textarea>
+                                    required><?php echo $arr_per[0]->per_comment ; ?></textarea>
                             </div>
                             <br>
                             <!-- Q/A -->
                             <div class="form-group">
                                 <label for="QnA"><b style="font-size: 15px;">Q/A :</b></label>
                                 <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"
-                                    required></textarea>
+                                    required><?php echo $arr_per[0]->per_q_and_a  ?></textarea>
                             </div>
                             <!-- input -->
                             <input type="hidden" name="grn_status" value="<?php echo $arr_nominee[0]->grp_status; ?>">
@@ -450,6 +468,8 @@ $( document ).ready(function() {
                             <input type="hidden" value="<?php echo $obj_nominee[0]->grn_id ?>" name="nor_id">
                             <input type="hidden" value="<?php echo $arr_nominee[0]->grp_id; ?>" name="group_id" id="group_id">
                             <input type="hidden" value="<?php echo $obj_group_ass[0]->asp_id ?>" name="asp_id" id="asp_id">
+                            <input type="hidden" value="<?php echo $arr_per[0]->per_id ?>" name="per_id" id="per_id">
+                            <input type="hidden" value="<?php echo $arr_point[0]->ptf_per_id ?>" name="ptf_per_id" id="ptf_per_id">
                             <!-- end input -->
 
                             <!-- Confirm -->
