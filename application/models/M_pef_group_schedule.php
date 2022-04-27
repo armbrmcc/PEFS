@@ -28,7 +28,7 @@ class M_pef_group_schedule extends Da_pef_group_schedule
             INNER JOIN pefs_database.pef_assessor AS ass
             ON grass.gro_ase_id = ass.ase_id
             INNER JOIN pefs_database.pef_assessor_promote AS promote
-            ON grass.gro_asp_id = promote.asp_id
+            ON grass.gro_asp_id = promote.asp_level
             INNER JOIN pefs_database.pef_group_schedule AS schedule
             ON gr.grp_id = schedule.grd_grp_id
             WHERE  ass.ase_emp_id = '$ass_id'";

@@ -36,7 +36,7 @@ class Result extends MainController
         $data['arr_group'] = $this->pef->get_group_evaluation_by_id($ass_id)->result();
         $data['obj_date'] = $this->date->get_date_evaluation($ass_id)->result();
         // echo "<pre>";
-        //     print_r($data['arr_group']);
+        //     print_r($data['obj_date']);
         // echo "</pre>";
 
         $this->output('consent/v_result_group_assessor', $data);

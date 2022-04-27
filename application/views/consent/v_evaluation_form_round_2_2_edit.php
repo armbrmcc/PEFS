@@ -392,7 +392,7 @@ $( document ).ready(function() {
                                                     echo substr($arr_des[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                                     <br>
                                                     <?php echo substr($arr_des[$count_discription]->des_description_eng, $pos + 1, strlen($arr_des[$count_discription]->des_description_eng)) ?>
-                                                    <?php echo $arr_des[$count_discription]->des_description_th ?>
+                                                    
                                                 </td>
                                                 <!-- score 1st round -->
                                                 <td colspan="2" style="vertical-align:middle;text-align: center;">
