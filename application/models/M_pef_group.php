@@ -262,9 +262,9 @@ class M_pef_group extends Da_pef_group
                     ON gr.grp_id = gr_schedule.grd_grp_id
                     INNER JOIN pefs_database.pef_group_assessor AS grass
                     ON gr.grp_id = grass.gro_grp_id
- 
                     INNER JOIN pefs_database.pef_assessor_promote AS promote
                     ON grass.gro_asp_id = promote.asp_level
+                    GROUP BY gr.grp_id
  ";
         $query = $this->db->query($sql);
         return $query;
