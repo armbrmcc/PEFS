@@ -212,6 +212,144 @@ class Evaluation extends MainController
     } //end show_evaluation_form_round_2_2
 
     /*
+	* show_evaluation_form_round_1
+	* display view evaluation form 1 round
+	* @input  $group_id, $id_assessor, $id_nominee, $promote
+	* @output Evaluation form 1 round
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-01-26
+    * @Update Date 2565-03-04
+    * @Update Date 2565-03-10
+    */
+    public function show_evaluation_form_round_1_edit($group_id, $id_assessor, $id_nominee, $promote)
+    {
+        $this->load->model('M_pef_assessor', 'assessor');
+        $this->load->model('M_pef_group_nominee', 'nominee');
+        $this->load->model('M_pef_format_form', 'form');
+        $this->load->model('M_pef_file', 'file');
+
+        $this->load->model('M_pef_description_form', 'des');
+        $this->load->model('M_pef_item_form', 'item');
+
+        
+        $this->pos_id =$promote;
+        $this->pos_year = date("Y");
+        
+        $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
+    
+        $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
+        
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail_by_id($id_assessor, $group_id)->result();
+        $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
+        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
+        $data['obj_file'] = $this->file->get_file_present_nominee($id_nominee)->result();
+        $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
+        $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
+        $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
+        // echo "<pre>";
+        // print_r($data['arr_form']);
+        // echo "</pre>";
+
+        $this->output('consent/v_evaluation_form_round_1', $data);
+    } //end show_evaluation_form_round_1
+
+    /*
+	* show_evaluation_form_round_2
+	* display view evaluation form 2 round
+	* @input  $group_id, $id_assessor, $id_nominee, $promote
+	* @output Evaluation form 2 round
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-01-26
+    * @Update Date 2565-03-03
+    * @Update Date 2565-03-05
+    * @Update Date 2565-03-10
+    */
+    public function show_evaluation_form_round_2_edit($group_id, $id_assessor, $id_nominee, $promote)
+    {
+        $this->load->model('M_pef_assessor', 'assessor');
+        $this->load->model('M_pef_group', 'pef');
+        $this->load->model('M_pef_group_nominee', 'nominee');
+        $this->load->model('M_pef_format_form', 'form');
+        $this->load->model('M_pef_item_form', 'item');
+        $this->load->model('M_pef_description_form', 'des');
+        $this->load->model('M_pef_file', 'file');
+
+        
+        $this->pos_id =$promote;
+        $this->pos_year = date("Y");
+        
+        $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
+    
+        $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
+        
+
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail_by_id($id_assessor, $group_id)->result();
+        $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
+        $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
+        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
+        $data['obj_file'] = $this->file->get_file_present_nominee($id_nominee)->result();
+        $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
+        $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
+        // print_r( $data['arr_nominee'] );
+        $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
+
+        $this->output('consent/v_evaluation_form_round_2', $data);
+    } //end show_evaluation_form_round_2
+
+    /*
+	* show_evaluation_form_round_2_2
+	* display view evaluation form 2 round 2
+	* @input  $group_id, $id_assessor, $id_nominee, $promote, $nor_id
+	* @output Evaluation form 2 round
+	* @author Phatchara Khongthandee and Ponprapai Atsawanurak
+	* @Create Date 2565-01-26
+    * @Update Date 2565-03-03
+    * @Update Date 2565-03-05
+    * @Update Date 2565-03-10
+    */
+    public function show_evaluation_form_round_2_2_edit($group_id, $id_assessor, $id_nominee, $promote, $nor_id)
+    {
+        $this->load->model('M_pef_assessor', 'assessor');
+        $this->load->model('M_pef_group', 'pef');
+        $this->load->model('M_pef_group_nominee', 'nominee');
+        $this->load->model('M_pef_format_form', 'form');
+        $this->load->model('M_pef_performance_form', 'per');
+        $this->load->model('M_pef_point_form', 'point');
+        $this->load->model('M_pef_file', 'file');
+        $this->load->model('M_pef_description_form', 'des');
+        $this->load->model('M_pef_item_form', 'item');
+
+        
+        $this->pos_id =$promote;
+        $this->pos_year = date("Y");
+        
+        $data['arr_item'] = $this->item->get_item_evaluation_by_id()->result();
+    
+        $data['arr_des'] = $this->des->get_description_evaluation_by_id()->result();
+        $data['arr_nominee'] = $this->nominee->get_nominee_detail_by_id($id_assessor, $group_id)->result();
+        $data['obj_date'] = $this->pef->get_group_date_round($group_id)->result();
+        $data['obj_assessor'] = $this->assessor->get_assessor_by_id($id_assessor)->result();
+        $data['obj_group_ass'] = $this->assessor->get_assessor_detail($group_id)->result();
+        $data['obj_nominee'] = $this->nominee->get_nominee_by_id($id_nominee)->result();
+        $data['obj_file'] = $this->file->get_file_present_nominee($id_nominee)->result();
+        $data['obj_promote'] = $this->nominee->get_promote_to($id_nominee)->result();
+        $data['arr_form'] = $this->form->get_evaluation_form($promote)->result();
+        $data['arr_date'] = $this->nominee->get_nominee_date($group_id)->result();
+        $date = $data['arr_date'][0]->grp_date;
+        // print_r($date);
+        // print_r($id_assessor);
+        // print_r($nor_id);
+            $data['arr_per'] = $this->per->get_performance($nor_id, $id_assessor, $date)->result();
+            // print_r($data['arr_per']);
+            $per_get =  $data['arr_per'][0]->per_id;
+            // print_r($per_get);
+            
+            $data['arr_point'] = $this->point->get_point_list($per_get)->result();
+
+        $this->output('consent/v_evaluation_form_round_2_2', $data);
+    } //end show_evaluation_form_round_2_2
+
+    /*
 	* insert_evaluation_form
 	* insert data form go to database
 	* @input  per, QnA, comment, ase_id, emp_id, point, form

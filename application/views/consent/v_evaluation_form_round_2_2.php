@@ -398,7 +398,8 @@ $( document ).ready(function() {
                                                         </select>
                                                         
                                                     </td>
-                                                    <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]" id="formid_<?php echo $i; ?>">
+                                                    <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>" name="for_id[]" 
+                                                    id="formid_<?php echo $count_discription; ?>">
                                             <?php $count_discription++; ?>
                                         <?php } ?>
                                         </tr>

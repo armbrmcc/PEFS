@@ -103,6 +103,7 @@ th
         <div class="card-header">
             <h2>Result (ผลคะแนนการประเมิน) </h2> 
         </div>
+        <?php print_r($arr_point)?>
         <div class="card-body">
             <!-- Logo บริษัท -->
             <div class="row">
@@ -240,7 +241,7 @@ th
                                         
                                             <!-- แสดง point -->
                                             <td style="vertical-align:middle;text-align: center;">
-                                               <?php echo $arr_point[$i]->ptf_point;
+                                               <?php echo $arr_point[$count_discription]->ptf_point;
                                                $total_weight +=$arr_point[$count_discription]->ptf_point*$arr_des[$count_discription]->des_weight;?>
                                             </td>
                                                 

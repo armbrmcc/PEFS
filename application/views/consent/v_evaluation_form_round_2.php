@@ -401,7 +401,7 @@ $( document ).ready(function() {
                                                         
                                                     </td>
                                                     
-                                                    <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]" id="formid_<?php echo $count_discription; ?>">
+                                                    <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>" name="for_id[]" id="formid_<?php echo $count_discription; ?>">
                                             <?php $count_discription++; ?>
                                         <?php } ?>
                                         </tr>

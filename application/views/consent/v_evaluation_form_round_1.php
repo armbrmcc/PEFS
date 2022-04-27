@@ -116,13 +116,13 @@ function alart_evaluation() {
     var group_id = $('#group_id').val();
     var asp_id = $('#asp_id').val();
     
+    var count_form = $('#count_form').val();
     for (i = 0; i < count_score; i++) {
         score[i] = $('#form_' + i).val();
     }
     
-    var count_form = $('#count_form').val();
     var form = []
-    for (i = 0; i < count_form; i++) {
+    for (i = 0; i < count_score; i++) {
         form[i] = $('#formid_' + i).val();
     }
 
@@ -313,7 +313,7 @@ function calculate_weight() {
                 </div>
             </div>
             <!-- icon file present nominee -->
-           <div class="row">
+            <div class="row">
                 <div class="col-sm-12">
                     <a href="<?php echo base_url() . 'assests\template\soft-ui-dashboard-main' ?>/assets/upload/<?php echo $obj_file[0]->fil_location ?>" target="_blank">
                     <button type="button" class="btn bg-gradient md-0" style="background-color: #596CFF; float: right"
@@ -446,7 +446,7 @@ function calculate_weight() {
                                             <td style="vertical-align:middle;text-align: center;">
                                                 <div class="form-group">
                                                     <label for="sel"></label>
-                                                        <select style="vertical-align:middle;text-align: center;" name="form[]" id="form_<?php echo $count_discription; ?>"
+                                                        <select style="vertical-align:middle;text-align: center;" class="form-control" name="form[]" id="form_<?php echo $count_discription; ?>"
                                                             onchange="calculate_weight()" required>
                                                             <option value="0">score</option>
                                                             <option value="1">1</option>
@@ -457,9 +457,8 @@ function calculate_weight() {
                                                         </select>
                                                 </div>
                                             </td>
-                                                <input type="hidden" value="<?php echo $arr_form[$i]->for_id ?>" name="for_id[]"
-                                                id="formid_<?php echo $i; ?>">
-
+                                                <input type="hidden" value="<?php echo $arr_form[$count_discription]->for_id ?>" name="for_id[]"
+                                                id="formid_<?php echo $count_discription; ?>">
                                             <!-- แสดง Score -->
                                             <td colspan="2" id="show_weight_<?php echo $count_discription; ?>"
                                                 style="vertical-align:middle; text-align: center;"></td>
