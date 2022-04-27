@@ -177,14 +177,14 @@
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <!-- ชื่อย่อตำแหน่งของกรรมการ -->
-                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Pos_shortName ?></h6>
+                                                <!-- ตำแหน่งของกรรมการ -->
+                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Position_name ?></h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="d-flex flex-column justify-content-center">
-                                                <!-- ตำแหน่งของกรรมการ -->
-                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Position_name ?></h6>
+                                                <!-- ชื่อแผนกกรรมการ -->
+                                                <h6 class="text-xs text-secondary mb-0"><?php echo $arr_ass[$i]->Department ?></h6>
                                             </div>
                                         </td>
                                         <td class="align-middle">
