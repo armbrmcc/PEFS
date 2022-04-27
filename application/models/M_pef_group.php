@@ -256,7 +256,7 @@ class M_pef_group extends Da_pef_group
     function get_all_group_and_position()
     { 
         $sql = "SELECT gr_schedule.grd_date, gr_schedule.grd_round, gr_schedule.grd_grp_id, promote.asp_name, 
-        gr.grp_position_group, promote.asp_type,gr.grp_id, gr.grp_status,   gr.grp_id, gr.grp_date
+        gr.grp_position_group, promote.asp_type,gr.grp_id, gr.grp_status, gr.grp_id, gr.grp_date
                     FROM pefs_database.pef_group AS gr
                     INNER JOIN pefs_database.pef_group_schedule AS gr_schedule
                     ON gr.grp_id = gr_schedule.grd_grp_id
@@ -264,7 +264,7 @@ class M_pef_group extends Da_pef_group
                     ON gr.grp_id = grass.gro_grp_id
                     INNER JOIN pefs_database.pef_assessor_promote AS promote
                     ON grass.gro_asp_id = promote.asp_level
-                    GROUP BY gr.grp_id
+                    
  ";
         $query = $this->db->query($sql);
         return $query;

@@ -106,6 +106,7 @@
                                                     <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$arr_group[$i]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6><br>
                                                     <?php $newDate = date("d/m/Y", strtotime($arr_group[$i+1]->grd_date)); ?>
                                                     <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$arr_group[$i+1]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6>
+                                                    <?php $i++; ?>
                                                 <? } ?>
                                             </td>
                             <!-- Action -->
