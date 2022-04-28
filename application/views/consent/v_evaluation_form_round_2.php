@@ -84,6 +84,8 @@ th
 {
     white-space: initial !important;
 }
+
+ 
 </style>
 <!-- End CSS -->
 
@@ -232,9 +234,10 @@ $( document ).ready(function() {
 
         }) 
         
-            toplem = Math.round(toplem / weight*100);
-            var a = '%'
-        $("input[name=total_weight]").val(toplem + a);
+            toplem =  toplem / weight*100 ;
+            toplem =  parseFloat(toplem).toFixed( 2 );
+             
+        $("input[name=total_weight]").val(toplem );
 
     }); //คืนค่าคะแนนรวมแบบเปอเซ็น
 
@@ -335,13 +338,13 @@ $( document ).ready(function() {
                             <table class="table table-bordered table-sm">
                                 <tbody>
                                     <tr id="center_th">
-                                        <td rowspan="2" width="300px" id="width_col" style="vertical-align:middle;text-align: center;">ITems</td>
+                                        <td rowspan="2" width="200px" id="width_col" style="vertical-align:middle;text-align: center;">ITems</td>
                                         <td rowspan="2" width="800px" id="width_col" style="vertical-align:middle;text-align: center;">Points for observation</td>
                                         <td colspan="4" style="vertical-align:middle;text-align: center;">Rating [Fill score 1-5]</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" style="vertical-align:middle;text-align: center;">1st round</td>
-                                        <td colspan="2" style="vertical-align:middle;text-align: center;">Final round</td>
+                                        <td colspan="2"   style="vertical-align:middle;text-align: center;">1st round</td>
+                                        <td colspan="2"  style="vertical-align:middle;text-align: center;">Final round</td>
                                     </tr>
                                     <!--เริ่ม ตารางหัวข้อลงคะแนน-->
                                     <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
@@ -419,10 +422,10 @@ $( document ).ready(function() {
                                         </td>
                                         <!-- total -->
                                         <td>Total</td>
-                                        <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'> </td>
-                                                <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
-                                                <td><input type="text" name="total" size='1' disabled hidden></td>
-                                                <td><input type="text" name="total" size='1' disabled hidden></td>
+                                        <td style="text-align: center;"><input type="text" name="total" size='3' disabled style='border: none'> </td>
+                                                <td style="text-align: center;"><input type="text" name="total_weight" size='3' disabled style='border: none' ;></td>
+                                                <td><input type="text" name="total" size='3' disabled hidden></td>
+                                                <td><input type="text" name="total" size='3' disabled hidden></td>
                                     </tr>
                                     <tr>
                                         <td>Judgement</td>
