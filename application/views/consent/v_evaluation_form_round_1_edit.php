@@ -252,7 +252,9 @@ function total_calculate_weight() {
 
         })
 
-        toplem = Math.round(toplem / weight * 100);
+        toplem =  toplem / weight * 100 ;
+        toplem =  parseFloat(toplem).toFixed( 2 );
+        // toplem = Math.round(toplem / weight * 100);
         
         $("input[name=total_weight]").val(toplem);
 
@@ -514,7 +516,7 @@ function calculate_weight() {
                                     </td>
                                     <!-- แสดงเปอร์เซ็นคะแนนรวมทั้งหมด -->
                                     <td align='center'>
-                                        <input type="text" name="total_weight" size='1' disabled style='border: none' value=<?php echo (int)($total_weight/($weight * 5)*100);?>>%
+                                        <input type="text" name="total_weight" size='2' disabled style='border: none' value=<?php echo number_format( $total_weight/($weight * 5)*100 , 2 );?>>%
                                     </td>
                                 </tr>
                             </tbody>

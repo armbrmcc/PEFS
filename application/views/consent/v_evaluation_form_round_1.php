@@ -260,7 +260,9 @@ $(document).ready(function() {
 
         })
 
-        toplem = Math.round(toplem / weight * 100);
+        toplem =  toplem / weight * 100 ;
+        toplem =  parseFloat(toplem).toFixed( 2 );
+        // toplem = Math.floor(toplem / weight * 100);
         var a = '%'
         $("input[name=total_weight]").val(toplem + a);
 
@@ -486,7 +488,7 @@ function calculate_weight() {
                                     </td>
                                     <!-- แสดงเปอร์เซ็นคะแนนรวมทั้งหมด -->
                                     <td align='center'>
-                                        <input type="text" name="total_weight" size='1' disabled style='border: none' ;>
+                                        <input type="text" name="total_weight" size='2' disabled style='border: none' ;>
                                     </td>
                                 </tr>
                             </tbody>

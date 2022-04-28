@@ -229,7 +229,9 @@ $( document ).ready(function() {
 
         })//คืนค่าคะแนนรวมแบบรายการ
 
-            toplem = Math.round(toplem / weight*100);
+            // toplem = Math.round(toplem / weight*100);
+            toplem =  toplem / weight * 100 ;
+            toplem =  parseFloat(toplem).toFixed( 2 );
             var a = '%'
         $("input[name=total_weight]").val(toplem + a);
 
@@ -425,7 +427,7 @@ $( document ).ready(function() {
                                             <input type="text" name="total" size='1' disabled hidden>
                                             <input type="text" name="total" size='1' disabled hidden>
                                             <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'> </td>
-                                            <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>    
+                                            <td style="text-align: center;"><input type="text" name="total_weight" size='2' disabled style='border: none' ;></td>    
                                     </tr>
                                     <tr>
                                         <td>Judgement</td>

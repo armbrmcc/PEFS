@@ -233,7 +233,9 @@ $( document ).ready(function() {
 
         })//คืนค่าคะแนนรวมแบบรายการ
 
-            toplem = Math.round(toplem / weight*100);
+        toplem =  toplem / weight * 100 ;
+        toplem =  parseFloat(toplem).toFixed( 2 );
+            // toplem = Math.round(toplem / weight*100);
             
         $("input[name=total_weight]").val(toplem);
 
@@ -447,8 +449,8 @@ $( document ).ready(function() {
                                             <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'
                                                 value=<?php echo $total_round_2;?>> 
                                             </td>
-                                            <td style="text-align: center;"><input type="text" name="total_weight" size='1' disabled style='border: none'
-                                                value=<?php echo (int)($total_round_2 * 100/$weight);?>>%
+                                            <td style="text-align: center;"><input type="text" name="total_weight" size='2' disabled style='border: none'
+                                                value=<?php echo number_format(($total_round_2 * 100)/$weight , 2 );?>>%
                                             </td>    
                                     </tr>
                                     <tr>

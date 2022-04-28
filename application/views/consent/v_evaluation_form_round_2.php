@@ -212,11 +212,11 @@ th
 
     
 
-   
+
 $( document ).ready(function() {
- 
+
     $("select").change(function(){
-         
+        
         var toplem=0;
         $("select[name=form]").each(function(){
             
@@ -236,7 +236,7 @@ $( document ).ready(function() {
         
             toplem =  toplem / weight*100 ;
             toplem =  parseFloat(toplem).toFixed( 2 );
-             
+            
         $("input[name=total_weight]").val(toplem );
 
     }); //คืนค่าคะแนนรวมแบบเปอเซ็น
@@ -246,8 +246,8 @@ $( document ).ready(function() {
     
 })
         
-       
- 
+
+
 
 </script>
 <!-- End Javascript -->
