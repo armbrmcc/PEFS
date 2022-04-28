@@ -442,14 +442,14 @@ $( document ).ready(function() {
                                         <!-- <?php echo $weight; ?> -->
                                             <!-- total round 1 -->
                                             <td style="text-align: center;"><?php echo $total_round_1;?></td>
-                                            <td style="text-align: center;"><?php echo (int)(($total_round_1 * 100)/$weight);?>%</td>
+                                            <td style="text-align: center;"><?php echo number_format(($total_round_1 * 100)/$weight , 2);?>%</td>
                                             <!-- total round 2 -->
                                             <input type="text" name="total" size='1' disabled hidden>
                                             <input type="text" name="total" size='1' disabled hidden>
                                             <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'
                                                 value=<?php echo $total_round_2;?>> 
                                             </td>
-                                            <td style="text-align: center;"><input type="text" name="total_weight" size='2' disabled style='border: none'
+                                            <td style="text-align: center;"><input type="text" name="total_weight" size='3' disabled style='border: none'
                                                 value=<?php echo number_format(($total_round_2 * 100)/$weight , 2 );?>>%
                                             </td>    
                                     </tr>

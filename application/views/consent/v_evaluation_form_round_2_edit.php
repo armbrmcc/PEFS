@@ -442,7 +442,7 @@ $( document ).ready(function() {
                                             value=<?php echo $total_round_1;?>> 
                                         </td>
                                         <!-- แสดงเปอร์เซ็นคะแนนรวมทั้งหมด -->
-                                        <td style="text-align: center;"><input type="text" name="total_weight" size='2' disabled style='border: none' 
+                                        <td style="text-align: center;"><input type="text" name="total_weight" size='3' disabled style='border: none' 
                                             value=<?php echo number_format(($total_round_1 * 100)/$weight , 2);?>>%
                                         </td>
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>

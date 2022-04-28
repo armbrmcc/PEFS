@@ -236,8 +236,8 @@ $( document ).ready(function() {
         
             toplem =  toplem / weight*100 ;
             toplem =  parseFloat(toplem).toFixed( 2 );
-            
-        $("input[name=total_weight]").val(toplem );
+            var a = '%'
+        $("input[name=total_weight]").val(toplem + a);
 
     }); //คืนค่าคะแนนรวมแบบเปอเซ็น
 
@@ -422,8 +422,8 @@ $( document ).ready(function() {
                                         </td>
                                         <!-- total -->
                                         <td>Total</td>
-                                        <td style="text-align: center;"><input type="text" name="total" size='3' disabled style='border: none'> </td>
-                                                <td style="text-align: center;"><input type="text" name="total_weight" size='3' disabled style='border: none' ;></td>
+                                        <td style="text-align: center;"><input type="text" name="total" size='1' disabled style='border: none'> </td>
+                                                <td style="text-align: center;"><input type="text" name="total_weight" size='4' disabled style='border: none' ;></td>
                                                 <td><input type="text" name="total" size='3' disabled hidden></td>
                                                 <td><input type="text" name="total" size='3' disabled hidden></td>
                                     </tr>

@@ -484,11 +484,11 @@ function calculate_weight() {
                                     <td align='center'><?php echo $weight * 5; ?></td>
                                     <!-- แสดง point รวม -->
                                     <td align='center'>
-                                        <input type="text" name="total" size='1' disabled style='border: none'>
+                                        <input type="text" name="total" size='2' disabled style='border: none'>
                                     </td>
                                     <!-- แสดงเปอร์เซ็นคะแนนรวมทั้งหมด -->
                                     <td align='center'>
-                                        <input type="text" name="total_weight" size='2' disabled style='border: none' ;>
+                                        <input type="text" name="total_weight" size='4' disabled style='border: none' ;>
                                     </td>
                                 </tr>
                             </tbody>

@@ -512,11 +512,11 @@ function calculate_weight() {
                                     <td align='center'><?php echo $weight * 5; ?></td>
                                     <!-- แสดง point รวม -->
                                     <td align='center'>
-                                        <input type="text" name="total" size='1' disabled style='border: none' value=<?php echo $total_weight; ?>>
+                                        <input type="text" name="total" size='2' disabled style='border: none' value=<?php echo $total_weight; ?>>
                                     </td>
                                     <!-- แสดงเปอร์เซ็นคะแนนรวมทั้งหมด -->
                                     <td align='center'>
-                                        <input type="text" name="total_weight" size='2' disabled style='border: none' value=<?php echo number_format( $total_weight/($weight * 5)*100 , 2 );?>>%
+                                        <input type="text" name="total_weight" size='3' disabled style='border: none' value=<?php echo number_format( $total_weight/($weight * 5)*100 , 2 );?>>%
                                     </td>
                                 </tr>
                             </tbody>
