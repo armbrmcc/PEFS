@@ -132,8 +132,12 @@ th
                     <h6>Assessor Name : <?php echo $obj_assessor[0]->Empname_eng. ' ' . $obj_assessor[0]->Empsurname_eng?></h6>
                 </div>
                 <div class="col-sm-6">
-                     
-                <h6>Date : <?php echo $obj_group[0]->grp_date ?></h6>
+                <h6>Date : 
+                    <?php $newDate = date("d/m/Y", strtotime($obj_date[0]->grd_date));
+                        echo $newDate;
+                        // echo $obj_group[0]->grp_date
+                    ?>
+                </h6>    
                 </div>
             </div>
 

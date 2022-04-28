@@ -90,6 +90,16 @@ class Report extends MainController
         $data['sec_data'] = $this->grp->get_data_by_id()->result();
         $data['ass_data'] = $this->sec->get_ass_by_sec_id()->result();
         $data['point_data'] = $this->ptf->get_data_point()->result();
+
+        $data['count'] = '';
+        for ($i = 0; $i < count($data['sec_data']); $i++) {
+            $num = 0;
+            for ($j = 0; $j < count($data['ass_data']); $j++) {
+                $num++;
+            }
+            $data['count'][$i] = $num;
+        }
+
         $this->output('consent/v_report_group', $data);
     }
 

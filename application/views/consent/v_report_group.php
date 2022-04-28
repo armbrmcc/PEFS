@@ -105,7 +105,7 @@
         //for each ass_data
         if ($row_emp->grn_status_done > -1) {
             array_push($point_emp, $point_total);
-            array_push($total, (sizeof($point_data) * 5));
+            array_push($total, ((sizeof($point_data) * 5) / sizeof($sec_data)));
             array_push($get, array_sum($point_total));
         }
         $point_total = [];
@@ -158,25 +158,20 @@
                                         foreach ($ass_data as $index_ass => $row_ass) { ?>
                                             <td><?php echo $point_emp[$index_point][$index_ass]; ?></td>
                                         <?php } ?>
-
+                                        
                                         <td><?php echo $total[$index_point]; ?></td>
                                         <td><?php echo $get[$index_point]; ?></td>
                                         <?php $percent = ($get[$index_point] * 100) / ($total[$index_point]); ?>
                                         <td><?php echo number_format($percent, 2, '.', ''); ?> %</td>
                                         <?php
-                                        if ($percent >= 60) {
-                                            $Judgement = 'PASS'; ?>
-                                            <td><span style="color:green;"><?php echo $Judgement; ?></span></td>
-                                        <?php } else {
-                                            $Judgement = 'NOT PASS'; ?>
-                                            <td><span style="color:red;"><?php echo $Judgement; ?></span></td>
+                                        if ($sec_data[$i]->grn_status_result == '1') {
+                                            $Status = 'PASS'; ?>
+                                            <td><span style="color:green;"><?php echo $Status; ?></span></td>
+                                        <?php } else if ($sec_data[$i]->grn_status_result == '2') {
+                                            $Status = 'NOT PASS'; ?>
+                                            <td><span style="color:red;"><?php echo $Status; ?></span></td>
                                         <?php } ?>
-                                        <?php
-                                        $num_ass = 0;
-                                        for ($a = 0; $a < count($ass_data); $a++) {
-                                            $num_ass++;
-                                        } ?>
-                                        <td><?php echo $num_ass; ?></td>
+                                        <td><?php echo $count[$i] ?>/<?php echo count($ass_data) ?></td>
                                     </tr>
                             <?php
                                     $index_point++;
