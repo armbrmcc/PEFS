@@ -133,6 +133,12 @@ class Assessor_management extends MainController
         // echo $ase_gro_id;
         $this->dass->insert();
 
+        $this->load->model('Da_pef_user_login', 'dlog');
+        $this->dlog->User_login = $this->input->post('ase_emp_id');
+        $this->dlog->User_emp_id = $this->input->post('ase_emp_id');
+        $this->dlog->User_pass_login = $this->input->post('ase_emp_id');
+        $this->dlog->User_Role = '1';
+        $this->dlog->insert_login();
         redirect('Assessor_management/Assessor_management/show_assessor_management_detail/'.$ase_gro_id);
     }//เพิ่มรายการของกรรมการในกลุ่มกรรมการ
     
