@@ -171,12 +171,8 @@
                                             $Judgement = 'NOT PASS'; ?>
                                             <td><span style="color:red;"><?php echo $Judgement; ?></span></td>
                                         <?php } ?>
-                                        <?php
-                                        $num_ass = 0;
-                                        for ($a = 0; $a < count($ass_data); $a++) {
-                                            $num_ass++;
-                                        } ?>
-                                        <td><?php echo $num_ass; ?></td>
+                                
+                                 <td><?php echo $count[$i] ?>/<?php echo count($ass_data) ?></td>  
                                     </tr>
                             <?php
                                     $index_point++;
