@@ -97,6 +97,13 @@
                             </td>
                      
                             <td>
+                            <?php if(count($arr_group)<2) { ?>
+                                <?  ?>  
+                                                   
+                                                   <?php $newDate = date("d/m/Y", strtotime($arr_group[$i]->grd_date)); ?>
+                                                   <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$arr_group[$i]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6>
+                                                  
+                                               <?}else{?>
                                                 <?php if($arr_group[$i]->grd_grp_id == $arr_group[$i+1]->grd_grp_id ) { ?>
                                                     <?php $use_round++; ?>
                                                     <?php $newDate = date("d/m/Y", strtotime($arr_group[$i]->grd_date)); ?>
@@ -108,7 +115,7 @@
                                                     <?php $newDate = date("d/m/Y", strtotime($arr_group[$i]->grd_date)); ?>
                                                     <h6 class="text-xs text-secondary mb-0">Round<?php echo ' '.$arr_group[$i]->grd_round.' ' ?>:<?php echo ' '.$newDate ?></h6>
                                                    
-                                                <? } ?>
+                                                <? }} ?>
                                             </td>
                             <!-- Action -->
                             <td>
