@@ -142,7 +142,7 @@ $(document).ready(function() {
                                     <?php } ?>
                                     <!-- round 1 -->
                                     <?php if($arr_nominee[$i]->asp_type == 1) { ?>
-                                        <?php if($obj_date[0]->grd_date == date("Y-m-d")) {?>
+                                        <?php if($obj_date[0]->grd_date <= date("Y-m-d") && $arr_nominee[$i]->grp_status_edit == 1) {?>
                                             <?php if($check_per == 0) { ?>
                                                 <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_1/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id;?>">
                                                     <button type="button" class="btn btn-xs button_size"
@@ -168,7 +168,7 @@ $(document).ready(function() {
                                     <!-- round 2 -->
                                     <?php } else if($arr_nominee[$i]->asp_type == 2) { ?>
                                         <!-- round 2/1 -->
-                                        <?php if($obj_date[0]->grd_date == date("Y-m-d")) {?>    
+                                        <?php if($obj_date[0]->grd_date <= date("Y-m-d") && $arr_nominee[$i]->grp_status_edit == 1) {?>    
                                             <?php if($check_per == 0) { ?>
                                                 <a
                                                     href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id. '/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id;?>">
@@ -194,7 +194,7 @@ $(document).ready(function() {
                                         <?php } ?>
                                         <!-- round 2/2 -->
                                         <!-- <?php echo $check_per?> -->
-                                        <?php if($obj_date[1]->grd_date == date("Y-m-d")) {?>
+                                        <?php if($obj_date[1]->grd_date <= date("Y-m-d") && $arr_nominee[$i]->grp_status_edit == 2) {?>
                                             <?php if($check_per == 0) { ?>
                                                 <a
                                                     href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_form_round_2_2/'.$arr_nominee[$i]->grp_id. '/', $arr_nominee[$i]->ase_id.'/'.$arr_nominee[$i]->grn_id. '/'.$arr_nominee[$i]->grn_promote_to.'/'.$arr_nominee[$i]->grn_emp_id;?>">
