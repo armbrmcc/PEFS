@@ -9,88 +9,137 @@
     * @Update Date 2565-04-14
     */ -->
 <style>
-    #list_table td,
-    #list_table th {
-        padding: 12px;
-        text-align: center;
-    }
+#list_table td,
+#list_table th {
+    padding: 12px;
+    text-align: center;
+}
 
-    #list_table tr:nth-child(even) {
-        background-color: #e9ecef;
-    }
+#list_table tr:nth-child(even) {
+    background-color: #e9ecef;
+}
 
-    #list_table tr:hover {
-        background-color: #adb5bd;
-    }
+#list_table tr:hover {
+    background-color: #adb5bd;
+}
 
-    #card_radius {
-        border-radius: 20px;
-        width: auto;
-        min-height: 300px;
-    }
+#card_radius {
+    border-radius: 20px;
+    width: auto;
+    min-height: 300px;
+}
 
-    #list_table {
-        width: 98%;
-        margin-top: 20px;
-        margin-left: 10px;
-    }
+#list_table {
+    width: 98%;
+    margin-top: 20px;
+    margin-left: 10px;
+}
 
-    .button_size {
-        /* width: 5px; */
-        height: 40px;
-        font-size: 12px;
-        text-align: center;
-    }
+.button_size {
+    /* width: 5px; */
+    height: 40px;
+    font-size: 12px;
+    text-align: center;
+}
 
-    .off {
-        background: #D90437;
-        border-radius: 4px;
-        color: #FFFFFF;
-        text-align: center;
-        border: none;
+.off {
+    background: #D90437;
+    border-radius: 4px;
+    color: #FFFFFF;
+    text-align: center;
+    border: none;
 
-    }
+}
 
-    .on {
-        background: #0DD739;
-        border-radius: 4px;
-        color: #FFFFFF;
-        text-align: center;
-        border: none;
+.on {
+    background: #0DD739;
+    border-radius: 4px;
+    color: #FFFFFF;
+    text-align: center;
+    border: none;
 
-    }
+}
 
-    select {
-        width: 10% !important;
-        margin-left: 89.5%;
-    }
+select {
+    width: 10% !important;
+    margin-left: 89.5%;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript">
-    $(document).ready(function() {
-        $('#on').on('click', function() {
-            var button = document.getElementById("on");
-            var round = $('input#round').attr("value");
+$(document).ready(function() {
+    $('#on').on('click', function() {
+        var button = document.getElementById("on");
+        var round = $('input#round').attr("value");
+        var grp_id = $(event.currentTarget).attr("data-grp_id");
+        if ($as_group_date[0] - > grd_round == 1) {
             if (button.value == 'on') {
-                for(var i = 1; i <= round; i++) {
-                    let elems = document.querySelector("#info"+i);
+                for (var i = 1; i <= round; i++) {
+                    let elems = document.querySelector("#info" + i);
                     elems.disabled = true;
                 }
                 button.value = "off";
                 button.innerHTML = "close";
                 button.style.background = "#D90437";
-                
+                $.ajax({
+                    type: "post",
+                    url: "<?php echo site_url().'/Score_management/Score_management/update_status_open'; ?>",
+                    data: {
+                        'grp_id': grp_id,
+                        'grn_status_edit': '2'
+
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+                        console.log(data.status)
+                        location.reload();
+                    } //if
+                });
             } else {
-                for(var i = 1; i <= round; i++) {
-                    let elems = document.querySelector("#info"+i);
+                for (var i = 1; i <= round; i++) {
+                    let elems = document.querySelector("#info" + i);
                     elems.disabled = false;
                 }
                 button.value = "on";
                 button.innerHTML = "open";
                 button.style.background = "#0DD739";
             }
-        });
+        } else if ($as_group_date[0] - > grd_round == 2) {
+            if (button.value == 'on') {
+                for (var i = 1; i <= round; i++) {
+                    let elems = document.querySelector("#info" + i);
+                    elems.disabled = true;
+                }
+                button.value = "off";
+                button.innerHTML = "close";
+                button.style.background = "#D90437";
+                $.ajax({
+                    type: "post",
+                    url: "<?php echo site_url().'/Score_management/Score_management/update_status_open'; ?>",
+                    data: {
+                        'grp_id': grp_id,
+                        'grn_status_edit': '2'
+
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+                        console.log(data.status)
+                        location.reload();
+                    } //if
+                });
+            } else {
+                for (var i = 1; i <= round; i++) {
+                    let elems = document.querySelector("#info" + i);
+                    elems.disabled = false;
+                }
+                button.value = "on";
+                button.innerHTML = "open";
+                button.style.background = "#0DD739";
+            }
+        }
+
     });
+});
 </script>
 
 <h2>
@@ -100,7 +149,7 @@
     <div class="row">
         <div class="col">
             <h3>Detail Group <label for="cars" style="font-size : 20px;margin-left : 69%">Group Status:</label>
-                <button type="button" class="float-right on" style="text-align: center;" id="on" value="on">
+                <button type="button" class="float-right on" style="text-align: center;" id="on" value="on" data-grp_id="<?php echo $group[0]->grp_id ?>">
                     open
                     <!-- <i class="fas fa-circle" style="font-size:30px; "></i> -->
                 </button>
@@ -115,7 +164,7 @@
                 </h5>
                 <h5 class="mb-0">Group Name : <?php echo $group[0]->asp_name ?></h5>
                 <h5 class="mb-0">Promote : <?php echo $group[0]->Position_name ?></h5>
-                <h5 class="mb-0">Date : <?php echo date("d/m/Y", strtotime($group[0]->grp_date)) ?></h5>
+                <h5 class="mb-0">Date : <?php echo date("d/m/Y", strtotime($as_group_date[0]->grp_date)) ?></h5>
                 <hr class="my-4" color="gray">
         </div>
 
@@ -136,155 +185,155 @@
                 </thead>
                 <tbody class="list text-center">
                     <?php for ($i = 0; $i < count($nominee); $i++) { ?>
-                        <tr>
-                            <td>
-                                <div class="media align-items-center">
-                                    <div class="media-body">
-                                        <span class="name mb-0 text-sm"><?php echo $i + 1 ?></span>
-                                    </div>
+                    <tr>
+                        <td>
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <span class="name mb-0 text-sm"><?php echo $i + 1 ?></span>
                                 </div>
-                            </td>
-                            <td class="budget">
-                                <?php echo $nominee[$i]->Emp_ID ?>
-                                <input type="text" id="<?php echo 'emp_id_' . $i ?>" value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
-                            </td>
-                            <td>
-                                <span class="name mb-0 text-sm">
-                                    <!-- <i class="bg-warning"></i> -->
-                                    <span class="status"><?php echo $nominee[$i]->Empname_eng . ' ' . $nominee[$i]->Empsurname_eng ?></span>
-                                </span>
-                            </td>
-                            <td>
-                                <?php
+                            </div>
+                        </td>
+                        <td class="budget">
+                            <?php echo $nominee[$i]->Emp_ID ?>
+                            <input type="text" id="<?php echo 'emp_id_' . $i ?>" value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
+                        </td>
+                        <td>
+                            <span class="name mb-0 text-sm">
+                                <!-- <i class="bg-warning"></i> -->
+                                <span class="status"><?php echo $nominee[$i]->Empname_eng . ' ' . $nominee[$i]->Empsurname_eng ?></span>
+                            </span>
+                        </td>
+                        <td>
+                            <?php
                                 if ($count[$i] == count($assessor)) {
                                 ?>
-                                    <?php if ($nominee[$i]->grn_status_result == 1) { ?>
-                                        <span class="name mb-0 text-sm">
-                                            <i class="bg-success"></i>
-                                            <span class="status"><?php echo 'Pass' ?></span>
-                                        </span>
-                                    <?php }
+                            <?php if ($nominee[$i]->grn_status_result == 1) { ?>
+                            <span class="name mb-0 text-sm">
+                                <i class="bg-success"></i>
+                                <span class="status"><?php echo 'Pass' ?></span>
+                            </span>
+                            <?php }
                                     if ($nominee[$i]->grn_status_result == 2) { ?>
-                                        <span class="name mb-0 text-sm">
-                                            <i class="bg-danger"></i>
-                                            <span class="status"><?php echo 'Fail' ?></span>
-                                        </span>
-                                    <?php  }
+                            <span class="name mb-0 text-sm">
+                                <i class="bg-danger"></i>
+                                <span class="status"><?php echo 'Fail' ?></span>
+                            </span>
+                            <?php  }
                                 }
                                 if ($nominee[$i]->grn_status_result != 1 && $nominee[$i]->grn_status_result != 2) { ?>
-                                    <span class="name mb-0 text-sm">
-                                        <span class="status"><?php echo 'Pending Assess' ?></span>
-                                    </span>
-                                <?php } ?>
-                            </td>
-                            <td>
-                                <div class="avatar-group">
+                            <span class="name mb-0 text-sm">
+                                <span class="status"><?php echo 'Pending Assess' ?></span>
+                            </span>
+                            <?php } ?>
+                        </td>
+                        <td>
+                            <div class="avatar-group">
 
-                                    <span id="<?php echo 'demo_' . $i ?>" class="User"><?php echo $count[$i] ?>/<?php echo count($assessor) ?></span>
-                                </div>
-                            </td>
-                            <td>
+                                <span id="<?php echo 'demo_' . $i ?>" class="User"><?php echo $count[$i] ?>/<?php echo count($assessor) ?></span>
+                            </div>
+                        </td>
+                        <td>
 
-                                <?php
+                            <?php
                                 if ($count[$i] == count($assessor)) {
                                     if ($nominee[$i]->grn_status_done == 0 || $nominee[$i]->grn_status_done == 1 || $nominee[$i]->grn_status_result == 1 || $nominee[$i]->grn_status_result == 2) { ?>
-                                        <?php
+                            <?php
                                         $index_point = 0;
                                         ?>
 
-                                        <b>Totally score : </b><?php echo $point_data[$i]->sum_total ; ?> points<br>
-                                        <b>Get score : </b><?php echo $point_data[$i]->point; ?> points<br>
-                                        <?php $percent = $point_data[$i]->point * 100 / $point_data[$i]->sum_total; ?> 
-                                        <div class="d-flex align-items-center" style="margin-left:18%;">
-                                            <span class="completion"><?php echo number_format($percent, 2, '.', ''); ?>
-                                                %</span>
-                                            <div>
-                                                <?php if ($percent >= 60) { ?>
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
-                                                        </div>
-                                                    </div>
-                                                <?php } else { ?>
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
-                                            </div>
-                                        <?php } ?>
+                            <b>Totally score : </b><?php echo $point_data[$i]->sum_total ; ?> points<br>
+                            <b>Get score : </b><?php echo $point_data[$i]->point; ?> points<br>
+                            <?php $percent = $point_data[$i]->point * 100 / $point_data[$i]->sum_total; ?>
+                            <div class="d-flex align-items-center" style="margin-left:18%;">
+                                <span class="completion"><?php echo number_format($percent, 2, '.', ''); ?>
+                                    %</span>
+                                <div>
+                                    <?php if ($percent >= 60) { ?>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
                                         </div>
+                                    </div>
                                     <?php } else { ?>
-                                        <span class="completion mr-2"><?php echo number_format(0, 2, '.', ''); ?> %</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '0' . '%' ?>;">
-                                                </div>
-                                            </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
                                         </div>
+                                    </div>
                                     <?php } ?>
-                            </td>
-                            <td>
-                                <div class="dropdown">
-                                    <input type="text" value="<?php echo count($nominee) ?>" id="round" hidden>
-                                    <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" data-bs-target="#ModalAddGroup" id="info<?php echo $i+1 ?>" >
-                                        <i class="fa fa-refresh" style="font-size:15px;"></i>
+                                </div>
+                                <?php } ?>
+                            </div>
+                            <?php } else { ?>
+                            <span class="completion mr-2"><?php echo number_format(0, 2, '.', ''); ?> %</span>
+                            <div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '0' . '%' ?>;">
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } ?>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <input type="text" value="<?php echo count($nominee) ?>" id="round" hidden>
+                                <button type="button" class="btn btn-warning button_size" data-bs-toggle="modal" data-bs-target="#ModalAddGroup" id="info<?php echo $i+1 ?>">
+                                    <i class="fa fa-refresh" style="font-size:15px;"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title" id="ModalAddGroupLabel">Manage Group review</h2>&nbsp;
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
                                     </button>
                                 </div>
-                            </td>
-                        </tr>
-                        <div class="modal fade" id="ModalAddGroup" tabindex="-1" role="dialog" aria-labelledby="ModalAddGroupTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="ModalAddGroupLabel">Manage Group review</h2>&nbsp;
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label" style="font-size:20px;">Date : </label>
-                        <input type="date" id="date" style="font-size:20px;" class="form-control" value="<?php echo date('Y-m-d') ?>" min="<?php echo date('Y-m-d') ?>"><br>
-                        <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
-                        <input type="text" id="position_group" name="position_group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
-                        <input type="text" id="group" name="group" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
-                        <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
-                    </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label" style="font-size:20px;">Date : </label>
+                                            <input type="date" id="date" style="font-size:20px;" class="form-control" value="<?php echo date('Y-m-d') ?>" min="<?php echo date('Y-m-d') ?>"><br>
+                                            <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
+                                            <input type="text" id="position_group" name="position_group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
+                                            <input type="text" id="group" name="group" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
+                                            <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
+                                        </div>
 
-                    <div class="modal-footer" style="margin-right : 29.5%">
-                        <!-- ปุ่มปิด modal -->
-                        <a href="">
-                            <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
-                        </a>
-                        <!-- ปุ่มบันทึก -->
-                        <a href="">
-                        <!-- <a href="<?php echo site_url() . 'Score_management/Score_management/review/';?>"> -->
-                            <button type="button" class="btn bg-gradient-success">Submit</button>
-                        </a>
-                    </div>
-            </div>
+                                        <div class="modal-footer" style="margin-right : 29.5%">
+                                            <!-- ปุ่มปิด modal -->
+                                            <a href="">
+                                                <button type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal">Close</button>
+                                            </a>
+                                            <!-- ปุ่มบันทึก -->
+                                            <a href="">
+                                                <!-- <a href="<?php echo site_url() . 'Score_management/Score_management/review/';?>"> -->
+                                                <button type="button" class="btn bg-gradient-success">Submit</button>
+                                            </a>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                </tbody>
+            </table>
         </div>
     </div>
-    <?php } ?>
-    </tbody>
-    </table>
-    </div>
-</div>
 </div>
 
-    <script>
-        $(document).ready(function() {
-            $('#Score').DataTable();
-            console.log(999);
-        });
-    </script>
-    </script>
-    <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-    <!-- Argon JS -->
-    <script src="../../assets/js/argon.js?v=1.2.0"></script>
-    <script type="text/javascript">
+<script>
+$(document).ready(function() {
+    $('#Score').DataTable();
+    console.log(999);
+});
+</script>
+</script>
+<script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
+<script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+<!-- Argon JS -->
+<script src="../../assets/js/argon.js?v=1.2.0"></script>
+<script type="text/javascript">

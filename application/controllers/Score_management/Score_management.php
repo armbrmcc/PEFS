@@ -50,6 +50,7 @@ class Score_management extends MainController
         $this->load->model('M_pef_score_management', 'pef');
         $data['count'] = '';
         $num_ass = $this->pef->get_assessor($id)->result();
+        $data['as_group_date'] = $this->pef->get_score_management_list_date($id)->result();
         $data['assessor'] = $this->pef->get_assessor($id)->result();
         $data['form'] = $this->pef->get_form($id)->result();
         $data['nominee'] = $this->pef->get_nominee($id)->result();
@@ -234,5 +235,58 @@ class Score_management extends MainController
         $data = $this->pef->get_evaluation($id)->result();
         echo json_encode($data);
     } //end get_evaluation
+
+    /*
+	* update_status_open
+	* display  update_status_open
+	* @input  -
+	* @output  update_status_open
+	* @author  Niphat Kuhoksiw
+	* @Create  Date 2565-04-10
+    */
+    public function update_status_open()
+    {//update_status_open
+        $this->load->model('Da_pef_score_management', 'pef');
+        $grp_id = $this->input->post('grp_id');
+        $grn_status_edit = $this->input->post('grn_status_edit');
+        $this->pef->grp_id = $grp_id;
+        $this->pef->grn_status_edit = $grn_status_edit;
+        $this->pef->grn_status_edit();
+        Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
+    }//end update_status_open
+
+    /*
+	* update_status_close_round1
+	* display  update_status_open
+	* @input  -
+	* @output  update_status_open
+	* @author  Niphat Kuhoksiw
+	* @Create  Date 2565-04-10
+    */
+    public function update_status_close_round1($grp_id)
+    {//update_status_close_round1
+        $this->load->model('Da_pef_score_management', 'pef');
+        $this->pef->grn_grp_id = $grp_id;
+        $this->pef->grn_status_edit = 2;
+        $this->pef->grn_status_edit();
+        Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
+    }//end update_status_close_round1
+
+    /*
+	* update_status_close_round2
+	* display  update_status_open
+	* @input  -
+	* @output  update_status_open
+	* @author  Niphat Kuhoksiw
+	* @Create  Date 2565-04-10
+    */
+    public function update_status_close_round2($grp_id)
+    {//update_status_close_round2
+        $this->load->model('Da_pef_score_management', 'pef');
+        $this->pef->grn_grp_id = $grp_id;
+        $this->pef->grn_status_edit = 3;
+        $this->pef->grn_status_edit();
+        Redirect('/Score_management/Score_management/show_score_management_detail/' . $grp_id);
+    }//end update_status_close_round2
 
 }//End class Score_management
